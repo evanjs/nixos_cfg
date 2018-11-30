@@ -23,6 +23,7 @@
       ./i18n.nix
       ./iOS.nix
       ./media.nix
+      ./nocam.nix
       ./nvidia.nix
       ./power.nix
       ./python.nix
