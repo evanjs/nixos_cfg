@@ -1,48 +1,42 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, options, ... }:
-  {
-    imports =
-      [ # Include the results of the hardware scan.
-      ./avahi.nix
-      ./bash.nix
-      ./build.nix
-      ./devpkgs.nix
-      ./design.nix
-      ./editors.nix
-      ./env.nix
-      ./fonts.nix
-      ./graphics.nix
-      ./hardware-configuration.nix
-      ./hardware.nix
-      ./haskell.nix
-      ./hoogle.nix
-      ./hie.nix
-      ./i18n.nix
-      ./iOS.nix
-      ./media.nix
-      ./nocam.nix
-      ./nvidia.nix
-      ./power.nix
-      ./python.nix
-      ./qt.nix
-      ./rust.nix
-      ./samba.nix
-      ./services/services.nix
-      ./social.nix
-      ./sound.nix
-      ./steam.nix
-      ./syspkgs.nix
-      ./theme.nix
-      ./virtualization.nix
-      ./web.nix
-      ./x.nix
-      ./xrdp.nix
-    ];
-
-    nixpkgs.config.allowUnfree = true;
+{
+  imports =
+    [ # Include the results of the hardware scan.
+    ./avahi.nix
+    ./bash.nix
+    ./build.nix
+    ./devpkgs.nix
+    ./editors.nix
+    ./env.nix
+    ./fonts.nix
+    ./graphics.nix
+    ./hardware-configuration.nix
+    ./hardware.nix
+    ./haskell.nix
+    ./hie.nix
+    ./hoogle.nix
+    ./i18n.nix
+    ./iOS.nix
+    ./nocam.nix
+    ./power.nix
+    ./python.nix
+    ./rust.nix
+    ./samba.nix
+    ./services/services.nix
+    ./social.nix
+    ./sound.nix
+    ./steam.nix
+    ./syspkgs.nix
+    ./theme.nix
+    ./unstable.nix
+    ./virtualization.nix
+    ./web.nix
+    ./x.nix
+    ./xrdp.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -55,6 +49,11 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # mount /tmp as tmpfs on boot
+  # this will prevent us from compiling and performing other
+  # heavy operations on the drive whenever possible
+  boot.tmpOnTmpfs = true;
 
   # Set your time zone.
   time.timeZone = "America/Detroit";
@@ -103,8 +102,8 @@
     isNormalUser = true;
     uid = 1000;
   };
-  
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelPackages = pkgs.unstable-small.linuxPackages_latest;
 
   networking.hostName = "nixentoo";
 
@@ -116,10 +115,14 @@
   # should.
   system.stateVersion = "19.03"; # Did you read the comment?
 
+  #latest_kernel = {
+    #enable = true;
+  #};
+
   #nix.nixPath =
     #options.nix.nixPath.default ++
     #[ "nixpkgs-overlays=/etc/nixos/overlays-compat" ]
     #;
     #nixpkgs.overlays = let dir = ./overlays; in map (e: import "${dir}/${e}") (builtins.attrNames (builtins.readDir dir));
     #nixpkgs.overlays = [ "overlay" ];
-}
+  }

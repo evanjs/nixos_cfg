@@ -11,6 +11,18 @@ let
 
 in
   {
+
+    imports = [
+      ./design.nix
+      ./media.nix
+      ./nvidia.nix
+      ./notifications.nix
+      ./qt.nix
+      ./social.nix
+      ./unstable.nix
+      ./wireshark.nix
+      ];
+
           # List packages installed in system profile. To search, run:
           # $ nix search wget
           environment.systemPackages = with pkgs; [
@@ -31,7 +43,7 @@ in
             (import ./vim/neovim.nix)
 
             # browsers
-            chromium
+            unstable.chromiumDev
             firefox
 
             # dev
@@ -62,6 +74,7 @@ in
             maim
             xtrlock-pam
             xclip
+            xorg.xbacklight
 
             # terminals
             kitty
