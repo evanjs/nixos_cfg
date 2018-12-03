@@ -37,6 +37,7 @@ in
             multitail
             fd
             cachix
+            btrfs-progs
 
             # editors
             (import ./vim/vim.nix)

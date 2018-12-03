@@ -32,6 +32,10 @@ in
 
       cmake
       gnumake
+
+      postman
+
+      maven3
     ]
     ++ nodePkgs;
   }
