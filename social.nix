@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    slack
-    ];
+    (slack.overrideAttrs (oldAttrs: { darkMode = true; }))
+  ];
 }

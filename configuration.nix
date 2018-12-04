@@ -8,6 +8,7 @@
     ./avahi.nix
     ./bash.nix
     ./build.nix
+    ./cachix.nix
     ./devpkgs.nix
     ./editors.nix
     ./env.nix
@@ -86,7 +87,7 @@
 
   # Enable the KDE Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma5.enable = false;
   services.compton = {
     enable          = true;
     fade            = true;
