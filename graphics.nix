@@ -5,7 +5,7 @@
     virtualgl
     ];
 
-  users.users.evanjs.extraGroups = [ "vglusers" ];
+  users.users.evanjs.extraGroups = [ "video" "vglusers" ];
   hardware = {
     nvidia = {
       modesetting.enable = true;

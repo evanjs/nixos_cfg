@@ -3,12 +3,25 @@
 
   environment.systemPackages = with pkgs; [
     arandr
-    (xmonad-with-packages.override {
-      packages = self: with self; [ taffybar xmonad-contrib xmonad-extras xmobar ];
-    })
-    haskellPackages.xmobar
-    haskellPackages.lens
-    haskellPackages.taffybar
+    #(xmonad-with-packages.override {
+      #packages = self: with self; [
+        #taffybar
+        #xmonad-contrib
+        #xmonad-extras
+        #xmobar
+      #];
+    #})
+    (haskellPackages.ghcWithPackages (self: with self; [
+      mtl
+      xmonad
+      xmonad-contrib
+      xmonad-extras
+      xmobar
+      taffybar
+      cabal-install
+      lens
+      curl
+    ]))
   ];
   services.xserver = {
     enable = true;
@@ -19,7 +32,7 @@
 
 
     desktopManager.xterm.enable = false;
-    videoDrivers = [ "intel" "nvidia" ];
+    videoDrivers = [ "intel" ];
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;

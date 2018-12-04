@@ -8,32 +8,29 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/19bb8371-f62d-4b2b-92f1-cde4f0fbc2e6";
+    { device = "/dev/disk/by-uuid/990cbeb1-6b12-4fc0-aafe-ff2a9fd7ebc1";
       fsType = "f2fs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F3B8-8DBD";
+    { device = "/dev/disk/by-uuid/DAF1-D8F6";
       fsType = "vfat";
     };
 
   fileSystems."/mnt/gentoo" =
-    { device = "/dev/disk/by-uuid/c7275b88-da46-4b9a-b6e9-208ca546a440";
+    { device = "/dev/disk/by-uuid/6738cc01-c931-4720-a783-148427097535";
       fsType = "btrfs";
     };
 
-  fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/520C74190C73F677";
-      fsType = "ntfs";
-    };
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/53535fae-a6e8-4798-807a-69465f825b94"; }
+    ];
 
-  swapDevices = [ ];
-
-  nix.maxJobs = lib.mkDefault 8;
+  nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
