@@ -7,7 +7,6 @@
     [ # Include the results of the hardware scan.
     ./avahi.nix
     ./bash.nix
-    ./build.nix
     ./cachix.nix
     ./devpkgs.nix
     ./editors.nix
