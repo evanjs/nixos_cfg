@@ -21,6 +21,24 @@
       cabal-install
       lens
       curl
+
+      # taffybar
+      gi-atk
+      gi-cairo
+      gi-dbusmenu
+      gi-dbusmenugtk3
+      gi-gdk
+      gi-gdkpixbuf
+      gi-gio
+      gi-glib
+      gi-gobject
+      gi-gtk
+      gi-gtk-hs
+      gi-pango
+      gi-xlib
+      gtk-sni-tray
+      gtk-strut
+      haskell-gi
     ]))
   ];
   services.xserver = {
