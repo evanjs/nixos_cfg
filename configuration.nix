@@ -93,13 +93,6 @@
   # Enable the KDE Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
-  services.compton = {
-    enable          = true;
-    fade            = true;
-    inactiveOpacity = "0.9";
-    shadow          = true;
-    fadeDelta       = 4;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.evanjs = {

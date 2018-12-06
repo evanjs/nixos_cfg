@@ -57,4 +57,31 @@
     };
     windowManager.default = "xmonad";
   };
+
+  services.compton = {
+    backend         = "glx";
+    enable          = true;
+    extraOptions    = ''
+      unredir-if-possible   = true;
+      use-ewmh-active-win   = true;
+      detect-transient      = true;
+      paint-on-overlay      = true;
+    '';
+    fade            = true;
+    inactiveOpacity = "0.9";
+    shadow          = true;
+    fadeDelta       = 4;
+    fadeExclude = [
+      "name = 'Screenshot'"
+      "class_g = 'slop'"
+    ];
+    shadowExclude = [
+      "name = 'Screenshot'"
+      "class_g = 'slop'"
+      "name = 'Notification'"
+    ];
+
+    vSync = "opengl-swc";
+  };
+
 }

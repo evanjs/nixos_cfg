@@ -1,6 +1,6 @@
-{ config, pkgs, fetchUrl, ... }:
+{ config, pkgs, ... }:
 let
-  jetPkgs = with pkgs.jetbrains; [
+  jetPkgs = with pkgs.unstable.jetbrains; [
     clion
     idea-ultimate
     jdk
