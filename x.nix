@@ -63,9 +63,10 @@
     enable          = true;
     extraOptions    = ''
       unredir-if-possible   = true;
-      use-ewmh-active-win   = true;
-      detect-transient      = true;
+      use-ewmh-active-win   = false;
+      detect-transient      = false;
       paint-on-overlay      = true;
+      xinerama-shadow-crop  = true;
     '';
     fade            = true;
     inactiveOpacity = "0.9";
