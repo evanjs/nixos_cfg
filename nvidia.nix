@@ -3,4 +3,8 @@
   services.xserver.screenSection = ''
     Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"
   '';
+
+  environment.systemPackages = with pkgs; [
+    python36Packages.tensorflowWithCuda
+    ];
 }
