@@ -11,18 +11,15 @@ let
 
 in
   {
-
     imports = [
       ./design.nix
       ./media.nix
-      ./nvidia.nix
       ./notifications.nix
       ./qt.nix
       ./social.nix
       ./unstable.nix
       ./wireshark.nix
-      ];
-
+    ];
           # List packages installed in system profile. To search, run:
           # $ nix search wget
           environment.systemPackages = with pkgs; [
@@ -38,13 +35,15 @@ in
             fd
             cachix
             btrfs-progs
+            screen
 
             # editors
             (import ./vim/vim.nix)
             (import ./vim/neovim.nix)
 
             # browsers
-            unstable.chromiumDev
+            #unstable.chromiumDev
+            chromium
             firefox
 
             # dev
@@ -52,9 +51,17 @@ in
 
 
             # compilers / toolchains
-            gcc
             rustup
             stack
+
+            gcc
+            binutils
+            gnumake
+            openssl
+            openssl.dev
+            systemd
+            systemd.dev
+            pkgconfig
 
             # nix
             binutils

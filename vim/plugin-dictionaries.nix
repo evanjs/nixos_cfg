@@ -2,6 +2,7 @@
   { name  =  "youcompleteme"; }
   { names = [ "nerdcommenter" "vim-autoformat" "vim-airline" ]; }
   { name  = "LanguageClient-neovim"; }
+  { name = "fugitive"; }
 
   # only load for TOML files
   { name = "vim-toml"; filename_regex = "^\\.toml$"; }

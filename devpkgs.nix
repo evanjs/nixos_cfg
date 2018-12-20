@@ -19,8 +19,8 @@ in
       php # for cgi, etc
 
       # python
-      #python36Full
-      #python36Packages.setuptools
+      python36Full
+      python36Packages.setuptools
       python37Full
       python37Packages.setuptools
 
@@ -36,6 +36,8 @@ in
       postman
 
       maven3
+
+      cargo-tree
     ]
     ++ nodePkgs;
   }

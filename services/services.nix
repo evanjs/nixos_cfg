@@ -2,5 +2,6 @@
 {
   imports = [
     ./random-bg.nix
+    ./rustup.nix
   ];
 }
