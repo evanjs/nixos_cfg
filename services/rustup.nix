@@ -9,7 +9,7 @@
     enable = true;
     wantedBy = [ "timers.target"];
     partOf = [ "rustupup.service" ];
-    timerConfig.OnCalendar = "*-*-* 12:00:00";
+    timerConfig.OnCalendar = "*-*-* *:00:00";
   };
 
   systemd.user.services.rustupup = {
@@ -18,7 +18,7 @@
     description = "Updates the installed Rust toolchains via `rustup update`";
     serviceConfig = {
       Type = "simple";
-      ExecStart = "rustup update";
+      ExecStart = "${pkgs.rustup.outPath}/bin/rustup update";
     };
   };
 
