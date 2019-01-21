@@ -24,7 +24,6 @@ in
           # $ nix search wget
           environment.systemPackages = with pkgs; [
             # system utilities
-            ripgrep
             ag
             autojump
             wget
@@ -32,10 +31,24 @@ in
             pdfgrep
             zstd
             multitail
-            fd
             cachix
-            btrfs-progs
             screen
+            pandoc
+
+            # rust utilities
+            ripgrep
+            fd
+
+            # disk utilities
+            btrfs-progs
+            filelight
+            qdirstat
+
+            # media
+            ## photo
+            feh
+            ## video
+            mplayer
 
             # editors
             (import ./vim/vim.nix)
@@ -83,6 +96,7 @@ in
             xtrlock-pam
             xclip
             xorg.xbacklight
+            xdotool
 
             # terminals
             kitty
