@@ -70,16 +70,9 @@ in
             gcc
             binutils
             gnumake
-            openssl
             openssl.dev
-            systemd
             systemd.dev
             pkgconfig
-
-            # nix
-            binutils
-            nix
-            nox
 
             # xmonad
             xmonad-log
