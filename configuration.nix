@@ -26,7 +26,7 @@
     ./rust.nix
     ./samba.nix
     ./services/services.nix
-    ./social.nix
+#    ./social.nix
     ./sound.nix
     ./steam.nix
     ./syspkgs.nix

@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./unstable.nix
+  ];
+
   environment.systemPackages = with pkgs; [
-    (slack.overrideAttrs (oldAttrs: { darkMode = true; }))
+    slack-dark
+    discord
   ];
 }
