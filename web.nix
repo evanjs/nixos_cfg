@@ -1,4 +1,6 @@
 { config, pkgs, ... }:
 {
-  services.psd.enable = true;
+  config.services.psd = {
+    enable = true;
+  };
 }
