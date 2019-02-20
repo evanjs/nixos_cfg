@@ -2,17 +2,17 @@
 {
   environment.systemPackages = with pkgs; [
     # photo viewers
-    feh
     digikam5
+    feh
 
     # music players
-    amarok
+    #amarok
 
     # video players
-    mplayer
     vlc
+    mplayer
 
     # bpm indexing
-    mixxx
+    #mixxx
   ];
 }

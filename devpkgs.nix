@@ -22,10 +22,10 @@ in
       php # for cgi, etc
 
       # python
-      python36Full
-      python36Packages.setuptools
-      python37Full
-      python37Packages.setuptools
+      #python36Full
+      #python36Packages.setuptools
+#      python37Full
+ #     python37Packages.setuptools
 
       exercism
 

@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./unstable.nix
+    ];
   environment.systemPackages = with pkgs; [
-    pkgs.steam
+    steam
   ];
   hardware = {
     opengl = {

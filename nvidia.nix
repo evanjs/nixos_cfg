@@ -5,6 +5,6 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    python36Packages.tensorflowWithCuda
+    #python36Packages.tensorflowWithCuda
     ];
 }

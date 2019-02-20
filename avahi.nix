@@ -1,15 +1,15 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    shairplay
-    (pkgs.avahi.override {
-      withLibdnssdCompat = true;
-    })
-  ];
+  #environment.systemPackages = with pkgs; [
+    #shairplay
+    #(pkgs.avahi.override {
+      #withLibdnssdCompat = true;
+    #})
+  #];
 
   services = {
     avahi = {
-      enable = true;
+      enable = false;
       nssmdns = true;
       publish = {
         addresses = true;

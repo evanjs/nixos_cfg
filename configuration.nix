@@ -5,13 +5,14 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-    ./avahi.nix
+    #./avahi.nix
     ./bash.nix
     ./cachix.nix
     ./devpkgs.nix
     ./editors.nix
     ./env.nix
     ./fonts.nix
+    ./games.nix
     ./graphics.nix
     ./hardware-configuration.nix
     ./hardware.nix
@@ -21,24 +22,30 @@
     ./i18n.nix
     ./iOS.nix
     ./nocam.nix
+    #./overlays-compat
     ./power.nix
     ./python.nix
     ./rust.nix
     ./samba.nix
     ./services/services.nix
-#    ./social.nix
     ./sound.nix
     ./steam.nix
     ./syspkgs.nix
     ./theme.nix
     ./unstable.nix
-    ./virtualization.nix
+    ./virtualization
     ./web.nix
     ./x.nix
     ./xrdp.nix
   ];
 
 
+  nix.nixPath = 
+  options.nix.nixPath.default ++
+  [
+    "ssh-config-file=/home/evanjs/.ssh/config"
+    "ssh-auth-sock=/run/user/1000/ssh-agent"
+  ];
     system.autoUpgrade = {
       enable = true;
       dates = "04:40";
@@ -102,8 +109,10 @@
     uid = 1000;
   };
 
-  boot.kernelPackages = pkgs.unstable-small.linuxPackages_latest;
 
+  boot.kernelPackages = pkgs.unstable-small.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  
   networking.hostName = "nixentoo";
 
   hardware.cpu.intel.updateMicrocode = true;
