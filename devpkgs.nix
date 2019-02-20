@@ -4,11 +4,14 @@ let
   nodePkgs = with pkgs.nodePackages; [
     grunt-cli
     node2nix
-    forever
   ];
 
 in
   {
+
+    imports = [
+      ./languages.nix
+    ];
 
     environment.systemPackages = with pkgs; [
       # js
@@ -36,8 +39,6 @@ in
       postman
 
       maven3
-
-      cargo-tree
     ]
     ++ nodePkgs;
   }

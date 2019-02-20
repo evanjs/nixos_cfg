@@ -15,4 +15,7 @@
 
   # only load for Nix files
   { name = "vim-nix"; filename_regex = "^\\.nix$"; }
+
+  # only load for Jenkinsfiles
+  { name = "Jenkinsfile-vim-syntax"; filename_regex = "Jenkinsfile"; }
 ]
