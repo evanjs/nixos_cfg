@@ -1,8 +1,14 @@
 { config, pkgs, ... }:
 {
 
+  imports = [
+    ./unstable.nix
+    ];
+
   environment.systemPackages = with pkgs; [
     arandr
+    #xmonad
+    #xmobar
     (xmonad-with-packages.override {
       packages = self: with self; [
         #taffybar
@@ -10,11 +16,23 @@
         xmonad-extras
       ];
     })
-    haskellPackages.xmobar
+    (haskellPackages.ghcWithPackages (self: with self; [
+      mtl
+      xmonad
+      xmonad-contrib
+      xmonad-extras
+      xmonad-wallpaper
+      xmobar
+      #taffybar
+      gi-cairo
+      gi-gdkx11
+      cabal-install
+      lens
+      curl
+    ]))
   ];
   services.xserver = {
     desktopManager.xterm.enable = false;
-    #videoDrivers = [ "intel" ];
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;

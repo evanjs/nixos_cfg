@@ -1,26 +1,21 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 let
-  jetPkgs = with pkgs.unstable.jetbrains; [
+
+
+  #pkgs = import <nixpkgs> { overlays = [ ./custom-packages.nix ]; };
+
+  jetPkgs = with pkgs.jetbrains; [
     clion
-    idea-ultimate
+    #idea-ultimate
     jdk
     phpstorm
     pycharm-professional
-    webstorm
+    #webstorm
   ];
+
 
 in
   {
-    imports = [
-      #./design.nix
-      #./media.nix
-      ./notifications.nix
-      ./qt.nix
-      ./remote.nix
-      ./social.nix
-      ./unstable.nix
-      #./wireshark.nix
-    ];
           # List packages installed in system profile. To search, run:
           # $ nix search wget
           environment.systemPackages = with pkgs; [
@@ -40,23 +35,17 @@ in
             ripgrep
             fd
 
-            # disk utilities
             btrfs-progs
             filelight
             qdirstat
 
             # media
-            ## photo
-            feh
-            ## video
-            mplayer
 
             # editors
             (import ./vim/vim.nix)
             (import ./vim/neovim.nix)
 
             # browsers
-            #unstable.chromiumDev
             chromium
             firefox
 
@@ -73,6 +62,10 @@ in
             openssl.dev
             systemd.dev
             pkgconfig
+
+            # nix
+            nix
+            nox
 
             # xmonad
             xmonad-log
@@ -101,6 +94,10 @@ in
             _1password
 
             #ghcPkgs
+
+            #wpsoffice
+            #(pkgs.libsForQt5.callPackage qrbooru {})
+            #qrbooru
           ]
           ++ jetPkgs
           ;
