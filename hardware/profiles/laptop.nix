@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./random-bg.nix
+    ../nocam.nix
+    ./wireless.nix
   ];
 }

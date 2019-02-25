@@ -2,9 +2,9 @@
 {
 
   # uncomment when custom package for rbg is available system-wide
-  #environment.systemPackages = with pkgs; [
-    #rbg
-    #];
+  environment.systemPackages = with pkgs; [
+    feh
+  ];
 
   systemd.user.timers.random-bg = {
     enable = true;
@@ -20,7 +20,7 @@
     serviceConfig = {
       Type = "oneshot";
       Environment="DISPLAY=:0";
-      ExecStart = "/home/evanjs/bin/rbg";
+      ExecStart = "/home/evanjs/.cargo/bin/rrbg";
     };
   };
 
