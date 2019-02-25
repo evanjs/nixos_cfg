@@ -101,7 +101,8 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = https://www.gitkraken.com/;
     description = "The downright luxurious and most popular Git client for Windows, Mac & Linux";
-    license = licenses.unfree;
+    # commenting this out until I figure out why unfree isn't working for overlay(s)
+    #license = licenses.unfree;
     platforms = platforms.linux;
     maintainers = with maintainers; [ xnwdd ];
   };

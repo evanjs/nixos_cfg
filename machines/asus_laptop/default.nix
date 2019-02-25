@@ -6,8 +6,8 @@
     ../../hardware/profiles/wireless.nix
 
     ../../modules/development.nix
-    ../../modules/steam.nix
-    ../../modules/virtualization.nix
+    #../../modules/steam.nix
+    ../../modules/virtualization/virtualbox.nix
   ];
 
   networking.hostName = "nixentoo";
@@ -15,4 +15,4 @@
   system.stateVersion = "19.03";
 
   boot.kernelPackages = pkgs.linuxPackages_4_19;
-};
+}
