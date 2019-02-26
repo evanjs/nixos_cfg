@@ -15,6 +15,7 @@
     ../modules/samba.nix
     ../modules/social.nix
     ../modules/theme.nix
+    ../modules/web.nix
   ];
 
 
