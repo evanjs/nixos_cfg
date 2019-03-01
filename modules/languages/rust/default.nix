@@ -2,10 +2,12 @@
 {
 
   imports = [
-    #./rustup.nix
+    ./documentation
+    ./rustup.nix
   ];
 
   environment.systemPackages = with pkgs; [
+    cargo-asm
     cargo-edit
     openssl.dev
     pkgconfig
