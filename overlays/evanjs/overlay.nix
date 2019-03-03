@@ -5,7 +5,6 @@ let
 in 
   {
     cross = callPackage ./pkgs/cross { };
-    gitkraken = callPackage ./pkgs/gitkraken { };
     kivy = callPackage ./pkgs/python/kivy { python = self.python37; };
     kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
     exercism = callPackage ./pkgs/tools/exercism { };
