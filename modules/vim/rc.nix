@@ -1,4 +1,14 @@
 ''
+        " turn on filetype detection and indentation
+        filetype indent plugin on
+
+        " set tags file to search in parent directories with tags
+        set tags=tags;
+        
+        " Jump to last cursor position when opening files
+        " See |last-position-jump|.
+        :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
         set statusline+=%#warningmsg#
         set statusline+=%#{SyntasticStatuslineFlag()}
         set statusline+=%*
@@ -19,11 +29,12 @@
         map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
         map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
-        if has ("autocmd")
-          augroup templates
-            autocmd BufNewFile *.nix 0r ./templates/skeleton.nix
-          augroup END
-        endif
+        "if has ("autocmd")
+        "  augroup templates
+        " disabled for now - need to find where Nix puts the runtime directory
+        "    autocmd BufNewFile *.nix 0r $HOME/.vim/templates/skeleton.nix
+        "  augroup END
+        "endif
 
         au FileType haskell     setl sw=4 sts=2 et
         au FileType json        setl sw=2 sts=2 et
