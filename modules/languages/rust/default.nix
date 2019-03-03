@@ -2,8 +2,10 @@
 {
 
   imports = [
+    ./cargo.nix
+    ./cross.nix
     ./documentation
-    ./rustup.nix
+    ./sccache.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -12,6 +14,5 @@
     openssl.dev
     pkgconfig
     rustup
-    #sccache
   ];
 }

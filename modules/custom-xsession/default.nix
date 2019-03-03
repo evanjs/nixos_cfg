@@ -27,6 +27,8 @@ in
       xorg.xbacklight
       xdotool
     ];
+    
+    sound.mediaKeys.enable = true;
 
     services.xserver = {
       desktopManager.xterm.enable = false;

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./unstable.nix
+    ../../unstable.nix
   ];
 
   environment = {
@@ -9,13 +9,8 @@
       unstable.carnix
     ];
 
-    #shellInit = ''
-      #export PATH="$PATH:~/.cargo/bin"
-      #export RUSTC_WRAPPER="sccache"
-    #'';
     shellInit = ''
       export PATH="$PATH:~/.cargo/bin"
-      export RUSTC_WRAPPER="sccache"
     '';
   };
 }

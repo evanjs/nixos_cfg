@@ -1,15 +1,19 @@
 self: super:
 let
-  pkgs = import <nixpkgs> { };
-  callPackage = pkgs.lib.callPackageWith (pkgs // pkgs.xlibs // self);
-
-  self = {
+  callPackage = self.callPackage;
+  callQPackage = self.libsForQt5.callPackage;
+in 
+  {
+    cross = callPackage ./pkgs/cross { };
     gitkraken = callPackage ./pkgs/gitkraken { };
     kivy = callPackage ./pkgs/python/kivy { python = self.python37; };
     kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
     exercism = callPackage ./pkgs/tools/exercism { };
+    runescape-launcher = callPackage ./pkgs/runescape-launcher { };
     sccache = callPackage ./pkgs/tools/sccache { };
-  };
-in
-  self
-
+    rrbg = callPackage ./pkgs/rrbg { };
+    polychromatic = callPackage ./pkgs/polychromatic { };
+    rust-qt-binding-generator = callQPackage ./pkgs/rust-qt-binding-generator { };
+    booru = callPackage ./pkgs/booru { };
+    qrbooru = callQPackage ./pkgs/qrbooru { };
+  }
