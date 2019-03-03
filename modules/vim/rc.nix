@@ -19,6 +19,12 @@
         map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
         map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
+        if has ("autocmd")
+          augroup templates
+            autocmd BufNewFile *.nix 0r ./templates/skeleton.nix
+          augroup END
+        endif
+
         au FileType haskell     setl sw=4 sts=2 et
         au FileType json        setl sw=2 sts=2 et
         au FileType javascript  setl sw=2 sts=2 et
