@@ -1,5 +1,12 @@
 { config, pkgs, options, ... }:
 {
+
+  environment.systemPackages = with pkgs; [
+    nix-index
+    nix-prefetch-scripts
+  ];
+
+
   nix = {
     binaryCaches = [
       "https://cache.nixos.org"
