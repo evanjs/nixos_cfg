@@ -10,6 +10,7 @@ in
   {
     imports = [
       ./languages
+      ./perf
     ];
 
     environment.systemPackages = with pkgs; [
