@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     (import ./neovim.nix)
-    (import ./vim.nix)
+    ranger
   ];
 }
