@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    cachix
+  ];
+
   nix = {
     binaryCaches = [
       "https://cache.nixos.org/"
