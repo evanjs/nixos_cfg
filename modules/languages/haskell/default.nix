@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./hie.nix
     #./hoogle.nix
-    #./hie.nix
   ];
 
   environment.systemPackages = with pkgs; [
