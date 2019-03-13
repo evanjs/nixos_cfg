@@ -9,6 +9,7 @@ let
 in
   {
     imports = [
+      ./documentation
       ./languages
       ./perf
     ];
