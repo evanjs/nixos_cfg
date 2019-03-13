@@ -6,6 +6,7 @@
     ../../hardware/profiles/wireless.nix
 
     ../../modules/development.nix
+    ../../modules/virtualization/virtualbox.nix
   ];
 
   #nixpkgs.config.allowUnfree = true;
