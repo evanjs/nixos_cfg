@@ -16,6 +16,7 @@
     ../modules/social.nix
     ../modules/theme.nix
     ../modules/web.nix
+    ../modules/wireshark.nix
     ../modules/wine.nix
   ];
 

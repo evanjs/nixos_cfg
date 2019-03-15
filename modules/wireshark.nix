@@ -1,7 +1,5 @@
   { config, pkgs, ... }:
   {
-    users.users.evanjs.extraGroups = [ "wireshark" ];
-    environment.systemPackages = with pkgs; [
-      wireshark
-    ];
+    users.extraUsers.evanjs.extraGroups = [ "wireshark" ];
+    programs.wireshark.enable = true;
   }
