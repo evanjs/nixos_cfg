@@ -5,6 +5,7 @@
     ../../profiles/desktop.nix
     ../../hardware/profiles/wireless.nix
 
+    ../../modules/db/postgresql.nix
     ../../modules/development.nix
     ../../modules/virtualization/virtualbox.nix
   ];
