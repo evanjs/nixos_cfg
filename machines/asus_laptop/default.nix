@@ -5,6 +5,7 @@
     ../../profiles/desktop.nix
     ../../hardware/profiles/wireless.nix
 
+    ../../modules/db/postgresql.nix
     ../../modules/development.nix
     #../../modules/steam.nix
     ../../modules/virtualization/virtualbox.nix
@@ -14,5 +15,5 @@
 
   system.stateVersion = "19.03";
 
-  boot.kernelPackages = pkgs.linuxPackages_4_19;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
