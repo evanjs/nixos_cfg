@@ -4,6 +4,7 @@
 
     pgmanage = {
       enable = true;
+      port = 8099;
     };
 
     postgresql = {
