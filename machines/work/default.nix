@@ -3,7 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../profiles/desktop.nix
-    ../../hardware/profiles/wireless.nix
+    ./custom-hardware.nix
 
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
