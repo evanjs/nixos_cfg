@@ -5,7 +5,7 @@
       Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"
     '';
     useGlamor = true;
-    services.xserver.videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" ];
   };
 
   environment.systemPackages = with pkgs; [
