@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 let
   notification-daemon-pkg = pkgs.notify-osd;
+  xorgpkgs = with pkgs.xorg; [
+    libX11
+    libXext
+    libXinerama
+    libXrandr
+    libXrender
+    libXft
+  ];
 in
   {
     imports = [
@@ -13,7 +21,13 @@ in
         packages = self: with self; [
           xmonad-contrib
           xmonad-extras
-        ];
+          gcc
+          libxml2
+          pkgconfig
+          upower
+          x11
+        ]
+        ++ xorgpkgs;
       })
       haskellPackages.xmobar
       
@@ -35,6 +49,10 @@ in
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
+        extraPackages = haskellPackages: [
+          haskellPackages.lens
+        ];
+
       };
       windowManager.default = "xmonad";
     };
