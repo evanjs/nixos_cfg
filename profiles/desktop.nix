@@ -11,6 +11,7 @@
     ../modules/jetbrains.nix
     ../modules/media.nix
     ../modules/notifications.nix
+    ../modules/plymouth.nix
     ../modules/remote.nix
     ../modules/samba.nix
     ../modules/social.nix
