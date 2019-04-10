@@ -6,6 +6,7 @@
     ./haskell
     ./python
     ./rust
+    ./swift
   ];
 
   environment.systemPackages = with pkgs; [
