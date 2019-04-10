@@ -26,6 +26,19 @@ in
           pkgconfig
           upower
           x11
+          #haskellPackages.lens
+          #haskellPackages.xmonad-contrib
+          #haskellPackages.mtl
+          #haskellPackages.containers
+          #haskellPackages.dbus
+          #haskellPackages.dbus-hslogger
+          #haskellPackages.rate-limit
+          #haskellPackages.status-notifier-item
+          #haskellPackages.time-units
+          #haskellPackages.xml-helpers
+          #haskellPackages.spool
+          #haskellPackages.X11
+          #haskellPackages.xmobar
         ]
         ++ xorgpkgs;
       })
@@ -51,6 +64,18 @@ in
         enableContribAndExtras = true;
         extraPackages = haskellPackages: [
           haskellPackages.lens
+          haskellPackages.xmonad-contrib
+          haskellPackages.mtl
+          haskellPackages.containers
+          haskellPackages.dbus
+          haskellPackages.dbus-hslogger
+          haskellPackages.rate-limit
+          haskellPackages.status-notifier-item
+          haskellPackages.time-units
+          haskellPackages.xml-helpers
+          haskellPackages.spool
+          haskellPackages.X11
+          haskellPackages.xmobar
         ];
 
       };
