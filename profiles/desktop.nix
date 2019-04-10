@@ -19,6 +19,7 @@
     ../modules/web.nix
     ../modules/wireshark.nix
     ../modules/wine.nix
+    ../modules/xrdp.nix
   ];
 
 
