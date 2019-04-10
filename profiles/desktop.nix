@@ -16,6 +16,7 @@
     ../modules/samba.nix
     ../modules/social.nix
     ../modules/theme.nix
+    ../modules/unstable.nix
     ../modules/web.nix
     ../modules/wireshark.nix
     ../modules/wine.nix
@@ -37,7 +38,7 @@
 
     # browsers
     chromium
-    firefox
+    npkgs.firefox-beta-bin
 
   ];
 
