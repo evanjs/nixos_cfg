@@ -26,6 +26,11 @@
     multitail
     screen
     pandoc
+    file
+    unixtools.netstat
+    neofetch
+
+    fbterm
 
     # rust utilities
     ripgrep
