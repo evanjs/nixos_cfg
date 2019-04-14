@@ -74,6 +74,7 @@ in
     au FileType haskell         setl sw=4 sts=2 et
     au FileType json            setl sw=2 sts=2 et
     au FileType javascript      setl sw=2 sts=2 et
+    au FileType js              setl sw=2 sts=2 et
     au FileType javascript.jsx  setl sw=2 sts=2 et
     au FileType php             setl sw=2 sts=2 et
     au FileType markdown        setl sw=2 sts=2 et
@@ -85,6 +86,15 @@ in
     :set pastetoggle=<F2>
     :set clipboard=unnamedplus
     :set backspace=2 " make backspace work like most other programs
+
+    " Triger `autoread` when files changes on disk
+    " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+    " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+    " Notification after file change
+    " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+    autocmd FileChangedShellPost *
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
     :syntax on
   ''

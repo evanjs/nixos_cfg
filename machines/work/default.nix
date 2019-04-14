@@ -5,6 +5,7 @@
     ../../profiles/desktop.nix
     ./custom-hardware.nix
 
+    ../../modules/android.nix
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
     ../../modules/virtualization/virtualbox.nix
