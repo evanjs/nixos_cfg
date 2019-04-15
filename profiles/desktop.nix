@@ -15,6 +15,7 @@
     ../modules/remote.nix
     ../modules/samba.nix
     ../modules/social.nix
+    ../modules/tex.nix
     ../modules/theme.nix
     ../modules/unstable.nix
     ../modules/web.nix
