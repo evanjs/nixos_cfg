@@ -29,6 +29,8 @@
     # graphical admin tools
     filelight
     qdirstat
+    wtf
+    ncurses.dev # infocmp, etc
 
     # git ui
     gitkraken
