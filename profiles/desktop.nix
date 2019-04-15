@@ -41,7 +41,7 @@
 
     # browsers
     chromium
-    npkgs.firefox-beta-bin
+    firefox-beta-bin
 
   ];
 
