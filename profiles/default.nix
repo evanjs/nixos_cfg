@@ -57,8 +57,7 @@
     kitty
 
     # password management
-    _1password
-
+    # _1password # currently broken
 
   ];
 
