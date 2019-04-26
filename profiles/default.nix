@@ -29,6 +29,7 @@
     file
     unixtools.netstat
     neofetch
+    nget # lazily query nix package attributes
 
     fbterm
 
