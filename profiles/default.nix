@@ -29,6 +29,9 @@
     file
     unixtools.netstat
     neofetch
+    nget # lazily query nix package attributes
+    du-dust # du, now with more oxygen!
+    lm_sensors
 
     fbterm
 
@@ -56,8 +59,7 @@
     kitty
 
     # password management
-    _1password
-
+    # _1password # currently broken
 
   ];
 
