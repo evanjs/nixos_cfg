@@ -89,5 +89,9 @@
       ];
     };
 
+    services.openssh = {
+      forwardX11 = true;
+    };
+
     services.fstrim.enable = true;
   }
