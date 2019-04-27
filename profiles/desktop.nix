@@ -5,6 +5,7 @@
     ../modules/audio.nix
     ../modules/custom-xsession
     ../modules/fonts.nix
+    ../modules/fs.nix
     ../modules/ibus.nix
     ../modules/iOS.nix
     ../modules/java.nix
