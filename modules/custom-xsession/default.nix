@@ -26,7 +26,7 @@ in
           pkgconfig
           upower
           x11
-          #haskellPackages.lens
+          haskellPackages.lens
           #haskellPackages.xmonad-contrib
           #haskellPackages.mtl
           #haskellPackages.containers
@@ -39,6 +39,7 @@ in
           #haskellPackages.spool
           #haskellPackages.X11
           #haskellPackages.xmobar
+          haskellPackages.xmonad-wallpaper
         ]
         ++ xorgpkgs;
       })
@@ -76,6 +77,7 @@ in
           haskellPackages.spool
           haskellPackages.X11
           haskellPackages.xmobar
+          haskellPackages.xmonad-wallpaper
         ];
 
       };
