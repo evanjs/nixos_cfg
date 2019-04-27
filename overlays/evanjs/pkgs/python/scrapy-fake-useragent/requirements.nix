@@ -2,7 +2,7 @@
 # See more at: https://github.com/garbas/pypi2nix
 #
 # COMMAND:
-#   pypi2nix -V 3.6 -T -e fake-useragent
+#   pypi2nix -V 3 -e fake-useragent
 #
 
 { pkgs ? import <nixpkgs> {}
@@ -17,7 +17,7 @@ let
   import "${toString pkgs.path}/pkgs/top-level/python-packages.nix" {
     inherit pkgs;
     inherit (pkgs) stdenv;
-    python = pkgs.python36;
+    python = pkgs.python3;
     # patching pip so it does not try to remove files when running nix-shell
     overrides =
       self: super: {
@@ -30,13 +30,13 @@ let
   };
 
   commonBuildInputs = [];
-  commonDoCheck = true;
+  commonDoCheck = false;
 
   withPackages = pkgs':
     let
       pkgs = builtins.removeAttrs pkgs' ["__unfix__"];
       interpreter = pythonPackages.buildPythonPackage {
-        name = "python36-interpreter";
+        name = "python3-interpreter";
         buildInputs = [ makeWrapper ] ++ (builtins.attrValues pkgs);
         buildCommand = ''
           mkdir -p $out/bin
