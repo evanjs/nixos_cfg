@@ -10,7 +10,7 @@
     ];
 
     shellInit = ''
-      export PATH="$PATH:~/.cargo/bin"
+      export PATH="$PATH:/home/evanjs/.cargo/bin"
     '';
   };
 }
