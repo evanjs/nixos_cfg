@@ -18,5 +18,7 @@ in
       };
 
       propagatedBuildInputs = builtins.attrValues python.packages;
+      
+      doCheck = false;
     };
   }
