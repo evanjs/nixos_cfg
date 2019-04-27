@@ -28,7 +28,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "sccache is ccache with cloud storage";
     homepage = "https://github.com/mozilla/sccache";
-    license = with licenses; [ apache-2.0 ];
+    license = licenses.asl20;
     platforms = platforms.all;
   };
 }
