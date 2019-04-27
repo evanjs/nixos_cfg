@@ -31,6 +31,7 @@
     neofetch
     nget # lazily query nix package attributes
     du-dust # du, now with more oxygen!
+    lm_sensors
 
     fbterm
 
