@@ -8,9 +8,9 @@ in
     cross = callPackage ./pkgs/cross { };
     exercism = callPackage ./pkgs/tools/exercism { };
     kivy = callPackage ./pkgs/python/kivy { python = self.python37; };
+    kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
     kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
     fake-useragent = callPackage ./pkgs/python/fake-useragent { };
-    scrapy-fake-useragent = callPackage ./pkgs/python/scrapy-fake-useragent { };
     polychromatic = callPackage ./pkgs/polychromatic { };
     qrbooru = callQPackage ./pkgs/qrbooru { };
     rrbg = callPackage ./pkgs/rrbg { };
