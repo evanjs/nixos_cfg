@@ -4,9 +4,6 @@
 , openssl
 , pkgconfig
 , cmake
-#, qtbase
-#, qtsvg
-#, qtdeclarative
 , full
 , rustPlatform
 }:
@@ -23,11 +20,11 @@ in rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "evanjs";
     repo = "rust-qt-binding-generator";
-    rev = "latest";
-    sha256 = "1wik7lln1y173ps8kxln7nygbd5d3x412d91n2sw7jqnzj0v22dg";
+    rev = "7e7ff3b2ded7e16f5dd8c45fb426b5fdb487aea8";
+    sha256 = "06bq6wzkc2kyjvb6sl2ryplhmsqyhz58xli2by563bqasj2w5n80";
   };
 
-  cargoSha256 = "1d0xcb6x6pq9z602h3rxf9124fsg0qhxad66rnjfr1hn6yxgqqkj";
+  cargoSha256 = "0x8cgy9z6a05f09yvx7myh1a7x9q5hdfvqmmgl1b9g6kx319gsx2";
 
   buildInputs = [
     nixpkgs.latest.rustChannels.stable.rust
@@ -39,9 +36,5 @@ in rustPlatform.buildRustPackage rec {
     pkgconfig
     cmake
     full
-    #qtbase.dev
-    #qtsvg.dev
-    #qtdeclarative.dev
   ];
 }
-
