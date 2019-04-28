@@ -6,10 +6,15 @@ let
 in 
   {
     booru = callPackage ./pkgs/booru { };
+    copenssl = callPackages ./pkgs/openssl { };
     cross = callPackage ./pkgs/cross { };
     exercism = callPackage ./pkgs/tools/exercism { };
-    copenssl = callPackages ./pkgs/openssl { };
+    fake-useragent = callPackage ./pkgs/python/fake-useragent { };
+    kivy = callPackage ./pkgs/python/kivy { python = self.python37; };
+    kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
+    kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
     libwebsockets = callPackage ./pkgs/libwebsockets { openssl = self.copenssl.openssl_1_1; };
+    polychromatic = callPackage ./pkgs/polychromatic { };
     qrbooru = callQPackage ./pkgs/qrbooru { };
     rrbg = callPackage ./pkgs/rrbg { };
     runescape-launcher = callPackage ./pkgs/runescape-launcher { };
