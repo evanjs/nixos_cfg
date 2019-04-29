@@ -44,7 +44,7 @@
     chromium
     firefox-beta-bin
 
-    rrbg # background switcher
+    #rrbg # background switcher - currently broken 
   ];
 
   services.locate = {
