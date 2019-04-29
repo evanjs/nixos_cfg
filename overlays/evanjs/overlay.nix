@@ -13,6 +13,7 @@ in
     kivy = callPackage ./pkgs/python/kivy { python = self.python37; };
     kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
     kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
+    nget = callPackage ./pkgs/nget { };
     libwebsockets = callPackage ./pkgs/libwebsockets { openssl = self.copenssl.openssl_1_1; };
     polychromatic = callPackage ./pkgs/polychromatic { };
     qrbooru = callQPackage ./pkgs/qrbooru { };
