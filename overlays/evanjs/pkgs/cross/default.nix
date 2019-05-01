@@ -11,24 +11,23 @@ let
   nixpkgs = import <nixpkgs> { overlays = [ moz_overlay ]; };
 
 in rustPlatform.buildRustPackage rec {
-  name = "cross";
-  version = "0.1.14";
+  pname = "cross";
+  version = "1.15-dev";
 
   src = fetchFromGitHub {
     owner = "rust-embedded";
     repo = "cross";
-    rev = "v${version}";
-    sha256 = "0yqyc0gj3xsv96nk2cgnvg3w64zll6ari88bp216js7knhydgn3x";
+    rev = "718a19cd68fb09428532d1317515fe7303692b47";
+    sha256 = "1bfm8f8z5818bjaxff6jzfa28v844vjd2ldl6g1q82wl7iwrxbqk";
   };
 
-  cargoSha256 = "1w8638h85lwdxfkqi738rhn1dxdzbcmybpjxawvhs78z7r23rnvq";
+  cargoSha256 = "0y2nllc7k2j5ia9w69wnba6vr4l6hagsf5yjny761hz3w027wagm";
 
   buildInputs = [
     nixpkgs.latest.rustChannels.stable.rust
     nixpkgs.latest.rustChannels.stable.cargo
   ];
   nativeBuildInputs = [
-    makeWrapper
     libressl
     pkgconfig
   ];
