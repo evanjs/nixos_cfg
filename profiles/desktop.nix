@@ -14,7 +14,7 @@
     ../modules/notifications.nix
     ../modules/plymouth.nix
     ../modules/remote.nix
-    ../modules/samba.nix
+    #../modules/samba.nix
     ../modules/social.nix
     ../modules/tex.nix
     ../modules/theme.nix
