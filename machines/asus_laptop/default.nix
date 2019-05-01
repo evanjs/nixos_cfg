@@ -8,7 +8,7 @@
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
     #../../modules/steam.nix
-    ../../modules/virtualization/virtualbox.nix
+    #../../modules/virtualization/virtualbox.nix
   ];
 
   networking.hostName = "nixentoo";
