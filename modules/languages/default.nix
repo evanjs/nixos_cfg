@@ -2,15 +2,15 @@
 {
 
   imports = [
-    ./elm
+    #./elm
     ./haskell
     ./python
     ./rust
-    ./swift
+    #./swift
   ];
 
   environment.systemPackages = with pkgs; [
-    go
-    elixir
+    #go
+    #elixir
   ];
 }
