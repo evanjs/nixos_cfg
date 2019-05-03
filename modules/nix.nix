@@ -7,11 +7,23 @@
     nix-prefetch-scripts
   ];
 
+  system = {
+    autoUpgrade = {
+      channel = "nixos";
+      dates = "02:30";
+      enable = true;
+    };
+    copySystemConfiguration = true;
+  };
 
   nix = {
     autoOptimiseStore = true;
+    gc = {
+      automatic = true;
+      dates = "05:00";
+    };
     binaryCaches = [
-      "https://cache.nixos.org/"
+      "https://cache.nixos.org"
       "https://nixpkgs.cachix.org"
     ];
     trustedUsers = [ "root" "@wheel" ];
