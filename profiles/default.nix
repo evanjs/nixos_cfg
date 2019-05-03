@@ -75,12 +75,6 @@
   time.timeZone = "America/Detroit";
   services.ntp.enable = true;
 
-
-  system.autoUpgrade = {
-    enable = true;
-    dates = "04:40";
-  };
-
   environment.variables.EDITOR = "vim";
 
   programs.bash.enableCompletion = true;
