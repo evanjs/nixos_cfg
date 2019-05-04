@@ -15,7 +15,7 @@
         config = config.nixpkgs.config;
       };
 
-      unstable = import <nixos-unstable-small>
+      unstable = import <nixpkgs-unstable>
       {
         # pass the nixpkgs config to the unstable alias
         # to ensure `allowUnfree = true;` is propagated:
