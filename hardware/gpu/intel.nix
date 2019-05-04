@@ -9,12 +9,14 @@
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
 
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiIntel
-    vaapiVdpau
-    libvdpau-va-gl
-    intel-media-driver
-  ];
+  hardware.opengl = {
+    extraPackages = with pkgs; [
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
   services.xserver = {
     useGlamor = true;
     deviceSection = ''
