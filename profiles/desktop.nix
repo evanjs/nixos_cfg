@@ -3,6 +3,7 @@
   imports = [
     ./default.nix
     ../modules/audio.nix
+    ../modules/chromium.nix
     ../modules/custom-xsession
     ../modules/fonts.nix
     ../modules/fs.nix
@@ -41,7 +42,6 @@
     mplayer
 
     # browsers
-    chromium
     firefox-beta-bin
 
     rrbg # background switcher 
