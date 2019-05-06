@@ -44,6 +44,7 @@
     firefox-beta-bin
 
     rrbg # background switcher 
+    speedtest-cli
   ];
 
   services.locate = {
