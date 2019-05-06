@@ -3,6 +3,7 @@
   imports = [
     ./default.nix
     ../modules/audio.nix
+    ../modules/chromium.nix
     ../modules/custom-xsession
     ../modules/fonts.nix
     ../modules/fs.nix
@@ -14,7 +15,6 @@
     ../modules/notifications.nix
     ../modules/plymouth.nix
     ../modules/remote.nix
-    #../modules/samba.nix
     ../modules/social.nix
     ../modules/tex.nix
     ../modules/theme.nix
@@ -41,10 +41,10 @@
     mplayer
 
     # browsers
-    chromium
     firefox-beta-bin
 
     rrbg # background switcher 
+    speedtest-cli
   ];
 
   services.locate = {

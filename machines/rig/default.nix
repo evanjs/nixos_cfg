@@ -7,9 +7,9 @@
 
     ../../modules/development.nix
     ../../modules/scrape.nix
-    ../../modules/steam.nix
     ../../modules/samba/server/home.nix
     #../../modules/virtualization/virtualbox.nix
+    ../../modules/virtualization/docker.nix
   ];
 
   networking.hostName = "nixtoo";

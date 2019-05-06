@@ -2,7 +2,7 @@
 {
   imports = [
     ./hie.nix
-    #./hoogle.nix
+    ./hoogle.nix
   ];
 
   environment.systemPackages = with pkgs; [

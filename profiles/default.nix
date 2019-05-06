@@ -6,7 +6,6 @@
   ]
   ++ (if (builtins.pathExists(./containers)) then [ ./containers ] else [])
   ++ [
-    ../modules/bash.nix
     ../modules/cachix.nix
     ../modules/editors.nix
     ../modules/i18n.nix
@@ -18,7 +17,6 @@
 
   environment.systemPackages = with pkgs; [
     ag
-    autojump
     wget
     jq
     pdfgrep
@@ -59,7 +57,7 @@
     kitty
 
     # password management
-    # _1password # currently broken
+     _1password # currently broken
 
   ];
 
@@ -76,12 +74,6 @@
   # Set your time zone.
   time.timeZone = "America/Detroit";
   services.ntp.enable = true;
-
-
-  system.autoUpgrade = {
-    enable = true;
-    dates = "04:40";
-  };
 
   environment.variables.EDITOR = "vim";
 
@@ -111,6 +103,8 @@
   # Services
   # --------
   #
+
+  programs.autojump.enable = true;
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;

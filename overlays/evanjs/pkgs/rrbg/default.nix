@@ -25,17 +25,14 @@ in rustPlatform.buildRustPackage rec {
   };
 
   nativeBuildInputs = [
-    pkgs.latest.rustChannels.nightly.cargo
-    pkgs.latest.rustChannels.nightly.rust
+    pkgs.latest.rustChannels.stable.cargo
+    pkgs.latest.rustChannels.stable.rust
     openssl.dev
     xorg.libXrandr
     xorg.libXinerama
     xlibsWrapper
     SDL2
   ];
-
-  #propogatedNativeBuildInputs = [
-  #];
 
   propagatedBuildInputs = [
     feh

@@ -14,14 +14,14 @@ in rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "evanjs";
     repo = "nget";
-    rev = "b182f81d77470aa9eda7075654390835673a7cbe";
-    sha256 = "1cgyl27kikdc62d7cdh2fpgi9ia4wh5bvyhd4wnq1fzidaj3kvrb";
+    rev = "5d31d26dd0078b1bdab2f4d39df8c8856e577b8f";
+    sha256 = "17vm3b1x3q6yn8d8zff9bwlwwi8c4zp5w06zljaak6kwhqsrgikw";
   };
 
   nativeBuildInputs = [
-    pkgs.latest.rustChannels.nightly.cargo
-    pkgs.latest.rustChannels.nightly.rust
+    pkgs.latest.rustChannels.stable.cargo
+    pkgs.latest.rustChannels.stable.rust
   ];
 
-  cargoSha256 = "0xm5pmmk0jvvdzkkpg89v20rw89m8cdgppzninzgx1vj09kikcx9";
+  cargoSha256 = "146hg5ka3hzz7qf3v9h2nniwm61xv4c8hq9lag95cs2axhb93qdf";
 }

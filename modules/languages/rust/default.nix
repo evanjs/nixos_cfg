@@ -1,4 +1,10 @@
 { config, pkgs, ... }:
+let
+  moz_overlay = import (builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz);
+  pkgs = import <nixpkgs> { overlays = [ moz_overlay ]; };
+  rust-stable = pkgs.latest.rustChannels.stable.rust;
+  rust-nightly = pkgs.latest.rustChannels.nightly.rust;
+in
 {
 
   imports = [
@@ -9,8 +15,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    cargo-asm
-    cargo-edit
     openssl.dev
     pkgconfig
     rustup

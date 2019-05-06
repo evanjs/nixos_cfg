@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
-  virtualisation.docker.enable = true;
-
-  users.extraUsers.evanjs.extraGroups = [ "docker" ];
+  imports = [
+    ../../virtualization/docker.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     cross

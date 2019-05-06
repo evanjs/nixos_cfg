@@ -15,6 +15,7 @@
         local   replication     all                                     trust
         host    replication     all             127.0.0.1/32            trust
         host    replication     all             ::1/128                 trust
+        host    all             all             10.10.0.1/16            trust
       '';
 
       initialScript = pkgs.writeText "backend-initScript" ''

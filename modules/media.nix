@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     # photo viewers
-    digikam5
+    #digikam5
     feh
 
     # music players
