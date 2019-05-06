@@ -60,6 +60,7 @@ in
 
     services.xserver = {
       desktopManager.xterm.enable = false;
+      exportConfiguration = true;
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
