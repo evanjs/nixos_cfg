@@ -12,6 +12,7 @@
     ../modules/network.nix
     ../modules/nix.nix
     ../modules/users.nix
+    ../modules/screen.nix
     ../modules/vim
   ];
 
