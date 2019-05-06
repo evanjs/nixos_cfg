@@ -9,7 +9,6 @@ in
     copenssl = callPackages ./pkgs/openssl { };
     cross = callPackage ./pkgs/cross { };
     exercism = callPackage ./pkgs/tools/exercism { };
-    fake-useragent = callPackage ./pkgs/python/fake-useragent { };
     kivy = callPackage ./pkgs/python/kivy { python = self.python37; };
     kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
     kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
