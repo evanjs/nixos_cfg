@@ -6,13 +6,12 @@
 
   environment = {
     systemPackages = with pkgs; [
-      cargo-bloat
+      unstable.cargo-bloat
       cargo-edit
       cargo-fuzz
-      cargo-outdated
+      unstable.cargo-outdated
       cargo-tree
       cargo-update
-      cargo-vendor
       unstable.carnix
     ];
 
