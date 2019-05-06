@@ -1,2 +1,1 @@
-- Categorize various components based on device
-  - This might require configuration to not be the top level
+- Break up packages into categories
