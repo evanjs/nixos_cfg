@@ -65,7 +65,7 @@ stdenv.mkDerivation rec {
   #builder = ./builder.sh;
   src = fetchurl {
     url = "http://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_${version}_amd64.deb";
-    sha256 = "1dzrj4rrjyr0ijyb4l9isdxnk85m1jpg3r7g4b4y1i5bzn1hs8zq";
+    sha256 = "14y6rj3rcrxpzlavsnw20kqckmgyikjsd92j3mqvlmn70f2i07pz";
   };
   sourceRoot = ".";
 }
