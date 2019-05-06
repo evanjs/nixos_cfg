@@ -1,5 +1,9 @@
-{ config, ...}:
+{ config, pkgs, ...}:
 {
+  environment.systemPackages = with pkgs; [
+    chromium
+  ];
+
   programs.chromium = {
     extensions = [
       "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1Password X
