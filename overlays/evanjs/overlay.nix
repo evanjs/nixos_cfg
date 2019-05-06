@@ -14,7 +14,6 @@ in
     kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
     material-ui = callPackage ./pkgs/python/material-ui { python = self.python37; };
     nget = callPackage ./pkgs/nget { };
-    libwebsockets = callPackage ./pkgs/libwebsockets { openssl = self.copenssl.openssl_1_1; };
     polychromatic = callPackage ./pkgs/polychromatic { };
     qrbooru = callQPackage ./pkgs/qrbooru { };
     rrbg = callPackage ./pkgs/rrbg { };
