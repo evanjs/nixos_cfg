@@ -6,11 +6,7 @@
 , rustPlatform
 }:
 
-let
-  moz_overlay = import (builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz);
-  nixpkgs = import <nixpkgs> { overlays = [ moz_overlay ]; };
-
-in rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage rec {
   pname = "cross";
   version = "1.15-dev";
 
@@ -21,12 +17,8 @@ in rustPlatform.buildRustPackage rec {
     sha256 = "1bfm8f8z5818bjaxff6jzfa28v844vjd2ldl6g1q82wl7iwrxbqk";
   };
 
-  cargoSha256 = "0y2nllc7k2j5ia9w69wnba6vr4l6hagsf5yjny761hz3w027wagm";
+  cargoSha256 = "1va2fbkiq96m3h2jahc0avdzndgg82giln2llbmgvkhbml0y1lrn";
 
-  buildInputs = [
-    nixpkgs.latest.rustChannels.stable.rust
-    nixpkgs.latest.rustChannels.stable.cargo
-  ];
   nativeBuildInputs = [
     libressl
     pkgconfig

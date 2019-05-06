@@ -18,7 +18,7 @@ rustPlatform.buildRustPackage rec {
 
   doCheck = false;
 
-  cargoSha256 = "1lafzin92h1hb1hqmbrsxja44nj8mpbsxhwcjr6rf5yrclgwmcxj";
+  cargoSha256 = "1gq115bi4abm4l7yyxsjmph1zr71r8d9694yhfbk2ic6qviaycn7";
 
   nativeBuildInputs = [
     openssl.dev

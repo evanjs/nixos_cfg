@@ -9,11 +9,7 @@
 , SDL2
 }:
 
-let
-  moz_overlay = import (builtins.fetchGit https://github.com/mozilla/nixpkgs-mozilla.git );
-  pkgs = import <nixpkgs> { overlays = [ moz_overlay ]; };
-
-in rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage rec {
   name = "rrbg";
   version = "0.1.0";
 
@@ -25,8 +21,6 @@ in rustPlatform.buildRustPackage rec {
   };
 
   nativeBuildInputs = [
-    pkgs.latest.rustChannels.stable.cargo
-    pkgs.latest.rustChannels.stable.rust
     openssl.dev
     xorg.libXrandr
     xorg.libXinerama
