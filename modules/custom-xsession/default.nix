@@ -50,6 +50,7 @@ in
       rofi
       xscreensaver
       maim
+      xlockmore
       xtrlock-pam
       xclip
       xorg.xbacklight
