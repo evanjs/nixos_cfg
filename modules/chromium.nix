@@ -1,10 +1,7 @@
 { config, pkgs, ...}:
 {
-  environment.systemPackages = with pkgs; [
-    chromium
-  ];
-
   programs.chromium = {
+    enable = true;
     extensions = [
       "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1Password X
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
