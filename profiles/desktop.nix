@@ -17,7 +17,7 @@
     ../modules/remote.nix
     ../modules/social.nix
     ../modules/tex.nix
-    ../modules/theme.nix
+    ../modules/theme
     ../modules/unstable.nix
     ../modules/web.nix
     ../modules/wireshark.nix
