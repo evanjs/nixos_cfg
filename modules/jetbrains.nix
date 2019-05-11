@@ -2,6 +2,7 @@
 let
   jetPkgs = with pkgs.unstable-small.jetbrains; [
     clion
+    datagrip
     idea-ultimate
     jdk
     phpstorm
