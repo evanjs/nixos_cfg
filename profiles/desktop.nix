@@ -14,6 +14,7 @@
     ../modules/media.nix
     ../modules/notifications.nix
     ../modules/plymouth.nix
+    ../modules/qt.nix
     ../modules/remote.nix
     ../modules/social.nix
     ../modules/tex.nix
