@@ -13,6 +13,7 @@
     ../modules/nix.nix
     ../modules/users.nix
     ../modules/screen.nix
+    ../modules/unstable.nix
     ../modules/vim
   ];
 
@@ -58,7 +59,7 @@
     kitty
 
     # password management
-     _1password # currently broken
+     unstable._1password # currently broken
 
   ];
 

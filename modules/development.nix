@@ -12,6 +12,7 @@ in
       ./documentation
       ./languages
       ./perf
+      ./unstable.nix
     ];
 
     environment.systemPackages = with pkgs; [
@@ -30,7 +31,7 @@ in
       cmake
       gnumake
 
-      postman
+      unstable.postman
 
       maven3
     ]
