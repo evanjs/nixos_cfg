@@ -9,7 +9,8 @@
 
   system = {
     autoUpgrade = {
-      channel = "nixos";
+      channel = "https://nixos.org/channels/nixos-unstable";
+
       dates = "02:30";
       enable = true;
     };
