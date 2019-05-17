@@ -1,4 +1,4 @@
-{ config, pkgs, options, ... }:
+{ config, pkgs, options, lib, ... }:
 {
 
   environment.systemPackages = with pkgs; [
@@ -31,6 +31,11 @@
     binaryCachePublicKeys = [
       "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
     ];
+
+    extraOptions = ''
+      min-free = ${toString (1024 * 1024 * 1024)}
+    '';
+
     nixPath =
       options.nix.nixPath.default ++
       [ "nixpkgs-overlays=/etc/nixos/modules/overlays-compat" ]
