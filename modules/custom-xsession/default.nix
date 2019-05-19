@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  notification-daemon-pkg = pkgs.notify-osd;
+  notification-daemon = pkgs.notify-osd-customizable;
   xorgPkgs = with pkgs.xorg; [
     libX11
     libXext
@@ -40,6 +40,7 @@ in
       xclip
       xorg.xbacklight
       xdotool
+      notification-daemon
     ];
 
     sound.mediaKeys.enable = true;
