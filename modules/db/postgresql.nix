@@ -8,7 +8,8 @@
     };
 
     postgresql = {
-      authentication = pkgs.lib.mkOverride 10 ''
+      authentication = pkgs.lib.mkOverride 11 ''
+        local   all             all                                     ident
         local   all             all                                     trust
         host    all             all             127.0.0.1/32            trust
         host    all             all             ::1/128                 trust
@@ -24,7 +25,7 @@
 
       enable = true;
       enableTCPIP = true;
-      package = pkgs.postgresql_10;
+      package = pkgs.postgresql_11;
     };
   };
 }
