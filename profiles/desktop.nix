@@ -44,6 +44,9 @@
     # browsers
     firefox-beta-bin
 
+    # word processors, etc
+    libreoffice
+
     rrbg # background switcher 
     speedtest-cli
   ];
