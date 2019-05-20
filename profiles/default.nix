@@ -110,6 +110,11 @@
 
   programs.autojump.enable = true;
 
+  programs.mosh = {
+    enable = true;
+    withUtempter = true;
+  };
+
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
