@@ -12,7 +12,6 @@
       unstable.cargo-outdated
       cargo-tree
       cargo-update
-      unstable.carnix
     ];
 
     shellInit = ''
