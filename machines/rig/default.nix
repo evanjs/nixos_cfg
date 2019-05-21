@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./custom-hardware.nix
     ./hardware-configuration.nix
     ../../profiles/desktop.nix
     ../../hardware/profiles/wireless.nix
