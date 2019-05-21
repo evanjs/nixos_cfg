@@ -1,13 +1,12 @@
 { config, pkgs, ... }:
+let
+  vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+in
 {
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
     xorg.xf86videointel
   ];
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
 
   hardware.opengl = {
     extraPackages = with pkgs; [
