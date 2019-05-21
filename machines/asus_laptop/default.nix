@@ -9,11 +9,12 @@
     ../../modules/development.nix
     #../../modules/steam.nix
     #../../modules/virtualization/virtualbox.nix
+    ../../modules/unstable.nix
   ];
 
   networking.hostName = "nixentoo";
 
   system.stateVersion = "19.03";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
 }
