@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
-  notification-daemon-pkg = pkgs.notify-osd;
-  xorgpkgs = with pkgs.xorg; [
+  notification-daemon = pkgs.notify-osd-customizable;
+  xorgPkgs = with pkgs.xorg; [
     libX11
     libXext
     libXinerama
@@ -19,33 +19,18 @@ in
       arandr
       (xmonad-with-packages.override {
         packages = self: with self; [
-          xmonad-contrib
-          xmonad-extras
           gcc
           libxml2
           pkgconfig
           upower
           x11
-          haskellPackages.lens
-          #haskellPackages.xmonad-contrib
-          #haskellPackages.mtl
-          #haskellPackages.containers
-          #haskellPackages.dbus
-          #haskellPackages.dbus-hslogger
-          #haskellPackages.rate-limit
-          #haskellPackages.status-notifier-item
-          #haskellPackages.time-units
-          #haskellPackages.xml-helpers
-          #haskellPackages.spool
-          #haskellPackages.X11
-          #haskellPackages.xmobar
-          haskellPackages.xmonad-wallpaper
+          xmonad-log
+          taffybar
         ]
-        ++ xorgpkgs;
+        ++ xorgPkgs;
       })
       haskellPackages.xmobar
-      
-      xmonad-log
+
       trayer
       rofi
       xscreensaver
@@ -55,8 +40,9 @@ in
       xclip
       xorg.xbacklight
       xdotool
+      notification-daemon
     ];
-    
+
     sound.mediaKeys.enable = true;
 
     services.xserver = {
@@ -65,23 +51,23 @@ in
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        extraPackages = haskellPackages: [
-          haskellPackages.lens
-          haskellPackages.xmonad-contrib
-          haskellPackages.mtl
-          haskellPackages.containers
-          haskellPackages.dbus
-          haskellPackages.dbus-hslogger
-          haskellPackages.rate-limit
-          haskellPackages.status-notifier-item
-          haskellPackages.time-units
-          haskellPackages.xml-helpers
-          haskellPackages.spool
-          haskellPackages.X11
-          haskellPackages.xmobar
-          haskellPackages.xmonad-wallpaper
+        extraPackages = with pkgs.haskellPackages;
+        haskellPackages: [
+          xmonad-contrib
+          mtl
+          containers
+          dbus
+          dbus-hslogger
+          rate-limit
+          status-notifier-item
+          time-units
+          xml-helpers
+          spool
+          X11
+          xmobar
+          xmonad
+          xmonad-wallpaper
         ];
-
       };
       windowManager.default = "xmonad";
     };
@@ -90,11 +76,11 @@ in
       backend         = "glx";
       enable          = true;
       extraOptions    = ''
-        unredir-if-possible   = true;
-        use-ewmh-active-win   = false;
-        detect-transient      = false;
-        paint-on-overlay      = true;
-        xinerama-shadow-crop  = true;
+          unredir-if-possible   = true;
+          use-ewmh-active-win   = false;
+          detect-transient      = false;
+          paint-on-overlay      = true;
+          xinerama-shadow-crop  = true;
       '';
       fade            = true;
       inactiveOpacity = "0.9";
@@ -108,9 +94,9 @@ in
         "name = 'Screenshot'"
         "class_g = 'slop'"
         "name = 'Notification'"
-        ];
+      ];
 
-        vSync = "opengl-swc";
-      };
-    }
+      vSync = "opengl-swc";
+    };
+  }
 

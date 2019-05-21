@@ -14,10 +14,11 @@
     ../modules/media.nix
     ../modules/notifications.nix
     ../modules/plymouth.nix
+    ../modules/qt.nix
     ../modules/remote.nix
     ../modules/social.nix
     ../modules/tex.nix
-    ../modules/theme.nix
+    ../modules/theme
     ../modules/unstable.nix
     ../modules/web.nix
     ../modules/wireshark.nix
@@ -43,6 +44,9 @@
 
     # browsers
     firefox-beta-bin
+
+    # word processors, etc
+    libreoffice
 
     rrbg # background switcher 
     speedtest-cli

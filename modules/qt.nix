@@ -22,6 +22,7 @@ in
       systemPackages = with pkgs; [
         libsForQt5.qtstyleplugins
         qtcreator
+        rust-qt-binding-generator
       ]
       ++ qt5Pkgs
       ;

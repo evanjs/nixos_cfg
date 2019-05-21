@@ -13,6 +13,7 @@
     ../modules/nix.nix
     ../modules/users.nix
     ../modules/screen.nix
+    ../modules/unstable.nix
     ../modules/vim
   ];
 
@@ -31,6 +32,7 @@
     nget # lazily query nix package attributes
     du-dust # du, now with more oxygen!
     lm_sensors
+    cv
 
     fbterm
 
@@ -43,6 +45,7 @@
 
     # dev
     gitAndTools.gitFull
+    pijul
 
     # compilers / toolchains
     stack
@@ -58,7 +61,7 @@
     kitty
 
     # password management
-     _1password # currently broken
+     unstable._1password # currently broken
 
   ];
 
@@ -106,6 +109,13 @@
   #
 
   programs.autojump.enable = true;
+
+  programs.thefuck.enable = true;
+
+  programs.mosh = {
+    enable = true;
+    withUtempter = true;
+  };
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
