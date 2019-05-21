@@ -33,6 +33,7 @@
     qdirstat
     wtf
     ncurses.dev # infocmp, etc
+    gparted
 
     # git ui
     gitkraken
