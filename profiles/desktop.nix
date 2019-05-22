@@ -50,6 +50,9 @@
 
     rrbg # background switcher 
     speedtest-cli
+
+    # provisioning
+    nixops
   ];
 
   services.locate = {
