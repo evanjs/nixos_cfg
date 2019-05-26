@@ -12,6 +12,7 @@
     ../modules/java.nix
     ../modules/jetbrains.nix
     ../modules/media.nix
+    ../modules/nixops.nix
     ../modules/notifications.nix
     ../modules/plymouth.nix
     ../modules/qt.nix
@@ -50,9 +51,6 @@
 
     rrbg # background switcher 
     speedtest-cli
-
-    # provisioning
-    nixops
   ];
 
   services.locate = {
