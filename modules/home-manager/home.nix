@@ -12,4 +12,16 @@
       theme = "Monokai";
     };
   };
+
+  programs.home-manager = {
+    enable = true;
+  };
+  programs.lsd = {
+    enableAliases = true;
+    enable = true;
+  };
+  programs.skim = {
+    enable = true;
+    defaultCommand = "fd --type f";
+  };
 }
