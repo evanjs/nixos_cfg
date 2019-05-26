@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./cachix.nix
+    ../../cachix
   ];
 
   environment.systemPackages = with pkgs; [

@@ -6,7 +6,7 @@
   ]
   ++ (if (builtins.pathExists(./containers)) then [ ./containers ] else [])
   ++ [
-    ../modules/cachix.nix
+    ../modules/cachix
     ../modules/editors.nix
     ../modules/i18n.nix
     ../modules/network.nix
