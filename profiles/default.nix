@@ -33,6 +33,7 @@
     du-dust # du, now with more oxygen!
     lm_sensors
     cv
+    vifm
 
     fbterm
 
