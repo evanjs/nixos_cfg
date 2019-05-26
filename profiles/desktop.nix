@@ -7,6 +7,7 @@
     ../modules/custom-xsession
     ../modules/fonts.nix
     ../modules/fs.nix
+    ../modules/home-manager
     ../modules/ibus.nix
     ../modules/iOS.nix
     ../modules/java.nix
@@ -35,9 +36,6 @@
     wtf
     ncurses.dev # infocmp, etc
     gparted
-
-    # profile management
-    home-manager
 
     # git ui
     gitkraken
