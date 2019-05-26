@@ -36,6 +36,9 @@
     ncurses.dev # infocmp, etc
     gparted
 
+    # profile management
+    home-manager
+
     # git ui
     gitkraken
 
