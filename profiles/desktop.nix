@@ -45,7 +45,7 @@
     mplayer
 
     # browsers
-    firefox-beta-bin
+    (versions.latestVersion "67.0" [firefox firefox-beta-bin])
 
     # word processors, etc
     libreoffice
