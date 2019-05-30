@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./firefox.nix
+  ];
+
   programs = {
     git = {
       enable = true;

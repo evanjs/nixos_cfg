@@ -11,6 +11,7 @@
     ../modules/i18n.nix
     ../modules/network.nix
     ../modules/nix.nix
+    ../modules/nur.nix
     ../modules/users.nix
     ../modules/screen.nix
     ../modules/unstable.nix
