@@ -12,6 +12,7 @@
     #../../modules/virtualization/virtualbox.nix # might re-enable after building / pushing to cachix from rig
   ];
 
+  boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixjgtoo";
 
   system.stateVersion = "19.03";
