@@ -80,6 +80,8 @@ in
           use-ewmh-active-win   = false;
           detect-transient      = false;
           xinerama-shadow-crop  = true;
+          blur-method = "kawase";
+          blur-strength = 15;
       '';
       fade            = true;
       inactiveOpacity = "0.9";
