@@ -13,7 +13,13 @@
   ];
 
   boot.initrd.checkJournalingFS = false;
-  networking.hostName = "nixjgtoo";
+  networking = {
+    hostName = "nixjgtoo";
+    # workaround for https://github.com/NixOS/nixpkgs/issues/61490
+    nameservers = [
+      "172.16.0.1"
+    ];
+  };
 
   system.stateVersion = "19.03";
 }

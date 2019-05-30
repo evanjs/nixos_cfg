@@ -2,7 +2,9 @@
 {
 
   users.users.evanjs.extraGroups = [ "networkmanager" ];
-  networking.networkmanager = {
-    enable = true;
+  networking = {
+    networkmanager = {
+      enable = true;
+    };
   };
 }
