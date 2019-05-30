@@ -96,7 +96,7 @@ in
         "name = 'Notification'"
       ];
 
-      vSync = "opengl-swc";
+      vSync = true;
     };
   }
 
