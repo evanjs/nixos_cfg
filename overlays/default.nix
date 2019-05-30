@@ -3,7 +3,6 @@
   imports = [
     ./evanjs
     ./hie-nix
-    ./nur
     ./libs
     ./rjg
   ]
