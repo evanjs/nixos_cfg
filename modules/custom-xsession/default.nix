@@ -79,7 +79,6 @@ in
           unredir-if-possible   = true;
           use-ewmh-active-win   = false;
           detect-transient      = false;
-          paint-on-overlay      = true;
           xinerama-shadow-crop  = true;
       '';
       fade            = true;
