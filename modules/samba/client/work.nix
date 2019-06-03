@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./default.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     kdeApplications.kdenetwork-filesharing
     kdeApplications.dolphin-plugins
@@ -9,7 +13,6 @@
   ];
 
   services.samba = {
-    enable = false;
     configText = ''
         workgroup = RJGTECH.LOCAL
     '';

@@ -15,6 +15,7 @@
     
     ../../modules/scrape.nix
     ../../modules/virtualization/docker.nix
+    ../../modules/samba/server/home.nix
   ];
 
   boot.initrd.checkJournalingFS = false;
