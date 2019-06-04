@@ -7,6 +7,7 @@
     ../modules/custom-xsession
     ../modules/fonts.nix
     ../modules/fs.nix
+    ../modules/games.nix
     ../modules/home-manager
     ../modules/ibus.nix
     ../modules/iOS.nix
