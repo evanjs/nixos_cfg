@@ -110,6 +110,10 @@
   # --------
   #
 
+  services.physlock = {
+    enable = true;
+  };
+
   programs.autojump.enable = true;
 
   programs.thefuck.enable = true;
