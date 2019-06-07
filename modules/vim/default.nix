@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./neovim.nix
+  ];
+
   environment.systemPackages = with pkgs; [
-    (import ./neovim.nix)
     ranger
     vifm
   ];
