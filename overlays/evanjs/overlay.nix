@@ -18,6 +18,7 @@ in
     kivy-garden = callPackage ./pkgs/python/kivy-garden { python = self.python37; };
     kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
     material-ui = callPackage ./pkgs/python/material-ui { python = self.python37; };
+    mcdex = callPackage ./pkgs/games/mcdex { };
     nget = callPackage ./pkgs/nget { };
     polychromatic = callPackage ./pkgs/polychromatic { };
     qrbooru = callQPackage ./pkgs/qrbooru { };
