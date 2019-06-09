@@ -11,7 +11,6 @@ let
 in 
   {
     booru = callPackage ./pkgs/booru { };
-    copenssl = callPackages ./pkgs/openssl { };
     cross = callPackage ./pkgs/cross { };
     exercism = callPackage ./pkgs/tools/exercism { };
     kivy = callPackage ./pkgs/python/kivy { python = self.python37; };

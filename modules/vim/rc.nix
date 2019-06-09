@@ -85,6 +85,8 @@ in
     au FileType groovy          setl sw=2 sts=2 et
     au FileType python          setl sw=2 sts=2 et
     au FileType kv              setl sw=2 sts=2 et
+    au FileType typescript              setl sw=2 sts=2 et
+    au FileType ts              setl sw=2 sts=2 et
     :set pastetoggle=<F2>
     :set clipboard=unnamedplus
     :set backspace=2 " make backspace work like most other programs
