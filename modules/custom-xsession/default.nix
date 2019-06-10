@@ -24,6 +24,7 @@ let
     xmobar
     xmonad
     xmonad-wallpaper
+    taffybar
   ];
 in
   {
