@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    multimc
+  imports = [
+    ./if.nix
+    ./minecraft
   ];
 }
