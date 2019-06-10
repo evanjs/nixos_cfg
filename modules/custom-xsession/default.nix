@@ -9,6 +9,22 @@ let
     libXrender
     libXft
   ];
+  xmonadHaskellPackages = with pkgs.haskellPackages; [
+    xmonad-contrib
+    mtl
+    containers
+    dbus
+    dbus-hslogger
+    rate-limit
+    status-notifier-item
+    time-units
+    xml-helpers
+    spool
+    X11
+    xmobar
+    xmonad
+    xmonad-wallpaper
+  ];
 in
   {
     imports = [
@@ -45,29 +61,15 @@ in
 
     sound.mediaKeys.enable = true;
 
+    services.hoogle.packages = hp: with xmonadHaskellPackages; [ ];
+
     services.xserver = {
       desktopManager.xterm.enable = false;
       exportConfiguration = true;
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        extraPackages = with pkgs.haskellPackages;
-        haskellPackages: [
-          xmonad-contrib
-          mtl
-          containers
-          dbus
-          dbus-hslogger
-          rate-limit
-          status-notifier-item
-          time-units
-          xml-helpers
-          spool
-          X11
-          xmobar
-          xmonad
-          xmonad-wallpaper
-        ];
+        extraPackages = hp: with xmonadHaskellPackages; [ ];
       };
       windowManager.default = "xmonad";
     };
