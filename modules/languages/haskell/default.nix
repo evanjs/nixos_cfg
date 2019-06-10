@@ -2,7 +2,7 @@
 {
   imports = [
     ./hie.nix
-    ./hoogle.nix
+    ./hoogle
     ../../unstable.nix
   ];
 
