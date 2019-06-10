@@ -1,8 +1,13 @@
 { config, pkgs, ...}:
 {
-  environment.systemPackages = with pkgs; [
-    chromium
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      chromium
+    ];
+    shellInit = ''
+      export BROWSER=chromium
+    '';
+  };
 
   nixpkgs.config = {
     chromium = {
