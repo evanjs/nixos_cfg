@@ -9,6 +9,7 @@
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
     ../../modules/linux_latest.nix
+    ../../modules/samba/client/work.nix
     #../../modules/virtualization/virtualbox.nix # might re-enable after building / pushing to cachix from rig
   ];
 
