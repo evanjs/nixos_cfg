@@ -24,6 +24,7 @@ let
     xmobar
     xmonad
     xmonad-wallpaper
+    taffybar
   ];
 in
   {
@@ -42,6 +43,7 @@ in
           x11
           xmonad-log
           taffybar
+          hicolor-icon-theme
         ]
         ++ xorgPkgs;
       })
@@ -61,7 +63,7 @@ in
 
     sound.mediaKeys.enable = true;
 
-    services.hoogle.packages = hp: with xmonadHaskellPackages; [ ];
+    services.hoogle.packages = hp: with pkgs.haskellPackages; [ ] ++ xmonadHaskellPackages;
 
     services.xserver = {
       desktopManager.xterm.enable = false;
@@ -69,7 +71,7 @@ in
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        extraPackages = hp: with xmonadHaskellPackages; [ ];
+        extraPackages = hp: with pkgs.haskellPackages; [ ] ++ xmonadHaskellPackages;
       };
       windowManager.default = "xmonad";
     };
