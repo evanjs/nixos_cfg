@@ -42,6 +42,7 @@ in
           x11
           xmonad-log
           taffybar
+          hicolor-icon-theme
         ]
         ++ xorgPkgs;
       })
