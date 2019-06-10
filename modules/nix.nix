@@ -7,6 +7,10 @@
     nix-prefetch-scripts
   ];
 
+  # Workaround for missing gz functionality in auto-upgrade packages
+  # For more information, see https://github.com/NixOS/nixpkgs/issues/28527#issuecomment-325182680
+  systemd.services.nixos-upgrade.path = with pkgs; [  gnutar xz.bin gzip config.nix.package.out ];
+
   system = {
     autoUpgrade = {
       channel = "nixos";
