@@ -12,7 +12,15 @@
     ../../modules/virtualization/virtualbox.nix
   ];
 
-  networking.hostName = "nixentoo";
+  networking = {
+    hostName = "nixentoo";
+    # workaround for https://github.com/NixOS/nixpkgs/issues/61490
+    nameservers = [
+      "172.16.0.1"
+      "10.10.0.1"
+      "192.168.2.1"
+    ];
+  };
 
   system.stateVersion = "19.03";
 
