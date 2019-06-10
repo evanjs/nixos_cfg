@@ -35,6 +35,7 @@
     lm_sensors
     cv
     vifm
+    tealdeer
 
     fbterm
 
