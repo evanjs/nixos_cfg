@@ -45,6 +45,10 @@
 
     # disk utilities
     btrfs-progs
+    ntfs3g
+    nfs-utils
+    smbnetfs
+    gvfs
 
     # dev
     gitAndTools.gitFull
