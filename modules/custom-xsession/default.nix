@@ -24,7 +24,7 @@ let
     xmobar
     xmonad
     xmonad-wallpaper
-    taffybar
+    #taffybar
   ];
 in
   {
@@ -42,7 +42,7 @@ in
           upower
           x11
           xmonad-log
-          taffybar
+          #taffybar
           hicolor-icon-theme
         ]
         ++ xorgPkgs;
