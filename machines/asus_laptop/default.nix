@@ -7,11 +7,16 @@
 
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
-    #../../modules/steam.nix
+    ../../modules/linux_latest.nix
+    ../../modules/samba/client/home.nix
     ../../modules/unstable.nix
+    ../../modules/steam.nix
     ../../modules/virtualization/virtualbox.nix
   ];
 
+  services.xserver.dpi = 127;
+  
+  boot.initrd.checkJournalingFS = false;
   networking = {
     hostName = "nixentoo";
     # workaround for https://github.com/NixOS/nixpkgs/issues/61490
@@ -23,6 +28,4 @@
   };
 
   system.stateVersion = "19.03";
-
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
 }
