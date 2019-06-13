@@ -21,8 +21,8 @@
 , SDL2_mixer
 , SDL2_ttf
 , spell ? false
-, xlibs
 , xlibsWrapper
+, xorg
 }:
 
 let
@@ -80,8 +80,8 @@ in
       #mesa_noglu
       #libGL_driver
 
-      xlibs.libXrender # if x11 true
-      xlibs.libX11 # if x11 true
+      xorg.libXrender # if x11 true
+      xorg.libX11 # if x11 true
       python.pkgs.gst-python  
       cairo
       python.pkgs.pillow
