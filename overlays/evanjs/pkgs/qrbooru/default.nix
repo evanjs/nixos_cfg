@@ -31,12 +31,12 @@ in stdenv.mkDerivation rec {
   pname = "qrbooru";
   version = "0.1.0";
 
-  #src = fetchgitPrivate {
-    #url = "git@github.com:evanjs/qrbooru.git";
-    #sha256 = "04ppfk1rgs315kmn3npmvknjhw2x0ip70jm42xl8jm3x70v1hm75";
-  #};
+  src = fetchGit {
+    url = "git@github.com:evanjs/qrbooru.git";
+    rev = "090e3dfff109ec7c302b7e71a50e72d1cda55d0e";
+  };
 
-  src = ~/src/rust/qrbooru;
+  #src = ~/src/rust/qrbooru;
 
   nativeBuildInputs = [
     makeWrapper
