@@ -1,5 +1,8 @@
 { config, pkgs, options, lib, ... }:
 {
+  imports = [
+    ./autoPull.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     cachix
