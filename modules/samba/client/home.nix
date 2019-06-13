@@ -4,6 +4,12 @@
     ./default.nix
   ];
 
+  services.samba = {
+    extraConfig = ''
+      workgroup = home
+    '';
+  };
+
   fileSystems."/data/stores/" = {
     device = "//rig/private";
     fsType = "cifs";
