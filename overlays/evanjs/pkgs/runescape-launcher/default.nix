@@ -7,7 +7,7 @@
 , makeWrapper 
 , gdk_pixbuf
 , glib
-, xlibs
+, xorg
 , expat
 , cairo
 , pango
@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
     substituteInPlace $out/bin/runescape-launcher --replace /usr/share/games/ $out/share/games/
   '';
 
-  xlibPkgs = with xlibs; [
+  xlibPkgs = with xorg; [
     libX11
     libSM
   ];
