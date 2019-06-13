@@ -33,6 +33,7 @@ in
     let g:airline_powerline_fonts = 1
     set laststatus=2
     au VimEnter * exec 'AirlineTheme wombat'
+    colorscheme spacecamp
 
     " Rust
     let g:rustfmt_autosave = 1

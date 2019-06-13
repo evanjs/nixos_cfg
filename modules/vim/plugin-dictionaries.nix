@@ -7,6 +7,7 @@
   { name = "polyglot"; }
   { name = "ranger-vim"; }
   { name = "rust-vim"; }
+  { name = "SpaceCamp"; }
   { name = "syntastic"; }
   { name = "vim-airline"; }
   { name = "vim-airline-themes"; }
