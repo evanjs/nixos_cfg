@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./unstable.nix
-    ];
+  
   environment.systemPackages = with pkgs; [
-    steam
+    # TODO: how can this be improved?
+    (pkgs.versions.latestVersion [pkgs.steam pkgs.unstable.steam pkgs.unstable-small.steam])
   ];
+  
   hardware = {
     opengl = {
       enable = true;

@@ -5,12 +5,14 @@
     ../../profiles/desktop.nix
     ./custom-hardware.nix
 
+    # games
+    ../../modules/games/steam.nix
+    
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
     ../../modules/linux_latest.nix
     ../../modules/samba/client/home.nix
     ../../modules/unstable.nix
-    ../../modules/steam.nix
     ../../modules/virtualization/virtualbox.nix
   ];
 

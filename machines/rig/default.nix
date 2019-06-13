@@ -9,6 +9,9 @@
     ../../modules/development.nix
     ../../modules/linux_latest.nix
 
+    # games
+    ../../modules/games/steam.nix
+
     # media
     ../../modules/deluge.nix
     ../../modules/plex
