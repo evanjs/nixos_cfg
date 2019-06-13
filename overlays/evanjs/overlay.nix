@@ -18,6 +18,7 @@ in
     kivymd = callPackage ./pkgs/python/kivymd { python = self.python37; };
     material-ui = callPackage ./pkgs/python/material-ui { python = self.python37; };
     mcdex = callPackage ./pkgs/games/mcdex { };
+    nightly-rust-with-extensions = callPackage ./pkgs/nightly-rust { };
     nget = callPackage ./pkgs/nget { };
     polychromatic = callPackage ./pkgs/polychromatic { };
     qrbooru = callQPackage ./pkgs/qrbooru { };
