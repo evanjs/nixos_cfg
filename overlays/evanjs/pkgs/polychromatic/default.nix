@@ -7,7 +7,6 @@
 , glib
 , gnome3
 , gobject-introspection
-, gobjectIntrospection
 , gstreamer
 , gtk3
 , lessc
@@ -51,7 +50,7 @@ stdenv.mkDerivation rec {
   ];
   
   nativeBuildInputs = [
-    gobjectIntrospection
+    gobject-introspection
     pkgconfig
   ];
 
