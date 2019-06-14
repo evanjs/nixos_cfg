@@ -6,7 +6,7 @@
 
   programs.firefox = {
     enable = true;
-    enableAdobeFlash = true;
+    enableAdobeFlash = false;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
       https-everywhere
       ublock-origin
