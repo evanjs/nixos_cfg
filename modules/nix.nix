@@ -2,10 +2,10 @@
 {
   imports = [
     ./autoPull.nix
+    ./cachix
   ];
 
   environment.systemPackages = with pkgs; [
-    cachix
     nix-index
     nix-prefetch-scripts
   ];
