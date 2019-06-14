@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./email.nix
     ./firefox.nix
   ];
 
