@@ -34,6 +34,9 @@ in
       unstable.postman
 
       maven3
+
+      # testing
+      websocat
     ]
     ++ nodePkgs;
   }
