@@ -12,6 +12,7 @@
     ../modules/network.nix
     ../modules/nix.nix
     ../modules/nur.nix
+    ../modules/power
     ../modules/users.nix
     ../modules/screen.nix
     ../modules/unstable.nix
