@@ -37,6 +37,7 @@
     cv
     vifm
     tealdeer
+    xorg.xev
 
     fbterm
 
