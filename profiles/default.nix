@@ -42,7 +42,7 @@
     fbterm
 
     # rust utilities
-    ripgrep
+    (ripgrep.override { withPCRE2 = true; })
     fd
 
     # disk utilities
