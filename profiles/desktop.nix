@@ -27,6 +27,8 @@
     ../modules/wireshark.nix
     ../modules/wine.nix
     ../modules/xrdp.nix
+
+    ../services/random-background.nix
   ];
 
 
