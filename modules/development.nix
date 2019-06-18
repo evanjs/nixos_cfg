@@ -37,6 +37,8 @@ in
 
       # testing
       websocat
+
+      pypi2nix
     ]
     ++ nodePkgs;
   }
