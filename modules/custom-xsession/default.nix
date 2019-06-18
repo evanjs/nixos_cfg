@@ -15,6 +15,7 @@ let
     containers
     dbus
     dbus-hslogger
+    gtk3
     rate-limit
     status-notifier-item
     time-units
@@ -24,7 +25,6 @@ let
     xmobar
     xmonad
     xmonad-wallpaper
-    #taffybar
   ];
 in
   {
@@ -42,11 +42,17 @@ in
           upower
           x11
           xmonad-log
-          #taffybar
           hicolor-icon-theme
         ]
         ++ xorgPkgs;
       })
+
+      (taffybar.override {
+        packages = self: with self; [
+        ]
+        ++ xmonadHaskellPackages;
+      })
+
       haskellPackages.xmobar
 
       trayer
@@ -59,6 +65,7 @@ in
       xorg.xbacklight
       xdotool
       notification-daemon
+      taffybar
     ];
 
     sound.mediaKeys.enable = true;
@@ -68,12 +75,15 @@ in
     services.xserver = {
       desktopManager.xterm.enable = false;
       exportConfiguration = true;
-      windowManager.xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-        extraPackages = hp: with pkgs.haskellPackages; [ ] ++ xmonadHaskellPackages;
+      windowManager = {
+        default = "xmonad";
+        xmonad = {
+          enable = true;
+          enableContribAndExtras = true;
+          extraPackages = hp: with pkgs.haskellPackages; [ ] ++ xmonadHaskellPackages;
+        };
       };
-      windowManager.default = "xmonad";
+
     };
 
     services.compton = {

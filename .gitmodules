@@ -1,0 +1,3 @@
+[submodule "overlays/taffybar/taffybar"]
+	path = overlays/taffybar/taffybar
+	url = git@github.com:taffybar/taffybar.git
