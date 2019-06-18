@@ -1,16 +1,16 @@
 { pkgs, ... }:
 {
 
-  # uncomment when custom package for rbg is available system-wide
   environment.systemPackages = with pkgs; [
     feh
+    rrbg
   ];
 
   systemd.user.timers.random-bg = {
     enable = true;
     wantedBy = [ "timers.target"];
     partOf = [ "random-bg.service" ];
-    timerConfig.OnCalendar = "*:00:00";
+    timerConfig.OnCalendar = "*:*:00"; # hourly
   };
 
   systemd.user.services.random-bg = {
@@ -20,7 +20,7 @@
     serviceConfig = {
       Type = "oneshot";
       Environment="DISPLAY=:0";
-      ExecStart = "/home/evanjs/.cargo/bin/rrbg";
+      ExecStart = "${pkgs.rrbg}/bin/rrbg";
     };
   };
 

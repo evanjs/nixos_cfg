@@ -8,7 +8,7 @@
     # Create an alias for the unstable channel
     packageOverrides = pkgs:
     {
-      stable = import <stable>
+      stable = import <nixos-stable>
       {
         # pass the nixpkgs config to the stable alias
         # to ensure `allowUnfree = true;` is propogated:
