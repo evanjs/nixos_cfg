@@ -1,7 +1,7 @@
 { config, pkgs, options, lib, ... }:
 {
   imports = [
-    ./autoPull.nix
+    ../services/autoPull.nix
     ./cachix
   ];
 
