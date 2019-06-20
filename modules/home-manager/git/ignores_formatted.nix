@@ -91,4 +91,7 @@
 
 # dotfiles
 ".env"
+
+# ts stuff
+src/environments/environment.ts
 ]
