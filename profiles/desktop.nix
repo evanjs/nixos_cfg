@@ -9,7 +9,7 @@
     ../modules/fs.nix
     ../modules/games
     ../modules/home-manager
-    ../modules/ibus.nix
+    ../modules/i18n/ibus.nix
     ../modules/iOS.nix
     ../modules/java.nix
     ../modules/jetbrains.nix

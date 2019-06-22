@@ -8,7 +8,6 @@
   ++ [
     ../modules/cachix
     ../modules/editors.nix
-    ../modules/i18n.nix
     ../modules/network.nix
     ../modules/nix.nix
     ../modules/nur.nix
