@@ -15,6 +15,8 @@
     # media
     ../../modules/deluge.nix
     ../../modules/plex
+
+    ../../modules/jupyter
     
     ../../modules/scrape.nix
     ../../modules/virtualization/docker.nix
