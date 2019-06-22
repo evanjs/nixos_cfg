@@ -1,3 +1,4 @@
 configuration.nix
 nixpkgs
 smb-secrets
+pass
