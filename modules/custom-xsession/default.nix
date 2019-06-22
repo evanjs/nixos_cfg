@@ -15,7 +15,7 @@ let
     containers
     dbus
     dbus-hslogger
-    gtk3
+    #gtk3
     rate-limit
     status-notifier-item
     time-units
@@ -47,11 +47,11 @@ in
         ++ xorgPkgs;
       })
 
-      (taffybar.override {
-        packages = self: with self; [
-        ]
-        ++ xmonadHaskellPackages;
-      })
+      #(taffybar.override {
+        #packages = self: with self; [
+        #]
+        #++ xmonadHaskellPackages;
+      #})
 
       haskellPackages.xmobar
 
@@ -65,7 +65,7 @@ in
       xorg.xbacklight
       xdotool
       notification-daemon
-      taffybar
+      #taffybar
     ];
 
     sound.mediaKeys.enable = true;
