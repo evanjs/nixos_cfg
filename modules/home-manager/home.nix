@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./bash.nix
     ./compton.nix
     ./email.nix
     ./firefox.nix
