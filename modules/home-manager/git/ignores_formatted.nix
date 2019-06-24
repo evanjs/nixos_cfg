@@ -93,5 +93,5 @@
 ".env"
 
 # ts stuff
-src/environments/environment.ts
+"src/environments/environment.ts"
 ]
