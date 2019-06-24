@@ -87,30 +87,6 @@ in
     };
 
     services.compton = {
-      backend         = "glx";
-      enable          = true;
-      extraOptions    = ''
-          unredir-if-possible   = true;
-          use-ewmh-active-win   = false;
-          detect-transient      = false;
-          xinerama-shadow-crop  = true;
-          blur-method = "kawase";
-          blur-strength = 15;
-      '';
-      fade            = true;
-      inactiveOpacity = "0.9";
-      shadow          = true;
-      fadeDelta       = 4;
-      fadeExclude = [
-        "name = 'Screenshot'"
-        "class_g = 'slop'"
-      ];
-      shadowExclude = [
-        "name = 'Screenshot'"
-        "class_g = 'slop'"
-        "name = 'Notification'"
-      ];
-
       vSync = true;
     };
   }
