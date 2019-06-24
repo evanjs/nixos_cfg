@@ -4,6 +4,7 @@
     ./compton.nix
     ./email.nix
     ./firefox.nix
+    ./style
   ];
 
   programs = {
