@@ -25,5 +25,4 @@ in
     rrbg = callPackage ./pkgs/rrbg { };
     runescape-launcher = callPackage ./pkgs/runescape-launcher { };
     rust-qt-binding-generator = callQPackage ./pkgs/rust-qt-binding-generator { };
-    sccache = callPackage ./pkgs/tools/sccache { };
   }
