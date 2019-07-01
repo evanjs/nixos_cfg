@@ -23,9 +23,17 @@ let
     #"rust-analysis"
     #"llvm-tools-preview"
 
-    base_extensions = [
+    base-extensions = [
       "rust-std"
       "rust-src"
+    ];
+    
+    debug = [
+      "llvm-tools-preview"
+    ];
+
+    std-only = [
+      "rust-std"
     ];
     
     utilities = [
@@ -34,13 +42,10 @@ let
       "rust-analysis"
     ];
 
-    debug = [
-      "llvm-tools-preview"
-    ];
-
 in {
-  base = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base_extensions; });
-  with-debug = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base_extensions ++ debug; });
-  with-utilities = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base_extensions ++ utilities; });
-  full = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base_extensions ++ debug ++ utilities; });
+  base = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base-extensions; });
+  std-only = (pkgs.latest.rustChannels.nightly.rust.override { extensions = std-only; });
+  with-debug = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base-extensions ++ debug; });
+  with-utilities = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base-extensions ++ utilities; });
+  full = (pkgs.latest.rustChannels.nightly.rust.override { extensions = base-extensions ++ debug ++ utilities; });
 }
