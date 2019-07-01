@@ -12,7 +12,7 @@
       * disable until this can be configured
       * e.g. Do not autosuspend USB devices if connected to AC power
       */
-      enable = false;
+      #enable = false;
     };
   };
 }

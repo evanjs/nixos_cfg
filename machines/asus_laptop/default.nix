@@ -28,6 +28,7 @@
       "192.168.2.1"
     ];
   };
+  powerManagement.powertop.enable = true;
 
   system.stateVersion = "19.03";
 }
