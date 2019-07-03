@@ -22,11 +22,6 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/gentoo" =
-    { device = "/dev/disk/by-uuid/6738cc01-c931-4720-a783-148427097535";
-      fsType = "btrfs";
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/53535fae-a6e8-4798-807a-69465f825b94"; }
     ];
