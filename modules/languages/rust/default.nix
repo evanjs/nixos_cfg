@@ -10,6 +10,6 @@
   environment.systemPackages = with pkgs; [
     openssl.dev
     pkgconfig
-    nightly-rust-with-extensions.base
+    nightly-rust-with-extensions.std-only
   ];
 }
