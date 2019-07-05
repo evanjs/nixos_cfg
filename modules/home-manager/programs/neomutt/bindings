@@ -1,0 +1,147 @@
+# Check:
+# - https://ryanlue.com/posts/2017-05-22-autosync-mutt
+# - https://neomutt.org/guide/reference.html
+#
+# Types of maps:
+# - generic  : it's supposed to act as a fallback for all maps except for pager
+#              and editor but it doesn't work from my testings
+# - alias    : alias menu displaying suggested aliases
+# - attach   : attachments screen (you'll just have to see it)
+# - browser  : interface to the local filesystem
+# - compose  : screen used when sending a message
+# - editor   : command line
+# - index    : overview of emails in the currently opened mailbox (line-based)
+# - pager    : various screens like viewing a message and help
+# - pgp      : screen to select openpgp keys when encrypting outgoing messages
+# - postpone : similar to the index menu
+# - query    : menu displaying results of query command
+#
+# Conventions:
+# - e is for edit with text editor
+# - o is for open with an external program (sometimes a text editor)
+# - <return> is for displaying inline
+
+# Moving {{{1
+
+bind alias,attach,browser,compose,index,pager \Cu half-up
+bind alias,attach,browser,compose,index,pager \Cd half-down
+bind alias,attach,browser,compose,index,pager \Cf next-page
+bind alias,attach,browser,compose,index,pager \Cb previous-page
+bind alias,attach,browser,compose,index H top-page
+bind alias,attach,browser,compose,index L bottom-page
+bind alias,attach,browser,compose,index M middle-page
+bind alias,attach,browser,compose,index zt current-top
+bind alias,attach,browser,compose,index zz current-middle
+bind alias,attach,browser,compose,index zb current-bottom
+bind alias,attach,browser,compose,index gg first-entry
+bind alias,attach,browser,compose,index G last-entry
+bind alias,attach,browser,compose,index \Ce next-line
+bind alias,attach,browser,compose,index \Cy previous-line
+bind alias,attach,browser,compose,index j next-entry
+bind alias,attach,browser,compose,index \Cn next-entry
+bind alias,attach,browser,compose,index k previous-entry
+bind alias,attach,browser,compose,index \Cp previous-entry
+bind index,pager [[ previous-thread
+bind index,pager ]] next-thread
+bind pager gg top
+bind pager G bottom
+bind pager j next-line
+bind pager k previous-line
+macro pager \Cn "<next-entry><sync-mailbox>"
+macro pager \Cp "<previous-entry><sync-mailbox>"
+
+# Searching {{{1
+
+bind alias,attach,browser,compose,index,pager / search
+bind alias,attach,browser,compose,index,pager ? search-reverse
+bind alias,attach,browser,compose,index,pager n search-next
+bind alias,attach,browser,compose,index,pager N search-opposite
+
+# Tagging {{{1
+
+bind alias,attach,browser,compose,index tt tag-entry
+bind index tp tag-pattern
+bind index tu untag-pattern
+bind index tat tag-thread
+bind pager tt tag-message
+
+# Generic {{{1
+
+bind alias,attach,browser,compose,index,pager q exit
+bind alias,attach,browser,compose,index,pager g? help
+bind alias,attach,browser,compose,index,pager , enter-command
+bind alias,attach,browser,compose,index,pager ! shell-escape
+macro alias,attach,browser,compose,index,pager <down> "<sidebar-next><sidebar-open>"
+macro alias,attach,browser,compose,index,pager <up> "<sidebar-prev><sidebar-open>"
+bind alias,attach,browser,compose,index \Cl refresh
+bind compose,index,pager | pipe-message
+
+# Index and pager {{{1
+
+macro index,pager . "<sync-mailbox><check-stats>"
+macro index <return> "<display-message><sync-mailbox>"
+bind index l limit
+macro index ul "<limit>all\n" "Undo limit"
+bind index za collapse-thread
+bind index zA collapse-all
+# using z as a toggle prefix
+macro index,pager zn "<toggle-new><sync-mailbox>"
+bind index,pager @ display-address
+bind index,pager a view-attachments
+bind index,pager b bounce-message
+bind index,pager dd delete-message
+bind index,pager e edit-or-view-raw-message
+bind index,pager f forward-message
+macro index,pager gx "<pipe-message>urlview<enter>" "Open links with urlview"
+bind index,pager i mail
+bind index,pager p root-message # p for parent
+bind index,pager r reply
+bind index,pager R group-reply
+bind index,pager s sort-mailbox
+bind index,pager S recall-message
+bind index,pager ud undelete-message
+
+# Editor {{{1
+
+bind editor \Cp history-up
+bind editor \Cn history-down
+
+# Compose {{{1
+
+bind compose a attach-file
+bind compose ch edit-headers
+bind compose yy copy-file # save
+bind compose dd detach-file # delete
+bind compose cc rename-attachment # edit attachment name
+bind compose cd edit-description # edit attachment description
+bind compose ct edit-type # edit attachment content-type
+bind compose e edit-file # edit attachment with text editor
+bind compose o edit-mime # edit attachment with mailcap entry
+bind compose % filter-entry # will overwrite the attachment
+bind compose | pipe-entry
+bind compose J move-down # move attachment up
+bind compose K move-up # move attachment down
+bind compose S send-message
+bind compose <return> display-toggle-weed
+
+# Attachments {{{1
+
+bind attach <return> view-mailcap
+bind attach e view-text
+bind attach | pipe-entry
+bind attach za collapse-parts
+bind attach w save-entry
+
+# File browser {{{1
+
+bind browser o view-file
+bind browser <return> select-entry
+bind browser - goto-parent
+bind browser cd change-dir
+
+# Alias menu {{{2
+
+bind alias dd delete-entry
+bind alias <return> select-entry
+
+# vim: ft=muttrc fdm=marker
