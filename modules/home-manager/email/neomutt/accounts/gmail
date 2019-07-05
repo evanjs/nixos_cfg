@@ -1,0 +1,17 @@
+set from 	= "evanjsx@gmail.com"
+set sendmail	= "/usr/bin/msmtp -a gmail"
+set mbox	= "+gmail/Archive"
+set postponed	= "+gmail/Drafts"
+set spoolfile   = "+gmail/Inbox"
+set header_cache = ~/mail/gmail/.cache
+set message_cachedir = ~/mail/gmail/.cache
+
+color status green default
+
+macro index D \
+	"<save-message>+personal/trash<enter>" \
+	"move message to trash"
+
+macro index S \
+	"<save-message>+personal/spam<enter>" \
+	"mark message as spam"

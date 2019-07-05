@@ -1,0 +1,17 @@
+set from 	= "evan.stoll@rjginc.com"
+set sendmail	= "/usr/bin/msmtp -a rjg"
+set mbox	= "+rjg/Archive"
+set postponed	= "+rjg/Drafts"
+set spoolfile   = "+rjg/Inbox"
+set header_cache = ~/mail/rjg/.cache/
+set message_cachedir = ~/mail/rjg/.cache/
+
+color status green default
+
+macro index D \
+	"<save-message>+RJG/Trash<enter>" \
+	"move message to trash"
+
+macro index S \
+	"<save-message>+RJG/Spam<enter>" \
+	"mark message as spam"
