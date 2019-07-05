@@ -3,7 +3,7 @@
   imports = [
     ./bash.nix
     ./compton.nix
-    ./email
+    ./email.nix
     ./firefox.nix
     ./style
   ];

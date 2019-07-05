@@ -1,0 +1,129 @@
+# When these two are set, the effect is that composing, replying, editing,
+# etc... a message will drop you into the editor right away, instead of
+# prompting for recipients, etc... first
+set autoedit
+set edit_headers
+
+set arrow_cursor
+
+# Functions that mutate the index (delete, move, etc...) will use tagged
+# messages (if there are any) automatically. The alternative is to prefix each
+# command with the <tag-prefix> function
+set auto_tag
+
+# Bouncing is like forwarding but forwarding lets you edit the body before
+# sending. Do not ask for confirmation before bouncing emails
+set bounce
+
+# Do not prompt when moving messages to other mailboxes
+unset confirmappend
+
+# Messages marked for deletion will automatically be purged without prompting
+# when changing or syncing mailboxes
+set delete
+
+# Header color regexes apply to the exact regex match instead of the entire line
+set header_color_partial
+
+# The default is 10 :/
+set history = 50
+set history_remove_dups
+set save_history = 50
+
+# Do not prompt; include a copy of the message I'm replying to
+set include
+
+# Do not mark new messages as "old" when leaving the mailbox without reading
+# them
+unset mark_old
+
+# Do not show "+" when wrapping lines
+unset markers
+
+# How often new mail in folders is check
+set mail_check = 60
+
+# Calculate read/unread/total/flagged message counts when checking for new mail
+set mail_check_stats
+
+# How often to check for stats
+set mail_check_stats_interval = 60
+
+# Display all files in the file browser
+set mask = ""
+
+# Mailbox type when creating new folders
+set mbox_type = "Maildir"
+
+# Sane behavior: moving one line down doesn't skip to the next page when that
+# line is the last of the current page.
+set menu_scroll
+
+# Do not move to the next/previous message when viewing a message and the
+# <next-page> (<C-f>, <Space>) is invoked
+set pager_stop
+
+# When viewing a message in the pager, show these amount of lines from the index
+# above it (sort of like a horizontal split when viewing a message)
+set pager_index_lines = 15
+
+# Pesky press any key to continue... prompt
+unset prompt_after
+unset wait_key
+
+# Do not prompt; reply to recipients in the :Reply-To or :From headers
+set reply_to
+
+# Sorting like in Gmail
+set sort = "threads"
+set sort_aux = "reverse-last-date-received"
+set strict_threads
+
+# DO NOT! I repeat: DO NOT! pause after displaying informational messages!
+set sleep_time = 0
+
+# Will generate MIME types of "text/plain; format=flowed", which instruct the
+# recipient's email client to ignore newlines for lines that end on whitespace.
+# See https://brianbuccola.com/line-breaks-in-mutt-and-vim/
+set text_flowed
+
+# Like vim, show tildes at the end of the pager
+set tilde
+
+# Always block waiting for input
+set timeout = 0
+
+# Why set the hostname if we won't use it?
+# Because https://github.com/neomutt/neomutt/issues/827
+set hostname = "foobar.com"
+unset use_domain
+
+# Search doesn't wrap around the end
+unset wrap_search
+
+# Don't display progress. I don't have that many messages
+set read_inc = 0
+set write_inc = 0
+set net_inc = 0
+
+# Sidebar
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?(%N)?"
+set sidebar_divider_char = "█"
+
+# Date format when used as %d in index_format
+set date_format = "%b %d, %Y"
+# A line in the index menu
+set index_format = "%?X? %X &    ?%d  %-30.30F  %s"
+# A line in the attachment menu
+set attach_format = "%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+# A line in the alias menu
+set alias_format = "%4n %2f %t %-10a   %r"
+# A line in the file browser menu
+set folder_format = "%2C %t %N %F %2l %-8.8u %-8.8g %8s %d %f"
+# Pager statusline
+set pager_format = "-%Z- %C/%m: %-20.20n   %s%*  -- (%P)"
+# Compose menu statusline
+set compose_format = "-- NeoMutt: Compose  [Approx. msg size: %l   Atts: %a]%>-"
+# Index menu statusline
+set status_format = "-%r- NeoMutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"

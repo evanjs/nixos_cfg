@@ -1,0 +1,51 @@
+# make sure that you are using mutt linked against slang, not ncurses, or
+# suffer the consequences of weird color issues. use "mutt -v" to check this.
+
+# General {{{1
+
+color status brightcolor232 color10 # statusline
+color error brightcolor1 default # error messages
+color tilde color11 default # vi-like tildes marking blank lines
+color indicator brightcolor226 default # highlight (or arrow cursor) for current line
+color search default color23 # search highlight in pager
+color tree color10 default # arrows in threads
+# color message color37 default # informational messages
+# color markers color160 color254 # indicators of wrapped lines
+
+# Index {{{1
+
+color index color11 default "~A" # all messages
+color index brightcolor2 default "~U" # unread messages
+color index default color8 "~T" # tagged messages
+color index brightcolor1 default "~D" # deleted messages
+
+# Sidebar {{{1
+
+color sidebar_divider color10 default
+color sidebar_indicator brightdefault color8
+color sidebar_new brightcolor4 default
+color sidebar_ordinary color11 default
+
+# Message headers {{{1
+
+color hdrdefault brightcolor10 default
+color header color3 default '[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+'
+
+# Message body {{{1
+
+color body color3 default "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+" # email
+color body color3 default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
+color quoted color14 default
+
+# Attachment headers displayed in the body of the message in the pager view
+
+color attach_headers color13 default "^\\[-- (Attachment|Type).*"
+
+# PGP
+# color body          color160        default        "(BAD signature)"
+# color body          color37         default        "(Good signature)"
+# color body          default        default        "^gpg: Good signature .*"
+# color body          color241        default        "^gpg: "
+# color body          color241        color160        "^gpg: BAD signature from.*"
+
+# vim: ft=muttrc:fdm=marker
