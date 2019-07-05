@@ -7,7 +7,7 @@ let
     realName = "Evan Stoll";
     flavor = "gmail.com";
     #passwordCommand = "PASSWORD_STORE_DIR=${config.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | head -n1";
-    passwordCommand = if lib.pathExists ../../passwords/gmail then lib.readFile ../../passwords/gmail else "";
+    passwordCommand = if lib.pathExists ../../passwords/gmail then "cat ${../../passwords/gmail}" else "";
     maildir.path = name;
     smtp.tls.useStartTls = true;
     imap.tls.useStartTls = false;
@@ -28,7 +28,7 @@ let
     userName = address;
     realName = "Evan Stoll";
     #passwordCommand = "PASSWORD_STORE_DIR=${config.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | head -n1";
-    passwordCommand = if lib.pathExists ../../passwords/rjg then lib.readFile ../../passwords/rjg else "";
+    passwordCommand = if lib.pathExists ../../passwords/rjg then "cat ${../../passwords/rjg}" else "";
     maildir.path = name;
     smtp = {
       host = "smtp.outlook365.com";
