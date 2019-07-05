@@ -1,0 +1,52 @@
+set folder = ~/mail
+
+folder-hook personal/* source ~/src/nixos_cfg/modules/home-manager/email/neomutt/accounts/gmail
+folder-hook rjg/* source ~/src/nixos_cfg/modules/home-manager/email/neomutt/accounts/rjg
+source ~/src/nixos_cfg/modules/home-manager/email/neomutt/accounts/gmail
+
+# shortcuts
+#bind index G imap-fetch-mail
+
+# default appearance
+set sort = reverse-threads
+
+
+# use very high $read_inc to speed up reading hcache'd maildirs
+folder-hook . 'set read_inc=10000'
+
+# caching
+#set header_cache_backend = "kyoto"
+set header_cache_backend = "lmdb"
+
+# notmuch
+set nm_default_uri = "notmuch:///home/evanjs/mail/"
+virtual-mailboxes "Inbox" "notmuch://?query=tag:unread"
+
+set virtual_spoolfile = yes
+set spoolfile = "=Inbox"
+
+set mail_check = 90
+set timeout = 15
+
+mailboxes = gmail
+mailboxes = rjg
+
+sidebar_whitelist gmail/inbox rjg/inbox
+
+set sidebar_visible = "yes"
+bind index,pager B sidebar-toggle-visible
+set mail_check_stats
+
+
+auto_view text/html
+alternative_order text/enriched text/plain text/html text image/*
+auto_view image/*
+
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>source ~/src/nixos_cfg/modules/home-manager/email/neomutt/accounts/gmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/src/nixos_cfg/modules/home-manager/email/neomutt/accounts/rjg<enter><change-folder>!<enter>'
+
+set index_format="%4C %Z %D %-15.15L (%?l?%4l&%4c?) %s"
+set date_format="%a %b %d, %R"
+

@@ -2,3 +2,4 @@ configuration.nix
 nixpkgs
 smb-secrets
 pass
+modules/home-manager/email/passwords
