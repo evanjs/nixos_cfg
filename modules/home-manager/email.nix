@@ -21,6 +21,7 @@ let
         CopyArrivalDate = "yes";
       };
     };
+    notmuch.enable = true;
   };
 
   mkOffice365Account = { name, address, primary ? false }: {
@@ -48,6 +49,7 @@ let
         CopyArrivalDate = "yes";
       };
     };
+    notmuch.enable = true;
   };
 
   #accounts = lib.mkMerge [
@@ -73,6 +75,8 @@ in
     lib.email = { inherit concatAccounts; };
 
     programs.msmtp.enable = true;
+    programs.mbsync.enable = true;
+    programs.notmuch.enable = true;
 
     accounts.email = {
       inherit accounts;
