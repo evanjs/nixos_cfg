@@ -5,8 +5,13 @@
     ./compton.nix
     ./email.nix
     ./firefox.nix
+    ./lib.nix
     ./style
   ];
+
+  home = {
+    sessionVariables = config.lib.sessionVariables;
+  };
 
   programs = {
     git = {
