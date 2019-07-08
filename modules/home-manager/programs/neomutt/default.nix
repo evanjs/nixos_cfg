@@ -15,7 +15,7 @@ let
   let acct = builtins.getAttr name accounts; in
   pkgs.writeText "${name}_account" ''
   set from = "${acct.address}"
-  set hostname = "gmail.com"
+  set hostname = "${hostname}"
   set sendmail = "${pkgs.msmtp}/bin/msmtp -a ${name} --tls-trust-file=${acct.smtp.tls.certificatesFile}"
   set spoolfile = +${name}/Inbox
   ${mbox}
