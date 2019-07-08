@@ -24,10 +24,10 @@ let
   else if acct == "rjg" then
   ''
     ${mkChannel acct "Inbox" "INBOX"}
-    ${mkChannel acct "Sent Items" "Sent"}
+    ${mkChannel acct "Sent\\ Items" "Sent"}
     ${mkChannel acct "Drafts" "Drafts"}
-    ${mkChannel acct "Deleted Items" "Trash"}
-    ${mkChannel acct "Junk Email" "Spam"}
+    ${mkChannel acct "Deleted\\ Items" "Trash"}
+    ${mkChannel acct "Junk\\ Email" "Spam"}
   ''
   else
   ''
