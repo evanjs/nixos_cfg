@@ -6,8 +6,8 @@ with config.accounts.email;
 let
   mkAccountFile = name:
   let
-    junk = (if name == "gmail" then "Spam" else (if name == "rjg" then "Junk Mail" else "Spam"));
-    mbox = (if name == "gmail" then "set mbox = +${name}/All" else (if name == "rjg" then "+${name}/All" else "set mbox = +${name}/All"));
+    junk = (if name == "gmail" then "Spam" else (if name == "rjg" then "Spam" else "Spam"));
+    mbox = (if name == "gmail" then "set mbox = +${name}/All" else (if name == "rjg" then "set mbox = +${name}/Inbox" else "set mbox = +${name}/All"));
     record = (if name == "gmail" then "Sent" else (if name == "rjg" then "Sent" else "Sent"));
     trash = (if name == "gmail" then "Trash" else (if name == "rjg" then "Trash" else "Trash"));
     hostname = (if name == "gmail" then "gmail.com" else (if name == "rjg" then "outlook.office365.com" else null));
