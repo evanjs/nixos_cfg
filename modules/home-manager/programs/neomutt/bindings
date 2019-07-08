@@ -73,6 +73,8 @@ bind alias,attach,browser,compose,index,pager , enter-command
 bind alias,attach,browser,compose,index,pager ! shell-escape
 macro alias,attach,browser,compose,index,pager <down> "<sidebar-next><sidebar-open>"
 macro alias,attach,browser,compose,index,pager <up> "<sidebar-prev><sidebar-open>"
+macro alias,attach,browser,compose,index,pager <PageDown> "<sidebar-page-down><sidebar-page-down>"
+macro alias,attach,browser,compose,index,pager <PageUp> "<sidebar-page-up><sidebar-page-up>"
 bind alias,attach,browser,compose,index \Cl refresh
 bind compose,index,pager | pipe-message
 

@@ -52,16 +52,9 @@ let
     notmuch.enable = true;
   };
 
-  #accounts = lib.mkMerge [
-    accounts = {
+  accounts = {
     gmail = (mkGmailAccount ({ name = "gmail"; primary = true; address = "evanjsx@gmail.com"; }));
     rjg = (mkOffice365Account ({ name = "rjg"; primary = false; address = "evan.stoll@rjginc.com"; }));
-    #(builtins.mapAttrs (k: v: mkGmailAccount (v // { name = k; })) {
-      #gmail = { primary = true; address = "evanjsx@gmail.com"; };
-    #})
-    #(builtins.mapAttrs (k: v: mkOffice365Account (v // { name = k; })) {
-      #rjg = { primary = false; address = "evan.stoll@rjginc.com"; };
-    #})
   };
 
   concatAccounts = separator: fn:
