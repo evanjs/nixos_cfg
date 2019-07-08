@@ -20,21 +20,20 @@
       userName = "Evan Stoll";
       ignores = (import ./git/ignores_formatted.nix);
     };
+    home-manager = {
+      enable = true;
+    };
+    lsd = {
+      enableAliases = true;
+      enable = true;
+    };
     rofi = {
       enable = true;
       theme = "Monokai";
     };
-  };
-
-  programs.home-manager = {
-    enable = true;
-  };
-  programs.lsd = {
-    enableAliases = true;
-    enable = true;
-  };
-  programs.skim = {
-    enable = true;
-    defaultCommand = "fd --type f";
+    skim = {
+      enable = true;
+      defaultCommand = "fd --type f";
+    };
   };
 }
