@@ -13,6 +13,7 @@
     ../modules/nur.nix
     ../modules/power
     ../modules/users.nix
+    ../modules/security/keybase.nix
     ../modules/screen.nix
     ../modules/unstable.nix
     ../modules/vim
