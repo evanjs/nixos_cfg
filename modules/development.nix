@@ -19,7 +19,6 @@ in
       # js
       nodejs-10_x
       sass
-      php # for cgi, etc
 
 
       exercism
