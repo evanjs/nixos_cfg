@@ -20,8 +20,8 @@ in
       nodejs-10_x
       sass
 
-
       exercism
+      (builtins.elemAt (lib.attrValues (lib.filterAttrs (n: v: n == "@angular/cli") pkgs.nodePackages)) 0)
 
       # debugging
       gdb
