@@ -6,6 +6,7 @@
     ./email.nix
     ./firefox.nix
     ./lib.nix
+    ./randr
     ./style
   ];
 
@@ -19,6 +20,9 @@
       userEmail = "evanjsx@gmail.com";
       userName = "Evan Stoll";
       ignores = (import ./git/ignores_formatted.nix);
+    };
+    gpg = {
+      enable = true;
     };
     home-manager = {
       enable = true;
