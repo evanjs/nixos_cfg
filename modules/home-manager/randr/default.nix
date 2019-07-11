@@ -2,7 +2,7 @@
 {
   imports = [
     ./home.nix
-    #./hooks.nix
+    ./work.nix
   ];
 
   programs.autorandr = {
