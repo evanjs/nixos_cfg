@@ -21,7 +21,7 @@ in
       sass
 
       exercism
-      (builtins.elemAt (lib.attrValues (lib.filterAttrs (n: v: n == "@angular/cli") pkgs.nodePackages)) 0)
+      nodePackages."@angular/cli"
 
       # debugging
       gdb
