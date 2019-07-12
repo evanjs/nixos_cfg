@@ -4,7 +4,6 @@
     ./cargo.nix
     ./cross.nix
     ./documentation
-    ./sccache.nix
   ];
 
   environment.systemPackages = with pkgs; [
