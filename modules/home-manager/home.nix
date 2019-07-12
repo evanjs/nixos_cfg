@@ -24,9 +24,6 @@
       userName = "Evan Stoll";
       ignores = (import ./git/ignores_formatted.nix);
     };
-    gpg = {
-      enable = true;
-    };
     home-manager = {
       enable = true;
     };
