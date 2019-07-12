@@ -19,7 +19,7 @@
     ../modules/plymouth.nix
     ../modules/qt.nix
     ../modules/remote.nix
-    ../modules/social.nix
+    ../modules/social
     ../modules/tex.nix
     ../modules/theme
     ../modules/unstable.nix
