@@ -7,6 +7,8 @@
     ./firefox.nix
     ./lib.nix
     ./randr
+    ./security
+    ./security/gpg.nix
     ./style
   ];
 
