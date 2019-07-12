@@ -10,6 +10,7 @@
     ./security
     ./security/gpg.nix
     ./style
+    ./xorg
   ];
 
   home = {
