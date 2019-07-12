@@ -14,18 +14,18 @@ let
   in
   let acct = builtins.getAttr name accounts; in
   pkgs.writeText "${name}_account" ''
-  set from = "${acct.address}"
-  set hostname = "${hostname}"
-  set sendmail = "${pkgs.msmtp}/bin/msmtp -a ${name} --tls-trust-file=${acct.smtp.tls.certificatesFile}"
-  set spoolfile = +${name}/Inbox
-  ${mbox}
-  set record    = +${name}/${record}
-  set postponed = +${name}/Drafts
-  set trash     = +${name}/${trash}
-  mailboxes $spoolfile $record $postponed $trash $mbox +${name}/${junk}
-  macro index,pager m? "<save-message>?<enter>" "Move message to mailbox"
-  macro index,pager ma "<save-message>$mbox<enter>" "Move message to archive"
-  macro index,pager mi "<save-message>$spoolfile<enter>" "Move message to inbox"
+    set from = "${acct.address}"
+    set hostname = "${hostname}"
+    set sendmail = "${pkgs.msmtp}/bin/msmtp -a ${name} --tls-trust-file=${acct.smtp.tls.certificatesFile}"
+    set spoolfile = +${name}/Inbox
+    ${mbox}
+    set record    = +${name}/${record}
+    set postponed = +${name}/Drafts
+    set trash     = +${name}/${trash}
+    mailboxes $spoolfile $record $postponed $trash $mbox +${name}/${junk}
+    macro index,pager m? "<save-message>?<enter>" "Move message to mailbox"
+    macro index,pager ma "<save-message>$mbox<enter>" "Move message to archive"
+    macro index,pager mi "<save-message>$spoolfile<enter>" "Move message to inbox"
   '';
 
   mkFolderHook = name: shortcut: ''

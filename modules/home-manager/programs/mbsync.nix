@@ -2,38 +2,6 @@
 
 with config.lib.email;
 with config.accounts.email;
-
-let
-
-  mkChannel = acct: local: remote: ''
-    Channel ${acct}-${pkgs.lib.strings.toLower local}
-    Master :${acct}-remote:"${remote}"
-    Slave :${acct}-local:${local}
-  '';
-
-  mkChannels = acct: 
-  if acct == "gmail" then 
-  ''
-    ${mkChannel acct "Inbox" "INBOX"}
-    ${mkChannel acct "All" "[Gmail]/All Mail"}
-    ${mkChannel acct "Sent" "[Gmail]/Sent Mail"}
-    ${mkChannel acct "Drafts" "[Gmail]/Drafts"}
-    ${mkChannel acct "Trash" "[Gmail]/Trash"}
-    ${mkChannel acct "Spam" "[Gmail]/Spam"}
-  ''
-  else if acct == "rjg" then
-  ''
-    ${mkChannel acct "Sent" "Sent\\ Items"}
-    ${mkChannel acct "Drafts" "Drafts"}
-    ${mkChannel acct "Trash" "Deleted\\ Items"}
-    ${mkChannel acct "Junk\\ Email" "Junk\\ Email"}
-  ''
-  else
-  ''
-  '';
-
-in
-
 {
   programs.mbsync = {
     enable = true;
@@ -43,7 +11,6 @@ in
       Expunge Both
       Remove None
       SyncState *
-      ${concatAccounts "\n" (i: v: mkChannels v)}
     '';
   };
 

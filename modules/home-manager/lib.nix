@@ -26,6 +26,8 @@ let
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     # Big discussion at Nixpkgs. Can't remember why it's here but it fixes shit.
     GDK_PIXBUF_MODULE_FILE = "${pkgs.librsvg.out}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+
+    PASSWORD_STORE_DIR = "${HOME}/.local/share/pass";
   };
 in
 
