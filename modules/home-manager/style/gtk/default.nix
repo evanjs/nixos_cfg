@@ -5,13 +5,16 @@
   ];
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Breeze-Dark";
-      package = pkgs.breeze-icons;
+    gtk2 = {
+      extraConfig = ''
+        gtk-application-prefer-dark-theme = true
+      '';
     };
-    theme = {
-      name = "Breeze-Dark";
-      package = pkgs.plasma5.breeze-gtk;
+
+    gtk3 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+      };
     };
   };
 }
