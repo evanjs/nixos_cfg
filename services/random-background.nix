@@ -7,7 +7,7 @@
   ];
 
   systemd.user.timers.random-bg = {
-    enable = true;
+    enable = false;
     wantedBy = [ "timers.target"];
     partOf = [ "random-bg.service" ];
     timerConfig.OnCalendar = "*:*:00"; # hourly
