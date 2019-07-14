@@ -1,0 +1,4 @@
+ln -s ~/src/dots/gentoo-dotfiles/.xmonad/build 
+stack build
+xmonad --recompile
+rm build
