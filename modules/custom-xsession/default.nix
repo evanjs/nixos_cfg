@@ -1,36 +1,31 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
+    ./flashback-xmonad.nix
     ../virtualgl.nix
   ];
 
-
   sound.mediaKeys.enable = true;
-
-  #services.hoogle.packages = hp: with pkgs.haskellPackages; [ ];
 
   services.xserver = {
     desktopManager.xterm.enable = false;
     displayManager = {
       gdm = {
+        debug = true;
         enable = true;
+        xmonad-support.enable = false;
       };
       lightdm.enable = false;
     };
     exportConfiguration = true;
-      #windowManager = {
-        #default = "xmonad";
-        #xmonad = {
-          #enable = true;
-          #enableContribAndExtras = true;
-          #extraPackages = hp: with pkgs.haskellPackages; [ ] ++ xmonadHaskellPackages;
-        #};
-      #};
-
+    windowManager = {
+      default = "xmonad";
+      xmonad.enable = true;
     };
+  };
 
-    services.compton = {
-      vSync = true;
-    };
-  }
+  services.compton = {
+    vSync = true;
+  };
+}
 
