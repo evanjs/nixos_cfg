@@ -10,6 +10,10 @@ let
   ];
 in
   {
+    imports = [
+      ./files
+    ];
+
     xsession = {
       windowManager = {
         xmonad = {

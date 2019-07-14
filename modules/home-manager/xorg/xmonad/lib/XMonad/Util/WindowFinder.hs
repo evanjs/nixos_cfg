@@ -1,1 +1,0 @@
-../../../XMonadLayouts/WindowFinder.hs

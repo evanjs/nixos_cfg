@@ -1,1 +1,0 @@
-../../../XMonadLayouts/WindowColumn.hs
