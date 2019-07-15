@@ -7,7 +7,7 @@
 
     # games
     ../../modules/games/steam.nix
-    
+
     ../../modules/db/postgresql.nix
     ../../modules/development.nix
     ../../modules/linux_latest.nix
@@ -29,12 +29,6 @@
   boot.initrd.checkJournalingFS = false;
   networking = {
     hostName = "nixentoo";
-    # workaround for https://github.com/NixOS/nixpkgs/issues/61490
-    nameservers = [
-      "172.16.0.1"
-      "10.10.0.1"
-      "192.168.2.1"
-    ];
   };
   powerManagement.powertop.enable = true;
 
