@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
+    ./autolock.nix
     ./flashback-xmonad.nix
     ../virtualgl.nix
   ];
