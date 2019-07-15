@@ -16,8 +16,16 @@
     ../../modules/virtualization/virtualbox.nix
   ];
 
-  services.xserver.dpi = 127;
-  
+  services.xserver = {
+    desktopManager.xterm.enable = false;
+    dpi = 127;
+    displayManager = {
+      gdm = {
+        wayland = false;
+      };
+    };
+  };
+
   boot.initrd.checkJournalingFS = false;
   networking = {
     hostName = "nixentoo";
