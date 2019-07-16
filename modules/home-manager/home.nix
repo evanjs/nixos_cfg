@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./bash.nix
+    ./bash
     ./compton.nix
     ./email.nix
     ./firefox.nix
