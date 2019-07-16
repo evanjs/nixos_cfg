@@ -17,6 +17,7 @@
     ../modules/screen.nix
     ../modules/unstable.nix
     ../modules/vim
+    ../modules/zsh
   ];
 
   environment.systemPackages = with pkgs; [

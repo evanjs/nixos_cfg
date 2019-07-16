@@ -1,16 +1,20 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./bash
     ./compton.nix
     ./email.nix
     ./firefox.nix
+    ./fonts.nix
     ./lib.nix
     ./randr
     ./security
     ./security/gpg.nix
     ./style
     ./xorg
+
+    # shells
+    ./bash
+    ./zsh
   ];
 
   home = {
@@ -38,6 +42,7 @@
     skim = {
       enable = true;
       defaultCommand = "fd --type f";
+      enableZshIntegration = true;
     };
   };
 }
