@@ -1,15 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
-  programs = {
-    bash = {
-      enable = true;
-      historyIgnore =[
-        "ls"
-        "cd"
-        "exit"
-        "poweroff"
-        "reboot"
-      ];
-    };
-  };
+  home.packages = with pkgs; [
+    powerline-go
+  ];
 }
