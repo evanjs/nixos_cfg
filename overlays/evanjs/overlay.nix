@@ -21,6 +21,8 @@ in
     nightly-rust-with-extensions = callPackage ./pkgs/nightly-rust { };
     nget = callPackage ./pkgs/nget { };
     polychromatic = callPackage ./pkgs/polychromatic { };
+    zsh-powerlevel9k = callPackage ./pkgs/shells/zsh/zsh-powerlevel9k { };
+  
     qrbooru = callQPackage ./pkgs/qrbooru { };
     rrbg = callPackage ./pkgs/rrbg { };
     runescape-launcher = callPackage ./pkgs/runescape-launcher { };
