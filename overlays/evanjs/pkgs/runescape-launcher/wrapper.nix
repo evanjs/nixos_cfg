@@ -22,11 +22,8 @@ buildFHSUserEnv rec {
     zlib
     glew110
     mesa
-    libglvnd
-    xdg_utils
-    coreutils
     firefox
-    xclip
-    which
+    xdg_utils
+    libglvnd
   ];
 }
