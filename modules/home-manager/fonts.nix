@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     nerdfonts
+    powerline-fonts
   ];
 
   fonts = {

@@ -5,9 +5,6 @@
     enableGhostscriptFonts = true;
 
     fonts = with pkgs; [
-      nerdfonts
-      powerline-fonts
-
       corefonts
       dejavu_fonts
       fira-code
