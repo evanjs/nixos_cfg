@@ -18,7 +18,11 @@ let
 
 in
   {
-    environment.systemPackages = [ ]
+    imports = [
+      ./unstable.nix
+    ];
+
+    home.packages = [ ]
     ++ jetPkgs
     ;
   }
