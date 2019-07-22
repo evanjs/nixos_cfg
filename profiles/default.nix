@@ -45,6 +45,7 @@
     # rust utilities
     (ripgrep.override { withPCRE2 = true; })
     fd
+    sd
 
     # disk utilities
     btrfs-progs
