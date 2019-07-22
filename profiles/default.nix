@@ -40,6 +40,8 @@
     tealdeer
     xorg.xev
 
+    refind
+
     fbterm
 
     # rust utilities
