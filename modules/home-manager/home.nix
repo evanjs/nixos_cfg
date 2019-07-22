@@ -6,6 +6,7 @@
     ./firefox.nix
     ./fonts.nix
     ./lib.nix
+    ../jetbrains.nix
     ./randr
     ./security
     ./security/gpg.nix

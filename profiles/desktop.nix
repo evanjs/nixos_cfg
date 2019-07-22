@@ -13,7 +13,6 @@
     ../modules/i18n/ibus.nix
     ../modules/iOS.nix
     ../modules/java.nix
-    ../modules/jetbrains.nix
     ../modules/media.nix
     ../modules/nixops.nix
     ../modules/notifications.nix
