@@ -51,7 +51,7 @@
     (versions.atLeastVersion "67.0" [firefox firefox-beta-bin])
 
     # word processors, etc
-    libreoffice
+    pkgs.stable.libreoffice
 
     rrbg # background switcher 
     speedtest-cli
