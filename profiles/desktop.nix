@@ -28,7 +28,6 @@
     #../modules/wine.nix # opencv(?) fails to build
     ../modules/xrdp.nix
 
-    ../services/random-background.nix
   ];
 
 
