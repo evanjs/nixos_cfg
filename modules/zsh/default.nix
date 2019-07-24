@@ -5,6 +5,12 @@
   };
 
   programs.zsh = {
+    autosuggestions = {
+      enable = true;
+    };
+    syntaxHighlighting = {
+      enable = true;
+    };
     enable = true;
   };
 
