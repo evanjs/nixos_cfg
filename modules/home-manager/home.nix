@@ -10,6 +10,7 @@
     ./randr
     ./security
     ./security/gpg.nix
+    ./services
     ./style
     ./xorg
 

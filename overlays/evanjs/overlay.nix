@@ -22,6 +22,7 @@ in
     nget = callPackage ./pkgs/nget { };
     polychromatic = callPackage ./pkgs/polychromatic { };
     zsh-powerlevel9k = callPackage ./pkgs/shells/zsh/zsh-powerlevel9k { };
+    power-warn = callPackage ./pkgs/tools/misc/power-warn { };
   
     qrbooru = callQPackage ./pkgs/qrbooru { };
     rrbg = callPackage ./pkgs/rrbg { };
