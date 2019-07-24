@@ -7,7 +7,6 @@
       "emoji"
       "fd"
       "git"
-      "jira"
       "ng"
       "ripgrep"
       "rust"
