@@ -8,7 +8,7 @@ with lib;
   '';
 
   services.xserver.xautolock = rec {
-    enable = true;
+    enable = false;
     enableNotifier = true;
     locker = "${pkgs.physlock}/bin/physlock";
     
