@@ -2,9 +2,12 @@
 {
   users.users.evanjs.extraGroups = [ config.users.users.deluge.group ];
 
-  services.deluge = {
+  services.deluge = rec {
     enable = true;
     openFilesLimit = 8192;
-    web.enable = true;
+    web = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }
