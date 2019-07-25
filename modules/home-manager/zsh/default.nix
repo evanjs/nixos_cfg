@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./aliases.nix
     ./powerlevel.nix
     ./oh.nix
   ];
