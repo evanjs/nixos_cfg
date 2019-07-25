@@ -1,8 +1,14 @@
-{ config, ... }:
+{ config, lib, ... }:
+with lib;
 {
   programs.zsh = {
+
+    initExtra = ''
+      autoload -U compinit && compinit
+    '';
+
     oh-my-zsh = {
-      enable = false;
+      enable = true;
       plugins = [
         "catimg"
         "emoji"
@@ -14,6 +20,7 @@
         "screen"
         "sudo"
         "systemd"
+        "tmux"
       ];
       theme = "agnoster";
     };
