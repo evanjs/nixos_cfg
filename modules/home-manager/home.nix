@@ -49,6 +49,12 @@
     tmux = {
       enable = true;
 
+      clock24 = true;
+
+      tmuxinator = {
+        enable = true;
+      };
+      newSession = true;
       extraConfig = ''
           set -g default-terminal "screen-256color"
       '';
