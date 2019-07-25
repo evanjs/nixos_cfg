@@ -2,7 +2,6 @@
 {
   imports = [
     ./powerlevel.nix
-    ./oh.nix
   ];
 
   home.packages = with pkgs; [

@@ -12,6 +12,10 @@
       enable = true;
     };
     enable = true;
+
+    ohMyZsh = {
+      enable = true;
+    };
   };
 
   # enable completion for system packages (e.g. systemd)
