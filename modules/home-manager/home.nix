@@ -46,5 +46,12 @@
       defaultCommand = "fd --type f";
       enableZshIntegration = true;
     };
+    tmux = {
+      enable = true;
+
+      extraConfig = ''
+          set -g default-terminal "screen-256color"
+      '';
+    };
   };
 }
