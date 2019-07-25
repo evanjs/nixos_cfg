@@ -11,6 +11,8 @@
 
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
     history = {
       extended = true;
       share = false;
