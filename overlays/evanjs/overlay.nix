@@ -10,6 +10,10 @@ let
   callQPackage = self.libsForQt5.callPackage;
 in 
   {
+
+    # rust utilities
+    bingrep = callPackage ./pkgs/development/tools/bingrep { };
+
     booru = callPackage ./pkgs/booru { };
     cross = callPackage ./pkgs/cross { };
     exercism = callPackage ./pkgs/tools/exercism { };
