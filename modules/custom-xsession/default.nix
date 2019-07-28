@@ -1,9 +1,16 @@
 { config, pkgs, lib, ... }:
+let
+  notification-daemon = pkgs.notify-osd-customizable;
+in
 {
   imports = [
     ./autolock.nix
     ./flashback-xmonad.nix
     ../virtualgl.nix
+  ];
+
+  environment.systemPackages = [
+    notification-daemon
   ];
 
   sound.mediaKeys.enable = true;
