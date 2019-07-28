@@ -22,7 +22,7 @@
     ../modules/social
     ../modules/tex.nix
     ../modules/theme
-    ../modules/unstable.nix
+    ../modules/channels.nix
     ../modules/web.nix
     ../modules/wireshark.nix
     ../modules/wine.nix 

@@ -12,7 +12,7 @@
     ../../modules/development.nix
     ../../modules/linux_latest.nix
     ../../modules/samba/client/home.nix
-    ../../modules/unstable.nix
+    ../../modules/channels.nix
     ../../modules/virtualization/virtualbox.nix
   ];
 

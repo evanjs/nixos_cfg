@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./unstable.nix
+    ./channels.nix
   ];
 
   environment.systemPackages = with pkgs; [

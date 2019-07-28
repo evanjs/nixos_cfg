@@ -12,7 +12,7 @@ in
       ./documentation
       ./languages
       ./perf
-      ./unstable.nix
+      ./channels.nix
     ];
 
     environment.systemPackages = with pkgs; [

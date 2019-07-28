@@ -19,7 +19,7 @@ let
 in
   {
     imports = [
-      ./unstable.nix
+      ./channels.nix
     ];
 
     home.packages = [ ]

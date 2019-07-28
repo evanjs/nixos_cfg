@@ -3,7 +3,7 @@
   imports = [
     ./hie.nix
     ./hoogle
-    ../../unstable.nix
+    ../../channels.nix
   ];
 
   environment = {

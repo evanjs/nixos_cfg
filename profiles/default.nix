@@ -15,7 +15,7 @@
     ../modules/users.nix
     ../modules/security/keybase.nix
     ../modules/screen.nix
-    ../modules/unstable.nix
+    ../modules/channels.nix
     ../modules/vim
     ../modules/zsh
   ];

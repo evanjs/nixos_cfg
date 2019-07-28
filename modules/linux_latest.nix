@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   imports = [
-    ./unstable.nix
+    ./channels.nix
   ];
   latestKernel = lib.head (lib.sort (a: b: a.kernel.version > b.kernel.version) [
     pkgs.linuxPackages_latest
