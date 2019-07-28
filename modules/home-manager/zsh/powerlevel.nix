@@ -13,7 +13,6 @@
 
       POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS = [
         "status"
-        "rust_version"
         "root_indicator"
         "background_jobs"
         "os_icon"
