@@ -25,7 +25,7 @@
     ../modules/unstable.nix
     ../modules/web.nix
     ../modules/wireshark.nix
-    #../modules/wine.nix # opencv(?) fails to build
+    ../modules/wine.nix 
     ../modules/xrdp.nix
 
   ];
