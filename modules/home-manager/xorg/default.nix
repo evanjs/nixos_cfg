@@ -18,6 +18,7 @@
     xtrlock-pam
   ];
   xsession = {
+    enable = true;
     pointerCursor = {
       name = "breeze_cursors";
       package = pkgs.plasma5.breeze-qt5;
