@@ -5,6 +5,6 @@
     );
 
     nixpkgs.overlays = [
-      (import ./overlay.nix)
+      (import ./pkgs/top-level/all-packages.nix)
     ];
   }
