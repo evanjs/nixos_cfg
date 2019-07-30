@@ -4,7 +4,7 @@ with lib;
 let
   channels = [
     pkgs
-    pkgs.unstable
+    pkgs.stable
     pkgs.unstable-small
   ];
 
