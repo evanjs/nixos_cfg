@@ -39,7 +39,9 @@
     vifm
     tealdeer
     xorg.xev
+    
     unzip
+    unrar
 
     refind
 
