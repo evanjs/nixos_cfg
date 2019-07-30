@@ -44,6 +44,7 @@
 
     # media
     feh
+    geeqie
     mplayer
 
     # browsers
