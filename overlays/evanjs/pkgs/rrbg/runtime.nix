@@ -10,13 +10,13 @@
 
 rustPlatform.buildRustPackage rec {
   name = "rrbg";
-  version = "0.1.0";
+  version = "0.1.1";
 
   src = fetchFromGitHub {
     owner = "evanjs";
     repo = "rrbg";
-    rev = "497a6440f0d50633d9e04b588f73e64a0e53fdfe";
-    sha256 = "0zx43n4js9za7gq5sp14w7j9gpk788nzcfyv8l3j382lmjy56f8y";
+    rev = "15aeb0ac302ee70850d569bbebfb018c2797ea25";
+    sha256 = "1qzfq909gsdzfw6ygig3ng9031dwpx3bz45dafm56bnd46mrwyzc";
   };
 
   nativeBuildInputs = [
@@ -28,6 +28,6 @@ rustPlatform.buildRustPackage rec {
 
   doCheck = false;
 
-  cargoSha256 = "0m7bviq3bjnq9mybm4xxxm97x2d8cr80wqc2mjhs3mh44g5alasr";
+  cargoSha256 = "035nidsg96hicf19nylkaqrg467d2dyaswj04nnh53ahf11wlcm8";
 
 }
