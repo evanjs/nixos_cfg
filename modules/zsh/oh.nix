@@ -1,6 +1,10 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 {
+  environment.systemPackages = with pkgs; [
+    tmux
+  ];
+
   programs.zsh = {
     ohMyZsh = {
       enable = true;
