@@ -9,8 +9,9 @@ in
     ../virtualgl.nix
   ];
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     notification-daemon
+    xdg-user-dirs
   ];
 
   sound.mediaKeys.enable = true;
