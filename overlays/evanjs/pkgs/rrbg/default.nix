@@ -1,3 +1,3 @@
 { pkgs ? import <nixpkgs> {} }:
 
-with pkgs; callPackage ./wrapper.nix {}
+with pkgs; callPackage ./wrapper.nix { }

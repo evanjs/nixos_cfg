@@ -10,3 +10,6 @@
 [submodule "modules/home-manager/xorg/xmonad/XMonadLayouts"]
 	path = modules/home-manager/xorg/xmonad/XMonadLayouts
 	url = https://github.com/evanjs/XMonadLayouts
+[submodule "overlays/mozilla/nixpkgs-mozilla"]
+	path = overlays/mozilla/nixpkgs-mozilla
+	url = git@github.com:mozilla/nixpkgs-mozilla.git

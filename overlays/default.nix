@@ -4,6 +4,7 @@
     ./evanjs
     ./hie-nix
     ./libs
+    ./mozilla
     ./rjg
     ./taffybar
   ]

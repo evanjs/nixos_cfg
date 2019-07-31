@@ -1,6 +1,5 @@
 let
-  moz_overlay = import (builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz);
-  pkgs = import <nixpkgs> { overlays = [ moz_overlay ]; };
+  pkgs = import <nixpkgs> { };
   rust-language-server = ((pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; }));
   rust-stable = pkgs.latest.rustChannels.stable.rust;
   rust-nightly = pkgs.latest.rustChannels.nightly.rust;
