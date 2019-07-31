@@ -16,6 +16,10 @@ in
 
   sound.mediaKeys.enable = true;
 
+  services.autorandr = {
+    enable = true;
+  };
+
   services.xserver = {
     desktopManager.xterm.enable = false;
     displayManager = {
