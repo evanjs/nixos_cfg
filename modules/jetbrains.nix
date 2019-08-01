@@ -12,6 +12,7 @@ let
 
   jetPkgs = [
     (getNewestFromChannels "clion")
+    (getNewestFromChannels "idea-ultimate")
     (getNewestFromChannels "jdk")
     (getNewestFromChannels "webstorm")
   ];
