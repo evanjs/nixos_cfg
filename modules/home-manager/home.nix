@@ -51,13 +51,12 @@
 
       clock24 = true;
 
+      terminal = "screen-256color";
+
       tmuxinator = {
         enable = true;
       };
       newSession = true;
-      extraConfig = ''
-          set -g default-terminal "screen-256color"
-      '';
     };
   };
 }
