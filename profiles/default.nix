@@ -96,6 +96,7 @@
   services.ntp.enable = true;
 
   environment.variables.EDITOR = "vim";
+  environment.variables.VISUAL = "vi";
 
   programs.bash.enableCompletion = true;
 
