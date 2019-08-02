@@ -17,7 +17,7 @@
   system = {
     autoUpgrade = {
       channel = "nixos";
-      dates = "02:30";
+      dates = "00/6:00";
       enable = true;
     };
     copySystemConfiguration = true;
@@ -27,7 +27,7 @@
     autoOptimiseStore = true;
     gc = {
       automatic = true;
-      dates = "05:00";
+      dates = "04:00";
     };
     binaryCaches = [
       "https://cache.nixos.org"
