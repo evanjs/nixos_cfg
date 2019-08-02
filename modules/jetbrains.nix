@@ -11,9 +11,11 @@ let
   getNewestFromChannels = name: pkgs.versions.latestVersion ((_: map (channel: (getAttr name channel.jetbrains)) channels) name);
 
   jetPkgs = [
-    (getNewestFromChannels "clion")
     (getNewestFromChannels "idea-ultimate")
+    (getNewestFromChannels "clion")
+    (getNewestFromChannels "datagrip")
     (getNewestFromChannels "jdk")
+    (getNewestFromChannels "pycharm-professional")
     (getNewestFromChannels "webstorm")
   ];
 
