@@ -5,13 +5,18 @@
     ./email.nix
     ./firefox.nix
     ./fonts.nix
+    ./git.nix
     ./lib.nix
+    ./lsd.nix
     ../jetbrains.nix
     ./randr
+    ./rofi.nix
     ./security
     ./security/gpg.nix
     ./services
+    ./skim.nix
     ./style
+    ./tmux.nix
     ./xorg
 
     # shells
@@ -24,41 +29,8 @@
   };
 
   programs = {
-    git = {
-      enable = true;
-      userEmail = "evanjsx@gmail.com";
-      userName = "Evan Stoll";
-      ignores = (import ./git/ignores_formatted.nix);
-    };
     home-manager = {
       enable = true;
-    };
-    lsd = {
-      enableAliases = true;
-      enable = true;
-    };
-    rofi = {
-      enable = true;
-      theme = "Monokai";
-    };
-    skim = {
-      enable = true;
-      defaultCommand = "fd --type f";
-      enableZshIntegration = true;
-    };
-    tmux = {
-      enable = true;
-
-      clock24 = true;
-
-      keyMode = "vi";
-      
-      terminal = "screen-256color";
-
-      tmuxinator = {
-        enable = true;
-      };
-      newSession = true;
     };
   };
 }
