@@ -4,9 +4,9 @@
 , openssl
 , pkgconfig
 , cmake
-, full
 , rustPlatform
 , rustChannel
+, wrapQtAppsHook
 }:
 
 let
@@ -34,6 +34,6 @@ in
       openssl.dev
       pkgconfig
       cmake
-      full
+      wrapQtAppsHook
     ];
   }
