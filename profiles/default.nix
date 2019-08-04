@@ -41,6 +41,11 @@
     xorg.xev
     htop
     lsof
+
+    # misc
+    cowsay
+    fortune
+    lolcat
     
     unzip
     unrar
