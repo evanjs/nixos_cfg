@@ -52,4 +52,8 @@
       #"/nix/var/nix/profiles/per-user/root/channels"
       #"nixpkgs-overlays=/overlays-compat/"
     };
+
+    system.extraSystemBuilderCmds = ''
+      ln -sv ${../.} $out/nixcfg
+    '';
   }
