@@ -11,7 +11,8 @@
 
   nixpkgs.config = {
     chromium = {
-      #enablePepperFlash = true; # Chromium removed support for Mozilla (NPAPI) plugins so Adobe Flash no longer works
+      # enablePepperFlash = true; # Chromium removed support for Mozilla (NPAPI) plugins so Adobe Flash no longer works
+      # enableWideVine = true; # Currently broken.  Needed for VRV
     };
   };
 
