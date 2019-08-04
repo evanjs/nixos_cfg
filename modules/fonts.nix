@@ -3,6 +3,11 @@
   fonts = {
     enableFontDir = true;
     enableGhostscriptFonts = true;
+    fontconfig = {
+      ultimate = {
+        enable = true;
+      };
+    };
 
     fonts = with pkgs; [
       carlito # calibri and etc so docx files don't look weirder than usual
