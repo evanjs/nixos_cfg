@@ -16,6 +16,7 @@
       dejavu_fonts
       fira-code
       font-awesome-ttf
+      ipaexfont
       inconsolata
       noto-fonts
       noto-fonts-cjk
