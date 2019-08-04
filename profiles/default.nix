@@ -40,6 +40,7 @@
     tealdeer
     xorg.xev
     htop
+    lsof
     
     unzip
     unrar
