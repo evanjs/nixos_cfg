@@ -24,13 +24,9 @@
     ./zsh
   ];
 
-  home = {
-    sessionVariables = config.lib.sessionVariables;
-  };
-
-  programs = {
-    home-manager = {
-      enable = true;
+  home-manager.users.evanjs = {
+    home = {
+      sessionVariables = config.home-manager.users.evanjs.lib.sessionVariables;
     };
   };
 }

@@ -1,12 +1,13 @@
 { config, pkgs, lib, ... }:
 let
-  xmonadDir = ".xmonad";
+xmonadDir = ".xmonad";
 in
-  {
-    imports = [
-      ./lib.nix
-    ];
+{
+  imports = [
+  ./lib.nix
+  ];
 
+  home-manager.users.evanjs = {
     home.file = {
       "my-xmonad.cabal" = rec {
         source = ./my-xmonad.cabal;
@@ -21,4 +22,5 @@ in
         target = "${xmonadDir}/refresh";
       };
     };
-  }
+  };
+}

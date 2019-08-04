@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    pass
-  ];
+  home-manager.users.evanjs = {
+    home.packages = with pkgs; [
+      pass
+    ];
+  };
 }

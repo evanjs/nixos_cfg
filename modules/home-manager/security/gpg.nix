@@ -1,16 +1,18 @@
 { config, pkgs, ... }:
 {
-  programs = {
-    gpg = {
-      enable = true;
+  home-manager.users.evanjs = {
+    programs = {
+      gpg = {
+        enable = true;
+      };
     };
-  };
 
-  services = {
-    gpg-agent = {
-      enable = true;
-      enableScDaemon = true;
-      enableSshSupport = true;
+    services = {
+      gpg-agent = {
+        enable = true;
+        enableScDaemon = true;
+        enableSshSupport = true;
+      };
     };
   };
 }

@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  HOME = config.home.homeDirectory;
+  HOME = config.home-manager.users.evanjs.home.homeDirectory;
 
   functions = {
     writeShellScriptsBin = builtins.mapAttrs (name: text:
@@ -30,10 +30,10 @@ let
     PASSWORD_STORE_DIR = "${HOME}/.local/share/pass";
   };
 in
-
   with config; {
-    lib = {
-      inherit functions paths sessionVariables;
+    home-manager.users.evanjs = {
+      lib = {
+        inherit functions paths sessionVariables;
+      };
     };
   }
-

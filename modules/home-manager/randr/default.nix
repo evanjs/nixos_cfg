@@ -6,7 +6,9 @@
     ./work2.nix
   ];
 
-  programs.autorandr = {
-    enable = true;
+  home-manager.users.evanjs = {
+    programs.autorandr = {
+      enable = true;
+    };
   };
 }

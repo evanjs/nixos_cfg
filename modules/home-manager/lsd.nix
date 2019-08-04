@@ -1,9 +1,11 @@
 { config, ... }:
 {
-  programs = {
-    lsd = {
-      enableAliases = true;
-      enable = true;
+  home-manager.users.evanjs = {
+    programs = {
+      lsd = {
+        enableAliases = true;
+        enable = true;
+      };
     };
   };
 }

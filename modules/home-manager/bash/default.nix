@@ -3,8 +3,9 @@
   imports = [
     ./powerline.nix
   ];
-
-  programs.bash = {
-    enable = true;
+  home-manager.users.evanjs = {
+    programs.bash = {
+      enable = true;
+    };
   };
 }

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
-with config.lib.email;
-with config.accounts.email;
+with config.home-manager.users.evanjs.lib.email;
+with config.home-manager.users.evanjs.accounts.email;
 
 let
   mkAccountFile = name:
@@ -48,19 +48,21 @@ let
 in
 
   {
-    home = {
-      packages = with pkgs; [ neomutt urlview ];
-      file.".urlview".text = "COMMAND xdg-open %s";
-    };
+    home-manager.users.evanjs = {
+      home = {
+        packages = with pkgs; [ neomutt urlview ];
+        file.".urlview".text = "COMMAND xdg-open %s";
+      };
 
-    xdg.configFile."mutt/muttrc".text = ''
-      ${builtins.readFile ./colors}
-      ${builtins.readFile ./unbindings}
-      ${builtins.readFile ./bindings}
-      ${builtins.readFile ./muttrc}
-      set history_file = "${config.home.homeDirectory}/.cache/mutt/history"
-      set mailcap_path = "${mailcap}"
-      set folder = "${maildirBasePath}"
-      ${concatAccounts "\n" (i: v: mkFolderHook v "<F${toString i}>")}
-    '';
+      xdg.configFile."mutt/muttrc".text = ''
+        ${builtins.readFile ./colors}
+        ${builtins.readFile ./unbindings}
+        ${builtins.readFile ./bindings}
+        ${builtins.readFile ./muttrc}
+        set history_file = "${config.home-manager.users.evanjs.home.homeDirectory}/.cache/mutt/history"
+        set mailcap_path = "${mailcap}"
+        set folder = "${maildirBasePath}"
+        ${concatAccounts "\n" (i: v: mkFolderHook v "<F${toString i}>")}
+      '';
+    };
   }

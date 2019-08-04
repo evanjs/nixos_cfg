@@ -3,6 +3,7 @@ let
   xmonadDir = ".xmonad";
 in
   {
+    home-manager.users.evanjs = {
     home.file = {
       # Layout
       "FocusWindow" = {
@@ -37,4 +38,5 @@ in
         target =  "${xmonadDir}/lib/XMonad/Util/WindowFinder.hs";
       };
     };
-  }
+  };
+}

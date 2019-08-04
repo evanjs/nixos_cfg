@@ -1,9 +1,11 @@
 { config, ... }:
 {
-  programs = {
-    rofi = {
-      enable = true;
-      theme = "Monokai";
+  home-manager.users.evanjs = {
+    programs = {
+      rofi = {
+        enable = true;
+        theme = "Monokai";
+      };
     };
   };
 }

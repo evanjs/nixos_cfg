@@ -25,7 +25,9 @@ in
       ./channels.nix
     ];
 
-    home.packages = [ ]
-    ++ jetPkgs
-    ;
+    home-manager.users.evanjs = {
+      home.packages = [ ]
+      ++ jetPkgs
+      ;
+    };
   }

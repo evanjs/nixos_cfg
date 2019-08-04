@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    nerdfonts
-    powerline-fonts
-  ];
-
-  fonts = {
-    fontconfig = {
-      enable = true;
-    };
+  home-manager.users.evanjs = {
+    home.packages = with pkgs; [
+      nerdfonts
+      powerline-fonts
+    ];
   };
 }

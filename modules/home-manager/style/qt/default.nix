@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 {
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
+  home-manager.users.evanjs = {
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+    };
   };
 }
