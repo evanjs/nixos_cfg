@@ -52,9 +52,11 @@
 
     # word processors, etc
     pkgs.stable.libreoffice
+    gnome3.gucharmap
 
     rrbg # background switcher 
     speedtest-cli
+    graphviz
   ];
 
   services.locate = {
