@@ -23,7 +23,7 @@ executable my-xmonad
                      , lens
                      , X11
                      , process
-                     , taffybar
+                     --, taffybar
   hs-source-dirs:      lib
   default-language:    Haskell2010
   -- ghc-options:         -Werror -fno-warn-missing-signatures -threaded

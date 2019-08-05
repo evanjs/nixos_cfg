@@ -19,7 +19,7 @@ import Data.Maybe (maybeToList)
 import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import System.IO
-import System.Taffybar.Support.PagerHints (pagerHints)
+--import System.Taffybar.Support.PagerHints (pagerHints)
 
 import XMonad
 import XMonad.Actions.DynamicWorkspaces as DynaW
@@ -406,7 +406,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 myStartupHook :: X()
 myStartupHook = do
     Bars.dynStatusBarStartup xmobarCreator xmobarDestroyer
-    spawnOnce "taffybar"
+    --spawnOnce "taffybar"
     spawnOnce "autorandr -c && rrbg"
 
 
@@ -436,7 +436,7 @@ renameWorkspace w = X.withWindowSet $ \ws -> do
 ------------
 evanjsConfig = 
     H.ewmh $
-    pagerHints $
+    --pagerHints $
     def {
       terminal    = "kitty"
     , manageHook  = manageDocks <+> myManageHook
