@@ -8,7 +8,7 @@
     neovim = old.neovim.override {
       viAlias = true;
       vimAlias = true;
-      withPython3 = false;
+      withPython3 = true;
 
       configure = {
         customRC = (import ./rc.nix);

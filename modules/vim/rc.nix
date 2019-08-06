@@ -49,8 +49,6 @@ in
 
     let g:ycm_server_keep_logfiles = 0
 
-    " let g:ycm_python_binary_path = '${pkgs.python37}/bin/python3'
-
     nnoremap <F5>  :call LanguageClient_contextMenu()<CR>
     nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
     nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
