@@ -33,9 +33,6 @@ in
     rust-with-extensions = callPackage ../rust-with-extensions { rustChannel = nightlyRust; };
     zsh-powerlevel9k = callPackage ../shells/zsh/zsh-powerlevel9k { };
     power-warn = callPackage ../tools/misc/power-warn { };
-
-    # programs
-    cheat-sh = callPackage ../applications/misc/cheat-sh { };
   
     qrbooru = callQPackage ../qrbooru { rustChannel = nightlyRust; };
     rrbg = callPackage ../rrbg { };
