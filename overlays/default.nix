@@ -5,6 +5,7 @@
     ./hie-nix
     ./libs
     ./mozilla
+    ./nix-helpers
     ./rjg
     ./taffybar
   ]

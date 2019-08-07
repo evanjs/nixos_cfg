@@ -13,3 +13,6 @@
 [submodule "overlays/mozilla/nixpkgs-mozilla"]
 	path = overlays/mozilla/nixpkgs-mozilla
 	url = git@github.com:mozilla/nixpkgs-mozilla.git
+[submodule "overlays/nix-helpers/nix-helpers"]
+	path = overlays/nix-helpers/nix-helpers
+	url = http://chriswarbo.net/git/nix-helpers.git

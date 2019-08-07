@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+with lib;
+with builtins;
 {
   environment.systemPackages = with pkgs; [
     neovim
@@ -11,7 +13,7 @@
       withPython3 = true;
 
       configure = {
-        customRC = (import ./rc.nix);
+        customRC = toString (builtins.attrValues (pkgs.nix-helpers.importFrom ./config));
         vam = {
           knownPlugins = pkgs.vimPlugins;
           pluginDictionaries = (import ./plugin-dictionaries.nix);
