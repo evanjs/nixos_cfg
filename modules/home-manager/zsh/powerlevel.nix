@@ -3,9 +3,6 @@
   home-manager.users.evanjs = {
     programs.zsh = {
       localVariables = {
-        POWERLEVEL9K_MODE = "nerdfont-complete";
-        POWERLEVEL10K_MODE = "nerdfont-complete";
-
         POWERLEVEL9K_LEFT_PROMPT_ELEMENTS = [
           "context"
           "dir"
