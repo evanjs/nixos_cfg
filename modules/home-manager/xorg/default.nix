@@ -20,6 +20,7 @@
     ];
     xsession = {
       enable = true;
+      numlock.enable = true;
       pointerCursor = {
         name = "breeze_cursors";
         size = 16;
