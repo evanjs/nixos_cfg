@@ -41,6 +41,7 @@
     xorg.xev
     htop
     lsof
+    cht-sh
 
     # misc
     cowsay
@@ -68,6 +69,7 @@
 
     # dev
     gitAndTools.gitFull
+    gitAndTools.hub
     pijul
 
     # compilers / toolchains
