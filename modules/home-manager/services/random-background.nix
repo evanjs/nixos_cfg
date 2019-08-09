@@ -17,10 +17,6 @@
     };
 
     systemd.user.services.random-background = {
-      Install = {
-        WantedBy = [ "multi-user.target" ];
-      };
-
       Unit = {
         After = [ "graphical.target" ];
         Description = "Randomly sets the background image for all connected monitors.";
@@ -31,6 +27,11 @@
         Environment="DISPLAY=:0";
         ExecStart = "${pkgs.rrbg}/bin/rrbg";
       };
+      
+      Install = {
+        WantedBy = [ "multi-user.target" ];
+      };
+
     };
   };
 }
