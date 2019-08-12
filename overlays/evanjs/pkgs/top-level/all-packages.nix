@@ -1,9 +1,9 @@
 self: super:
 let
   unstable = import <nixpkgs-unstable> { };
-  rustPlatform = unstable.rustPlatform;
-  stableRust = unstable.latest.rustChannels.stable;
-  nightlyRust = unstable.latest.rustChannels.nightly;
+  rustPlatform = pkgs.rustPlatform;
+  #stableRust = pkgs.rustChannels.stable;
+  #nightlyRust = pkgs.latest.rustChannels.nightly;
   callPackage = self.callPackage;
   callPackages = self.callPackages;
   callQPackage = self.libsForQt5.callPackage;
@@ -30,12 +30,12 @@ in
     mcdex = callPackage ../games/mcdex { };
     nget = callPackage ../nget { };
     polychromatic = callPackage ../polychromatic { };
-    rust-with-extensions = callPackage ../rust-with-extensions { rustChannel = nightlyRust; };
+    #rust-with-extensions = callPackage ../rust-with-extensions { rustChannel = nightlyRust; };
     zsh-powerlevel9k = callPackage ../shells/zsh/zsh-powerlevel9k { };
     power-warn = callPackage ../tools/misc/power-warn { };
   
-    qrbooru = callQPackage ../qrbooru { rustChannel = nightlyRust; };
+    #qrbooru = callQPackage ../qrbooru { rustChannel = nightlyRust; };
     rrbg = callPackage ../rrbg { };
     runescape-launcher = callPackage ../runescape-launcher { };
-    rust-qt-binding-generator = callQPackage ../rust-qt-binding-generator { rustChannel = stableRust; };
+    #rust-qt-binding-generator = callQPackage ../rust-qt-binding-generator { rustChannel = stableRust; };
   }

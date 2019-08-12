@@ -1,0 +1,1 @@
+../../../XMonadLayouts/MiddleColumn.hs

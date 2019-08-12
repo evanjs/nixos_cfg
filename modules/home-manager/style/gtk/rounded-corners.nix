@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 {
   home-manager.users.evanjs = {
-    services.compton = {
-      enable = true;
-      shadow = true;
-    };
+    #services.compton = {
+      #enable = true;
+      #shadow = true;
+    #};
 
     gtk.gtk3.extraCss = ''
       decoration, window, window.background {

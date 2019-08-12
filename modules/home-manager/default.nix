@@ -2,7 +2,7 @@
 {
   # Import home-manager for use as a NixOS submodule
   imports = [
-    <home-manager/nixos>
+    ../../external/home-manager/nixos
     ./home.nix
   ];
 

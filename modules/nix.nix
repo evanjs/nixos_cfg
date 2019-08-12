@@ -2,7 +2,6 @@
 {
   imports = [
     ../services/autoPull.nix
-    ./cachix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -29,14 +28,6 @@
       automatic = true;
       dates = "04:00";
     };
-    binaryCaches = [
-      "https://cache.nixos.org"
-      "https://nixpkgs.cachix.org"
-    ];
-    trustedUsers = [ "root" "@wheel" ];
-    binaryCachePublicKeys = [
-      "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-    ];
 
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 1024)}
@@ -46,11 +37,6 @@
       options.nix.nixPath.default ++
       [ "nixpkgs-overlays=/etc/nixos/modules/overlays-compat" ]
       ;
-      #"/etc/nixos"
-      #"nixpkgs=/etc/nixos"
-      #"nixos-config=/etc/nixos/configuration.nix"
-      #"/nix/var/nix/profiles/per-user/root/channels"
-      #"nixpkgs-overlays=/overlays-compat/"
     };
 
     system.extraSystemBuilderCmds = ''
