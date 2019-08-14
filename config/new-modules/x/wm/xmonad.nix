@@ -14,6 +14,10 @@ in
 
 {
 
+  imports = [
+    ./files
+  ];
+
   options = {
     mine.wm.enable = mkEnableOption "My window manager";
   };

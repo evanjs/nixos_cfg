@@ -51,6 +51,8 @@ with lib;
       whois
       aspellDicts.en
       bat
+      nix-index
+      nix-prefetch-scripts
     ];
 
     users.defaultUserShell = pkgs.zsh;

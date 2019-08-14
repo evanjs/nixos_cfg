@@ -204,6 +204,13 @@ in {
     };
 
     mine.xUserConfig = {
+      home.file = {
+        # Doesn't seem to be referencing the configFile in the service, so copy the config to `$XDG_CONFIG/xmobar/xmobarrc` for now
+        "xmobarrc" = rec {
+          source = "${configFile}";
+          target = ".config/xmobar/xmobarrc";
+        };
+      };
 
       systemd.user.services.xmobar = {
         Unit = {

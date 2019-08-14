@@ -8,29 +8,30 @@ let
   nixpkgs = fetchFromGitHub {
     owner = "NixOS";
     repo = "nixpkgs";
-    rev = "73b135e6b831166dffdefd5bed299c54883b552a";
-    sha256 = "0kniph5rnyhqqdhlrffsrqys4s49yp0jikifcms5kdkmz08ggfks";
+    rev = "f2e631148ab4032891d3fc4606886d5dad7cb207";
+    sha256 = "1il7rc6lpk753zll9dr8zbws6spy0pm3nn6d1x7qypvll36v917j";
   };
 
   pkgs = import nixpkgs { config.allowUnfree = true; };
 
   # From https://github.com/guibou/nixGL
-  nvidiaVersion = "390.77";
+  #nvidiaVersion = "390.77";
+  nvidiaVersion = "430.40";
   nvidiaLibs = (pkgs.linuxPackages.nvidia_x11.override {
     libsOnly = true;
     kernel = null;
   }).overrideAttrs(oldAttrs: rec {
     name = "nvidia-${nvidiaVersion}";
-    src = pkgs.fetchurl {
-      url = "http://download.nvidia.com/XFree86/Linux-x86_64/${nvidiaVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}.run";
-      sha256 = "10kjccrkdn360035lh985cadhwy6lk9xrw3wlmww2wqfaa25f775";
-    };
+    inherit (oldAttrs) src;
+    #src = pkgs.fetchurl {
+      #url = "http://download.nvidia.com/XFree86/Linux-x86_64/${nvidiaVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}.run";
+      #sha256 = "1myzhy1mf27dcx0admm3pbbkfdd9p66lw0cq2mz1nwds92gqj07p";
+    #};
     useGLVND = 0;
   });
 
   compton-kawase = pkgs.compton-git.overrideAttrs (old: {
 
-    #_ = lib.traceSeq (import ../../sources).compton-kawase;
     src = (import ../../sources).compton-kawase;
 
     nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.makeWrapper ];
