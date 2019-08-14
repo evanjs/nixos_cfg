@@ -3,8 +3,6 @@
 with lib;
 
 {
-  #options.mine.console.enable = mkEnableOption "enable console config";
-
   options.mine.console.enable = mkOption {
     type = types.bool;
     default = true;
@@ -18,8 +16,16 @@ with lib;
     mine.vim.enable = true;
 
     programs.zsh = {
+      autosuggestions.enable = true;
       enable = true;
       enableCompletion = true;
+      ohMyZsh = {
+	enable = true;
+      };
+    };
+
+    programs.autojump = {
+      enable = true;
     };
 
     environment.systemPackages = with pkgs; [
@@ -40,22 +46,22 @@ with lib;
       nix-top
       fd
       gitAndTools.hub
-      fzf
       sqliteInteractive
       gnumake
       whois
       aspellDicts.en
+      bat
     ];
 
     users.defaultUserShell = pkgs.zsh;
 
     mine.userConfig = {
-      programs.git = {
-        enable = true;
-        package = pkgs.gitFull;
-        userName = "Evan Stoll";
-        userEmail = "evanjsx@gmail.com";
-      };
+      #programs.git = {
+	#enable = true;
+	#package = pkgs.gitFull;
+	#userName = "Evan Stoll";
+	#userEmail = "evanjsx@gmail.com";
+      #};
     };
   };
 }

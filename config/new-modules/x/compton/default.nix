@@ -43,7 +43,7 @@ in
 
     mine.xUserConfig = {
 
-      home.packages = [ package ];
+      home.packages = [ package pkgs.xorg.xwininfo ];
 
       systemd.user.services = {
         compton-high = recursiveUpdate (mkComptonService {

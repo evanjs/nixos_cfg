@@ -1,5 +1,5 @@
 let
-  lib = import ../../external/nixpkgs/lib;
+  lib = import <nixpkgs/lib>;
   files = lib.filterAttrs (name: value:
     lib.hasSuffix ".nix" name
     && name != "default.nix"

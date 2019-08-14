@@ -100,9 +100,9 @@ with lib;
       home.packages = with pkgs; [
         mpv
         mine.pics
-        thunderbird
+        #thunderbird
         helvetica-neue-lt-std
-        #mine.arcred
+        mine.arcred
       ];
 
       #services.random-background = {

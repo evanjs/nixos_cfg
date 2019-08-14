@@ -8,13 +8,12 @@ with lib;
   config = mkIf config.mine.profiles.desktop.enable {
     mine.vim.enable = true;
     /* mine.newsboat.enable = true; */
-    programs.autojump.enable = true;
 
     mine.userConfig = {
-      services.gpg-agent = {
-        enable = true;
-        enableSshSupport = true;
-      };
+      #services.gpg-agent = {
+        #enable = true;
+        #enableSshSupport = true;
+      #};
     };
 
     mine.x.enable = true;
@@ -52,18 +51,18 @@ with lib;
       cachix
     ];
 
-    services.usbmuxd.enable = true;
+    #services.usbmuxd.enable = true;
 
-    services.dbus.socketActivated = true;
+    #services.dbus.socketActivated = true;
 
     boot.supportedFilesystems = [ "exfat" "ntfs" "f2fs" "btrfs" ];
 
-    services.locate = {
-      enable = true;
-      extraFlags = [
-        "--prunepaths=/mnt/gentoo"
-      ];
-    };
+    #services.locate = {
+      #enable = true;
+      #extraFlags = [
+        #"--prunepaths=/mnt/gentoo"
+      #];
+    #};
 
     boot.kernelModules = [ "i2c-dev" ];
 
@@ -71,17 +70,17 @@ with lib;
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    services.printing.enable = true;
+    #services.printing.enable = true;
 
    # Misc power
    powerManagement.cpuFreqGovernor = "performance";
-   services.upower.enable = true;
+   #services.upower.enable = true;
    powerManagement.enable = true;
 
-   services.openssh = {
-     enable = true;
-     forwardX11 = true;
-   };
+   #services.openssh = {
+     #enable = true;
+     #forwardX11 = true;
+   #};
 
     #
       # Firewall rules
@@ -96,7 +95,7 @@ with lib;
         ];
       };
 
-      services.fstrim.enable = true;
+      #services.fstrim.enable = true;
 
 
     };

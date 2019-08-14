@@ -15,8 +15,9 @@ mkIf config.mine.console.enable {
 
     programs.zsh = {
       enable = true;
-      oh-my-zsh = {
-        enable = true;
+      history = {
+        extended = true;
+        share = false;
       };
 
       initExtra = ''

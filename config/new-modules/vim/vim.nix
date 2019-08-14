@@ -22,7 +22,7 @@ in
       withPython3 = true;
 
       configure = {
-        #customRC = (toString (toString (builtins.attrValues (pkgs.nix-helpers.importFrom ./config))));
+        ##customRC = (toString (toString (builtins.attrValues (pkgs.nix-helpers.importFrom ./config))));
         vam = {
           knownPlugins = pkgs.vimPlugins;
           pluginDictionaries =

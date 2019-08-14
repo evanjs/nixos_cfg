@@ -3,14 +3,14 @@
   imports = [
     ./email.nix
     ./firefox.nix
-    ./fonts.nix
+    #./fonts.nix
     ./git.nix
     ./lib.nix
     ./lsd.nix
     ./randr
     ./rofi.nix
     ./security
-    ./security/gpg.nix
+    #./security/gpg.nix
     ./services
     ./skim.nix
     ./style

@@ -1,6 +1,6 @@
 { file }:
 let
-  pkgs = import ../../external/nixpkgs {
+  pkgs = import <nixpkgs> {
     overlays = [(self: super: {
     })];
   };

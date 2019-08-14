@@ -22,7 +22,10 @@ in
 
     mine.xmobar.enable = true;
     mine.taffybar.enable = false;
-    mine.compton.enable = true;
+    mine.compton = {
+      enable = true;
+      highend = true;
+    };
     mine.terminal.enable = true;
 
     mine.userConfig = {
@@ -33,7 +36,6 @@ in
 
       xsession.windowManager.xmonad = {
         enable = true;
-        #extraPackages = hp: with pkgs; [ hp.fuzzy ];
         extraPackages = self: [ self.fuzzy ];
         enableContribAndExtras = true;
         config = pkgs.runCommand "xmonad.hs" (config.scripts // {

@@ -25,7 +25,7 @@
   nix = {
     autoOptimiseStore = true;
     gc = {
-      automatic = true;
+      automatic = false;
       dates = "04:00";
     };
 

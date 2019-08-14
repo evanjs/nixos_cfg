@@ -7,12 +7,12 @@
 
   time.timeZone = "America/Detroit";
 
-  #mine.xUserConfig = {
-    #services.redshift = {
-      #latitude = "-85.6";
-      #longitude = "44.7";
-    #};
-  #};
+  mine.xUserConfig = {
+    services.redshift = {
+      latitude = "-85.6";
+      longitude = "44.7";
+    };
+  };
 
   mine.newsboat = {
     config = ''
