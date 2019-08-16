@@ -76,6 +76,13 @@ in
         type = types.nullOr types.package;
         description = "The rust package to use.  Cannot be used when defining the channel or plugins.";
       };
+
+      extraPackages = mkOption {
+        default = [ pkgs.cargo-edit pkgs.cargo-update ];
+        example = [ pkgs.cargo-edit pkgs.cargo-license pkgs.cargo-generate ];
+        type = types.nullOr (types.listOf types.package);
+        description = "Packages to install in addition to the Rust toolchain and any configured plugins";
+      };
     };
 
     config = mkIf cfg.enable {
@@ -84,7 +91,7 @@ in
       ];
 
       mine.userConfig = {
-        home.packages = [ cfg.package ];
+        home.packages = [ cfg.package ] ++ cfg.extraPackages;
       };
     };
   }

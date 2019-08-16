@@ -23,6 +23,7 @@ with lib;
       enable = true;
       plugins = [ "rust-std" "rust-src"];
       channel = "nightly";
+      extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz openssl pkgconfig stdenv.cc ];
     };
     mine.jetbrains.enable = true;
 
