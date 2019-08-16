@@ -24,6 +24,7 @@ with lib;
       plugins = [ "rust-std" "rust-src"];
       channel = "nightly";
     };
+    mine.jetbrains.enable = true;
 
     environment.systemPackages = with pkgs; [
       # graphical admin tools
