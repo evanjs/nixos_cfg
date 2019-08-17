@@ -82,8 +82,8 @@ with lib;
       xbindkeys-config
       dmenu
       xlibs.xev
-      #thunderbird
       haskellPackages.xmobar
+      xtrlock-pam
     ];
 
 
