@@ -9,7 +9,6 @@
     ../../../config
     #../../../modules/home-manager
 
-    ../../../external/home-manager/nixos
     # games
     #../../../modules/games/steam.nix
 
