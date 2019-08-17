@@ -4,11 +4,11 @@
 [submodule "overlays/rjg"]
 	path = overlays/rjg
 	url = rjgp:overlay
-[submodule "modules/home-manager/xorg/xmonad/XMonadMasterOverlay"]
-	path = modules/home-manager/xorg/xmonad/XMonadMasterOverlay
+[submodule "config/new-modules/x/wm/XMonadMasterOverlay"]
+	path = config/new-modules/x/wm/XMonadMasterOverlay
 	url = git@github.com:evanjs/XMonadMasterOverlay.git
-[submodule "modules/home-manager/xorg/xmonad/XMonadLayouts"]
-	path = modules/home-manager/xorg/xmonad/XMonadLayouts
+[submodule "config/new-modules/x/wm/XMonadLayouts"]
+	path = config/new-modules/x/wm/XMonadLayouts
 	url = https://github.com/evanjs/XMonadLayouts
 [submodule "overlays/nix-helpers/nix-helpers"]
 	path = overlays/nix-helpers/nix-helpers
