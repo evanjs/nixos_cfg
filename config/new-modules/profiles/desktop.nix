@@ -18,7 +18,7 @@ with lib;
 
     mine.x.enable = true;
     mine.wm.enable = true;
-    /* mine.dev.haskell.enable = true; */
+    mine.dev.haskell.enable = true;
     mine.dev.rust = {
       enable = true;
       plugins = [ "rust-std" "rust-src"];
