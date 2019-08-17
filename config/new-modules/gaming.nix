@@ -7,6 +7,20 @@ with lib;
   options.mine.gaming.enable = mkEnableOption "games";
 
   config = mkIf config.mine.gaming.enable {
+  environment.systemPackages = with pkgs; [
+    # TODO: how can this be improved?
+    (pkgs.versions.latestVersion [pkgs.steam pkgs.unstable.steam pkgs.unstable-small.steam])
+    (pkgs.versions.latestVersion [pkgs.steam-run pkgs.unstable.steam-run pkgs.unstable-small.steam-run])
+  ];
+  
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    pulseaudio.support32Bit = true;
+  };
 
     hardware.steam-hardware.enable = true;
     boot.blacklistedKernelModules = [ "hid_steam" ];
@@ -15,18 +29,6 @@ with lib;
     '';
 
     nixpkgs.config.pulseaudio = true;
-
-    environment.systemPackages = with pkgs; [
-      steam
-      minecraft
-      teamspeak_client
-      #(wineStaging.override {
-      #  wineBuild = "wineWow";
-      #  gstreamerSupport = false;
-      #})
-      mumble_git
-    ];
-
   };
 
 }
