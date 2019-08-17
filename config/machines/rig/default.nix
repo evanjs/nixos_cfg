@@ -1,38 +1,43 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./custom-hardware.nix
     ./hardware-configuration.nix
-    ../../profiles/desktop.nix
-    ../../hardware/profiles/wireless.nix
+    ./custom-hardware.nix
 
-    ../../modules/development.nix
-    ../../modules/linux_latest.nix
+    ../../../external/home-manager/nixos
 
-    # games
-    ../../modules/games/steam.nix
+    ../../../config
+
+    ../../../modules/development.nix
+    ../../../modules/linux_latest.nix
 
     # media
-    ../../modules/deluge.nix
-    ../../modules/plex
+    ../../../modules/deluge.nix
+    ../../../modules/plex
 
-    ../../modules/jupyter
+    ../../../modules/jupyter
     
-    ../../modules/scrape.nix
-    ../../modules/virtualization/docker.nix
-    ../../modules/virtualization/virtualbox.nix
+    ../../../modules/scrape.nix
+    ../../../modules/virtualization/docker.nix
+    ../../../modules/virtualization/virtualbox.nix
 
-    ../../modules/samba/server/home.nix
+    ../../../modules/samba/server/home.nix
   ];
 
-  boot.initrd.checkJournalingFS = false;
-  networking = {
-    hostName = "nixtoo";
-    # workaround for https://github.com/NixOS/nixpkgs/issues/61490
-    nameservers = [
-      "10.10.0.1"
-    ];
+  mine.hardware = {
+    battery = false;
+    cpuCount = 8;
+    swap = false;
+    touchpad = false;
+    wlan = true;
+    audio = true;
   };
 
+  mine.enableUser = true;
+  mine.profiles.desktop.enable = true;
+  mine.gaming.enable = true;
+
+  boot.initrd.checkJournalingFS = false;
+  networking.hostName = "nixtoo";
   system.stateVersion = "19.03";
 }
