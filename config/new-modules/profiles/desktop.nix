@@ -25,7 +25,10 @@ with lib;
       channel = "nightly";
       extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz openssl pkgconfig stdenv.cc ];
     };
-    mine.jetbrains.enable = true;
+    mine.jetbrains = {
+      enable = true;
+      useLatest = true;
+    };
 
     environment.systemPackages = with pkgs; [
       # graphical admin tools
