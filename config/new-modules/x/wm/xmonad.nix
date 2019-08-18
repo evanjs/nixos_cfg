@@ -33,7 +33,7 @@ in
     mine.terminal.enable = true;
 
     mine.userConfig = {
-      home.packages = [ weechat ];
+      home.packages = [ weechat pkgs.maim ];
     };
 
     mine.xUserConfig = {
