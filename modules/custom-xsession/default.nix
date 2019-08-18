@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }:
+with lib;
 let
   notification-daemon = pkgs.notify-osd-customizable;
 in
@@ -8,6 +9,8 @@ in
     ./flashback-xmonad.nix
     ../virtualgl.nix
   ];
+
+  mine.compton.enable = true;
 
   environment.systemPackages = with pkgs; [
     notification-daemon
@@ -37,8 +40,7 @@ in
     };
   };
 
-  services.compton = {
-    vSync = true;
-  };
+  #services.compton = {
+    #vSync = true;
+  #};
 }
-

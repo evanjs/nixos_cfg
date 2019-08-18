@@ -8,7 +8,7 @@
     };
     home.packages = with pkgs; [
       nerdfonts
-      powerline-fonts
+      #powerline-fonts
     ];
   };
 }

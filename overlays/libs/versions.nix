@@ -1,5 +1,6 @@
 { lib, ... }:
+with lib;
 {
-  atLeastVersion = (version: packages: lib.head (lib.filter (d: (lib.versionAtLeast (lib.getVersion d) version)) packages ));
-  latestVersion = (packages: lib.head (builtins.sort ( a: b: (lib.getVersion a) > (lib.getVersion b)) packages));
+  atLeastVersion = (version: packages: head (filter (d: (versionAtLeast (getVersion d) version)) packages ));
+  latestVersion = (packages: head (sort ( a: b: (getVersion a) > (getVersion b)) packages));
 }

@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./hie.nix
     ./hoogle
     ../../channels.nix
   ];

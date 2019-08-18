@@ -4,6 +4,7 @@
   { name = "haskell-vim"; }
   { name  = "LanguageClient-neovim"; }
   { name = "nerdcommenter"; }
+  { name = "neomake"; }
   { name = "polyglot"; }
   { name = "ranger-vim"; }
   { name = "rust-vim"; }

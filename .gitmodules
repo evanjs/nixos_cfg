@@ -4,15 +4,21 @@
 [submodule "overlays/rjg"]
 	path = overlays/rjg
 	url = rjgp:overlay
-[submodule "modules/home-manager/xorg/xmonad/XMonadMasterOverlay"]
-	path = modules/home-manager/xorg/xmonad/XMonadMasterOverlay
+[submodule "config/new-modules/x/wm/XMonadMasterOverlay"]
+	path = config/new-modules/x/wm/XMonadMasterOverlay
 	url = git@github.com:evanjs/XMonadMasterOverlay.git
-[submodule "modules/home-manager/xorg/xmonad/XMonadLayouts"]
-	path = modules/home-manager/xorg/xmonad/XMonadLayouts
+[submodule "config/new-modules/x/wm/XMonadLayouts"]
+	path = config/new-modules/x/wm/XMonadLayouts
 	url = https://github.com/evanjs/XMonadLayouts
-[submodule "overlays/mozilla/nixpkgs-mozilla"]
-	path = overlays/mozilla/nixpkgs-mozilla
-	url = git@github.com:mozilla/nixpkgs-mozilla.git
 [submodule "overlays/nix-helpers/nix-helpers"]
 	path = overlays/nix-helpers/nix-helpers
 	url = http://chriswarbo.net/git/nix-helpers.git
+[submodule "external/home-manager"]
+	path = external/home-manager
+	url = https://github.com/evanjs/home-manager
+[submodule "external/nixpkgs"]
+	path = external/nixpkgs
+	url = https://github.com/evanjs/nixpkgs
+[submodule "config/external/secrets"]
+	path = config/external/secrets
+	url = https://github.com/evanjs/secrets

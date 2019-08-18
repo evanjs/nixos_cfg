@@ -23,8 +23,4 @@
   # enable completion for system packages (e.g. systemd)
   users.users.evanjs.shell = pkgs.zsh;
   users.users.root.shell = pkgs.zsh;
-  
-  fonts.fonts = with pkgs; [
-    powerline-fonts
-  ];
 }

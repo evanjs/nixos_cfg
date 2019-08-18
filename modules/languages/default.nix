@@ -3,9 +3,9 @@
 
   imports = [
     #./elm
-    ./haskell
+    #./haskell
     ./python
-    ./rust
+    #./rust
     #./swift
   ];
 
