@@ -58,7 +58,7 @@ with lib;
       graphviz
 
       kitty
-      cachix
+      stable.cachix
     ];
 
     #services.usbmuxd.enable = true;
