@@ -49,7 +49,7 @@ in
       systemd.user.services = {
         compton-high = recursiveUpdate (mkComptonService {
           variantName = "Highend";
-          cfg = ./compton-high.conf;
+          cfg = ./compton-old.conf;
           autoStart = cfg.highend;
         }) {
           Unit.Conflicts = [ "compton-low.service" "compton-trans.service" ];
