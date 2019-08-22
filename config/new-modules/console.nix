@@ -53,6 +53,8 @@ with lib;
       bat
       nix-index
       nix-prefetch-scripts
+      ranger
+      zstd
     ];
 
     users.defaultUserShell = pkgs.zsh;
