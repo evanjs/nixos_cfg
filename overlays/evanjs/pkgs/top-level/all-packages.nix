@@ -8,7 +8,8 @@ let
   callPackages = self.callPackages;
   callQPackage = self.libsForQt5.callPackage;
   pkgs = self.pkgs;
-in 
+  python37 = self.pkgs.python37;
+in
   rec {
     ### applications 
     ### networking
@@ -23,17 +24,17 @@ in
     booru = callPackage ../booru { };
     cross = callPackage ../cross { };
     exercism = callPackage ../tools/exercism { };
-    kivy = callPackage ../python/kivy { python = self.python37; };
-    kivy-garden = callPackage ../python/kivy-garden { python = self.python37; };
-    kivymd = callPackage ../python/kivymd { python = self.python37; };
-    material-ui = callPackage ../python/material-ui { python = self.python37; };
+    kivy = callPackage ../python/kivy { python = python37; };
+    kivy-garden = callPackage ../python/kivy-garden { python = python37; };
+    kivymd = callPackage ../python/kivymd { python = python37; kivy = kivy; };
+    material-ui = callPackage ../python/material-ui { python = python37; };
     mcdex = callPackage ../games/mcdex { };
     nget = callPackage ../nget { };
     polychromatic = callPackage ../polychromatic { };
     #rust-with-extensions = callPackage ../rust-with-extensions { rustChannel = nightlyRust; };
     zsh-powerlevel9k = callPackage ../shells/zsh/zsh-powerlevel9k { };
     power-warn = callPackage ../tools/misc/power-warn { };
-  
+
     #qrbooru = callQPackage ../qrbooru { rustChannel = nightlyRust; };
     rrbg = callPackage ../rrbg { };
     runescape-launcher = callPackage ../runescape-launcher { };
