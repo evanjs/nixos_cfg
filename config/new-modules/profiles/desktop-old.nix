@@ -6,11 +6,9 @@
     ../../../modules/audio.nix
     ../../../modules/chromium.nix
     ../../../modules/cloud-storage.nix
-    ../../../modules/custom-xsession
     ../../../modules/fonts.nix
     ../../../modules/fs.nix
     ../../../modules/games
-    ../../../modules/home-manager
     ../../../modules/i18n/ibus.nix
     ../../../modules/iOS.nix
     ../../../modules/java.nix

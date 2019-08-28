@@ -1,6 +1,12 @@
 { pkgs, config, lib, ... }:
 with lib;
 {
+  imports = [
+    ../../../modules/chromium.nix
+    ../../../modules/home-manager
+    ../../../modules/web.nix
+  ];
+
   options.mine.profiles.desktop = {
     enable = mkEnableOption "desktop config";
   };
@@ -64,6 +70,10 @@ with lib;
     #services.usbmuxd.enable = true;
 
     #services.dbus.socketActivated = true;
+
+    services.psd = {
+      enable = true;
+    };
 
     boot.supportedFilesystems = [ "exfat" "ntfs" "f2fs" "btrfs" ];
 
