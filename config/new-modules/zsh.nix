@@ -3,6 +3,8 @@ with lib;
 
 mkIf config.mine.console.enable {
 
+  programs.zsh.syntaxHighlighting.enable = true;
+
   mine.userConfig = {
     home.packages = with pkgs; [
       colormake
