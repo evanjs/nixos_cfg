@@ -19,6 +19,6 @@
 [submodule "external/nixpkgs"]
 	path = external/nixpkgs
 	url = https://github.com/evanjs/nixpkgs
-[submodule "config/external/secrets"]
-	path = config/external/secrets
+[submodule "config/external/private"]
+	path = config/external/private
 	url = https://github.com/evanjs/secrets

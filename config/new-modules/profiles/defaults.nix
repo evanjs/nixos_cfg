@@ -6,6 +6,7 @@ with lib;
     ../../../config
     ../../../overlays
     ../../../modules/home-manager
+    ../../../external/private
   ];
 
   mine.mainUsers = [ "root" ];

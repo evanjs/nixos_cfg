@@ -45,6 +45,12 @@ in
       description = "Password used for twitch";
     };
 
+    freenodePassword = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      description = "Password used for freenode";
+    };
+
     gitterPassword = mkOption {
       type = types.nullOr types.str;
       default = null;
@@ -85,8 +91,8 @@ in
           AutoClearQueryBuffer = false;
 
           Network = {
-            freenode = {
-              Server = "chat.freenode.net +6697";
+            freenode = mkIf (cfg.freenodePassword != null) {
+              Server = "chat.freenode.net +6697 ${cfg.freenodePassword}";
               LoadModule = cfg.defaultNetworkModules;
             };
             gitter = mkIf (cfg.gitterPassword != null) {
@@ -114,7 +120,6 @@ in
         };
       };
     };
-
   };
 
 }

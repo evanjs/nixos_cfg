@@ -31,4 +31,6 @@
     ];
   };
 
+  mine.znc.enable = true;
+
 }
