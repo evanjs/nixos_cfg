@@ -29,9 +29,14 @@ in
         };
         port = mkOption {
           type = types.int;
-          default = 63342;
-          example = 8080;
-          description = "The port to use to connect to the IDE";
+          default = 63341;
+          example = 63342;
+          description = ''
+            The port to use to connect to the IDE.
+            The default port that is used by JetBrains is 63342.
+            External connections can be enabled in the IDE by enabling "Can accept external connections".
+            Note that, in order to enable this option, the port must be a non-default port, e.g. 8080, 63341, etc.
+          '';
         };
         openFirewall = mkOption {
           type = types.bool;
