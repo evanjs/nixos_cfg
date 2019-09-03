@@ -83,7 +83,6 @@ in
         User.${cfg.defaultNick} = {
           Admin = mkDefault true;
           LoadModule = [ "push" ];
-          QuitMsg = mkDefault "Configuring ZNC, sorry for the joins/quits!";
           Nick = mkDefault cfg.defaultNick;
           AltNick = mkDefault "${cfg.defaultNick}_";
           Ident = mkDefault cfg.defaultNick;
