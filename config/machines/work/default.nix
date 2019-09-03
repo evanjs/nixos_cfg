@@ -1,17 +1,23 @@
 { config, pkgs, lib, ... }:
+let
+  nurNoPkgs = import (import ../../sources).nur {};
+in
 {
   imports = [
     ./hardware-configuration.nix
     ./custom-hardware.nix
 
-    #./config/external/home-manager/nixos
+    ../../../external/home-manager/nixos
+
+
+
     ../../../config
-    ../../../modules/home-manager
+    
+    ../../../modules/development.nix
+    ../../../modules/linux_latest.nix
 
     ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
-    ../../../modules/development.nix
-    ../../../modules/linux_latest.nix
     ../../../modules/samba/client/work.nix
     #../../../modules/virtualization/virtualbox.nix # might re-enable after building / pushing to cachix from rig
   ];
