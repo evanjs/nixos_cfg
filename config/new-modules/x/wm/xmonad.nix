@@ -32,8 +32,12 @@ in
     };
     mine.terminal.enable = true;
 
+    services.weechat = {
+      enable = true;
+      binary = weechat;
+    };
     mine.userConfig = {
-      home.packages = [ weechat pkgs.maim ];
+      home.packages = [ pkgs.maim ];
     };
 
     mine.xUserConfig = {
