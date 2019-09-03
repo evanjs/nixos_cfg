@@ -33,6 +33,7 @@
             "#nixos-dev" = { };
             "#minecraft" = { };
             "#home-manager" = { };
+            "#musnix" = { };
           };
           JoinDelay = 2;
         };
