@@ -54,33 +54,35 @@ in
           Stop checking previous versions for required plugins once a (potentially configured) maximum is reached
       */
       plugins = mkOption {
-        default = [ "rust-std" ];
         type = types.nullOr (types.listOf (types.enum rust-extensions));
+        default = [ "rust-std" ];
         example = ''
           # Also download rust-src for proper racer/rls/IntelliJ Rust integration, etc.
           [ "rust-std" "rust-src" ];
         '';
+        description = "A list of plugins to install with the Rust toolchain";
       };
 
       channel = mkOption {
-        default = "stable";
         type = types.nullOr (types.enum [ "nightly" "beta" "stable" ]);
+        default = "stable";
+        example = "nightly";
         description = "The release channel to use.";
       };
 
       package = mkOption {
+        type = types.nullOr types.package;
         default = (getAttr cfg.channel pkgs.latest.rustChannels).rust.override { extensions = cfg.plugins; };
         example = ''
           pkgs.latest.rustChannels.nightly.rust.override { extensions = [ "rust-std" "clippy-preview" ]; }
         '';
-        type = types.nullOr types.package;
         description = "The rust package to use.  Cannot be used when defining the channel or plugins.";
       };
 
       extraPackages = mkOption {
+        type = types.nullOr (types.listOf types.package);
         default = [ pkgs.cargo-edit pkgs.cargo-update ];
         example = [ pkgs.cargo-edit pkgs.cargo-license pkgs.cargo-generate ];
-        type = types.nullOr (types.listOf types.package);
         description = "Packages to install in addition to the Rust toolchain and any configured plugins";
       };
     };
