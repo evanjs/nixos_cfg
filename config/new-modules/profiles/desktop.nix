@@ -53,7 +53,7 @@ with lib;
       mplayer
 
       # browsers
-      (versions.atLeastVersion "67.0" [firefox firefox-beta-bin])
+      firefox
 
       # word processors, etc
       pkgs.stable.libreoffice
