@@ -24,6 +24,8 @@ in
 
   config = mkIf config.mine.wm.enable {
 
+    services.xserver.windowManager.xmonad.enable = true;
+
     mine.xmobar.enable = true;
     mine.taffybar.enable = false;
     mine.compton = {
