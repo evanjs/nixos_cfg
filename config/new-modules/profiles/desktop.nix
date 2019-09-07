@@ -22,6 +22,8 @@ with lib;
       #};
     };
 
+    hardware.openrazer.enable = true;
+
     mine.x.enable = true;
     mine.wm.enable = true;
     mine.dev.haskell.enable = true;
