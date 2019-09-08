@@ -13,8 +13,6 @@ mkIf config.mine.console.enable {
 
     home.sessionVariables.EDITOR = "vim";
 
-    home.sessionVariableSetter = "zsh";
-
     programs.zsh = {
       enable = true;
       history = {
