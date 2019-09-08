@@ -37,6 +37,8 @@
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;
 
+  services.xserver.dpi = 80;
+
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";
   system.stateVersion = "19.03";
