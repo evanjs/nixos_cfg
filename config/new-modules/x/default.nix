@@ -22,7 +22,6 @@ with lib;
 
     services.xserver = {
       enable = true;
-      dpi = 96;
       exportConfiguration = true;
 
       displayManager = {
