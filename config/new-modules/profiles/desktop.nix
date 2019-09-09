@@ -9,22 +9,22 @@ let
   };};
 
 in
-{
-  imports = [
-    ../../../modules/chromium.nix
-    ../../../modules/home-manager
-    ../../../modules/web.nix
-  ];
+  {
+    imports = [
+      ../../../modules/chromium.nix
+      ../../../modules/home-manager
+      ../../../modules/web.nix
+    ];
 
-  options.mine.profiles.desktop = {
-    enable = mkEnableOption "desktop config";
-  };
+    options.mine.profiles.desktop = {
+      enable = mkEnableOption "desktop config";
+    };
 
-  config = mkIf config.mine.profiles.desktop.enable {
-    mine.vim.enable = true;
-    /* mine.newsboat.enable = true; */
+    config = mkIf config.mine.profiles.desktop.enable {
+      mine.vim.enable = true;
+      /* mine.newsboat.enable = true; */
 
-    mine.userConfig = {
+      mine.userConfig = {
       #services.gpg-agent = {
         #enable = true;
         #enableSshSupport = true;
@@ -123,21 +123,20 @@ in
      binary = "${weechat}/bin/weechat-headless";
    };
 
+    # Firewall rules
     #
-      # Firewall rules
-      #
-      networking.firewall = {
-        allowedTCPPorts = [
-          80
-          8000
-          8080
-          # Health server
-          8089
-        ];
-      };
-
-      #services.fstrim.enable = true;
-
-
+    networking.firewall = {
+      allowedTCPPorts = [
+        80
+        8000
+        8080
+        # Health server
+        8089
+      ];
     };
-  }
+
+    #services.fstrim.enable = true;
+
+
+  };
+}
