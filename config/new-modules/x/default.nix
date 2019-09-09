@@ -94,7 +94,15 @@ with lib;
 
       #services.redshift.enable = true;
 
-      xsession.enable = true;
+      xsession = {
+        enable = true;
+
+        pointerCursor = {
+          name = "breeze_cursors";
+          size = 16;
+          package = pkgs.plasma5.breeze-qt5;
+        };
+      };
 
       home.packages = with pkgs; [
         mpv
