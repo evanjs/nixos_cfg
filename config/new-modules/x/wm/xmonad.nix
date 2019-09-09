@@ -2,16 +2,6 @@
 
 with lib;
 
-let
-
-  weechat = pkgs.weechat.override { configure = { availablePlugins, ... }: {
-    plugins = builtins.attrValues (availablePlugins // {
-      python = availablePlugins.python.withPackages (ps: with ps; [ twitter ]);
-    });
-  };};
-
-in
-
 {
 
   imports = [
@@ -34,10 +24,6 @@ in
     };
     mine.terminal.enable = true;
 
-    services.weechat = {
-      enable = true;
-      binary = weechat;
-    };
     mine.userConfig = {
       home.packages = [ pkgs.maim ];
     };

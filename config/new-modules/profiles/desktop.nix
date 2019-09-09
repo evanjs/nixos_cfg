@@ -1,5 +1,14 @@
 { pkgs, config, lib, ... }:
 with lib;
+let
+
+  weechat = pkgs.weechat.override { configure = { availablePlugins, ... }: {
+    plugins = builtins.attrValues (availablePlugins // {
+      python = availablePlugins.python.withPackages (ps: with ps; [ twitter ]);
+    });
+  };};
+
+in
 {
   imports = [
     ../../../modules/chromium.nix
@@ -96,13 +105,23 @@ with lib;
 
    # Misc power
    powerManagement.cpuFreqGovernor = "performance";
-   #services.upower.enable = true;
    powerManagement.enable = true;
 
-   #services.openssh = {
-     #enable = true;
-     #forwardX11 = true;
-   #};
+   programs.screen = {
+     screenrc = ''
+        # for weechat service support, etc
+        multiuser on
+        acladd normal_user
+
+        # Enable mouse scrolling and scroll bar history scrolling
+        termcapinfo xterm* ti@:te@
+     '';
+   };
+
+   services.weechat = {
+     enable = true;
+     binary = "${weechat}/bin/weechat-headless";
+   };
 
     #
       # Firewall rules
