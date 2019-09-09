@@ -55,6 +55,9 @@ with lib;
       nix-prefetch-scripts
       ranger
       zstd
+      tldr
+      usbutils
+      cht-sh
     ];
 
     users.defaultUserShell = pkgs.zsh;
