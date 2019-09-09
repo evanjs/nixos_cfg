@@ -25,7 +25,10 @@ in
 
       # debugging
       gdb
+      cgdb
       lldb
+
+      binutils
 
       cmake
       gnumake
