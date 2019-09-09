@@ -96,6 +96,7 @@ with lib;
 
       xsession = {
         enable = true;
+        numlock.enable = true;
 
         pointerCursor = {
           name = "breeze_cursors";
