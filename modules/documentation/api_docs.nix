@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    zeal
+    #zeal # uses qtwebkit -- #68434 #53079
   ];
 }
