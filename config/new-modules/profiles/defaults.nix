@@ -19,4 +19,7 @@ with lib;
   home-manager.useUserPackages = true;
 
   boot.cleanTmpDir = true;
+
+  hardware.cpu.amd.updateMicrocode = true;
+  hardware.cpu.intel.updateMicrocode = true;
 }
