@@ -36,6 +36,7 @@ in
           vim-airline-themes
           vim-autoformat
           YouCompleteMe
+          vimtex
         ];
 
         extraConfig = ''
