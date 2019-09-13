@@ -40,6 +40,8 @@ with lib;
       bc
       wget
       ripgrep
+      ripgrep-all
+      sd
       file
       nmap
       traceroute
