@@ -58,8 +58,6 @@ import XMonad.Util.Scratchpad
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
 
-import XMonad.Wallpaper
-
 import qualified Data.Map                   as M
 import qualified XMonad.Hooks.EwmhDesktops  as H
 import qualified XMonad.Prompt              as P
@@ -68,12 +66,7 @@ import qualified XMonad.Actions.Search      as S
 import qualified XMonad.StackSet            as W
 import qualified XMonad                     as X
 
-import XMonad.Layout.MiddleColumn
-import XMonad.Layout.WindowColumn
-import XMonad.Layout.WindowColumn as Column (Column(..))
-import XMonad.Util.WindowFinder
 import XMonad.Actions.Submap
-import XMonad.Layout.MasterOverlay
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.LayoutModifier
@@ -168,16 +161,7 @@ genericLayouts =
             where tall  = Tall 1 (3/100) (1/2) 
                   rTall = ResizableTall 1 (3/100) (1/2) []
 
-chrissoundLayouts =
-    desktopLayoutModifiers . smartBorders $
-      mkToggle ((NOBORDERS ?? FULL ?? EOT)) (
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 2 0.2 defaultThreeColumn) |||
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 2 0.5 defaultThreeColumn) |||
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 3 0.75 (0.27333, 0.45333, 0.27333)) |||
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 3 0.75 (0.33333, 0.33333, 0.33333)) |||
-        spacing 0 (noBorders (fullscreenFull Full)))
-
-myLayouts = ifWider 3000 (genericLayouts ||| chrissoundLayouts) genericLayouts
+myLayouts = genericLayouts
 
 ------------------
 -- window rules --

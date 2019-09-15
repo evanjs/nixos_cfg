@@ -4,17 +4,21 @@ with lib;
 
 {
 
-  imports = [
-    ./files
-  ];
-
   options = {
     mine.wm.enable = mkEnableOption "My window manager";
   };
 
-  config = mkIf config.mine.wm.enable {
+  config = mkIf config.mine.wm.enable rec {
 
-    services.xserver.windowManager.xmonad.enable = true;
+    services.xserver.windowManager.xmonad = 
+    let
+      userConfig = mine.xUserConfig.xsession.windowManager.xmonad;
+    in {
+      enable = userConfig.enable;
+      extraPackages = userConfig.extraPackages;
+      enableContribAndExtras = userConfig.enableContribAndExtras;
+      config = userConfig.config;
+    };
 
     mine.xmobar.enable = true;
     mine.taffybar.enable = false;
