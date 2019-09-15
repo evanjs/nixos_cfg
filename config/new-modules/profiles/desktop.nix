@@ -76,6 +76,7 @@ in
 
       kitty
       stable.cachix
+      xorg.xdpyinfo
     ];
 
     #services.usbmuxd.enable = true;
@@ -119,7 +120,7 @@ in
    };
 
    services.weechat = {
-     enable = true;
+     enable = false;
      binary = "${weechat}/bin/weechat-headless";
    };
 

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -29,7 +29,10 @@
     audio = true;
   };
 
-  services.xserver.displayManager.gdm.wayland = false;
+  services.xserver = {
+    dpi = 127;
+    displayManager.gdm.wayland = false;
+  };
 
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;

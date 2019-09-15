@@ -36,6 +36,7 @@ in
           vim-airline-themes
           vim-autoformat
           YouCompleteMe
+          vimtex
         ];
 
         extraConfig = ''
@@ -115,6 +116,7 @@ in
 
             "" Rust Settings {{{
             let g:rustfmt_autosave = 1
+            let g:syntastic_rust_checkers = ['rustc']
             let g:LanguageClient_serverCommands = { 'rust': ['${rust-nightly}/bin/rls'] }
             "}}}
 
