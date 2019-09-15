@@ -62,7 +62,7 @@ import qualified Data.Map                   as M
 import qualified XMonad.Hooks.EwmhDesktops  as H
 import qualified XMonad.Prompt              as P
 import qualified XMonad.Actions.Submap      as SM
-import qualified XMonad.Actions.Search      as S
+import qualified XMonad.Actions.Search      as Search
 import qualified XMonad.StackSet            as W
 import qualified XMonad                     as X
 
@@ -122,11 +122,19 @@ kill8 ss | Just w <- W.peek ss = W.insertUp w $ W.delete w ss
 ------------
 -- Search --
 ------------
-searchEngineMap method = M.fromList $
-    [ ((0, xK_g), method S.google)
-    , ((0, xK_h), method S.hoogle)
-    , ((0, xK_w), method S.wikipedia)
+searchEngineMap method = M.fromList
+    [ ((0, xK_a), method Search.alpha)
+    , ((0, xK_i), method Search.imdb)
+    -- see if we can use searchEngineF (params: character, anime, manga, etc) to make this more concise
+    , ((0, xK_c), method myanimelistchara)
+    , ((0, xK_m), method myanimelist)
+    , ((0, xK_g), method Search.google)
+    , ((0, xK_h), method Search.hoogle)
+    , ((0, xK_w), method Search.wikipedia)
     ]
+        where
+            myanimelist = Search.searchEngine "myanimelist" "https://myanimelist.net/anime.php?q="
+            myanimelistchara = Search.searchEngine "myanimelist" "https://myanimelist.net/character.php?q="
 
 ------------------------------------------------------------------------
     --gaps, etc
@@ -273,8 +281,8 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
-    , ((modMask, xK_s), SM.submap $ searchEngineMap $ S.promptSearch P.def)
-    , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap $ S.selectSearch)
+    , ((modMask, xK_s), SM.submap $ searchEngineMap $ Search.promptSearch P.def)
+    , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap Search.selectSearch)
 
 --------------------------------------------------------------------
     -- "Standard" xmonad key bindings
