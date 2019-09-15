@@ -9,7 +9,6 @@
     ../../../config
 
     ../../../modules/development.nix
-    ../../../modules/linux_latest.nix
 
     # media
     ../../../modules/deluge.nix
