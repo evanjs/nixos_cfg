@@ -76,6 +76,7 @@ in
 
       kitty
       stable.cachix
+      xorg.xdpyinfo
     ];
 
     #services.usbmuxd.enable = true;
