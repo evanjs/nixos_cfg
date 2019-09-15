@@ -60,6 +60,8 @@ with lib;
       tldr
       usbutils
       cht-sh
+      cv
+      _1password
     ];
 
     users.defaultUserShell = pkgs.zsh;
