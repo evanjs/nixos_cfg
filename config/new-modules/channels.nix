@@ -15,13 +15,19 @@
         config = config.nixpkgs.config;
       };
 
-      unstable = import <nixpkgs-unstable>
+      nixos-unstable = import <nixos-unstable>
       {
         # pass the nixpkgs config to the unstable alias
         # to ensure `allowUnfree = true;` is propagated:
         config = config.nixpkgs.config;
       };
-      unstable-small = import <nixos-unstable-small>
+      nixpkgs-unstable = import <nixpkgs-unstable>
+      {
+        # pass the nixpkgs config to the unstable alias
+        # to ensure `allowUnfree = true;` is propagated:
+        config = config.nixpkgs.config;
+      };
+      nixos-unstable-small = import <nixos-unstable-small>
       {
         # pass the nixpkgs config to the unstable alias
         # to ensure `allowUnfree = true;` is propagated:

@@ -4,8 +4,9 @@ with lib;
 let
   channels = [
     pkgs
-    pkgs.stable
-    pkgs.unstable-small
+    pkgs.nixos-unstable
+    pkgs.nixpkgs-unstable
+    pkgs.nixos-unstable-small
   ];
 
   getNewestFromChannels = name: pkgs.versions.latestVersion ((_: map (channel: (getAttr name channel.jetbrains)) channels) name);

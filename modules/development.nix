@@ -33,7 +33,7 @@ in
       cmake
       gnumake
 
-      unstable.postman
+      postman
 
       maven3
 

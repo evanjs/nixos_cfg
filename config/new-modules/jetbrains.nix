@@ -7,7 +7,7 @@ let
   cfg = config.mine.jetbrains;
   getNewestFromChannels = name: pkgs.versions.latestVersion ((_: map (channel: (lib.getAttr name channel.jetbrains)) channels) name);
   # TODO: Make this depend on the channels module, etc.?
-  channels = [ pkgs pkgs.stable pkgs.unstable pkgs.unstable-small ];
+  channels = [ pkgs pkgs.stable pkgs.nixpkgs-unstable pkgs.nixos-unstable pkgs.nixos-unstable-small ];
 in
   {
     options.mine.jetbrains = {
