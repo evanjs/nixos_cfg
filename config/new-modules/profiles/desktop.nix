@@ -119,7 +119,7 @@ in
    };
 
    services.weechat = {
-     enable = true;
+     enable = false;
      binary = "${weechat}/bin/weechat-headless";
    };
 
