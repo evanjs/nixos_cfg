@@ -1,24 +1,28 @@
 { config, pkgs, ... }:
+let
+  openglPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+in
 {
   services.xserver = {
     screenSection = ''
       Option "metamodes" "nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"
     '';
     useGlamor = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" "vesa" ];
   };
 
   environment.systemPackages = with pkgs; [
     #python36Packages.tensorflowWithCuda
   ];
 
+  boot.vesa = true;
   hardware = {
     nvidia = {
       modesetting.enable = true;
     };
     opengl = {
-      extraPackages = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl ];
-      extraPackages32 = with pkgs; [ vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl];
+      extraPackages32 = openglPackages;
+      extraPackages = openglPackages;
     };
   };
 }

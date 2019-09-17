@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  openglPackages = with pkgs; [ vaapiIntel vaapiVdpau libvdpau-va-gl ];
 in
 {
   environment.systemPackages = with pkgs; [
@@ -9,12 +10,8 @@ in
   ];
 
   hardware.opengl = {
-    extraPackages = with pkgs; [
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-      intel-media-driver
-    ];
+    extraPackages32 = openglPackages;
+    extraPackages = openglPackages;
   };
   services.xserver = {
     useGlamor = true;
