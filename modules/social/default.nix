@@ -8,5 +8,6 @@
 
   environment.systemPackages = with pkgs; [
     bluejeans-gui
+    riot-desktop
   ];
 }

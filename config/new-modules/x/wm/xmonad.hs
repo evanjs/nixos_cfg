@@ -58,22 +58,15 @@ import XMonad.Util.Scratchpad
 import XMonad.Util.SpawnOnce
 import XMonad.Util.WorkspaceCompare
 
-import XMonad.Wallpaper
-
 import qualified Data.Map                   as M
 import qualified XMonad.Hooks.EwmhDesktops  as H
 import qualified XMonad.Prompt              as P
 import qualified XMonad.Actions.Submap      as SM
-import qualified XMonad.Actions.Search      as S
+import qualified XMonad.Actions.Search      as Search
 import qualified XMonad.StackSet            as W
 import qualified XMonad                     as X
 
-import XMonad.Layout.MiddleColumn
-import XMonad.Layout.WindowColumn
-import XMonad.Layout.WindowColumn as Column (Column(..))
-import XMonad.Util.WindowFinder
 import XMonad.Actions.Submap
-import XMonad.Layout.MasterOverlay
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.LayoutModifier
@@ -129,11 +122,19 @@ kill8 ss | Just w <- W.peek ss = W.insertUp w $ W.delete w ss
 ------------
 -- Search --
 ------------
-searchEngineMap method = M.fromList $
-    [ ((0, xK_g), method S.google)
-    , ((0, xK_h), method S.hoogle)
-    , ((0, xK_w), method S.wikipedia)
+searchEngineMap method = M.fromList
+    [ ((0, xK_a), method Search.alpha)
+    , ((0, xK_i), method Search.imdb)
+    -- see if we can use searchEngineF (params: character, anime, manga, etc) to make this more concise
+    , ((0, xK_c), method myanimelistchara)
+    , ((0, xK_m), method myanimelist)
+    , ((0, xK_g), method Search.google)
+    , ((0, xK_h), method Search.hoogle)
+    , ((0, xK_w), method Search.wikipedia)
     ]
+        where
+            myanimelist = Search.searchEngine "myanimelist" "https://myanimelist.net/anime.php?q="
+            myanimelistchara = Search.searchEngine "myanimelist" "https://myanimelist.net/character.php?q="
 
 ------------------------------------------------------------------------
     --gaps, etc
@@ -168,16 +169,7 @@ genericLayouts =
             where tall  = Tall 1 (3/100) (1/2) 
                   rTall = ResizableTall 1 (3/100) (1/2) []
 
-chrissoundLayouts =
-    desktopLayoutModifiers . smartBorders $
-      mkToggle ((NOBORDERS ?? FULL ?? EOT)) (
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 2 0.2 defaultThreeColumn) |||
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 2 0.5 defaultThreeColumn) |||
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 3 0.75 (0.27333, 0.45333, 0.27333)) |||
-        spacing 6 (ModifiedLayout (MasterOverlay Nothing) $ getMiddleColumnSaneDefault 3 0.75 (0.33333, 0.33333, 0.33333)) |||
-        spacing 0 (noBorders (fullscreenFull Full)))
-
-myLayouts = ifWider 3000 (genericLayouts ||| chrissoundLayouts) genericLayouts
+myLayouts = genericLayouts
 
 ------------------
 -- window rules --
@@ -289,8 +281,8 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
-    , ((modMask, xK_s), SM.submap $ searchEngineMap $ S.promptSearch P.def)
-    , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap $ S.selectSearch)
+    , ((modMask, xK_s), SM.submap $ searchEngineMap $ Search.promptSearch P.def)
+    , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap Search.selectSearch)
 
 --------------------------------------------------------------------
     -- "Standard" xmonad key bindings

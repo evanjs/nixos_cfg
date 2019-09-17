@@ -40,6 +40,8 @@ with lib;
       bc
       wget
       ripgrep
+      ripgrep-all
+      sd
       file
       nmap
       traceroute
@@ -58,6 +60,8 @@ with lib;
       tldr
       usbutils
       cht-sh
+      cv
+      _1password
     ];
 
     users.defaultUserShell = pkgs.zsh;

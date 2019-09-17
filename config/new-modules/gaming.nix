@@ -8,9 +8,8 @@ with lib;
 
   config = mkIf config.mine.gaming.enable {
   environment.systemPackages = with pkgs; [
-    # TODO: how can this be improved?
-    (pkgs.versions.latestVersion [pkgs.steam pkgs.unstable.steam pkgs.unstable-small.steam])
-    (pkgs.versions.latestVersion [pkgs.steam-run pkgs.unstable.steam-run pkgs.unstable-small.steam-run])
+    ( pkgs.versions.latestVersion [ pkgs.steam pkgs.nixos-unstable.steam pkgs.nixos-unstable-small.steam ] )
+    ( pkgs.versions.latestVersion [ pkgs.steam-run pkgs.nixos-unstable.steam-run pkgs.nixos-unstable-small.steam-run ])
   ];
   
   hardware = {

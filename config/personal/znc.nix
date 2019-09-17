@@ -24,6 +24,7 @@
         Network.twitch = lib.mkForce null;
         Network.freenode = {
           Chan = {
+            "#xmonad" = { };
             "#haskell" = { };
             "#nixos" = { };
             "##nixos-anime" = { };

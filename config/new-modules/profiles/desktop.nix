@@ -31,6 +31,8 @@ in
       #};
     };
 
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+
     hardware.openrazer.enable = true;
 
     mine.x.enable = true;

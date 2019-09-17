@@ -9,7 +9,6 @@
     ../../../config
 
     ../../../modules/development.nix
-    ../../../modules/linux_latest.nix
 
     # media
     ../../../modules/deluge.nix
@@ -38,6 +37,10 @@
   mine.gaming.enable = true;
 
   services.xserver.dpi = 80;
+
+  boot.crashDump = {
+    enable = true;
+  };
 
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";

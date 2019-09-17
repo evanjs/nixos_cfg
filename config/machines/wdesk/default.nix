@@ -14,7 +14,6 @@ in
     ../../../config
     
     ../../../modules/development.nix
-    ../../../modules/linux_latest.nix
 
     ../../../modules/android.nix
     ../../../modules/db/postgresql.nix

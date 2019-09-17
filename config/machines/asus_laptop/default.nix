@@ -14,7 +14,6 @@
 
     ../../../modules/db/postgresql.nix
     ../../../modules/development.nix
-    ../../../modules/linux_latest.nix
     ../../../modules/samba/client/home.nix
     #../../../modules/channels.nix
     #../../../modules/virtualization/virtualbox.nix
