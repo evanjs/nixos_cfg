@@ -38,6 +38,10 @@
 
   services.xserver.dpi = 80;
 
+  boot.crashDump = {
+    enable = true;
+  };
+
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";
   system.stateVersion = "19.03";
