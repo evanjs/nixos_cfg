@@ -35,6 +35,7 @@
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;
+  mine.znc.enable = true;
 
   services.xserver.dpi = 80;
 

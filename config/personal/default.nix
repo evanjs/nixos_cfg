@@ -30,7 +30,4 @@
     urls = [
     ];
   };
-
-  mine.znc.enable = true;
-
 }
