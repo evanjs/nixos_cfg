@@ -113,11 +113,14 @@ with lib;
         mine.arcred
       ];
 
-      #services.random-background = {
-        #enable = true;
-        #imageDirectory = "%h/Pictures/wallpapers/";
-        #interval = "120";
-      #};
+      programs.chromium = {
+        extensions = [
+          "aeblfdkhhhdcdjpifhhbdiojplfjncoa" # 1Password X
+          "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
+          "gcbommkclmclpchllfjekcdonpmejbdp" # HTTPS Everywhere
+          "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
+        ];
+      };
 
       programs.zsh.shellAliases = {
         pbcopy = "${pkgs.xclip}/bin/xclip -selection clipboard";
