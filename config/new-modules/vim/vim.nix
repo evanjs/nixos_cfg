@@ -29,6 +29,7 @@ in
           LanguageClient-neovim
           nerdcommenter
           neomake
+          nerdtree
           polyglot
           ranger-vim
           rust-vim
