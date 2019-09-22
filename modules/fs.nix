@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   exfat-nofuse = config.boot.kernelPackages.exfat-nofuse.overrideAttrs (attrs: {
-      patches = attrs.patches ++ [ /home/evanjs/src/nixos_cfg/patches/exfat/MS_toSB_macros.patch ];
+      patches = attrs.patches ++ [ /etc/nixos/patches/exfat/MS_toSB_macros.patch ];
 
     });
 in

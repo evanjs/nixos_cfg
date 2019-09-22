@@ -29,7 +29,7 @@
         # this line prevents hanging on network split
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,ip=192.168.2.2";
 
-    in ["${automount_opts},credentials=/home/evanjs/src/nixos_cfg/modules/samba/client/smb-secrets"];
+    in ["${automount_opts},credentials=/etc/nixos/modules/samba/client/smb-secrets"];
   };
 }
 

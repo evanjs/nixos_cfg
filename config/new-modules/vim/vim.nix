@@ -21,6 +21,7 @@ in
         withPython3 = true;
 
         plugins = with pkgs.vimPlugins; [
+          colorizer
           fugitive
           ghc-mod-vim
           haskell-vim
@@ -35,6 +36,7 @@ in
           vim-airline
           vim-airline-themes
           vim-autoformat
+          vim-illuminate
           YouCompleteMe
           vimtex
         ];

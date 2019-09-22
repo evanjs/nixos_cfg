@@ -14,7 +14,7 @@ with lib;
   };
 
   config = {
-    environment.systemPackages = mkIf config.services.xserver.enable [ config.mine.chromium ];
+    environment.systemPackages = mkIf config.services.xserver.enable [ config.mine.chromium config.mine.firefox ];
     nixpkgs.config.firefox.enableBrowserpass = true;
     # Note: extensions don't work with -bin versions of firefox
     mine.firefox = pkgs.firefox;
