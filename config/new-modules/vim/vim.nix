@@ -132,8 +132,11 @@ in
             let g:ycm_server_keep_logfiles = 0
             "}}}
 
+            "" Tex Settings {{{
             let g:vimtex_log_verbose = 1
-            
+	    let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
+            "}}}
+
             let g:rainbow_active = 1
         '';
       };
