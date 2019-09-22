@@ -137,7 +137,10 @@ in
 	    let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
             "}}}
 
+            "" Misc Settings {{{
             let g:rainbow_active = 1
+            "}}}
+            
         '';
       };
     };
