@@ -83,6 +83,7 @@ with lib;
       xlibs.xev
       haskellPackages.xmobar
       xtrlock-pam
+      xdg-user-dirs
     ];
 
 
