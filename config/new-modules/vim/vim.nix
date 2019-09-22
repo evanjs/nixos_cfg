@@ -133,7 +133,8 @@ in
             "}}}
 
             let g:vimtex_log_verbose = 1
-
+            
+            let g:rainbow_active = 1
         '';
       };
     };
