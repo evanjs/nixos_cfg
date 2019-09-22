@@ -27,9 +27,9 @@ in
           ghc-mod-vim
           haskell-vim
           LanguageClient-neovim
-          nerdcommenter
           latex-box
           neomake
+          nerdcommenter
           nerdtree
           polyglot
           rainbow
@@ -42,8 +42,8 @@ in
           vim-autoformat
           vim-illuminate
           vim-latex-live-preview
-          YouCompleteMe
           vimtex
+          YouCompleteMe
         ];
 
         extraConfig = ''
