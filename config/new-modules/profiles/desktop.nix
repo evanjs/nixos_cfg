@@ -42,7 +42,7 @@ in
       enable = true;
       plugins = [ "rust-std" "rust-src"];
       channel = "nightly";
-      extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz openssl pkgconfig stdenv.cc sccache ];
+      extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz cargo-watch openssl pkgconfig stdenv.cc sccache ];
     };
     mine.jetbrains = {
       enable = true;
