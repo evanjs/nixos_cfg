@@ -4,7 +4,6 @@
     ../../default.nix
     ./defaults.nix
     ../../../modules/audio.nix
-    ../../../modules/chromium.nix
     ../../../modules/cloud-storage.nix
     ../../../modules/fonts.nix
     ../../../modules/fs.nix

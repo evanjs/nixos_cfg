@@ -11,7 +11,6 @@ let
 in
   {
     imports = [
-      ../../../modules/chromium.nix
       ../../../modules/home-manager
       ../../../modules/web.nix
     ];
