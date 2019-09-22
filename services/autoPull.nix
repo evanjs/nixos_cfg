@@ -22,7 +22,7 @@
 
       # Can we detect this somehow?
       # i.e. where is the currently used nixos_cfg directory located?
-      WorkingDirectory = "/home/evanjs/src/nixos_cfg";
+      WorkingDirectory = "/etc/nixos";
     };
   };
 
