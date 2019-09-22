@@ -28,6 +28,7 @@ in
           haskell-vim
           LanguageClient-neovim
           nerdcommenter
+          latex-box
           neomake
           nerdtree
           polyglot
@@ -40,6 +41,7 @@ in
           vim-airline-themes
           vim-autoformat
           vim-illuminate
+          vim-latex-live-preview
           YouCompleteMe
           vimtex
         ];
@@ -129,6 +131,8 @@ in
             "" YouCompleteMe Settings {{{
             let g:ycm_server_keep_logfiles = 0
             "}}}
+
+            let g:vimtex_log_verbose = 1
 
         '';
       };
