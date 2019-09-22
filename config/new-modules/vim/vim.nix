@@ -31,6 +31,7 @@ in
           neomake
           nerdtree
           polyglot
+          rainbow
           ranger-vim
           rust-vim
           SpaceCamp
