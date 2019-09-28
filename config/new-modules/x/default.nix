@@ -44,6 +44,7 @@ with lib;
     };
 
     fonts = {
+      enableCoreFonts = true;
       enableFontDir = true;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
@@ -51,6 +52,7 @@ with lib;
         #hanazono
         ipaexfont
         #mplus-outline-fonts
+        vistafonts
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts
