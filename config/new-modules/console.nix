@@ -62,6 +62,7 @@ with lib;
       cht-sh
       cv
       _1password
+      du-dust
     ];
 
     users.defaultUserShell = pkgs.zsh;
