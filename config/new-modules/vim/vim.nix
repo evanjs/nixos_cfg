@@ -143,13 +143,13 @@ in
 
             "" Tex Settings {{{
             let g:vimtex_log_verbose = 1
-	    let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
+            let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
             "}}}
 
             "" Misc Settings {{{
             let g:rainbow_active = 1
             "}}}
-            
+
         '';
       };
     };
