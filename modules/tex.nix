@@ -7,5 +7,6 @@ in
   {
     environment.systemPackages = with pkgs; [
       texlivePackages
+      pandoc
     ];
   }
