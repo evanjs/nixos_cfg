@@ -5,6 +5,34 @@ let
   rust-language-server = ((pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; }));
   rust-nightly = pkgs.latest.rustChannels.nightly.rust;
   dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
+  loadPlugin = plugin: ''
+    set rtp^=${plugin.rtp}
+    set rtp+=${plugin.rtp}/after
+  '';
+  plugins = with pkgs.vimPlugins; [
+    colorizer
+    fugitive
+    ghc-mod-vim
+    haskell-vim
+    LanguageClient-neovim
+    latex-box
+    neomake
+    nerdcommenter
+    nerdtree
+    polyglot
+    rainbow
+    ranger-vim
+    rust-vim
+    SpaceCamp
+    syntastic
+    vim-airline
+    vim-airline-themes
+    vim-autoformat
+    vim-illuminate
+    vim-latex-live-preview
+    vimtex
+    YouCompleteMe
+  ];
 in
   {
     options.mine.vim.enable = mkEnableOption "vim config";
@@ -21,32 +49,14 @@ in
         withPython = false;
         withPython3 = true;
 
-        plugins = with pkgs.vimPlugins; [
-          colorizer
-          fugitive
-          ghc-mod-vim
-          haskell-vim
-          LanguageClient-neovim
-          latex-box
-          neomake
-          nerdcommenter
-          nerdtree
-          polyglot
-          rainbow
-          ranger-vim
-          rust-vim
-          SpaceCamp
-          syntastic
-          vim-airline
-          vim-airline-themes
-          vim-autoformat
-          vim-illuminate
-          vim-latex-live-preview
-          vimtex
-          YouCompleteMe
-        ];
 
         extraConfig = ''
+            " Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
+            filetype off | syn off
+            ${builtins.concatStringsSep "\n"
+            (map loadPlugin plugins)}
+            filetype indent plugin on | syn on
+
             "" General Settings {{{
             " turn on filetype detection and indentation
             " filetype indent plugin on
@@ -123,7 +133,6 @@ in
 
             "" Rust Settings {{{
             let g:rustfmt_autosave = 1
-            let g:syntastic_rust_checkers = ['rustc']
             let g:LanguageClient_serverCommands = { 'rust': ['${rust-nightly}/bin/rls'] }
             "}}}
 
