@@ -49,15 +49,11 @@ with lib;
       enableGhostscriptFonts = true;
       fonts = with pkgs; [
         nerdfonts
-        #hanazono
         ipaexfont
-        #mplus-outline-fonts
         vistafonts
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts
-        #wqy_zenhei
-        #input-fonts
       ];
     };
 
