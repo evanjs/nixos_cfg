@@ -47,6 +47,9 @@ with lib;
       enableCoreFonts = true;
       enableFontDir = true;
       enableGhostscriptFonts = true;
+      fontconfig = {
+        penultimate.enable = true;
+      };
       fonts = with pkgs; [
         nerdfonts
         ipaexfont
