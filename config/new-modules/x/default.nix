@@ -86,6 +86,7 @@ with lib;
       haskellPackages.xmobar
       xtrlock-pam
       xdg-user-dirs
+      dfeet
     ];
 
 
