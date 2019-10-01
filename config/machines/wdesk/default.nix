@@ -32,7 +32,7 @@ in
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
 
-  networking.hostName = "nixjgtoo";
+  networking.hostName = "sekka";
 
   boot.initrd.checkJournalingFS = false;
 
