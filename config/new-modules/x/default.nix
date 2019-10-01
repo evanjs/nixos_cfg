@@ -31,6 +31,7 @@ with lib;
             enable = false;
             user = "evanjs";
           };
+          autoSuspend = false;
         };
 
         sessionCommands = ''
