@@ -39,7 +39,7 @@ in
     mine.dev.haskell.enable = true;
     mine.dev.rust = {
       enable = true;
-      plugins = [ "rust-std" "rust-src" "rustfmt-preview"];
+      plugins = [ "rust-std" "rust-src" ];
       channel = "nightly";
       extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz cargo-watch openssl pkgconfig stdenv.cc sccache pkgs.nixpkgs-unstable.evcxr ];
     };
