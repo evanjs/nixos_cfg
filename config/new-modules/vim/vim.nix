@@ -143,7 +143,7 @@ in
             "" Tagbar Settings {{{
             nmap <F8> :TagbarToggle<CR>
 
-            Width of the Tagbar window in characters.
+            " Width of the Tagbar window in characters.
             let g:tagbar_width = 80
 
             " Width of the Tagbar window when zoomed.
