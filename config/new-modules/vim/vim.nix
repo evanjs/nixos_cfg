@@ -25,6 +25,7 @@ let
     rust-vim
     SpaceCamp
     syntastic
+    tagbar
     vim-airline
     vim-airline-themes
     vim-autoformat
@@ -137,6 +138,17 @@ in
             "" Rust Settings {{{
             let g:rustfmt_autosave = 1
             let g:LanguageClient_serverCommands = { 'rust': ['${rust-nightly}/bin/rls'] }
+            "}}}
+
+            "" Tagbar Settings {{{
+            nmap <F8> :TagbarToggle<CR>
+
+            Width of the Tagbar window in characters.
+            let g:tagbar_width = 80
+
+            " Width of the Tagbar window when zoomed.
+            " Use the width of the longest currently visible tag.
+            let g:tagbar_zoomwidth = 0
             "}}}
 
 
