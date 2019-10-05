@@ -44,6 +44,10 @@ with lib;
       };
     };
 
+    xdg = {
+      mime.enable = true;
+    };
+
     fonts = {
       enableCoreFonts = true;
       enableFontDir = true;
