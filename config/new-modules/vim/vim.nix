@@ -64,6 +64,9 @@ in
             " set tags file to search in parent directories with tags
             set tags=tags;
 
+            " enable line numbers
+            set number
+
             " Jump to last cursor position when opening files
             " See |last-position-jump|.
             :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
