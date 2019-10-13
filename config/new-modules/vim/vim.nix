@@ -9,7 +9,7 @@ let
     set rtp^=${plugin.rtp}
     set rtp+=${plugin.rtp}/after
   '';
-  plugins = with pkgs.vimPlugins; [
+  plugins = with pkgs.nixos-unstable.vimPlugins; [
     colorizer
     fugitive
     ghc-mod-vim

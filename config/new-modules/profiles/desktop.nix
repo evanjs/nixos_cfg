@@ -30,7 +30,7 @@ in
       #};
     };
 
-    boot.kernelPackages = pkgs.linuxPackages_5_2;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
     hardware.openrazer.enable = true;
 

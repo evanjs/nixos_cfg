@@ -3,7 +3,7 @@
   imports = [
     ./evanjs
     ./libs
-    ./nix-helpers
+    #./nix-helpers
     ./rjg
   ]
   ++ (if (builtins.pathExists(./default.local.nix)) then [ ./default.local.nix ] else [])
