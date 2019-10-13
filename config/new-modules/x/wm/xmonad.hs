@@ -133,6 +133,7 @@ searchEngineMap method = M.fromList
     , ((0, xK_w), method Search.wikipedia)
     ]
         where
+            githubRust = Search.searchEngine "github rust" "https://github.com/search?l=Rust&p=2&type=Code&q="
             myanimelist = Search.searchEngine "myanimelist" "https://myanimelist.net/anime.php?q="
             myanimelistchara = Search.searchEngine "myanimelist characters" "https://myanimelist.net/character.php?q="
 
