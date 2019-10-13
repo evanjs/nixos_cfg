@@ -20,7 +20,7 @@ with lib;
       enable = true;
       enableCompletion = true;
       ohMyZsh = {
-	enable = true;
+        enable = true;
       };
     };
 
