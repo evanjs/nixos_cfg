@@ -18,7 +18,10 @@ with lib;
 
   home-manager.useUserPackages = true;
 
-  boot.cleanTmpDir = true;
+  boot = {
+    cleanTmpDir = true;
+    loader.systemd-boot.memtest86.enable = true;
+  };
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.cpu.intel.updateMicrocode = true;
