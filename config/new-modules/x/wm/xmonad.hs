@@ -134,7 +134,7 @@ searchEngineMap method = M.fromList
     ]
         where
             myanimelist = Search.searchEngine "myanimelist" "https://myanimelist.net/anime.php?q="
-            myanimelistchara = Search.searchEngine "myanimelist" "https://myanimelist.net/character.php?q="
+            myanimelistchara = Search.searchEngine "myanimelist characters" "https://myanimelist.net/character.php?q="
 
 ------------------------------------------------------------------------
     --gaps, etc
