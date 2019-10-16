@@ -11,7 +11,6 @@
     ../../../modules/development.nix
 
     # media
-    ../../../modules/deluge.nix
     ../../../modules/plex
 
     ../../../modules/jupyter

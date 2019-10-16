@@ -34,6 +34,7 @@ in
 
     hardware.openrazer.enable = true;
 
+    mine.deluged.enable = true;
     mine.x.enable = true;
     mine.wm.enable = true;
     mine.dev.haskell.enable = true;
@@ -41,7 +42,7 @@ in
       enable = true;
       plugins = [ "rust-std" "rust-src" ];
       channel = "nightly";
-      extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz cargo-watch openssl pkgconfig stdenv.cc sccache pkgs.nixpkgs-unstable.evcxr ];
+      extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz cargo-watch cargo-sweep stdenv.cc sccache pkgs.nixpkgs-unstable.evcxr chit ];
     };
     mine.jetbrains = {
       enable = true;
