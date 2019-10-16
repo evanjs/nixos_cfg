@@ -37,6 +37,10 @@
   mine.znc.enable = true;
 
   services.xserver.dpi = 80;
+  networking.firewall.allowedTCPPorts = [ 3128 ];
+  services.squid = {
+    enable = true;
+  };
 
   boot.crashDump = {
     enable = true;
