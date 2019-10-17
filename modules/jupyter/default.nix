@@ -6,6 +6,7 @@ with lib;
     password = readFile ./pass;
   };
 }
+    ip = "0.0.0.0";
     kernels = {
       python3 = let
         env = (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
