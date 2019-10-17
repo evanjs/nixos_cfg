@@ -3,9 +3,7 @@ with lib;
 {
   services.jupyter = {
     enable = true;
-    password = readFile ./pass;
-  };
-}
+    password = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass rig/Jupyter | head -n1";
     ip = "0.0.0.0";
     kernels = {
       python3 = let
