@@ -6,3 +6,25 @@ with lib;
     password = readFile ./pass;
   };
 }
+    kernels = {
+      python3 = let
+        env = (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
+          ipykernel
+          pandas
+          scikitlearn
+          numpy
+        ]));
+      in {
+        displayName = "Python 3 for machine learning";
+        argv = [
+          "${env.interpreter}"
+          "-m"
+          "ipykernel_launcher"
+          "-f"
+          "{connection_file}"
+          ];
+          language = "python";
+        };
+      };
+    };
+  }
