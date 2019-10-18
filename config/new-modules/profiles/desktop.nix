@@ -20,6 +20,7 @@ in
     };
 
     config = mkIf config.mine.profiles.desktop.enable {
+      mine.emacs.enable = true;
       mine.vim.enable = true;
       /* mine.newsboat.enable = true; */
 
