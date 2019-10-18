@@ -28,6 +28,17 @@ with lib;
     };
     mine.terminal.enable = true;
 
+    scripts = let
+
+    in {
+      emacs = ''
+        if ! [ $(systemctl --user is-active emacs) = active ]; then
+          systemctl --user start emacs
+        fi
+        emacsclient -c -n
+      '';
+    };
+
     mine.userConfig = {
       home.packages = [ pkgs.maim ];
     };

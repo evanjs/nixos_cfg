@@ -208,9 +208,15 @@ myModMask = mod4Mask
 
 myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 
+  [
+
+  -- Launch emacs
+  ((modMask .|. controlMask, xK_e),
+  spawn "@emacs@")
+
   -- Start a terminal.  Terminal to start is specified by myTerminal variable.
-  [ ((modMask .|. shiftMask, xK_Return),
-  spawn $ XMonad.terminal conf)
+    ,((modMask .|. shiftMask, xK_Return),
+    spawn $ XMonad.terminal conf)
 
   -- Lock the screen using command specified by myLock.
     , ((modMask .|. controlMask, xK_l),
