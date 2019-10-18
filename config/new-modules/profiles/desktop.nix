@@ -68,6 +68,10 @@ in
       # browsers
       firefox
 
+      # docs
+      xpdf
+      okular
+
       # word processors, etc
       pkgs.stable.libreoffice
       gnome3.gucharmap
