@@ -1,26 +1,26 @@
 { options, config, lib, ... }:
 with lib;
-{
+  {
 
-  imports = [
-    ../../../config
-    ../../../overlays
-    ../../../modules/home-manager
-    ../../../modules/security/keybase.nix
-    ../../../external/private
-  ];
+    imports = [
+      ../../../config
+      ../../../overlays
+      ../../../modules/home-manager
+      ../../../modules/security/keybase.nix
+      ../../../external/private
+    ];
 
-  mine.mainUsers = [ "root" ];
+    mine.mainUsers = [ "root" ];
 
-  nix.trustedUsers = [ "root" "@wheel" ];
-  nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true;
-  users.users.evanjs.extraGroups = [ "plugdev" ];
+    nix.trustedUsers = [ "root" "@wheel" ];
+    nixpkgs.config.allowUnfree = true;
+    networking.networkmanager.enable = true;
+    users.users.evanjs.extraGroups = [ "plugdev" ];
 
-  home-manager.useUserPackages = true;
+    home-manager.useUserPackages = true;
 
-  boot.cleanTmpDir = true;
+    boot.cleanTmpDir = true;
 
-  hardware.cpu.amd.updateMicrocode = true;
-  hardware.cpu.intel.updateMicrocode = true;
-}
+    hardware.cpu.amd.updateMicrocode = true;
+    hardware.cpu.intel.updateMicrocode = true;
+  }

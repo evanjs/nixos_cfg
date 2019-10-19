@@ -1,14 +1,8 @@
 { config, pkgs, lib, ... }:
-let
-  nurNoPkgs = import (import ../../sources).nur {};
-in
 {
   imports = [
     ./hardware-configuration.nix
     ./custom-hardware.nix
-
-    ../../../external/home-manager/nixos
-
 
 
     ../../../config

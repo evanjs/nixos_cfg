@@ -4,8 +4,6 @@
     ./hardware-configuration.nix
     ./custom-hardware.nix
 
-    ../../../external/home-manager/nixos
-
     ../../../config
 
     ../../../modules/development.nix

@@ -4,10 +4,7 @@
     ./hardware-configuration.nix
     ./custom-hardware.nix
 
-    ../../../external/home-manager/nixos
-
     ../../../config
-    #../../../modules/home-manager
 
     # games
     #../../../modules/games/steam.nix
