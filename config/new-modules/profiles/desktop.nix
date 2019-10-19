@@ -20,7 +20,21 @@ in
     };
 
     config = mkIf config.mine.profiles.desktop.enable {
-      mine.emacs.enable = true;
+      mine.emacs = {
+        enable = true;
+
+        config = {
+          #haskell = true;
+          doom = {
+            modeline = true;
+          };
+          lsp = true;
+          nix = true;
+          rust = true;
+          typescript = true;
+          games = true;
+        };
+      };
       mine.vim.enable = true;
       /* mine.newsboat.enable = true; */
 

@@ -26,9 +26,9 @@ with lib;
       #helm
       direnv
 
-      doom
+      all-the-icons
+      pkgs.emacs-all-the-icons-fonts
       doom-themes
-      doom-modeline  
       xkcd
     ];
 
@@ -38,6 +38,8 @@ with lib;
       '';
 
       base = dag.entryAfter [ "theme" ] ''
+        (require 'all-the-icons)
+
         (setq inhibit-startup-screen t)
         (require 'better-defaults)
         (require 'direnv)
@@ -68,8 +70,9 @@ with lib;
         (defun gcm-scroll-up ()
           (interactive)
           (scroll-down 1))
-        (global-set-key "\C-j" 'gcm-scroll-down)
-        (global-set-key "\C-k" 'gcm-scroll-up)
+        # Disable shortcuts for now
+        # (global-set-key "\C-j" 'gcm-scroll-down)
+        # (global-set-key "\C-k" 'gcm-scroll-up)
         (require 'smooth-scrolling)
         (smooth-scrolling-mode 1)
         (setq mouse-wheel-scroll-amount '(5 ((shift) . 1))) ;; one line at a time
