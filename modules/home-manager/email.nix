@@ -6,7 +6,7 @@ let
     inherit primary address;
     realName = "Evan Stoll";
     flavor = "gmail.com";
-    passwordCommand = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | head -n1";
+    passwordCommand = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | ${pkgs.coreutils}/bin/head -n1";
     maildir.path = name;
     smtp.tls.useStartTls = true;
     imap.tls.useStartTls = false;
@@ -27,7 +27,7 @@ let
     inherit primary address;
     userName = address;
     realName = "Evan Stoll";
-    passwordCommand = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | head -n1";
+    passwordCommand = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | ${pkgs.coreutils}/bin/head -n1";
     maildir.path = name;
     smtp = {
       host = "smtp.outlook365.com";
