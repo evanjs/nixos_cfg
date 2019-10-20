@@ -17,6 +17,7 @@ with lib;
       mu4e-alert
       ghub
       doom-modeline
+      all-the-icons
     ];
 
     init.modeline = ''
