@@ -62,6 +62,8 @@ with lib;
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts
+        # TODO: try and integrate this with emacs config so it isn't explicitly defined in the main X config
+        emacs-all-the-icons-fonts
       ];
     };
 
