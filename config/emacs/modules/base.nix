@@ -24,7 +24,14 @@ with lib;
       magit
       smooth-scrolling
       #helm
+      system-packages
+      systemd
       direnv
+
+      fd-dired
+      dired-ranger
+      ripgrep
+      org-jira
 
       all-the-icons
       pkgs.emacs-all-the-icons-fonts
