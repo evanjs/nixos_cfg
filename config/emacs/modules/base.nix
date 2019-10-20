@@ -47,6 +47,9 @@ with lib;
       base = dag.entryAfter [ "theme" ] ''
         (require 'all-the-icons)
 
+        (when (version<= "26.0.50" emacs-version )
+          (global-display-line-numbers-mode))
+
         (setq inhibit-startup-screen t)
         (require 'better-defaults)
         (require 'direnv)
