@@ -34,7 +34,6 @@ with lib;
       org-jira
 
       all-the-icons
-      pkgs.emacs-all-the-icons-fonts
       doom-themes
       xkcd
     ];
