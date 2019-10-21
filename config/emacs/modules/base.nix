@@ -24,11 +24,17 @@ with lib;
       magit
       smooth-scrolling
       #helm
+      system-packages
+      systemd
       direnv
       undo-tree
 
+      fd-dired
+      dired-ranger
+      ripgrep
+      org-jira
+
       all-the-icons
-      pkgs.emacs-all-the-icons-fonts
       doom-themes
       xkcd
     ];
@@ -40,6 +46,9 @@ with lib;
 
       base = dag.entryAfter [ "theme" ] ''
         (require 'all-the-icons)
+
+        (when (version<= "26.0.50" emacs-version )
+          (global-display-line-numbers-mode))
 
         (setq inhibit-startup-screen t)
         (require 'better-defaults)

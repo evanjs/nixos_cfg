@@ -73,7 +73,8 @@ in
       gparted
 
       # git ui
-      gitkraken
+      (pkgs.versions.latestVersion [pkgs.nixos-unstable.gitkraken pkgs.nixpkgs-unstable.gitkraken pkgs.stable.gitkraken])
+      
 
       # media
       feh

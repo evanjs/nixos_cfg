@@ -17,9 +17,11 @@ with lib;
       mu4e-alert
       ghub
       doom-modeline
+      all-the-icons
     ];
 
     init.modeline = ''
+        ;; This isn't starting automatically
         (use-package doom-modeline
             :ensure t
             :hook (after-init . doom-modeline-mode))

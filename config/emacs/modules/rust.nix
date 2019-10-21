@@ -17,13 +17,18 @@ with lib;
     packages = with epkgs; [
       cargo
       rust-mode
-      # rustic ; TODO: Try out with rust-analyzer
+      rustic  #TODO: Try out with rust-analyzer
+      eglot
+      rust-auto-use
     ];
 
     init.rust = ''
-      (add-hook 'rust-mode-hook 'cargo-minor-mode)
-      (add-hook 'rust-mode-hook 'lsp)
-      (add-hook 'rust-mode-hook 'direnv-update-environment)
+      (require 'rust-mode)
+      (use-package rustic)
+
+      (setq rustic-lsp-client 'eglot)
+      (setq rustic-lsp-server 'rust-analyzer)
+      (setq rustic-compile-backtrace 1)
     '';
 
   };
