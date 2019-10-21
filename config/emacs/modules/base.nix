@@ -25,6 +25,7 @@ with lib;
       smooth-scrolling
       #helm
       direnv
+      undo-tree
 
       all-the-icons
       pkgs.emacs-all-the-icons-fonts
