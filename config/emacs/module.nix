@@ -1,4 +1,4 @@
- { pkgs }:
+ { pkgs, nixosConfig }:
 { lib, config, ... }:
 
 with lib;
@@ -106,12 +106,13 @@ in
       readOnly = true;
       description = "All-in-one executable";
     };
+
   };
 
   config = {
 
     _module.args = {
-      inherit pkgs dag epkgs;
+      inherit pkgs dag epkgs nixosConfig;
     };
 
     inherit initFile emacs exec;
