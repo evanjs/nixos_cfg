@@ -35,10 +35,5 @@
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 1024)}
     '';
-
-    nixPath =
-      options.nix.nixPath.default ++
-      [ "nixpkgs-overlays=/etc/nixos/modules/overlays-compat" ]
-      ;
-    };
-  }
+  };
+}
