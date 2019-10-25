@@ -28,6 +28,7 @@ in
           doom = {
             modeline = true;
           };
+          helm = true;
           jenkins = true;
           lsp = true;
           news = true;
