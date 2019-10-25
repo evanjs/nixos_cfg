@@ -23,7 +23,7 @@ with lib;
       company
       magit
       smooth-scrolling
-      #helm
+
       system-packages
       systemd
       direnv
