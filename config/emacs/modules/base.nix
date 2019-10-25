@@ -37,6 +37,8 @@ with lib;
       all-the-icons
       doom-themes
       xkcd
+
+      use-package
     ];
 
     init = {
@@ -45,6 +47,10 @@ with lib;
       '';
 
       base = dag.entryAfter [ "theme" ] ''
+        (require 'package)
+        (package-initialize 'noactivate)
+        (eval-when-compile
+          (require 'use-package))
         (require 'all-the-icons)
 
         (when (version<= "26.0.50" emacs-version )
