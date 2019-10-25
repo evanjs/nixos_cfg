@@ -30,6 +30,7 @@ in
           };
           jenkins = true;
           lsp = true;
+          news = true;
           nix = true;
           rust = true;
           typescript = true;
