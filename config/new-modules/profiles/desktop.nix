@@ -28,6 +28,7 @@ in
           doom = {
             modeline = true;
           };
+          jenkins = true;
           lsp = true;
           nix = true;
           rust = true;
