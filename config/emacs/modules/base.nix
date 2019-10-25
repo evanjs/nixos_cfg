@@ -93,7 +93,7 @@ with lib;
         (smooth-scrolling-mode 1)
         (setq mouse-wheel-scroll-amount '(5 ((shift) . 1))) ;; one line at a time
         (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-        (load (concat (getenv "HOME") "/.emacs.d/dinit.el"))
+        ;;(load (concat (getenv "HOME") "/.emacs.d/dinit.el"))
       '';
     };
 
