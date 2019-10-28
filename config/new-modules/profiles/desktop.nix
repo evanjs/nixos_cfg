@@ -102,6 +102,11 @@ in
       kitty
       stable.cachix
       xorg.xdpyinfo
+
+      (
+        let src = (import ../../sources).lorri;
+        in import src { inherit src; }
+      )
     ];
 
     #services.usbmuxd.enable = true;
