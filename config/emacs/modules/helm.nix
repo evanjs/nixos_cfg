@@ -2,7 +2,7 @@
 
 with lib;
 
-let google_api_key= "PASSWORD_STORE_DIR=${nixosConfig.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass api/google | head -n1";
+let google_api_key= "PASSWORD_STORE_DIR=${nixosConfig.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass api/google | ${pkgs.coreutils}/bin/head -n1";
 in
 {
 

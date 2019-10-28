@@ -1,6 +1,6 @@
 { dag, epkgs, pkgs, lib, config, nixosConfig, ... }:
 with lib;
-let password = "PASSWORD_STORE_DIR=${nixosConfig.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass rjg/jenkins/emacs | head -n1";
+let password = "PASSWORD_STORE_DIR=${nixosConfig.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass rjg/jenkins/emacs | ${pkgs.coreutils}/bin/head -n1";
 in
   {
 
