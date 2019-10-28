@@ -27,7 +27,7 @@ with lib;
         ;;(setq flycheck-check-syntax-automatically '(save mode-enabled))
         (eldoc-mode +1)
         (tide-hl-identifier-mode +1)
-        (prettier-js-mode)
+        (prettier-js-mode))
 
 
       ;; aligns annotation to the right hand side
