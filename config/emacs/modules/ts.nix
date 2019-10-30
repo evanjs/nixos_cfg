@@ -16,7 +16,7 @@ with lib;
       company
       tide
       prettier-js
-      angular-snippets
+      ng2-mode
     ];
 
     init.typescript = ''
@@ -38,6 +38,11 @@ with lib;
       ;; (add-hook 'before-save-hook 'tide-format-before-save)
 
       (add-hook 'typescript-mode-hook #'setup-tide-mode)
+    '';
+
+    init.angular = ''
+      (require 'ng2-mode)
+      (with-eval-after-load 'typescript-mode (add-hook 'typescript-mode-hook #'lsp))
     '';
   };
 
