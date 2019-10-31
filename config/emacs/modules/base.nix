@@ -29,8 +29,6 @@ with lib;
       direnv
       undo-tree
 
-      fd-dired
-      dired-ranger
       ripgrep
       org-jira
 
