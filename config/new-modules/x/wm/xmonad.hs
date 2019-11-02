@@ -128,6 +128,7 @@ searchEngineMap method = M.fromList
     -- see if we can use searchEngineF (params: character, anime, manga, etc) to make this more concise
     , ((0, xK_c), method myanimelistchara)
     , ((0, xK_m), method myanimelist)
+    , ((0, xK_z), method amazon)
     , ((0, xK_g), method Search.google)
     , ((0, xK_h), method Search.hoogle)
     , ((0, xK_w), method Search.wikipedia)
@@ -135,6 +136,7 @@ searchEngineMap method = M.fromList
         where
             githubRust = Search.searchEngine "github rust" "https://github.com/search?l=Rust&p=2&type=Code&q="
             myanimelist = Search.searchEngine "myanimelist" "https://myanimelist.net/anime.php?q="
+            amazon = Search.searchEngine "amazon" "https://www.amazon.com/s?k="
             myanimelistchara = Search.searchEngine "myanimelist characters" "https://myanimelist.net/character.php?q="
 
 ------------------------------------------------------------------------
