@@ -3,8 +3,8 @@ let
   res = fetchFromGitHub {
     owner = "target";
     repo = "lorri";
-    rev = "da0e72da2f56cd5013cca468dc5f2d774bbd8f9e";
-    sha256 = "053xn53z1yg7qihh6zq4ibycd7j4dxay1ihrcjj7bww4ghxjwja2";
+    rev = "03f10395943449b1fc5026d3386ab8c94c520ee3";
+    sha256 = "0fcl79ndaziwd8d74mk1lsijz34p2inn64b4b4am3wsyk184brzq";
   };
 in res // {
   meta = res.meta // {
