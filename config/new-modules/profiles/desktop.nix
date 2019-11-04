@@ -88,6 +88,11 @@ in
       useLatest = true;
     };
 
+    mine.lorri = {
+      enable = true;
+      logLevel = "lorri=info";
+    };
+
     environment.systemPackages = with pkgs; [
       # graphical admin tools
       filelight
@@ -123,11 +128,6 @@ in
       kitty
       stable.cachix
       xorg.xdpyinfo
-
-      (
-        let src = (import ../../sources).lorri;
-        in import src { inherit src; }
-      )
     ];
 
     #services.usbmuxd.enable = true;
