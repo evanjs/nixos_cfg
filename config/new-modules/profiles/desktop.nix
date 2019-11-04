@@ -11,8 +11,29 @@ let
 in
   {
     imports = [
+      ../../../modules/audio.nix
+      ../../../modules/channels.nix
+      ../../../modules/cloud-storage.nix
+      ../../../modules/fonts.nix
+      ../../../modules/fs.nix
+      ../../../modules/games
       ../../../modules/home-manager
+      ../../../modules/i18n/ibus.nix
+      ../../../modules/iOS.nix
+      ../../../modules/java.nix
+      ../../../modules/media.nix
+      ../../../modules/nixops.nix
+      ../../../modules/notifications.nix
+      ../../../modules/plymouth.nix
+      ../../../modules/qt.nix
+      ../../../modules/remote.nix
+      ../../../modules/social
+      ../../../modules/tex.nix
+      ../../../modules/theme
       ../../../modules/web.nix
+      ../../../modules/wine.nix
+      ../../../modules/wireshark.nix
+      ../../../modules/xrdp.nix
     ];
 
     options.mine.profiles.desktop = {
