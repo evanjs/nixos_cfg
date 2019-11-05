@@ -16,6 +16,7 @@ in
       };
     };
     config = mkIf cfg.enable {
+      environment.systemPackages = [ lorri ];
       mine.userConfig = {
         systemd.user.services.lorri = {
           Unit = {
