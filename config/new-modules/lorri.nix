@@ -21,8 +21,8 @@ in
         systemd.user.services.lorri = {
           Unit = {
             Description = "Lorri daemon";
-            WantedBy = [ "multi-user.target" ];
             After = [ "network.target" ];
+            PartOf = [ "multi-user.target" ];
           };
 
           Service = (
