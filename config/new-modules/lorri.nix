@@ -9,8 +9,8 @@ in
     options.mine.lorri = {
       enable = mkEnableOption "lorri daemon";
       logLevel = mkOption {
-        default = null;
-        type = types.nullOr types.str;
+        default = "INFO";
+        type = types.str;
         example = "lorri=debug";
         description = "The RUST_LOG level to use when running the lorri daemon";
       };
@@ -18,27 +18,48 @@ in
     config = mkIf cfg.enable {
       environment.systemPackages = [ lorri ];
       mine.userConfig = {
-        systemd.user.services.lorri = {
-          Unit = {
-            Description = "Lorri daemon";
-            After = [ "network.target" ];
-            PartOf = [ "multi-user.target" ];
-          };
+        systemd.user = {
+          services.lorri = {
+            Unit = {
+              Description = "Lorri build daemon";
+              Documentation = "https://github.com/target/lorri";
+              ConditionUser = "!@system";
+              Requires = "lorri.socket";
+              After = "lorri.socket";
+              RefuseManualStart = true;
+            };
 
-          Service = (
-            mkMerge [
-              {
-                ExecStart = "${lorri}/bin/lorri daemon";
-                Restart = "on-failure";
-              }
-              (mkIf (cfg.logLevel != null) {
-                Environment = "RUST_LOG=${cfg.logLevel}";
-              })
-            ]
-            );
+            Service = {
+              ExecStart = "${lorri}/bin/lorri daemon";
+              PrivateTmp = true;
+              ProtectSystem = "strict";
+              WorkingDirectory = "%h";
+              Restart = "on-failure";
+                  #"RUST_LOG=${cfg.logLevel}"
+              Environment =
+                let
+                  path = with pkgs; makeSearchPath "bin" [ nix gnutar git mercurial ];
+                in
+                concatStringsSep " " [
+                  "PATH=${path}"
+                  "RUST_BACKTRACE=1"
+                  "RUST_LOG=\"${cfg.logLevel}\""
+                ];
+              };
+            };
 
-            Install = {
-              WantedBy = [ "multi-user.target" ];
+            sockets.lorri = {
+              Unit = {
+                Description = "Socket for lorri build daemon";
+              };
+
+              Socket = {
+                ListenStream = "%t/lorri/daemon.socket";
+              };
+
+              Install = {
+                WantedBy = [ "sockets.target" ];
+              };
             };
           };
         };
