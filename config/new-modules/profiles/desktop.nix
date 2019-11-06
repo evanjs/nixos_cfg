@@ -90,7 +90,7 @@ in
 
     mine.lorri = {
       enable = true;
-      logLevel = "lorri=info";
+      #logLevel = "lorri=info"; way too much going to the journal.  Can we still output but not to the journal?
     };
 
     environment.systemPackages = with pkgs; [
