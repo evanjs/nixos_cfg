@@ -21,7 +21,7 @@ in
       sass
 
       exercism
-      nodePackages."@angular/cli"
+      pkgs.stable.nodePackages."@angular/cli" # fails to build on unstable
 
       # debugging
       gdb
