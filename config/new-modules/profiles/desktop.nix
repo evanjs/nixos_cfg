@@ -80,7 +80,7 @@ in
     mine.dev.rust = {
       enable = true;
       plugins = [ "rust-std" "rust-src" ];
-      channel = "beta";
+      channel = "stable";
       extraPackages = with pkgs; [ cargo-edit cargo-license cargo-asm cargo-outdated cargo-update cargo-bloat cargo-fuzz cargo-watch cargo-sweep stdenv.cc sccache pkgs.nixpkgs-unstable.evcxr chit diesel-cli ];
     };
     mine.jetbrains = {
