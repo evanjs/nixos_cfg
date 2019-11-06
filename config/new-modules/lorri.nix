@@ -9,7 +9,7 @@ in
     options.mine.lorri = {
       enable = mkEnableOption "lorri daemon";
       logLevel = mkOption {
-        default = "INFO";
+        default = "";
         type = types.str;
         example = "lorri=debug";
         description = "The RUST_LOG level to use when running the lorri daemon";
