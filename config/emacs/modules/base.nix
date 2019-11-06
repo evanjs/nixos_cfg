@@ -15,8 +15,6 @@ with lib;
     packages = with epkgs; [
       better-defaults
       projectile
-      #neotree
-      #gruvbox-theme
       which-key
       editorconfig
       flycheck
