@@ -12,7 +12,7 @@
     ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
     ../../../modules/samba/client/work.nix
-    #../../../modules/virtualization/virtualbox.nix # might re-enable after building / pushing to cachix from rig
+    #../../../modules/virtualization/virtualbox.nix
   ];
   mine.hardware = {
     battery = true;

@@ -13,7 +13,6 @@
     ../../../modules/development.nix
     ../../../modules/samba/client/home.nix
     #../../../modules/channels.nix
-    #../../../modules/virtualization/virtualbox.nix
   ];
 
   mine.hardware = {
