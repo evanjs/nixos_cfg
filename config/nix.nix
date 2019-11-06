@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     nix-index
     nix-prefetch-scripts
+    stable.nix
   ];
 
   # Workaround for missing gz functionality in auto-upgrade packages
