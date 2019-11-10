@@ -17,7 +17,7 @@ with lib;
           altair
         ]));
       in {
-        displayName = "Python 3 for machine learning";
+        displayName = "Python 3";
         argv = [
           "${env.interpreter}"
           "-m"
