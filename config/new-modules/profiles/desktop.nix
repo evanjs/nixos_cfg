@@ -83,7 +83,7 @@ in
       plugins = [ "rust-std" "rust-src" ];
       channel = "stable";
       extraPackages = with pkgs; [
-        cargo-edit
+        stable.cargo-edit
         cargo-license
         cargo-asm
         cargo-outdated
@@ -112,7 +112,7 @@ in
     environment.systemPackages = with pkgs; [
       # graphical admin tools
       filelight
-      qdirstat
+      stable.qdirstat
       wtf
       ncurses.dev # infocmp, etc
       gparted
