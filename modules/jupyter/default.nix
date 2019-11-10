@@ -13,6 +13,8 @@ with lib;
           pandas
           scikitlearn
           numpy
+          networkx
+          altair
         ]));
       in {
         displayName = "Python 3 for machine learning";
