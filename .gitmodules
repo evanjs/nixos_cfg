@@ -10,9 +10,6 @@
 [submodule "config/new-modules/x/wm/XMonadLayouts"]
 	path = config/new-modules/x/wm/XMonadLayouts
 	url = https://github.com/evanjs/XMonadLayouts
-[submodule "overlays/nix-helpers/nix-helpers"]
-	path = overlays/nix-helpers/nix-helpers
-	url = http://chriswarbo.net/git/nix-helpers.git
 [submodule "external/home-manager"]
 	path = external/home-manager
 	url = https://github.com/evanjs/home-manager
