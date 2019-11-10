@@ -35,7 +35,6 @@ in
               ProtectSystem = "strict";
               WorkingDirectory = "%h";
               Restart = "on-failure";
-                  #"RUST_LOG=${cfg.logLevel}"
               Environment =
                 let
                   path = with pkgs; makeSearchPath "bin" [ nix gnutar git mercurial ];
