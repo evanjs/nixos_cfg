@@ -4,7 +4,7 @@ with lib;
   networking.firewall.allowedTCPPorts = [ 8888 ];
   services.jupyter = {
     enable = true;
-    password = "'PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass rig/Jupyter | head -n1'";
+    password = "'${config.private.passwords.jupyter}'";
     ip = "0.0.0.0";
     kernels = {
       python3 = let
