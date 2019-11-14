@@ -49,13 +49,13 @@ with lib;
     };
 
     fonts = {
-      enableCoreFonts = true;
       enableFontDir = true;
       enableGhostscriptFonts = true;
       fontconfig = {
         penultimate.enable = true;
       };
       fonts = with pkgs; [
+        corefonts
         nerdfonts
         ipaexfont
         vistafonts
