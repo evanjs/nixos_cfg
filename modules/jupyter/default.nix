@@ -15,6 +15,8 @@ with lib;
           numpy
           networkx
           altair
+          arelle
+          graphviz
         ]));
       in {
         displayName = "Python 3";
