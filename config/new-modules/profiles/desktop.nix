@@ -14,7 +14,6 @@ in
       ../../../modules/audio.nix
       ../../../modules/channels.nix
       ../../../modules/cloud-storage.nix
-      ../../../modules/fonts.nix
       ../../../modules/fs.nix
       ../../../modules/games
       ../../../modules/home-manager
