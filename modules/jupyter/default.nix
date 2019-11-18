@@ -2,6 +2,7 @@
 with lib;
 {
   networking.firewall.allowedTCPPorts = [ 8888 ];
+  users.extraUsers.evanjs.extraGroups = [ "jupyter" ];
   services.jupyter = {
     enable = true;
     password = "'${config.private.passwords.jupyter}'";
