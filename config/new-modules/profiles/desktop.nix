@@ -29,7 +29,7 @@ in
       ../../../modules/social
       ../../../modules/tex.nix
       ../../../modules/theme
-      # ../../../modules/virtualization/virtualbox.nix
+       ../../../modules/virtualization/virtualbox.nix
       ../../../modules/web.nix
       ../../../modules/wine.nix
       ../../../modules/wireshark.nix
