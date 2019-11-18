@@ -1,6 +1,6 @@
 { pkgs }: pkgs.fetchFromGitHub {
   owner = "NixOS";
   repo = "nixos-hardware";
-  rev = "5575153e2d96efc8caadfc46989b11c6e64454a4";
-  sha256 = "1zfp39ilg2106wr9pzvbrd0pfbhif8c8kcfx5ypggkrn1jmhdrh4";
+  rev = "adecd1113c2d4137ef23237f9af450736fd8d2cc";
+  sha256 = "1k4zl5c0ak525japzxmddimzac1szhlwd83b7i4v24a32lbwhlkz";
 }
