@@ -4,7 +4,7 @@
     virtualbox = {
       host = {
         enable = false;
-        enableExtensionPack = true;
+        enableExtensionPack = false;
       };
     };
     kvmgt.enable = true;
