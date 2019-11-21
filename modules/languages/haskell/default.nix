@@ -2,7 +2,6 @@
 {
   imports = [
     ./hoogle
-    ../../channels.nix
   ];
 
   environment = {

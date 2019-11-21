@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
+with lib;
 {
+
   config.nixpkgs.config =
     {
     # Allow proprietary packages
@@ -7,27 +9,30 @@
 
     # Create an alias for the unstable channel
     packageOverrides = pkgs:
-    {
-      stable = import <nixos-stable>
+    rec {
+      nixos = import (fetchTarball https://nixos.org/channels/nixos-19.09/nixexprs.tar.xz)
       {
         # pass the nixpkgs config to the stable alias
         # to ensure `allowUnfree = true;` is propogated:
         config = config.nixpkgs.config;
       };
 
-      nixos-unstable = import <nixos-unstable>
+      stable = nixos;
+
+      nixos-unstable = import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz)
       {
         # pass the nixpkgs config to the unstable alias
         # to ensure `allowUnfree = true;` is propagated:
         config = config.nixpkgs.config;
       };
-      nixpkgs-unstable = import <nixpkgs-unstable>
+
+      nixpkgs-unstable = import (fetchTarball https://github.com/nixos/nixpkgs-channels/archive/nixpkgs-unstable.tar.gz)
       {
         # pass the nixpkgs config to the unstable alias
         # to ensure `allowUnfree = true;` is propagated:
         config = config.nixpkgs.config;
       };
-      nixos-unstable-small = import <nixos-unstable-small>
+      nixos-unstable-small = import (fetchTarball https://nixos.org/channels/nixos-unstable-small/nixexprs.tar.xz)
       {
         # pass the nixpkgs config to the unstable alias
         # to ensure `allowUnfree = true;` is propagated:

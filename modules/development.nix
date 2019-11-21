@@ -12,7 +12,6 @@ in
       ./documentation
       ./languages
       ./perf
-      ./channels.nix
     ];
 
     environment.systemPackages = with pkgs; [

@@ -12,7 +12,6 @@ in
   {
     imports = [
       ../../../modules/audio.nix
-      ../../../modules/channels.nix
       ../../../modules/cloud-storage.nix
       ../../../modules/fs.nix
       ../../../modules/games
