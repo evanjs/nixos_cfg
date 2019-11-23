@@ -18,6 +18,7 @@ with lib;
           altair
           arelle
           graphviz
+          loguru
         ]));
       in {
         displayName = "Python 3";
