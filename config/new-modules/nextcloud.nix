@@ -32,6 +32,7 @@ in
               ];
             };
 
+        home = "/data/web/nextcloud";
             hostName = "nextcloud";
 
             nginx.enable = true;
