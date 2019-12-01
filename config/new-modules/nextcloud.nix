@@ -41,5 +41,8 @@ in
             memcache.local = \OC\Memcache\APCu
             apc.enable_cli = 1
         '';
+      environment.systemPackages = with pkgs; [
+        p7zip
+      ];
       };
     }
