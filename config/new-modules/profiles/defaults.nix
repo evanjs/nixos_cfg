@@ -15,7 +15,7 @@ with lib;
     nix.trustedUsers = [ "root" "@wheel" ];
     nixpkgs.config.allowUnfree = true;
     networking.networkmanager.enable = true;
-    users.users.evanjs.extraGroups = [ "plugdev" ];
+    users.users.evanjs.extraGroups = [ "plugdev" "nginx" ];
 
     home-manager.useUserPackages = true;
 
