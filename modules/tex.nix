@@ -6,7 +6,8 @@ let
 in
   {
     environment.systemPackages = with pkgs; [
-      texlivePackages
       pandoc
+      texlivePackages
+      texstudio
     ];
   }
