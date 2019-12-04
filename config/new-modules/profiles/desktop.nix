@@ -28,7 +28,7 @@ in
       ../../../modules/social
       ../../../modules/tex.nix
       ../../../modules/theme
-       ../../../modules/virtualization/virtualbox.nix
+      #../../../modules/virtualization/virtualbox.nix
       ../../../modules/web.nix
       ../../../modules/wine.nix
       ../../../modules/wireshark.nix
@@ -112,7 +112,7 @@ in
 
       # git ui
       (pkgs.versions.latestVersion [pkgs.nixos-unstable.gitkraken pkgs.nixpkgs-unstable.gitkraken pkgs.stable.gitkraken])
-      
+
 
       # media
       feh
