@@ -102,11 +102,6 @@ in
       useLatest = true;
     };
 
-    mine.lorri = {
-      enable = true;
-      #logLevel = "lorri=info"; way too much going to the journal.  Can we still output but not to the journal?
-    };
-
     environment.systemPackages = with pkgs; [
       # graphical admin tools
       filelight
@@ -147,6 +142,8 @@ in
     #services.usbmuxd.enable = true;
 
     #services.dbus.socketActivated = true;
+
+    services.lorri.enable = true;
 
     services.psd = {
       enable = true;
