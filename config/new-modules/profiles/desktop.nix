@@ -143,6 +143,8 @@ in
 
     #services.dbus.socketActivated = true;
 
+    services.gpm.enable = true;
+
     services.lorri.enable = true;
 
     services.psd = {
