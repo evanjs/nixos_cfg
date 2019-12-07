@@ -42,6 +42,10 @@ with lib;
           export GTK_PATH=${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0
         '';
       };
+
+      libinput = {
+        accelProfile = "flat";
+      };
     };
 
     xdg = {
