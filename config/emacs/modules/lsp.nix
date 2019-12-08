@@ -19,6 +19,7 @@ with lib;
       flycheck
       yasnippet
       markdown-mode
+      lv
     ];
 
     init.lsp = ''
