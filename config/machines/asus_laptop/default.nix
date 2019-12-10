@@ -39,5 +39,5 @@
   boot.initrd.checkJournalingFS = false;
   powerManagement.powertop.enable = true;
 
-  system.stateVersion = "19.03";
+  system.stateVersion = "19.09";
 }
