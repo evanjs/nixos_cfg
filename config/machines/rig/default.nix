@@ -50,11 +50,7 @@
     '';
   };
 
-  boot.crashDump = {
-    enable = true;
-  };
-
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";
-  system.stateVersion = "19.03";
+  system.stateVersion = "19.09";
 }
