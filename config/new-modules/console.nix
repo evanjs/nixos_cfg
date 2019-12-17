@@ -74,6 +74,7 @@ with lib;
         direnv = {
           enable = true;
         };
+        htop.enable = true;
       };
     };
   };
