@@ -63,6 +63,7 @@ with lib;
       cv
       _1password
       du-dust
+      multipath-tools
     ];
 
     users.defaultUserShell = pkgs.zsh;
