@@ -69,6 +69,7 @@ in
     };
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.tmpOnTmpfs = true;
 
     hardware.openrazer.enable = true;
 

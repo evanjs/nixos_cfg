@@ -22,6 +22,11 @@
     audio = true;
   };
 
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/EB1D-0401";
+    fsType = "vfat";
+  };
+
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
 
