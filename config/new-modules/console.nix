@@ -64,6 +64,7 @@ with lib;
       _1password
       du-dust
       multipath-tools
+      nixpkgs-unstable.bingrep
     ];
 
     users.defaultUserShell = pkgs.zsh;
