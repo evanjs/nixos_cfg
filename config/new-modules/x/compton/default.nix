@@ -6,8 +6,7 @@ let
 
   cfg = config.mine.compton;
 
-  #package = pkgs.mine.compton-kawase { nvidia = cfg.nvidia; };
-  package = pkgs.compton;
+  package = pkgs.mine.compton-kawase { nvidia = cfg.nvidia; };
 
   mkComptonService = { autoStart, variantName, cfg }: recursiveUpdate {
 
