@@ -1,6 +1,6 @@
 { pkgs }: pkgs.fetchFromGitHub {
   owner = "mozilla";
   repo = "nixpkgs-mozilla";
-  rev = "d46240e8755d91bc36c0c38621af72bf5c489e13";
-  sha256 = "0icws1cbdscic8s8lx292chvh3fkkbjp571j89lmmha7vl2n71jg";
+  rev = "09576806ab6ac6992f6797ecb5a5cb4b3097fba1";
+  sha256 = "1zm7011d6qhvp4lib56i16i99am9gy0sd2y3zl7six8r7wh2ihn3";
 }

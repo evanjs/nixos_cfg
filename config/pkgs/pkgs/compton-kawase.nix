@@ -1,50 +1,82 @@
-{ lib, fetchFromGitHub }:
-
-# TODO: Clean up this mess
-
+{ stdenv, lib, fetchFromGitHub, pkgconfig, uthash, asciidoc, docbook_xml_dtd_45
+, docbook_xsl, libxslt, libxml2, makeWrapper, mesa_drivers
+, xorg, pixman, libev
+, dbus, libconfig, libdrm, libGL, pcre
+, libxdg_basedir, linuxPackages }:
 { nvidia ? false }:
 
 let
-  nixpkgs = fetchFromGitHub {
-    owner = "NixOS";
-    repo = "nixpkgs";
-    rev = "f2e631148ab4032891d3fc4606886d5dad7cb207";
-    sha256 = "1il7rc6lpk753zll9dr8zbws6spy0pm3nn6d1x7qypvll36v917j";
-  };
-
-  pkgs = import nixpkgs { config.allowUnfree = true; };
-
-  # From https://github.com/guibou/nixGL
-  #nvidiaVersion = "390.77";
-  nvidiaVersion = "430.40";
-  nvidiaLibs = (pkgs.linuxPackages.nvidia_x11.override {
+  nvidiaLibs = (linuxPackages.nvidia_x11.override {
     libsOnly = true;
     kernel = null;
-  }).overrideAttrs(oldAttrs: rec {
-    name = "nvidia-${nvidiaVersion}";
-    inherit (oldAttrs) src;
-    #src = pkgs.fetchurl {
-      #url = "http://download.nvidia.com/XFree86/Linux-x86_64/${nvidiaVersion}/NVIDIA-Linux-x86_64-${nvidiaVersion}.run";
-      #sha256 = "1myzhy1mf27dcx0admm3pbbkfdd9p66lw0cq2mz1nwds92gqj07p";
-    #};
-    useGLVND = 0;
+  #})
+  #.overrideAttrs(oldAttrs: rec {
+    #useGLVND = 0;
   });
-
-  compton-kawase = pkgs.compton-git.overrideAttrs (old: {
+  xorgLibs = with xorg; [
+    xorgproto
+    libxcb
+    libX11
+    libXext
+    xwininfo
+    libXinerama
+    xcbutilrenderutil
+    xcbutilimage
+    libXcomposite
+    libXdamage
+    libXrender
+    libXrandr
+  ];
+  compton-kawase = (stdenv.mkDerivation rec {
+    pname = "compton";
+    version = "7.3";
 
     src = (import ../../sources).compton-kawase;
 
-    nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.makeWrapper ];
+    nativeBuildInputs = [
+      pkgconfig
+      uthash
+      asciidoc
+      docbook_xml_dtd_45
+      docbook_xsl
+      makeWrapper
+    ];
+
+    buildInputs = [
+      dbus
+      libdrm pcre libxml2 libxslt libconfig libGL
+      libxdg_basedir
+      pixman libev
+    ]
+    ++ xorgLibs
+    ;
+
+    NIX_CFLAGS_COMPILE = [ "-fno-strict-aliasing" ];
+
+    installFlags = [ "PREFIX=$(out)" ];
 
     hardeningDisable = [ "format" ];
 
     postInstall = if nvidia then ''
-      wrapProgram $out/bin/compton \
+        wrapProgram $out/bin/compton \
         --set LD_LIBRARY_PATH "${nvidiaLibs}/lib"
     '' else ''
-      wrapProgram $out/bin/compton \
-        --set LIBGL_DRIVERS_PATH "${pkgs.mesa_drivers}/lib/dri"
+        wrapProgram $out/bin/compton \
+        --set LIBGL_DRIVERS_PATH "${mesa_drivers}/lib/dri"
     '';
+    meta = with lib; {
+      description = "A fork of XCompMgr, a sample compositing manager for X servers";
+      longDescription = ''
+          A fork of XCompMgr, which is a sample compositing manager for X
+          servers supporting the XFIXES, DAMAGE, RENDER, and COMPOSITE
+          extensions. It enables basic eye-candy effects. This fork adds
+          additional features, such as additional effects, and a fork at a
+          well-defined and proper place.
+      '';
+      license = licenses.mit;
+      homepage = "https://github.com/sdhand/compton";
+      maintainers = with maintainers; [ evanjs ];
+      platforms = platforms.linux;
+    };
   });
-
 in compton-kawase
