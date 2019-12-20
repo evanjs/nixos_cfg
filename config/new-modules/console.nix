@@ -72,7 +72,6 @@ with lib;
     users.defaultUserShell = pkgs.zsh;
 
     mine.userConfig = {
-      # TODO: break direnv out into a module with options for e.g. python, etc
       programs = {
         direnv = {
           enable = true;
