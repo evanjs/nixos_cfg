@@ -65,6 +65,8 @@ with lib;
       du-dust
       multipath-tools
       nixpkgs-unstable.bingrep
+      pciutils
+      hwinfo
     ];
 
     users.defaultUserShell = pkgs.zsh;
