@@ -138,6 +138,7 @@ in
       kitty
       stable.cachix
       xorg.xdpyinfo
+      tigervnc
     ];
 
     #services.dbus.socketActivated = true;
