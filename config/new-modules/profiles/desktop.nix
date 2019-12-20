@@ -140,8 +140,6 @@ in
       xorg.xdpyinfo
     ];
 
-    #services.usbmuxd.enable = true;
-
     #services.dbus.socketActivated = true;
 
     services.gpm.enable = true;
