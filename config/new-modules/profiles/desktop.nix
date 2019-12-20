@@ -138,9 +138,8 @@ in
       kitty
       stable.cachix
       xorg.xdpyinfo
+      tigervnc
     ];
-
-    #services.usbmuxd.enable = true;
 
     #services.dbus.socketActivated = true;
 
@@ -202,8 +201,6 @@ in
       ];
     };
 
-    #services.fstrim.enable = true;
-
-
+    services.fstrim.enable = true;
   };
 }
