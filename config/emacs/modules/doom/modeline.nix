@@ -21,13 +21,23 @@ with lib;
     ];
 
     init.modeline = ''
-        ;; This isn't starting automatically
         (use-package doom-modeline
             :ensure t
             :hook (after-init . doom-modeline-mode))
 
+        ;; icons
         ;; Whether display icons in mode-line or not.
-        (setq doom-modeline-icon (display-graphic-p))
+        ;; the default setting disables doom-modeline-icon when (display-graphic-p) is nil
+        ;; (defvar doom-modeline-icon (display-graphic-p)
+        
+        ;; per this blog post http://sodaware.sdf.org/notes/emacs-daemon-doom-modeline-icons/
+        ;; only enable icons the first time a window frame is opened
+        
+        (defun enable-doom-modeline-icons (_frame)
+        (setq doom-modeline-icon t))
+  
+        (add-hook 'after-make-frame-functions 
+                  #'enable-doom-modeline-icons)
 
         ;; Whether display the icon for major mode. It respects `doom-modeline-icon'.
         (setq doom-modeline-major-mode-icon doom-modeline-icon)
