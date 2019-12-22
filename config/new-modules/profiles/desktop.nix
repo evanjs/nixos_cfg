@@ -168,6 +168,10 @@ in
 
     #services.printing.enable = true;
 
+    documentation = {
+      dev.enable = true;
+    };
+
    # Misc power
    powerManagement.cpuFreqGovernor = "performance";
    powerManagement.enable = true;
