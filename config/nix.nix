@@ -8,6 +8,7 @@
     nix-index
     nix-prefetch-scripts
     nix
+    nixfmt
   ];
 
   # Workaround for missing gz functionality in auto-upgrade packages
