@@ -162,9 +162,17 @@ in
 
     boot.kernelModules = [ "i2c-dev" ];
 
-    # Use the systemd-boot EFI boot loader.
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+
+        efiSupport = true;
+        # allow grub to work with no explicit boot device
+        device = "nodev";
+        useOSProber = true;
+      };
+    };
 
     #services.printing.enable = true;
 
