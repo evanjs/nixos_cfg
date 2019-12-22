@@ -4,6 +4,6 @@
     python37Full
     python37Packages.pillow
     python37Packages.setuptools
-
+    pipenv
   ];
 }
