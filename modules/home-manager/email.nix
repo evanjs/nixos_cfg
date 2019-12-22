@@ -15,7 +15,6 @@ let
       enable = true;
       create = "both";
       expunge = "both";
-      patterns = ["![Gmail]*"];
       extraConfig.channel = {
         CopyArrivalDate = "yes";
       };
