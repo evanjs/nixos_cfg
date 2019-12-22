@@ -11,7 +11,6 @@
       extraGroups = [
         "wheel"
         "systemd-journal"
-        "input"
       ];
     };
 
