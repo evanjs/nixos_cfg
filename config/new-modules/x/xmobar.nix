@@ -20,8 +20,8 @@ let
     , bgColor = "#2b2b29"
     , fgColor = "#c3ae93"
     , alpha = 210
-    , position = Top
-    , border = BottomB
+    , position = Bottom
+    , border = TopB
     , borderColor =  "#646464"
 
     -- layout
