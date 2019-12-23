@@ -84,42 +84,42 @@ in
         };
       };
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.tmpOnTmpfs = true;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.tmpOnTmpfs = true;
 
-    hardware.openrazer.enable = true;
+      hardware.openrazer.enable = true;
 
-    mine.deluged.enable = true;
-    mine.x.enable = true;
-    mine.wm.enable = true;
-    mine.dev.haskell.enable = true;
-    mine.dev.rust = {
-      enable = true;
-      plugins = [ "rust-std" "rust-src" ];
-      channel = "stable";
-      extraPackages = with pkgs; [
-        stable.cargo-edit
-        cargo-license
-        cargo-asm
-        cargo-outdated
-        cargo-update
-        cargo-bloat
-        cargo-fuzz
-        cargo-watch
-        cargo-sweep
-        stdenv.cc
-        sccache
-        pkgs.nixpkgs-unstable.evcxr
-        chit
-        diesel-cli
-      ];
-    };
-    mine.jetbrains = {
-      enable = true;
-      useLatest = true;
-    };
+      mine.deluged.enable = true;
+      mine.x.enable = true;
+      mine.wm.enable = true;
+      mine.dev.haskell.enable = true;
+      mine.dev.rust = {
+        enable = true;
+        plugins = [ "rust-std" "rust-src" ];
+        channel = "stable";
+        extraPackages = with pkgs; [
+          stable.cargo-edit
+          cargo-license
+          cargo-asm
+          cargo-outdated
+          cargo-update
+          cargo-bloat
+          cargo-fuzz
+          cargo-watch
+          cargo-sweep
+          stdenv.cc
+          sccache
+          pkgs.nixpkgs-unstable.evcxr
+          chit
+          diesel-cli
+        ];
+      };
+      mine.jetbrains = {
+        enable = true;
+        useLatest = true;
+      };
 
-    environment.systemPackages = with pkgs; [
+      environment.systemPackages = with pkgs; [
       # graphical admin tools
       filelight
       stable.qdirstat
