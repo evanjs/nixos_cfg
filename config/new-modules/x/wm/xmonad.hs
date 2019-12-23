@@ -19,7 +19,7 @@ import Data.Maybe (maybeToList)
 import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import System.IO
---import System.Taffybar.Support.PagerHints (pagerHints)
+import System.Taffybar.Support.PagerHints (pagerHints)
 
 import XMonad
 import XMonad.Actions.DynamicWorkspaces as DynaW
@@ -406,13 +406,13 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 
 myStartupHook :: X()
 myStartupHook = do
-    --Bars.dynStatusBarStartup xmobarCreator xmobarDestroyer
+    Bars.dynStatusBarStartup xmobarCreator xmobarDestroyer
     --spawnOnce "taffybar"
     spawnOnce "autorandr -c && rrbg"
 
 
 xmobarCreator :: Bars.DynamicStatusBar
-xmobarCreator (S sid) = spawnPipe $ "xmobar -x " ++ show sid
+xmobarCreator (S sid) = spawnPipe $ "@xmobar@ -x " ++ show sid
 
 xmobarDestroyer :: Bars.DynamicStatusBarCleanup
 xmobarDestroyer = return ()
@@ -437,12 +437,12 @@ renameWorkspace w = X.withWindowSet $ \ws -> do
 ------------
 evanjsConfig = 
     H.ewmh $
-    --pagerHints $
+    pagerHints $
     def {
       terminal    = "kitty"
     , manageHook  = manageDocks <+> myManageHook
     , modMask     = myModMask
-    --, logHook     = Bars.multiPP xmobarPP' xmobarPP'
+    , logHook     = Bars.multiPP xmobarPP' xmobarPP'
     , layoutHook  = myLayouts
     , workspaces  = simpleWorkspaces
     , startupHook = myStartupHook >> addEWMHFullscreen
@@ -453,4 +453,3 @@ evanjsConfig =
 main = do 
     --setRandomWallpaper ["/mnt/gentoo/usr/share/wallpapers/custom"]
     xmonad =<< xmobar evanjsConfig
-

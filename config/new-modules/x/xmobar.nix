@@ -3,7 +3,7 @@
 with lib;
 
 let
-
+  cfg = config.mine.xmobar;
   configFile = let
     fonts = lib.concatStringsSep "," [
       "Helvetica Neue LT Std,HelveticaNeueLT Std Lt Cn:style=47 Light Condensed,Regular:pixelsize=12"
@@ -130,9 +130,15 @@ let
   '';
 in {
 
-  options.mine.xmobar.enable = mkEnableOption "xmobar config";
+  options.mine.xmobar = {
+    command = mkOption {
+      description = "The command to execute for xmobar";
+      default = "${pkgs.haskellPackages.xmobar}/bin/xmobar ${configFile} $@";
+    };
+    enable = mkEnableOption "xmobar config";
+  };
 
-  config = mkIf config.mine.xmobar.enable {
+  config = mkIf cfg.enable {
 
     scripts = {
 
@@ -200,37 +206,6 @@ in {
           echo 
         fi
       '';
-
     };
-
-    mine.xUserConfig = {
-      home.file = {
-        # Doesn't seem to be referencing the configFile in the service, so copy the config to `$XDG_CONFIG/xmobar/xmobarrc` for now
-        "xmobarrc" = rec {
-          source = "${configFile}";
-          target = ".config/xmobar/xmobarrc";
-        };
-      };
-
-      systemd.user.services.xmobar = {
-        Unit = {
-          Description = "Xmobar";
-          After = [ "graphical-session-pre.target" ];
-          PartOf = [ "graphical-session.target" ];
-        };
-
-        Service = {
-          ExecStart = "${pkgs.haskellPackages.xmobar}/bin/xmobar ${configFile}";
-          Restart = "on-failure";
-        };
-
-        Install = {
-          WantedBy = [ "graphical-session.target" ];
-        };
-      };
-
-    };
-
   };
-
 }
