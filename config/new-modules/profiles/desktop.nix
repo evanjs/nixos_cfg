@@ -62,11 +62,27 @@ in
       /* mine.newsboat.enable = true; */
 
       mine.userConfig = {
-      #services.gpg-agent = {
-        #enable = true;
-        #enableSshSupport = true;
-      #};
-    };
+        programs = {
+          mpv = {
+            enable = true;
+            config = {
+              interpolation="yes";
+              video-sync = "display-resample";
+              tscale = "oversample";
+            };
+            profiles = {
+              fast = {
+                vo = "vdpau";
+              };
+              svp = {
+                input-ipc-server = "/tmp/mpvsocket";    # Receives input from SVP
+                hr-seek-framedrop = "no";               # Fixes audio desync
+                resume-playback = "no";                 # Not compatible with SVP
+              };
+            };
+          };
+        };
+      };
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.tmpOnTmpfs = true;
