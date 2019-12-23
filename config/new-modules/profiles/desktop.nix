@@ -139,6 +139,7 @@ in
       stable.cachix
       xorg.xdpyinfo
       tigervnc
+      sshfs
     ];
 
     #services.dbus.socketActivated = true;
