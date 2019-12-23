@@ -212,6 +212,8 @@ in
      '';
    };
 
+   programs.thefuck.enable = true;
+
    services.weechat = {
      enable = false;
      binary = "${weechat}/bin/weechat-headless";
