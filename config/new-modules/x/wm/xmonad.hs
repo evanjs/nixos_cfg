@@ -450,6 +450,4 @@ evanjsConfig =
     , handleEventHook = H.fullscreenEventHook
     }
 
-main = do 
-    --setRandomWallpaper ["/mnt/gentoo/usr/share/wallpapers/custom"]
-    xmonad =<< xmobar evanjsConfig
+main = xmonad $ docks evanjsConfig
