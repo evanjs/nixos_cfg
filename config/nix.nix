@@ -43,7 +43,7 @@
     ;
 
     extraOptions = ''
-      min-free = ${toString (1024 * 1024 * 1024)}
+      min-free = ${toString (1024 * 1024 * 256)}
     '';
   };
 }
