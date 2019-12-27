@@ -62,6 +62,7 @@ with lib;
       cht-sh
       cv
       _1password
+      pwgen
       du-dust
       multipath-tools
       nixpkgs-unstable.bingrep
