@@ -32,6 +32,8 @@ with lib;
         
         ;; per this blog post http://sodaware.sdf.org/notes/emacs-daemon-doom-modeline-icons/
         ;; only enable icons the first time a window frame is opened
+
+        (defvar doom-modeline-icon t)
         
         (defun enable-doom-modeline-icons (_frame)
         (setq doom-modeline-icon t))
