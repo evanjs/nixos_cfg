@@ -29,6 +29,8 @@
     displayManager.gdm.wayland = false;
   };
 
+  system.autoUpgrade.enable = lib.mkForce false;
+
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
 
