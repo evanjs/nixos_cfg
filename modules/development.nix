@@ -43,6 +43,8 @@ in
       websocat
 
       pypi2nix
+
+      gnome3.glade
     ]
     ++ nodePkgs;
   }
