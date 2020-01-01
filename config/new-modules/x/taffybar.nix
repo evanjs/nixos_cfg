@@ -25,5 +25,10 @@ in {
         package = cfg.package;
       };
     };
+
+    mine.userConfig.gtk.iconTheme = {
+      name = "hicolor";
+      package = pkgs.hicolor-icon-theme;
+    };
   };
 }

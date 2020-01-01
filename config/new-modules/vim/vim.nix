@@ -36,7 +36,25 @@ let
   ];
 in
   {
-    options.mine.vim.enable = mkEnableOption "vim config";
+    options.mine.vim = {
+      colorscheme = mkOption {
+        type = types.str;
+        default = "";
+        example = "nord";
+        description = "The colorscheme to use for vim.";
+      };
+      enable = mkEnableOption "vim config";
+      extraPlugins = mkOption {
+        type = types.listOf types.package;
+        default = [];
+        example = ''
+          with pkgs.vimPlugins; [
+            nord-vim
+          ]
+        '';
+        description = "Additional plugins to add to the vim configuration";
+      };
+    };
     config.mine.userConfig = mkIf config.mine.vim.enable {
 
       nixpkgs.overlays = [(self: super: {
@@ -55,7 +73,7 @@ in
             " Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
             filetype off | syn off
             ${builtins.concatStringsSep "\n"
-            (map loadPlugin plugins)}
+            (map loadPlugin (plugins ++ config.mine.vim.extraPlugins))}
             filetype indent plugin on | syn on
 
             "" General Settings {{{
@@ -86,7 +104,7 @@ in
             let g:airline_powerline_fonts = 1
             set laststatus=2
             au VimEnter * exec 'AirlineTheme wombat'
-            colorscheme spacecamp
+            colorscheme ${config.mine.vim.colorscheme}
             "}}}
 
             "" Syntastic settings {{{
