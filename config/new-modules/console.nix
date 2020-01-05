@@ -68,6 +68,7 @@ with lib;
       nixpkgs-unstable.bingrep
       pciutils
       hwinfo
+      hashcat
     ];
 
     users.defaultUserShell = pkgs.zsh;
