@@ -69,6 +69,7 @@ with lib;
       pciutils
       hwinfo
       hashcat
+      openssl
     ];
 
     users.defaultUserShell = pkgs.zsh;
