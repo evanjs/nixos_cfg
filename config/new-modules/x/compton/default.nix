@@ -17,7 +17,7 @@ let
     };
 
     Service = {
-      ExecStart = "${package}/bin/compton --config ${cfg}";
+      ExecStart = "${package}/bin/picom --config ${cfg}";
       Restart = "always";
       RestartSec = 3;
     };
@@ -48,7 +48,7 @@ in
       systemd.user.services = {
         compton-high = recursiveUpdate (mkComptonService {
           variantName = "Highend";
-          cfg = ./compton-old.conf;
+          cfg = ./compton-high.conf;
           autoStart = cfg.highend;
         }) {
           Unit.Conflicts = [ "compton-low.service" "compton-trans.service" ];

@@ -2,6 +2,7 @@
 , docbook_xsl, libxslt, libxml2, makeWrapper, mesa_drivers
 , xorg, pixman, libev
 , dbus, libconfig, libdrm, libGL, pcre
+, meson, ninja
 , libxdg_basedir, linuxPackages }:
 { nvidia ? false }:
 
@@ -28,7 +29,7 @@ let
     libXrandr
   ];
   compton-kawase = (stdenv.mkDerivation rec {
-    pname = "compton";
+    pname = "picom";
     version = "7.3";
 
     src = (import ../../sources).compton-kawase;
@@ -40,6 +41,8 @@ let
       docbook_xml_dtd_45
       docbook_xsl
       makeWrapper
+      meson
+      ninja
     ];
 
     buildInputs = [
@@ -58,10 +61,10 @@ let
     hardeningDisable = [ "format" ];
 
     postInstall = if nvidia then ''
-        wrapProgram $out/bin/compton \
+        wrapProgram $out/bin/picom \
         --set LD_LIBRARY_PATH "${nvidiaLibs}/lib"
     '' else ''
-        wrapProgram $out/bin/compton \
+        wrapProgram $out/bin/picom \
         --set LIBGL_DRIVERS_PATH "${mesa_drivers}/lib/dri"
     '';
     meta = with lib; {
@@ -74,7 +77,7 @@ let
           well-defined and proper place.
       '';
       license = licenses.mit;
-      homepage = "https://github.com/sdhand/compton";
+      homepage = "https://github.com/tryone144/compton";
       maintainers = with maintainers; [ evanjs ];
       platforms = platforms.linux;
     };
