@@ -29,6 +29,7 @@
 
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
+  mine.rocm.enable = true;
 
   networking.hostName = "sekka";
 
