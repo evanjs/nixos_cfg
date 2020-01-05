@@ -11,7 +11,7 @@
     ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
     ../../../modules/samba/client/work.nix
-    #../../../modules/virtualization/virtualbox.nix
+    ../../../modules/virtualization/virtualbox.nix
   ];
   mine.hardware = {
     battery = false;
