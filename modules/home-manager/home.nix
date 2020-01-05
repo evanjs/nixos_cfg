@@ -13,7 +13,6 @@
     #./security/gpg.nix
     ./services
     ./skim.nix
-    ./style
     ./tmux.nix
 
     ./bash

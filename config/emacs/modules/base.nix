@@ -4,10 +4,27 @@ with lib;
 
 {
 
-  options.base = mkOption {
-    type = types.bool;
-    default = true;
-    description = "Whether to enable base";
+  options = {
+    base = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Whether to enable base";
+    };
+
+    theme = {
+      package = mkOption {
+        type = types.package;
+        description = "The package of the theme to use";
+        default = pkgs.emacsPackages.doom-themes;
+        example = pkgs.emacsPackages.nord-theme;
+      };
+      name = mkOption {
+        type = types.str;
+        description = "The name of the theme to use";
+        default = "doom-one";
+        example = "nord";
+      };
+    };
   };
 
   config = mkIf config.base {
@@ -31,7 +48,7 @@ with lib;
       org-jira
 
       all-the-icons
-      doom-themes
+      config.theme.package
       xkcd
 
       use-package
@@ -39,7 +56,7 @@ with lib;
 
     init = {
       theme = ''
-        (load-theme 'doom-one t)
+        (load-theme '${config.theme.name} t)
       '';
 
       base = dag.entryAfter [ "theme" ] ''

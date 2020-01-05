@@ -27,7 +27,6 @@ in
       ../../../modules/remote.nix
       ../../../modules/social
       ../../../modules/tex.nix
-      ../../../modules/theme
       #../../../modules/virtualization/virtualbox.nix
       ../../../modules/web.nix
       ../../../modules/wine.nix
@@ -47,6 +46,10 @@ in
           #haskell = true;
           doom = {
             modeline = true;
+          };
+          theme = {
+            package = pkgs.emacsPackages.doom-themes;
+            name = "doom-one";
           };
           helm = true;
           jenkins = true;
@@ -81,7 +84,25 @@ in
               };
             };
           };
+
         };
+
+        gtk = {
+          enable = true;
+          theme = {
+            name = "Breeze-Dark";
+            package = pkgs.breeze-gtk;
+          };
+        };
+        qt = {
+          enable = true;
+          platformTheme = "gtk";
+        };
+      };
+
+      mine.vim = {
+        colorscheme = "spacecamp";
+        extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
       };
 
       boot.kernelPackages = pkgs.linuxPackages_latest;
