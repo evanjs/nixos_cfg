@@ -20,7 +20,7 @@ in
 
     environment.systemPackages = with pkgs; [
       # js
-      nodejs-10_x
+      nodejs-12_x
       sass
 
       exercism
