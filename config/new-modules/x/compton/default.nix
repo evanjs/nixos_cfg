@@ -36,6 +36,12 @@ in
     nvidia = mkEnableOption "nvidia stuff";
 
     highend = mkEnableOption "use high-end by default";
+    package = mkOption {
+      description = "The compositor package to use";
+      default = package;
+      type = types.nullOr types.package;
+      example = pkgs.compton;
+    };
 
   };
 
@@ -43,7 +49,7 @@ in
 
     mine.xUserConfig = {
 
-      home.packages = [ package pkgs.xorg.xwininfo ];
+      home.packages = [ (cfg.package or package) pkgs.xorg.xwininfo ];
 
       systemd.user.services = {
         compton-high = recursiveUpdate (mkComptonService {
