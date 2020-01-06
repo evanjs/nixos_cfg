@@ -22,7 +22,7 @@ in {
     hardware.opengl.enable = true;
     hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
 
-    nixpkgs.config.rocmTargets = cfg.targets;
+    nixpkgs.config.rocmTargets = lib.optional cfg.targets;
 
     users.users = genAttrs config.mine.mainUsers (name: {
       extraGroups = [ "video" ];
