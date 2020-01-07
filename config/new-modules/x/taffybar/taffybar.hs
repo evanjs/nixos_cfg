@@ -110,9 +110,7 @@ main = do
       windows = windowsNew defaultWindowsConfig
       {-kernel = shellWidgetNew (T.pack "...") "echo -e \"Cur: $(uname -r)\"" 86400 -}
       weather = liftIO $ weatherNew wcfg 30
-          -- See https://github.com/taffybar/gtk-sni-tray#statusnotifierwatcher
-          -- for a better way to set up the sni tray
-      tray = sniTrayThatStartsWatcherEvenThoughThisIsABadWayToDoIt
+      tray = sniTrayNew 
 
 
       myConfig = defaultSimpleTaffyConfig
