@@ -117,6 +117,8 @@ with lib;
           size = 16;
           package = pkgs.plasma5.breeze-qt5;
         };
+        
+       preferStatusNotifierItems = true;
       };
 
       home.packages = with pkgs; [
