@@ -120,8 +120,7 @@ main = do
             workspaces : map (>>= buildContentsBox) [ layout, windows ]
         , endWidgets = map (>>= buildContentsBox)
           [
-            {-batteryIconNew ,-}
-	    clock
+            clock
           , tray
           , cpu
           , mem

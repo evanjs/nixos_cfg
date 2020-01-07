@@ -18,13 +18,7 @@ with lib;
       };
 
       mine.xmobar.enable = true;
-    mine.taffybar = {
-      config = ./taffybar.hs;
-      enable = true;
-      extraPackages = self: with self; [
-        gtk3
-      ];
-    };
+      mine.taffybar.enable = true;
       mine.compton = {
         enable = true;
         highend = true;
@@ -32,27 +26,27 @@ with lib;
       mine.terminal.enable = true;
 
       scripts = {
-          emacs = ''
+        emacs = ''
             if ! [ $(systemctl --user is-active emacs) = active ]; then
             systemctl --user start emacs
             fi
             emacsclient -c -n
-          '';
-          xmobar = config.mine.xmobar.command;
-        };
-
-    mine.userConfig = { home.packages = [ pkgs.maim ]; };
-
-        mine.xUserConfig = {
-
-          xsession.windowManager.xmonad = {
-            enable = true;
-        extraPackages = self: [ self.fuzzy self.taffybar ];
-            enableContribAndExtras = true;
-            config = pkgs.runCommand "xmonad.hs" (config.scripts // {
-              spacing = if config.mine.hardware.battery then "False" else "True";
-            }) "substituteAll ${./xmonad.hs} $out";
-          };
-        };
+        '';
+        xmobar = config.mine.xmobar.command;
       };
-    }
+
+      mine.userConfig = { home.packages = [ pkgs.maim ]; };
+
+      mine.xUserConfig = {
+
+        xsession.windowManager.xmonad = {
+          enable = true;
+          extraPackages = self: [ self.fuzzy config.mine.taffybar.package self.taffybar ];
+          enableContribAndExtras = true;
+          config = pkgs.runCommand "xmonad.hs" (config.scripts // {
+          spacing = if config.mine.hardware.battery then "False" else "True";
+          }) "substituteAll ${./xmonad.hs} $out";
+          };
+          };
+          };
+          }

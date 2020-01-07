@@ -407,7 +407,6 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 myStartupHook :: X()
 myStartupHook = do
     Bars.dynStatusBarStartup xmobarCreator xmobarDestroyer
-    --spawnOnce "taffybar"
     spawnOnce "autorandr -c && rrbg"
 
 
