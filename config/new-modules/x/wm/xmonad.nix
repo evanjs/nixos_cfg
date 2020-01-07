@@ -4,15 +4,12 @@ with lib;
 
 {
 
-  options = {
-    mine.wm.enable = mkEnableOption "My window manager";
-  };
+  options = { mine.wm.enable = mkEnableOption "My window manager"; };
 
   config = mkIf config.mine.wm.enable rec {
 
     services.xserver.windowManager.xmonad =
-      let
-        userConfig = mine.xUserConfig.xsession.windowManager.xmonad;
+      let userConfig = mine.xUserConfig.xsession.windowManager.xmonad;
       in {
         enable = userConfig.enable;
         extraPackages = userConfig.extraPackages;
@@ -21,7 +18,13 @@ with lib;
       };
 
       mine.xmobar.enable = true;
-      mine.taffybar.enable = true;
+    mine.taffybar = {
+      config = ./taffybar.hs;
+      enable = true;
+      extraPackages = self: with self; [
+        gtk3
+      ];
+    };
       mine.compton = {
         enable = true;
         highend = true;
@@ -38,15 +41,13 @@ with lib;
           xmobar = config.mine.xmobar.command;
         };
 
-        mine.userConfig = {
-          home.packages = [ pkgs.maim ];
-        };
+    mine.userConfig = { home.packages = [ pkgs.maim ]; };
 
         mine.xUserConfig = {
 
           xsession.windowManager.xmonad = {
             enable = true;
-            extraPackages = self: [ self.fuzzy config.mine.taffybar.package ];
+        extraPackages = self: [ self.fuzzy self.taffybar ];
             enableContribAndExtras = true;
             config = pkgs.runCommand "xmonad.hs" (config.scripts // {
               spacing = if config.mine.hardware.battery then "False" else "True";

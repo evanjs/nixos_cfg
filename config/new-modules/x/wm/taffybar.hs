@@ -1,32 +1,33 @@
 -- -*- mode:haskell -*-
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
-import Control.Monad
-import Control.Monad.IO.Class
-import qualified Data.ByteString.Lazy as L
-import qualified Data.ByteString.Lazy.Char8 as Char8
-import Data.Char (isSpace)
-import qualified Data.Text as T
-import qualified Graphics.UI.Gtk as G
-import Control.Monad.Trans (liftIO)
+import           Control.Monad
+import           Control.Monad.IO.Class
+import           Control.Monad.Trans                         (liftIO)
+import qualified Data.ByteString.Lazy                        as L
+import qualified Data.ByteString.Lazy.Char8                  as Char8
+import           Data.Char                                   (isSpace)
+import qualified Data.Text                                   as T
+import qualified Graphics.UI.Gtk                             as G
 --import System.Taffybar.Compat.GtkLibs
-import System.Exit (ExitCode)
-import System.IO (hPutStr, hClose)
-import System.Process
-import Data.IORef
-import Text.Printf
-import System.Taffybar
-import qualified System.Taffybar.Context as C
-import System.Taffybar.Hooks
-import System.Taffybar.Information.CPU
-import System.Taffybar.Information.Memory
-import System.Taffybar.SimpleConfig
-import System.Taffybar.Util (logPrintF)
-import System.Taffybar.Widget
-import System.Taffybar.Widget.Generic.PollingGraph
-import System.Taffybar.Widget.Generic.PollingLabel
-import System.Taffybar.Widget.Util
-import System.Taffybar.Widget.Workspaces
+import           Data.IORef
+import           System.Exit                                 (ExitCode)
+import           System.IO                                   (hClose, hPutStr)
+import           System.Process
+import           System.Taffybar
+import qualified System.Taffybar.Context                     as C
+import           System.Taffybar.Hooks
+import           System.Taffybar.Information.CPU
+import           System.Taffybar.Information.Memory
+import           System.Taffybar.SimpleConfig
+import           System.Taffybar.Util                        (logPrintF)
+import           System.Taffybar.Widget
+import           System.Taffybar.Widget.Generic.PollingGraph
+import           System.Taffybar.Widget.Generic.PollingLabel
+import           System.Taffybar.Widget.Util
+import           System.Taffybar.Widget.Workspaces
+import           Text.Printf
+import           Data.Time.Format
 
 
 transparent = (0.0, 0.0, 0.0, 0.0)
@@ -61,7 +62,7 @@ cpuCfg = myGraphConfig
 
 -- TC: KTVC
 -- Dowagiac: KBEH
-wcfg = (defaultWeatherConfig "KTVC") { weatherTemplate = "$stationPlace$ : $tempF$ F / $tempC$ C - $skyCondition$" }
+wcfg = (defaultWeatherConfig "KTVC") { weatherTemplate = "$tempF$ F / $tempC$ C - $skyCondition$" }
 
 memCallback :: IO [Double]
 memCallback = do
@@ -93,7 +94,7 @@ cpuCallback = do
 {-cmdThing :: String -> String-}
 {-cmdThing cmd = do-}
     {-liftIO $ stripStr $ readCreateProcess (shell cmd) ""-}
-    
+
 
 {-download url = do-}
    {-doc <- openURI url-}
@@ -151,6 +152,33 @@ stripStr ioString = do
 
 rstrip = reverse . dropWhile isSpace . reverse
 
+--defaultTimeLocale :: TimeLocale
+
+
+--data TimeLocale = TimeLocale
+    --{ wDays  :: [(String, String)]
+    ---- weekdays
+    ---- full name (Sunday), the abbreviation (Sun)
+    ---- starts from Sunday
+    --, months :: [(String, String)]
+    ---- full name (January) then abbreviation (Jan)
+    --, amPm   :: (String, String)
+    --}
+
+jpLocale = defaultTimeLocale
+    { wDays =
+        [ ("日曜日", "日")
+        , ("月曜日", "月")
+        , ("火曜日", "火")
+        , ("水曜日", "水")
+        , ("木曜日", "木")
+        , ("金曜日", "金")
+        , ("土曜日", "土")
+        ]
+    }
+
+
+
 
 main = do
   let myWorkspacesConfig =
@@ -163,7 +191,7 @@ main = do
       cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
       mem = pollingGraphNew memCfg 1 memCallback
       net = networkGraphNew netCfg Nothing
-      clock = textClockNew Nothing "%a %b %_d %r" 1
+      clock = textClockNew (Just jpLocale) "(%a) %b %_d %r" 1
       layout = layoutNew defaultLayoutConfig
       windows = windowsNew defaultWindowsConfig
       {-texxxt =  liftIO $ cmdThing "eix -u# wc -l"-}
@@ -190,7 +218,7 @@ main = do
         { startWidgets =
             workspaces : map (>>= buildContentsBox) [ layout, windows ]
         , endWidgets = map (>>= buildContentsBox)
-          [ 
+          [
             {-batteryIconNew ,-}
 	    clock
           , tray
@@ -209,6 +237,5 @@ main = do
         , barHeight = 50
         , widgetSpacing = 8
         }
-  {-startTaffybar $ withBatteryRefresh $ withLogServer $ withToggleServer $-}
   startTaffybar $ withLogServer $ withToggleServer $
                toTaffyConfig myConfig
