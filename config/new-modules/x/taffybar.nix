@@ -19,15 +19,6 @@ in {
 
     services.upower.enable = true;
 
-    #mine.xUserConfig = {
-      #xdg = {
-        #configFile."taffybar/taffybar.hs" = {
-          #source = ./taffybar/taffybar.hs;
-        #};
-      #};
-    #};
-
-
     mine.userConfig = {
       systemd.user.services.taffybar = {
         Unit = {
