@@ -9,7 +9,6 @@ import qualified Data.ByteString.Lazy.Char8                  as Char8
 import           Data.Char                                   (isSpace)
 import qualified Data.Text                                   as T
 import qualified Graphics.UI.Gtk                             as G
---import System.Taffybar.Compat.GtkLibs
 import           Data.IORef
 import           System.Exit                                 (ExitCode)
 import           System.IO                                   (hClose, hPutStr)
@@ -73,97 +72,12 @@ cpuCallback = do
   (_, systemLoad, totalLoad) <- cpuLoad
   return [totalLoad, systemLoad]
 
-{-shellWidgetTooltipNew :: String -> String -> String -> Double -> C.TaffyIO G.Widget-}
-{-shellWidgetTooltipNew defaultStr cmd tooltipCmd interval = do-}
-  {-mString <- readCreateProcess (shell cmd) ""-}
-  {-tString <- readCreateProcess (shell tooltipCmd) ""-}
-  {-{-liftIO $ mString-}-}
-  {-{-liftIO $ tString-}-}
-  {-label <- pollingLabelNewWithTooltip defaultStr interval $ return (mString, Just tString)-}
-  {-liftIO $ G.widgetShowAll $ label-}
-  {-return label-}
-
-{-shellWidgetNew defaultStr cmd interval = do-}
-  {-label <- pollingLabelNew defaultStr interval $ T.unpack (T.pack( readCreateProcess (shell cmd) "" ))-}
-  {-liftIO $ G.widgetShowAll $ label-}
-
-  {-return label-}
-
-{-cmdThing :: T.Text -> T.Text-}
-{-cmdThing :: String -> String-}
-{-cmdThing :: String -> String-}
-{-cmdThing cmd = do-}
-    {-liftIO $ stripStr $ readCreateProcess (shell cmd) ""-}
-
-
-{-download url = do-}
-   {-doc <- openURI url-}
-   {-Just doc-}
-
-{-shellWidgetNewTooltip :: String -> String -> Double -> C.TaffyIO G.Widget-}
-{-shellWidgetNewTooltip title cmd interval = do-}
-  {-theTip <- stripStr $ readCreateProcess (shell cmd) ""-}
-  {-label <- pollingLabelNewWithTooltip title interval $ return (title, Just theTip)-}
-  {-liftIO $ G.widgetShowAll $ label-}
-
-  {-return label-}
-
-{-getDoc :: Maybe String -> String -> IO (Either String)-}
-{-getDoc url = do-}
-  {-dat <- downloadURL url-}
-  {-case dat of-}
-    {-Right dat' -> case parse parseData url dat' of-}
-      {-Right d -> return (Right d)-}
-      {-Left err -> return (Left (show err))-}
-    {-Left err -> return (Left (show err))-}
-
-
-{-getCurrentWttr :: IO (Either String)-}
-    {--> StringTemplate String-}
-    {--> StringTemplate String-}
-    {--> IO (T.Text, Maybe T.Text)-}
-{-getCurrentWttr labelTpl tooltipTpl = do-}
-  {-dat <- getDoc "wttr.in"-}
-    {-case dat of-}
-      {-Right wi ->-}
-        {-case formatter of-}
-          {-String f -> do-}
-            {-let rawLabel <- T.pack $ f wi-}
-            {-lbl <- markupEscapeText rawLabel (fromIntegral $ T.length rawLabel)-}
-            {-return (lbl, Just lbl)-}
-      {-Left err -> do-}
-        {-putStrLn err-}
-        {-return ("N/A", Nothing)-}
-
-{-weatherTooltipNew' labelTpl tooltipTpl = liftIO $ do-}
-  {-let labelTpl' = newSTMP "aaa"-}
-      {-tooltipTpl' = newSTMP "bbb"-}
-
-  {-l <- pollingLabelNewWithTooltip "Can't retrieve tooltip"-}
-  {-(getCurrentWttr labelTpl' tooltipTpl')-}
-
-  {-GI.Gtk.WidgetShowAll l-}
-  {-return l-}
-
 stripStr :: IO String -> IO String
 stripStr ioString = do
   str <- ioString
   return $ rstrip $ str
 
 rstrip = reverse . dropWhile isSpace . reverse
-
---defaultTimeLocale :: TimeLocale
-
-
---data TimeLocale = TimeLocale
-    --{ wDays  :: [(String, String)]
-    ---- weekdays
-    ---- full name (Sunday), the abbreviation (Sun)
-    ---- starts from Sunday
-    --, months :: [(String, String)]
-    ---- full name (January) then abbreviation (Jan)
-    --, amPm   :: (String, String)
-    --}
 
 jpLocale = defaultTimeLocale
     { wDays =
@@ -194,20 +108,7 @@ main = do
       clock = textClockNew (Just jpLocale) "(%a) %b %_d %r" 1
       layout = layoutNew defaultLayoutConfig
       windows = windowsNew defaultWindowsConfig
-      {-texxxt =  liftIO $ cmdThing "eix -u# wc -l"-}
-      {-updates = commandRunnerNew 10 "echo" ["-e", "Updates:", texxxt] (T.pack "Failed to fetch updates")-}
-      {-updates = commandRunnerNew 10 "echo" ["-e", "Updates: $(eix -u# | wc -l)"] (T.pack "Failed to fetch updates")-}
-      updates = commandRunnerNew 10 "ecount" [] (T.pack "can't query updates")
-      {-wttr = commandRunnerNew 10 "curl" ["http://wttr.in"] (T.pack "no wttr")-}
-      {-updates = shellWidgetNew (T.pack "...") "echo -e \"Updates: $(eix -u# | wc -l)\"" 5-}
       {-kernel = shellWidgetNew (T.pack "...") "echo -e \"Cur: $(uname -r)\"" 86400 -}
-      newKernel = commandRunnerNew 1800 "newkern" [] (T.pack "?.?.?")
-      {-wttr = pollingLabelNewWithTooltip "..." "echo ..." "wttrt" 20-}
-      {-wttr = pollingLabelNewWithTooltip (T.pack "nothing") 10 $ (, Nothing) <$> "wttrt"-}
-      {-wttr = shellWidgetNewTooltip "..." "curl wttr.in" 20-}
-      {-wttr = return shellWidgetTooltipNew "..." "echo ..." "curl wttr.in" 20-}
-      {-wttr = pollingLabelNewWithTooltip " ... " 10 $ return ("...", Just ( liftIO $ openURI "wttr.in"))-}
-      {-wttr = weatherTooltipNew'-}
       weather = liftIO $ weatherNew wcfg 30
           -- See https://github.com/taffybar/gtk-sni-tray#statusnotifierwatcher
           -- for a better way to set up the sni tray
@@ -225,11 +126,6 @@ main = do
           , cpu
           , mem
           , net
-          {-, mpris2New-}
-          , updates
-          {-, wttr-}
-          {-, kernel-}
-          , newKernel
           , weather
           ]
         , barPosition = Top
