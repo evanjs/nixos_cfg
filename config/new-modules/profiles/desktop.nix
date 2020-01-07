@@ -183,6 +183,13 @@ in
 
     services.gpm.enable = true;
 
+
+    nixpkgs.config.packageOverrides = pkgs: {
+      lorri = 
+      let src = (import ../../sources).lorri;
+      #in pkgs.lorri.overrideAttrs(attrs: { inherit src; } );
+      in import src { inherit src; };
+    };
     services.lorri.enable = true;
 
     services.psd = {
