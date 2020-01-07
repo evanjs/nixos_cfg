@@ -1,6 +1,6 @@
 { pkgs }: pkgs.fetchFromGitHub {
   owner = "emacs-lsp";
   repo = "lsp-ui";
-  rev = "21b97776fde64b84bc5cf282ccf5422f894d4554";
-  sha256 = "0qpf13lcarkqn8fppab6v9j1w8fy7vkjn612sdpswzccnb4i8509";
+  rev = "01f89e40f473032376f70a90e33831356832f084";
+  sha256 = "0avi8hfyh61gjrv0c8aj28y8nx8qw1vvsb3l15v9xzblvdrx7v5x";
 }
