@@ -438,7 +438,7 @@ evanjsConfig =
     H.ewmh $
     pagerHints $
     def {
-      terminal    = "kitty"
+      terminal    = "@terminal@"
     , manageHook  = manageDocks <+> myManageHook
     , modMask     = myModMask
     , logHook     = Bars.multiPP xmobarPP' xmobarPP'
