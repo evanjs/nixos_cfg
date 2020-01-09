@@ -234,7 +234,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
      spawn myLauncher)
   -- Spawn the launcher using command specified by myLauncher.
   -- Use this to launch programs without a key binding.
-    , ((modMask .|. shiftMask, xK_s),
+    , ((modMask .|. shiftMask, xK_h),
      spawn mySshLauncher)
   -- Take a selective screenshot using the command specified by mySelectScreenshot.
     , ((modMask .|. shiftMask, xK_p),
