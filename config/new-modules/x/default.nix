@@ -144,6 +144,12 @@ with lib;
         aniwp = "xwinwrap -ov -fs -ni -- mpv --loop=inf -wid WID --panscan=1";
       };
 
+      programs.rofi = {
+        enable = true;
+        theme = "Monokai";
+        terminal = config.mine.terminal.binary;
+      };
+
     };
   };
 

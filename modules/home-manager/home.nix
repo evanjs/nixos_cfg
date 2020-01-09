@@ -8,7 +8,6 @@
     ./lib.nix
     ./lsd.nix
     ./randr
-    ./rofi.nix
     ./security
     #./security/gpg.nix
     ./services
