@@ -11,8 +11,6 @@ mkIf config.mine.console.enable {
       colordiff
     ];
 
-    home.sessionVariables.EDITOR = "vim";
-
     programs.zsh = {
       enable = true;
       history = {
