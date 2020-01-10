@@ -43,7 +43,7 @@ in
         enable = true;
 
         config = {
-          #haskell = true;
+          haskell = true;
           doom = {
             modeline = true;
           };
