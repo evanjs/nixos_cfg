@@ -62,13 +62,13 @@ in
         };
       };
       mine.vim.enable = true;
+      programs.vim.defaultEditor = true;
 
       /* mine.newsboat.enable = true; */
 
       programs.fuse.userAllowOther = true;
 
       mine.userConfig = {
-        sessionVariables.EDITOR = mine.scripts.emacs;
         programs = {
           mpv = {
             enable = true;
