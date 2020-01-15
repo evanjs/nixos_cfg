@@ -52,6 +52,21 @@ with lib;
       mime.enable = true;
     };
 
+    mine.userConfig.xdg.mimeApps =
+      let
+        chromium = "chromium-browser.desktop";
+      in
+      {
+        enable = true;
+        defaultApplications = {
+          "application/xhtml+xml" = chromium;
+          "text/html" = chromium;
+          "text/xml" = chromium;
+          "x-scheme-handler/http" = chromium;
+          "x-scheme-handler/https" = chromium;
+        };
+      };
+
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;
