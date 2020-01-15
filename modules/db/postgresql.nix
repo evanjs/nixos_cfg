@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  networking.firewall.allowedTCPPorts = [ 5432 ];
+
   services = {
 
     pgmanage = {
