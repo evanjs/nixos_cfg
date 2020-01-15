@@ -181,6 +181,10 @@ in
       xorg.xdpyinfo
       tigervnc
       sshfs
+
+      # iOS stuff
+      ideviceinstaller
+      ifuse
     ];
 
     #services.dbus.socketActivated = true;
