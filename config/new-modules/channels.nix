@@ -10,14 +10,8 @@ with lib;
     # Create an alias for the unstable channel
     packageOverrides = pkgs:
     rec {
-      nixos = import (fetchTarball https://nixos.org/channels/nixos-19.09/nixexprs.tar.xz)
-      {
-        # pass the nixpkgs config to the stable alias
-        # to ensure `allowUnfree = true;` is propogated:
-        config = config.nixpkgs.config;
-      };
 
-      stable = nixos;
+      stable = import <nixos> {};
 
       nixos-unstable = import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz)
       {

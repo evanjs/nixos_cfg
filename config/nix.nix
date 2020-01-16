@@ -33,15 +33,6 @@
       dates = "04:00";
     };
 
-    nixPath = 
-    options.nix.nixPath.default ++ 
-    [
-      "nixpkgs-unstable=${pkgs.nixpkgs-unstable.path}"
-      "nixos-unstable=${pkgs.nixos-unstable.path}"
-      "nixos-unstable-small=${pkgs.nixos-unstable-small.path}"
-    ]
-    ;
-
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 256)}
     '';
