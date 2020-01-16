@@ -3,7 +3,7 @@ with import ./. {};
 (shellFor {
   packages = p: with p; [ mytaffybar ];
   withHoogle = true;
-  buildInputs = [ gtk3 hicolor-icon-theme ];
+  buildInputs = [ hicolor-icon-theme ];
   nativeBuildInputs = [ cabal-install ];
 }).overrideAttrs (drv: {
   shellHook = drv.shellHook + ''
