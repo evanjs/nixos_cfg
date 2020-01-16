@@ -11,6 +11,9 @@ with lib;
     packageOverrides = pkgs:
     rec {
 
+      stable = import (fetchTarball https://nixos.org/channels/nixos-19.09/nixexprs.tar.xz) {
+        config = config.nixpkgs.config;
+      };
       nixos-unstable = import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz)
       {
         # pass the nixpkgs config to the unstable alias

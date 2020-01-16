@@ -126,14 +126,14 @@ in
           cargo-license
           cargo-asm
           cargo-outdated
-          cargo-update
+          stable.cargo-update
           cargo-bloat
           cargo-fuzz
           cargo-watch
           cargo-sweep
           stdenv.cc
           sccache
-          pkgs.nixpkgs-unstable.evcxr
+          evcxr
           chit
           diesel-cli
         ];
