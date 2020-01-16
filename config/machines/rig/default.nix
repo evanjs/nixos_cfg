@@ -34,6 +34,7 @@
   mine.gaming.enable = true;
   mine.znc.enable = true;
   mine.nextcloud.enable = true;
+  mine.deluged.enable = true;
 
   services.xserver.dpi = 80;
   networking.firewall.allowedTCPPorts = [ 3128 ];
