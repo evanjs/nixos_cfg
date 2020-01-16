@@ -165,7 +165,11 @@ in
       firefox
 
       # docs
-      xpdf
+
+      # xpdf -- currently marked as insecure, with several known vulnerabilities
+      # https://github.com/NixOS/nixpkgs/pull/68616
+      # these issues will be fixed with the release of 5.0
+
       okular
 
       # word processors, etc
