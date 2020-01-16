@@ -143,6 +143,7 @@ in
         useLatest = true;
       };
 
+      environment.homeBinInPath = true;
       environment.systemPackages = with pkgs; [
       # graphical admin tools
       filelight
