@@ -3,7 +3,6 @@ with lib;
   {
 
     imports = [
-      ../../../config
       ../../../overlays
       ../../../modules/home-manager
       ../../../modules/security/keybase.nix
