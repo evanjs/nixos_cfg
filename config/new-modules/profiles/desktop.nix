@@ -123,7 +123,7 @@ in
         plugins = [ "rust-std" "rust-src" ];
         channel = "stable";
         extraPackages = with pkgs; [
-          stable.cargo-edit
+          cargo-edit
           cargo-license
           cargo-asm
           cargo-outdated
@@ -147,13 +147,13 @@ in
       environment.systemPackages = with pkgs; [
       # graphical admin tools
       filelight
-      stable.qdirstat
+      qdirstat
       wtf
       ncurses.dev # infocmp, etc
       gparted
 
       # git ui
-      (pkgs.versions.latestVersion [pkgs.nixos-unstable.gitkraken pkgs.nixpkgs-unstable.gitkraken pkgs.stable.gitkraken])
+      (pkgs.versions.latestVersion [pkgs.nixos-unstable.gitkraken pkgs.nixpkgs-unstable.gitkraken pkgs.gitkraken])
 
 
       # media
@@ -169,7 +169,7 @@ in
       okular
 
       # word processors, etc
-      pkgs.stable.libreoffice
+      pkgs.libreoffice
       gnome3.gucharmap
 
       rrbg # background switcher
@@ -177,7 +177,7 @@ in
       graphviz
 
       kitty
-      stable.cachix
+      cachix
       xorg.xdpyinfo
       tigervnc
       sshfs
