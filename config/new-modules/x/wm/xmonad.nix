@@ -13,6 +13,7 @@ with lib;
       in {
         enable = userConfig.enable;
         extraPackages = userConfig.extraPackages;
+        haskellPackages = userConfig.haskellPackages;
         enableContribAndExtras = userConfig.enableContribAndExtras;
         config = userConfig.config;
       };
@@ -47,6 +48,7 @@ with lib;
           config.mine.taffybar.package
           self.taffybar
         ];
+        haskellPackages = pkgs.stable.haskell.packages.ghc865;
         enableContribAndExtras = true;
         config = pkgs.runCommand "xmonad.hs" (config.scripts // {
           spacing = if config.mine.hardware.battery then "False" else "True";
