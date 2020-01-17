@@ -23,7 +23,7 @@ in
       ../../../modules/nixops.nix
       ../../../modules/notifications.nix
       ../../../modules/plymouth.nix
-      ../../../modules/qt.nix
+      #../../../modules/qt.nix
       ../../../modules/remote.nix
       ../../../modules/social
       ../../../modules/tex.nix
