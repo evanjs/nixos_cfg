@@ -9,7 +9,7 @@ with lib;
     ip = "0.0.0.0";
     kernels = {
       python3 = let
-        env = (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
+        env = (pkgs.stable.python3.withPackages (pythonPackages: with pythonPackages; [
           ipykernel
           pandas
           scikitlearn
