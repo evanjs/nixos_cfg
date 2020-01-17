@@ -106,13 +106,18 @@ mySshLauncher = "rofi -lines 7 -columns 2 -modi ssh -show"
 
 myRandomWallpaper = "rrbg"
 
+----------------
+-- workspaces --
+----------------
+--myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ map show [11.999]
+
+-- Workspaces with single-character names that can be keyed in with no modifiers.
+simpleWorkspaces :: [X.WorkspaceId]
+simpleWorkspaces = [[w] | w <- "1234567890-="]
 
 kill8 ss | Just w <- W.peek ss = W.insertUp w $ W.delete w ss
   | otherwise = ss
 
-
-withScreen s f = screenWorkspace s >>= flip whenJust (windows . f)
-viewShift  i = W.view i . W.shift i
 
 ------------
 -- Search --
@@ -386,15 +391,14 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
-    | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
+    | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
   ++
 
-    [((modMask .|. e, key ), windows (onCurrentScreen f ws))
-      | (key, ws) <- zip [xK_1..xK_9] (workspaces' conf)
-      , (e, f)    <- [(0, W.view), (shiftMask, viewShift)]
-    ]
+  [((m.|. modMask, k), f sc)
+    | (k, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+    , (f, m) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]]
 
 ------------------
 -- Startup hook --
@@ -417,12 +421,20 @@ xmobarPP' = xmobarPP {
   ppSort = mkWsSort $ getXineramaPhysicalWsCompare def
 }
   where dropIx wsId = if ':' `elem` wsId then drop 2 wsId else wsId
+---------------------------------------------------
+-- Rename the workspace and do some bookkeeping. --
+---------------------------------------------------
+renameWorkspace :: X.WorkspaceId -> X.X ()
+renameWorkspace w = X.withWindowSet $ \ws -> do
+  let c = W.tag . W.workspace . W.current $ ws
+  DynaW.renameWorkspaceByName w
+  -- Make sure that we're not left without one of the simple workspaces.
+  when (c `elem` simpleWorkspaces) $ DynaW.addHiddenWorkspace c
 
 ------------
 -- config --
 ------------
-evanjsConfig nScreens =
-    docks $
+evanjsConfig = 
     H.ewmh $
     pagerHints $
     def {
@@ -431,10 +443,10 @@ evanjsConfig nScreens =
     , modMask     = myModMask
     , logHook     = Bars.multiPP xmobarPP' xmobarPP'
     , layoutHook  = myLayouts
-    , workspaces  = withScreens nScreens (map show [1..5])
+    , workspaces  = simpleWorkspaces
     , startupHook = myStartupHook >> addEWMHFullscreen
     , keys        = myKeys
     , handleEventHook = H.fullscreenEventHook
     }
 
-main = countScreens >>= xmonad . evanjsConfig
+main = xmonad $ docks evanjsConfig
