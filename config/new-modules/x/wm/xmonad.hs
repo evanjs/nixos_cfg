@@ -52,6 +52,8 @@ import XMonad.Layout.Roledex
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
 
+import XMonad.Prompt.Man
+
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run
 import XMonad.Util.Scratchpad
@@ -385,6 +387,8 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask, xK_Up),     sendMessage MirrorExpand)
     , ((modMask, xK_Right),  sendMessage MirrorShrink)
     , ((modMask, xK_Down),   sendMessage MirrorShrink)
+
+    , ((modMask, xK_F1), manPrompt P.def)
   ]
   ++
 
@@ -438,7 +442,7 @@ evanjsConfig =
     H.ewmh $
     pagerHints $
     def {
-      terminal    = "@terminal@"
+      terminal    = "kitty"
     , manageHook  = manageDocks <+> myManageHook
     , modMask     = myModMask
     , logHook     = Bars.multiPP xmobarPP' xmobarPP'
