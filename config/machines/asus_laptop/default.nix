@@ -6,9 +6,6 @@
 
     ../../../config
 
-    # games
-    #../../../modules/games/steam.nix
-
     ../../../modules/db/postgresql.nix
     ../../../modules/development.nix
     ../../../modules/samba/client/home.nix
@@ -35,6 +32,8 @@
     device = "/dev/disk/by-uuid/520C74190C73F677";
     fsType = "ntfs-3g";
   };
+
+  mine.gaming.enable = true;
 
   system.autoUpgrade.enable = lib.mkForce false;
 
