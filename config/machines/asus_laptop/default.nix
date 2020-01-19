@@ -40,8 +40,6 @@
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
 
-  mine.compton.nvidia = true;
-
   networking.hostName = "nixentoo";
 
   boot.initrd.checkJournalingFS = false;

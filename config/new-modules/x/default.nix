@@ -14,8 +14,6 @@ with lib;
 
     mine.live-wallpaper.enable = true;
 
-    mine.compton.enable = true;
-
     services.logind.extraConfig = ''
       HandlePowerKey=suspend
     '';
@@ -116,6 +114,19 @@ with lib;
 
 
     mine.xUserConfig = {
+
+      services.compton = {
+        enable = true;
+        activeOpacity = "0.85";
+        blur = true;
+        fade = true;
+        fadeDelta = 5;
+        vSync = "opengl-swc";
+        opacityRule = [
+          "100:name *?= 'chromium'"
+          "100:name *?= 'firefox'"
+        ];
+      };
 
       services.unclutter = {
         enable = true;

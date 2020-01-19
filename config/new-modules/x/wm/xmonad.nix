@@ -20,10 +20,6 @@ with lib;
 
     mine.xmobar.enable = true;
     mine.taffybar.enable = true;
-    mine.compton = {
-      enable = true;
-      highend = true;
-    };
     mine.terminal.enable = true;
 
     scripts = {
