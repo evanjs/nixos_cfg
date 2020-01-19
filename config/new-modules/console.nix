@@ -76,6 +76,11 @@ with lib;
 
     mine.userConfig = {
       programs = {
+        broot = {
+          enable = true;
+          enableBashIntegration = true;
+          enableZshIntegration = true;
+        };
         direnv = {
           enable = true;
         };
