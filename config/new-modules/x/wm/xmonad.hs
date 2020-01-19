@@ -23,6 +23,7 @@ import XMonad.Actions.DynamicWorkspaces as DynaW
 import XMonad.Actions.Navigation2D
 import XMonad.Actions.NoBorders
 import XMonad.Actions.PhysicalScreens
+import XMonad.Actions.ShowText
 import XMonad.Actions.SpawnOn
 import XMonad.Actions.WorkspaceNames as WSN
 
@@ -106,6 +107,9 @@ mySshLauncher = "rofi -lines 7 -columns 2 -modi ssh -show"
 
 myRandomWallpaper = "rrbg"
 
+showTextConfig :: ShowTextConfig
+showTextConfig = def
+    { st_font = "xft:fira-code" }
 ----------------
 -- workspaces --
 ----------------
@@ -387,6 +391,10 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask, xK_Down),   sendMessage MirrorShrink)
 
     , ((modMask, xK_F1), manPrompt P.def)
+
+  -- get the class name of the focused window
+  -- this can be useful for things like picom/compton opacity rules
+    , ((modMask, xK_F4), getCurrentClassName >>= flashText showTextConfig 1)
   ]
   ++
 
@@ -401,6 +409,11 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   [((m.|. modMask, k), f sc)
     | (k, sc) <- zip [xK_w, xK_e, xK_r] [0..]
     , (f, m) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]]
+
+
+getCurrentClassName = withWindowSet $ \set -> case W.peek set of
+    Just window -> runQuery className window
+    Nothing -> return ""
 
 ------------------
 -- Startup hook --
@@ -448,7 +461,7 @@ evanjsConfig =
     , workspaces  = simpleWorkspaces
     , startupHook = myStartupHook >> addEWMHFullscreen
     , keys        = myKeys
-    , handleEventHook = H.fullscreenEventHook
+    , handleEventHook = H.fullscreenEventHook <+> handleTimerEvent
     }
 
 main = xmonad $ docks evanjsConfig
