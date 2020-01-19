@@ -119,6 +119,9 @@ with lib;
         enable = true;
         activeOpacity = "0.85";
         blur = true;
+        blurExclude = [
+          "class_g = 'slop'"
+        ];
         fade = true;
         fadeDelta = 5;
         vSync = "opengl-swc";
