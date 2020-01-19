@@ -78,6 +78,7 @@ defaultThreeColumn = (0.15, 0.65, 0.2)
 
 ----------------------
 
+myBrowser = "chromium-browser"
 myTerminal = "kitty"
 
 -- The command to lock the screen or show the screensaver.
@@ -289,8 +290,8 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
-    , ((modMask, xK_s), SM.submap $ searchEngineMap $ Search.promptSearch P.def)
-    , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap Search.selectSearch)
+    , ((modMask, xK_s), SM.submap $ searchEngineMap $ Search.promptSearchBrowser P.def myBrowser)
+    , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap (Search.selectSearchBrowser myBrowser))
 
 --------------------------------------------------------------------
     -- "Standard" xmonad key bindings
@@ -439,7 +440,7 @@ evanjsConfig =
     H.ewmh $
     pagerHints $
     def {
-      terminal    = "kitty"
+      terminal    = myTerminal
     , manageHook  = manageDocks <+> myManageHook
     , modMask     = myModMask
     , logHook     = Bars.multiPP xmobarPP' xmobarPP'
