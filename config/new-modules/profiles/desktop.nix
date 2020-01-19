@@ -70,12 +70,6 @@ in
 
       services.geoclue2.enable = true;
       mine.userConfig = {
-        services = {
-          redshift = {
-            enable = true;
-            provider = "geoclue2";
-          };
-        };
         programs = {
           mpv = {
             enable = true;

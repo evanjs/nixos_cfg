@@ -9,8 +9,11 @@
 
   mine.xUserConfig = {
     services.redshift = {
-      latitude = "-85.6";
-      longitude = "44.7";
+      provider = "geoclue2";
+      temperature = {
+        day = 6000;
+        night = 4100;
+      };
     };
   };
 

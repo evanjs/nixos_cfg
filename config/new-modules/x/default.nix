@@ -132,7 +132,7 @@ with lib;
         enable = true;
       };
 
-      #services.redshift.enable = true;
+      services.redshift.enable = true;
 
       xsession = {
         enable = true;
