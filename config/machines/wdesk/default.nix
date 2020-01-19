@@ -29,7 +29,9 @@
 
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
-  mine.rocm.enable = true;
+
+  # enable after rocm packages are locked to stable channel
+  mine.rocm.enable = false;
 
   networking.hostName = "sekka";
 
