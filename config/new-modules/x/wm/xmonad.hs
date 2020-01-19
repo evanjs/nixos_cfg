@@ -169,7 +169,7 @@ genericLayouts =
         ||| Mirror tall
         ||| tabbedLayout
         ||| noBorders (fullscreenFull Full)
-        ||| (SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100))
+        ||| SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100)
         ||| Accordion
         ||| XG.Grid
         ||| rTall
