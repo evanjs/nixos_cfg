@@ -1,7 +1,7 @@
 #! /usr/bin/env runhugs +l
 --
 -- xmonad.hs
--- Copyright (C) 2018 evanjs <evanjs@asentoo>
+-- Copyright (C) 2020 evanjs <evanjsx@gmail.com>
 --
 -- Distributed under terms of the MIT license.
 --
