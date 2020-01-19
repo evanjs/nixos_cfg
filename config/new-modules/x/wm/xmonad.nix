@@ -29,7 +29,7 @@ with lib;
         fi
         emacsclient -c -n
       '';
-      terminal = config.mine.terminal.binary;
+      terminal = "kitty";
       xmobar = config.mine.xmobar.command;
     };
 
