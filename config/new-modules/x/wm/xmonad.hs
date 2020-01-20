@@ -545,8 +545,8 @@ renameWorkspace :: WorkspaceId -> X ()
 renameWorkspace w = withWindowSet $ \ws -> do
   let c = W.tag . W.workspace . W.current $ ws
   DynaW.renameWorkspaceByName w
-  -- Make sure that we're not left without one of the simple workspaces.
-  when (c `elem` simpleWorkspaces) $ DynaW.addHiddenWorkspace c
+  -- Make sure that we're not left without one of the workspaces
+  when (c `elem` myWorkspaces) $ DynaW.addHiddenWorkspace c
 
 ------------
 -- config --
@@ -560,7 +560,7 @@ evanjsConfig =
     , modMask     = myModMask
     , logHook     = historyHook <+> myFadeHook <+> keepFloatsOnTopHook <+> H.ewmhDesktopsLogHookCustom namedScratchpadFilterOutWorkspace <+> Bars.multiPP xmobarPP' xmobarPP' 
     , layoutHook  = myLayouts
-    , workspaces  = simpleWorkspaces
+    , workspaces  = myWorkspaces
     , startupHook = myStartupHook
     , keys        = myKeys
     , handleEventHook = H.fullscreenEventHook <+> trackNotificationWindowsHook <+> handleTimerEvent 
