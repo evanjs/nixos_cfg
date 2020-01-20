@@ -10,7 +10,7 @@ let
   all-hies = import (import ../../sources).all-hies {};
 
   hie = all-hies.combined {
-    inherit (all-hies.versions) ghc844 ghc864 ghc865;
+    inherit (all-hies.versions) ghc844 ghc865;
   };
 
 in
