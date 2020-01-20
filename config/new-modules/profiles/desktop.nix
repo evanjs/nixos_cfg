@@ -190,6 +190,9 @@ in
       # iOS stuff
       ideviceinstaller
       ifuse
+
+      # cloud fs
+      onedrive
     ];
 
     #services.dbus.socketActivated = true;
