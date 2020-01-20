@@ -126,11 +126,12 @@ with lib;
         fadeDelta = 5;
         vSync = "opengl-swc";
         opacityRule = [
-          "100:name     *?= 'chromium'"
-          "100:name     *?= 'firefox'"
-          "100:name     *?= 'gitkraken'"
-          "100:class_g  ~=  'jetbrains'"
-          "100:class_g  ~=  'slack'"
+          "100:class_g   *?= 'Chromium-browser'"
+          "100:class_g   *?= 'Firefox'"
+          "100:class_g   *?= 'gitkraken'"
+          "100:class_g   *?= 'emacs'"
+          "100:class_g   ~=  'jetbrains'"
+          "100:class_g   *?= 'slack'"
         ];
       };
 
