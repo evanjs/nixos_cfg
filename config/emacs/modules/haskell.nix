@@ -34,13 +34,16 @@ in
 
     init.hs = ''
       (require 'lsp-haskell)
+
       (defun hasky-keys ()
         "Hasky extension key binds"
         (require 'hasky-extensions)
         (local-set-key (kbd "C-c C-y") #'hasky-extensions))
+
       (setq lsp-haskell-process-path-hie "${hie}/bin/hie-wrapper")
       (setq lsp-haskell-process-args-hie (quote ("--vomit" "-d" "-l" "/tmp/hie.log")))
       (setq haskell-stylish-on-save t)
+
       (add-hook 'haskell-mode-hook (lambda () (haskell-indentation-mode nil)))
       (add-hook 'haskell-mode-hook 'hasky-keys)
       (add-hook 'haskell-mode-hook 'lsp)
