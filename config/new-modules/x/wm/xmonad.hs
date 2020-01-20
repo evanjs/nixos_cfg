@@ -10,8 +10,9 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# OPTIONS -Wno-incomplete-patterns #-}
 
-import Control.Monad ((>=>), join, liftM, when)
+import Control.Monad ((>=>), join, liftM, when, forM_)
 import Data.Maybe (maybeToList)
+import Data.Monoid
 
 import Graphics.X11.ExtraTypes.XF86
 import System.Exit
@@ -19,20 +20,25 @@ import System.IO
 import System.Taffybar.Support.PagerHints (pagerHints)
 
 import XMonad
+import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces as DynaW
+import XMonad.Actions.GroupNavigation
 import XMonad.Actions.Navigation2D
 import XMonad.Actions.NoBorders
 import XMonad.Actions.PhysicalScreens
 import XMonad.Actions.ShowText
 import XMonad.Actions.SpawnOn
+import XMonad.Actions.Submap
 import XMonad.Actions.WorkspaceNames as WSN
 
 import XMonad.Config.Desktop
 
 import XMonad.Hooks.DynamicBars as Bars
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.Place
 import XMonad.Hooks.Script
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
@@ -42,35 +48,39 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid as XG
 import XMonad.Layout.GridVariants
 import XMonad.Layout.IndependentScreens
+import XMonad.Layout.LayoutModifier
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerScreen
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.Roledex
+import XMonad.Layout.Spacing
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ToggleLayouts
+
+import XMonad.ManageHook
 
 import XMonad.Prompt.Man
 
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run
+import XMonad.Util.NamedScratchpad
 import XMonad.Util.Scratchpad
 import XMonad.Util.SpawnOnce
+import XMonad.Util.WindowProperties
 import XMonad.Util.WorkspaceCompare
 
 import qualified Data.Map                   as M
-import qualified XMonad.Hooks.EwmhDesktops  as H
-import qualified XMonad.Prompt              as P
+import qualified Data.Set                   as S
+
 import qualified XMonad.Actions.Submap      as SM
 import qualified XMonad.Actions.Search      as Search
+import qualified XMonad.Hooks.EwmhDesktops  as H
+import qualified XMonad.Prompt              as P
 import qualified XMonad.StackSet            as W
-import qualified XMonad                     as X
+import qualified XMonad.Util.ExtensibleState as XS
 
-import XMonad.Actions.Submap
-import XMonad.Layout.MultiToggle
-import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.LayoutModifier
-import XMonad.Layout.Spacing
 ----------------------
 -- helper functions --
 ----------------------
@@ -107,17 +117,32 @@ mySshLauncher = "rofi -lines 7 -columns 2 -modi ssh -show"
 
 myRandomWallpaper = "rrbg"
 
+myScratchpads = [
+    NS "htop" "kitty --name=scratch-htop htop" (appName =? "scratch-htop") doCenterFloat,
+    NS "terminal" "kitty --name=scratch-terminal" (appName =? "scratch-terminal") doCenterFloat,
+    NS "notes" "emacsclient -ne '(progn (select-frame (list (cons (quote name) \"*Notes*\") (cons (quote desktop-dont-save) t)))) (deft))'" (name =? "*Notes*") nonFloating,
+    NS "zeal" "@zeal@" (className =? "Zeal") doCenterFloat
+    ]
+  where 
+      name = stringProperty "WM_NAME"
+
+scratchPadName = "NSP"
+
+nonScratchPad :: WSType
+nonScratchPad = WSIs $ return ((scratchPadName /=) . W.tag)
+
+switchOtherWindow :: Direction -> X ()
+switchOtherWindow direction = do
+    name <- getCurrentClassName
+    nextMatch direction (className =? name)
+
 showTextConfig :: ShowTextConfig
 showTextConfig = def
     { st_font = "xft:fira-code" }
 ----------------
 -- workspaces --
 ----------------
---myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] ++ map show [11.999]
-
--- Workspaces with single-character names that can be keyed in with no modifiers.
-simpleWorkspaces :: [X.WorkspaceId]
-simpleWorkspaces = [[w] | w <- "1234567890-="]
+myWorkspaces = ["web", "emacs", "dev", "debug", "terminal", "vm"] ++ map show [7..8] ++ ["git", "chat"]
 
 kill8 ss | Just w <- W.peek ss = W.insertUp w $ W.delete w ss
   | otherwise = ss
@@ -181,30 +206,30 @@ myLayouts = genericLayouts
 ------------------
 -- window rules --
 ------------------
-myManageHook = composeAll [
-    className =? "Chromium" --> doShift "web"
-  , className =? "Firefox"  --> doShift "web"
-  , resource  =? "desktop_window" --> doIgnore
-  , className =? "stalonetray"    --> doIgnore
-  , isFullscreen --> doFullFloat
-                          ]
-
-
-addNETSupported :: Atom -> X ()
-addNETSupported x   = withDisplay $ \dpy -> do
-    r               <- asks theRoot
-    a_NET_SUPPORTED <- getAtom "_NET_SUPPORTED"
-    a               <- getAtom "ATOM"
-    liftIO $ do
-       sup <- join . maybeToList <$> getWindowProperty32 dpy a_NET_SUPPORTED r
-       when (fromIntegral x `notElem` sup) $
-         changeProperty32 dpy r a_NET_SUPPORTED a propModeAppend [fromIntegral x]
-
-addEWMHFullscreen :: X ()
-addEWMHFullscreen   = do
-    wms <- getAtom "_NET_WM_STATE"
-    wfs <- getAtom "_NET_WM_STATE_FULLSCREEN"
-    mapM_ addNETSupported [wms, wfs]
+myManageHook :: ManageHook
+myManageHook = composeOne [
+    isDialog                                  -?> doFloat
+  , isFullscreen                              -?> doFullFloat
+  , name            =? "Open Files"           -?> doCenterFloat
+  , name            =? "File Upload"          -?> doCenterFloat
+  , name            =? "Save As"              -?> doCenterFloat
+  , name            =? "scratch-htop"         -?> idHook 
+  , name            =? "scratch-terminal"     -?> idHook
+  , name            =? "*Notes*"              -?> idHook
+  , resource        =? "file_properties"      -?> doCenterFloat
+  , resource        =? "Dialog"               -?> doFloat
+  , className       =? "Display"              -?> doCenterFloat
+  , className       =? "Chromium-browser"     -?> doShift "web"
+  , className       =? "Firefox"              -?> doShift "web"
+  , className       =? "kitty"                -?> doShift "terminal"
+  , className       =? "GitKraken"            -?> doShift "git"
+  , className       =? "Slack"                -?> doShift "chat"
+  , className       =? "jetbrains"            -?> doShift "dev"
+  , className       =? "Emacs"                -?> doShift "emacs"
+  , isNotification                            -?> doIgnore
+  ]
+  where
+      name = stringProperty "WM_NAME"
 
 ------------------
 -- key bindings --
@@ -255,6 +280,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
      spawn myClipboardScreenshot)
   -- Take a screenshot of the current window
     , ((mod2Mask .|. controlMask, xK_p),
+
 
     spawn myActiveWindowScreenshot)
   ---------------------------------------------------------------------------
@@ -314,8 +340,8 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
      setLayout $ XMonad.layoutHook conf)
 
   -- Resize viewed windows to the correct size.
-    , ((modMask, xK_n),
-     refresh)
+    --, ((modMask, xK_n),
+     -- refresh)
 
   -- Move focus to the next window.
     , ((modMask, xK_Tab),
@@ -392,6 +418,27 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 
     , ((modMask, xK_F1), manPrompt P.def)
 
+    , ((modMask,                                      xK_bracketleft), moveTo Prev nonScratchPad)
+    , ((modMask,                                      xK_bracketright), moveTo Next nonScratchPad)
+
+    , ((modMask .|. shiftMask,                        xK_bracketleft), moveTo Prev nonScratchPad)
+    , ((modMask .|. shiftMask,                        xK_bracketright), shiftTo Next nonScratchPad)
+
+    , ((modMask .|. shiftMask .|. controlMask,        xK_bracketleft), shiftTo Prev nonScratchPad >> moveTo Prev nonScratchPad)
+    , ((modMask .|. shiftMask .|. controlMask,        xK_bracketright), shiftTo Next nonScratchPad >> moveTo Next nonScratchPad)
+
+    , ((modMask,                                      xK_b), toggleWS' [scratchPadName])
+
+    -- Applications
+    , ((modMask .|. controlMask,                      xK_h), namedScratchpadAction myScratchpads "htop")
+    , ((modMask .|. controlMask,                      xK_t), namedScratchpadAction myScratchpads "terminal")
+    , ((modMask .|. controlMask,                      xK_z), namedScratchpadAction myScratchpads "zeal")
+
+    , ((modMask,                                      xK_asciitilde), switchOtherWindow Backward)
+    , ((modMask,                                      xK_grave), switchOtherWindow Forward)
+    , ((modMask,                                      xK_Tab), nextMatch Backward (return True))
+    , ((modMask,                                      xK_Tab), nextMatch Forward (return True))
+
   -- get the class name of the focused window
   -- this can be useful for things like picom/compton opacity rules
     , ((modMask, xK_F4), getCurrentClassName >>= flashText showTextConfig 1)
@@ -414,6 +461,61 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 getCurrentClassName = withWindowSet $ \set -> case W.peek set of
     Just window -> runQuery className window
     Nothing -> return ""
+
+newtype NotificationWindows = NotificationWindows (S.Set Window) deriving (Read, Show, Typeable) 
+instance ExtensionClass NotificationWindows where
+    initialValue = NotificationWindows S.empty
+    extensionType = PersistentExtension
+
+-- Check if window has the given property of type Atom
+hasAtomProperty :: Window -> String -> String -> X Bool
+hasAtomProperty window property value = do
+    valueAtom <- getAtom value
+    property <- getProp32s property window
+    return $ case property of
+               Just values -> fromIntegral valueAtom `elem` values
+               _ -> False
+
+-- Keep track of notification windows
+trackNotificationWindowsHook :: Event -> X All
+trackNotificationWindowsHook MapNotifyEvent {ev_window = window} = do
+    NotificationWindows windows <- XS.get
+    isNotification <- hasAtomProperty window "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_NOTIFICATION"
+    
+    -- when this is a notification window remember it
+    when isNotification $ XS.put (NotificationWindows (S.insert window windows))
+
+    return $ All True
+
+trackNotificationWindowsHook UnmapEvent {ev_window = window} = do
+    NotificationWindows windows <- XS.get
+
+    -- Window unmapped -- forget it
+    XS.put (NotificationWindows (S.delete window windows))
+
+    return $ All True
+
+trackNotificationWindowsHook _ = return $ All True
+
+isNotification = isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_DIALOG"
+
+
+keepFloatsOnTopHook :: X ()
+keepFloatsOnTopHook = do
+    windowSet <- gets windowset
+    notificationWindows <- XS.get :: X NotificationWindows
+
+    let
+        raiseWindowMaybe windowSet window =
+            (when (M.member window $ W.floating windowSet) $ withDisplay $ \display -> io $ raiseWindow display window)
+        in
+        forM_ (W.peek windowSet) (raiseWindowMaybe windowSet)
+
+myFadeHook :: X ()
+myFadeHook =
+    fadeOutLogHook $ fadeIf (isUnfocused <&&> fmap not shouldNotFade) 0.8
+        where
+            shouldNotFade = isNotification
 
 ------------------
 -- Startup hook --
@@ -439,8 +541,8 @@ xmobarPP' = xmobarPP {
 ---------------------------------------------------
 -- Rename the workspace and do some bookkeeping. --
 ---------------------------------------------------
-renameWorkspace :: X.WorkspaceId -> X.X ()
-renameWorkspace w = X.withWindowSet $ \ws -> do
+renameWorkspace :: WorkspaceId -> X ()
+renameWorkspace w = withWindowSet $ \ws -> do
   let c = W.tag . W.workspace . W.current $ ws
   DynaW.renameWorkspaceByName w
   -- Make sure that we're not left without one of the simple workspaces.
@@ -454,14 +556,16 @@ evanjsConfig =
     pagerHints $
     def {
       terminal    = myTerminal
-    , manageHook  = manageDocks <+> myManageHook
+    , manageHook  = manageSpawn <+> namedScratchpadManageHook myScratchpads <+> placeHook placementPreferCenter <+> myManageHook <+> manageDocks
     , modMask     = myModMask
-    , logHook     = Bars.multiPP xmobarPP' xmobarPP'
+    , logHook     = historyHook <+> myFadeHook <+> keepFloatsOnTopHook <+> H.ewmhDesktopsLogHookCustom namedScratchpadFilterOutWorkspace <+> Bars.multiPP xmobarPP' xmobarPP' 
     , layoutHook  = myLayouts
     , workspaces  = simpleWorkspaces
-    , startupHook = myStartupHook >> addEWMHFullscreen
+    , startupHook = myStartupHook
     , keys        = myKeys
-    , handleEventHook = H.fullscreenEventHook <+> handleTimerEvent
+    , handleEventHook = H.fullscreenEventHook <+> trackNotificationWindowsHook <+> handleTimerEvent 
     }
+        where
+            placementPreferCenter = withGaps (16,0,16,0) (smart (0.5,0.5))
 
 main = xmonad $ docks evanjsConfig

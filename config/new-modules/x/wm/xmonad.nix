@@ -31,6 +31,7 @@ with lib;
       '';
       terminal = "kitty";
       xmobar = config.mine.xmobar.command;
+      zeal = "${pkgs.zeal}/bin/zeal";
     };
 
     mine.userConfig = { home.packages = [ pkgs.maim ]; };

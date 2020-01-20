@@ -4,7 +4,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 executable my-xmonad
-  main-is:             ../xmonad.hs
+  main-is:             xmonad.hs
   other-modules:
                        XMonad.Layout.FocusWindow
                      , XMonad.Layout.MiddleColumn
