@@ -10,76 +10,76 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# OPTIONS -Wno-incomplete-patterns #-}
 
-import Control.Monad ((>=>), join, liftM, when, forM_)
-import Data.Maybe (maybeToList)
-import Data.Monoid
+import           Control.Monad                       (forM_, join, liftM, when,
+                                                      (>=>))
+import           Data.Maybe                          (maybeToList)
+import           Data.Monoid
 
-import Graphics.X11.ExtraTypes.XF86
-import System.Exit
-import System.IO
-import System.Taffybar.Support.PagerHints (pagerHints)
+import           Graphics.X11.ExtraTypes.XF86
+import           System.Exit
+import           System.IO
+import           System.Taffybar.Support.PagerHints  (pagerHints)
 
-import XMonad
-import XMonad.Actions.CycleWS
-import XMonad.Actions.DynamicWorkspaces as DynaW
-import XMonad.Actions.GroupNavigation
-import XMonad.Actions.Navigation2D
-import XMonad.Actions.NoBorders
-import XMonad.Actions.PhysicalScreens
-import XMonad.Actions.ShowText
-import XMonad.Actions.SpawnOn
-import XMonad.Actions.Submap
-import XMonad.Actions.WorkspaceNames as WSN
+import           XMonad
+import           XMonad.Actions.CycleWS
+import           XMonad.Actions.DynamicWorkspaces    as DynaW
+import           XMonad.Actions.GroupNavigation
+import           XMonad.Actions.Navigation2D
+import           XMonad.Actions.NoBorders
+import           XMonad.Actions.PhysicalScreens
+import           XMonad.Actions.ShowText
+import           XMonad.Actions.SpawnOn
+import           XMonad.Actions.Submap
+import           XMonad.Actions.WorkspaceNames       as WSN
 
-import XMonad.Config.Desktop
+import           XMonad.Config.Desktop
 
-import XMonad.Hooks.DynamicBars as Bars
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.FadeInactive
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.Place
-import XMonad.Hooks.Script
-import XMonad.Hooks.SetWMName
-import XMonad.Hooks.UrgencyHook
+import           XMonad.Hooks.DynamicBars            as Bars
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.FadeInactive
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.Place
+import           XMonad.Hooks.Script
+import           XMonad.Hooks.SetWMName
+import           XMonad.Hooks.UrgencyHook
 
-import XMonad.Layout.Accordion
-import XMonad.Layout.Fullscreen
-import XMonad.Layout.Grid as XG
-import XMonad.Layout.GridVariants
-import XMonad.Layout.IndependentScreens
-import XMonad.Layout.LayoutModifier
-import XMonad.Layout.MultiToggle
-import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.NoBorders
-import XMonad.Layout.PerScreen
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.Spacing
-import XMonad.Layout.Tabbed
-import XMonad.Layout.ToggleLayouts
+import           XMonad.Layout.Fullscreen
+import           XMonad.Layout.Grid                  as XG
+import           XMonad.Layout.GridVariants
+import           XMonad.Layout.IndependentScreens
+import           XMonad.Layout.LayoutModifier
+import           XMonad.Layout.MultiToggle
+import           XMonad.Layout.MultiToggle.Instances
+import           XMonad.Layout.NoBorders
+import           XMonad.Layout.PerScreen
+import           XMonad.Layout.PerWorkspace
+import           XMonad.Layout.ResizableTile
+import           XMonad.Layout.Spacing
+import           XMonad.Layout.Tabbed
+import           XMonad.Layout.ToggleLayouts
 
-import XMonad.ManageHook
+import           XMonad.ManageHook
 
-import XMonad.Prompt.Man
+import           XMonad.Prompt.Man
 
-import XMonad.Util.EZConfig(additionalKeys)
-import XMonad.Util.Run
-import XMonad.Util.NamedScratchpad
-import XMonad.Util.Scratchpad
-import XMonad.Util.SpawnOnce
-import XMonad.Util.WindowProperties
-import XMonad.Util.WorkspaceCompare
+import           XMonad.Util.EZConfig                (additionalKeys)
+import           XMonad.Util.NamedScratchpad
+import           XMonad.Util.Run
+import           XMonad.Util.Scratchpad
+import           XMonad.Util.SpawnOnce
+import           XMonad.Util.WindowProperties
+import           XMonad.Util.WorkspaceCompare
 
-import qualified Data.Map                   as M
-import qualified Data.Set                   as S
+import qualified Data.Map                            as M
+import qualified Data.Set                            as S
 
-import qualified XMonad.Actions.Submap      as SM
-import qualified XMonad.Actions.Search      as Search
-import qualified XMonad.Hooks.EwmhDesktops  as H
-import qualified XMonad.Prompt              as P
-import qualified XMonad.StackSet            as W
-import qualified XMonad.Util.ExtensibleState as XS
+import qualified XMonad.Actions.Search               as Search
+import qualified XMonad.Actions.Submap               as SM
+import qualified XMonad.Hooks.EwmhDesktops           as H
+import qualified XMonad.Prompt                       as P
+import qualified XMonad.StackSet                     as W
+import qualified XMonad.Util.ExtensibleState         as XS
 
 ----------------------
 -- helper functions --
@@ -123,7 +123,7 @@ myScratchpads = [
     NS "notes" "emacsclient -ne '(progn (select-frame (list (cons (quote name) \"*Notes*\") (cons (quote desktop-dont-save) t)))) (deft))'" (name =? "*Notes*") nonFloating,
     NS "zeal" "@zeal@" (className =? "Zeal") doCenterFloat
     ]
-  where 
+  where
       name = stringProperty "WM_NAME"
 
 scratchPadName = "NSP"
@@ -195,10 +195,9 @@ genericLayouts =
         ||| tabbedLayout
         ||| noBorders (fullscreenFull Full)
         ||| SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100)
-        ||| Accordion
         ||| XG.Grid
         ||| rTall
-            where tall  = Tall 1 (3/100) (1/2) 
+            where tall  = Tall 1 (3/100) (1/2)
                   rTall = ResizableTall 1 (3/100) (1/2) []
 
 myLayouts = genericLayouts
@@ -213,7 +212,7 @@ myManageHook = composeOne [
   , name            =? "Open Files"           -?> doCenterFloat
   , name            =? "File Upload"          -?> doCenterFloat
   , name            =? "Save As"              -?> doCenterFloat
-  , name            =? "scratch-htop"         -?> idHook 
+  , name            =? "scratch-htop"         -?> idHook
   , name            =? "scratch-terminal"     -?> idHook
   , name            =? "*Notes*"              -?> idHook
   , resource        =? "file_properties"      -?> doCenterFloat
@@ -460,9 +459,9 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 
 getCurrentClassName = withWindowSet $ \set -> case W.peek set of
     Just window -> runQuery className window
-    Nothing -> return ""
+    Nothing     -> return ""
 
-newtype NotificationWindows = NotificationWindows (S.Set Window) deriving (Read, Show, Typeable) 
+newtype NotificationWindows = NotificationWindows (S.Set Window) deriving (Read, Show, Typeable)
 instance ExtensionClass NotificationWindows where
     initialValue = NotificationWindows S.empty
     extensionType = PersistentExtension
@@ -474,14 +473,14 @@ hasAtomProperty window property value = do
     property <- getProp32s property window
     return $ case property of
                Just values -> fromIntegral valueAtom `elem` values
-               _ -> False
+               _           -> False
 
 -- Keep track of notification windows
 trackNotificationWindowsHook :: Event -> X All
 trackNotificationWindowsHook MapNotifyEvent {ev_window = window} = do
     NotificationWindows windows <- XS.get
     isNotification <- hasAtomProperty window "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_NOTIFICATION"
-    
+
     -- when this is a notification window remember it
     when isNotification $ XS.put (NotificationWindows (S.insert window windows))
 
@@ -551,19 +550,19 @@ renameWorkspace w = withWindowSet $ \ws -> do
 ------------
 -- config --
 ------------
-evanjsConfig = 
+evanjsConfig =
     H.ewmh $
     pagerHints $
     def {
       terminal    = myTerminal
     , manageHook  = manageSpawn <+> namedScratchpadManageHook myScratchpads <+> placeHook placementPreferCenter <+> myManageHook <+> manageDocks
     , modMask     = myModMask
-    , logHook     = historyHook <+> myFadeHook <+> keepFloatsOnTopHook <+> H.ewmhDesktopsLogHookCustom namedScratchpadFilterOutWorkspace <+> Bars.multiPP xmobarPP' xmobarPP' 
+    , logHook     = historyHook <+> myFadeHook <+> keepFloatsOnTopHook <+> H.ewmhDesktopsLogHookCustom namedScratchpadFilterOutWorkspace <+> Bars.multiPP xmobarPP' xmobarPP'
     , layoutHook  = myLayouts
     , workspaces  = myWorkspaces
     , startupHook = myStartupHook
     , keys        = myKeys
-    , handleEventHook = H.fullscreenEventHook <+> trackNotificationWindowsHook <+> handleTimerEvent 
+    , handleEventHook = H.fullscreenEventHook <+> trackNotificationWindowsHook <+> handleTimerEvent
     }
         where
             placementPreferCenter = withGaps (16,0,16,0) (smart (0.5,0.5))
