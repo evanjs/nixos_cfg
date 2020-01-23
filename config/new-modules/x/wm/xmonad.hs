@@ -159,14 +159,16 @@ searchEngineMap method = M.fromList
     , ((0, xK_m), method myanimelist)
     , ((0, xK_z), method amazon)
     , ((0, xK_g), method Search.google)
-    , ((0, xK_h), method Search.hoogle)
+    , ((0, xK_h), method hoogle)
     , ((0, xK_w), method Search.wikipedia)
     ]
         where
-            githubRust = Search.searchEngine "github rust" "https://github.com/search?l=Rust&p=2&type=Code&q="
-            myanimelist = Search.searchEngine "myanimelist" "https://myanimelist.net/anime.php?q="
-            amazon = Search.searchEngine "amazon" "https://www.amazon.com/s?k="
-            myanimelistchara = Search.searchEngine "myanimelist characters" "https://myanimelist.net/character.php?q="
+            -- use new hoogle site
+            hoogle            = Search.searchEngine "hoogle"                  "https://hoogle.haskell.org/?q="
+            githubRust        = Search.searchEngine "github rust"             "https://github.com/search?l=Rust&p=2&type=Code&q="
+            myanimelist       = Search.searchEngine "myanimelist"             "https://myanimelist.net/anime.php?q="
+            amazon            = Search.searchEngine "amazon"                  "https://www.amazon.com/s?k="
+            myanimelistchara  = Search.searchEngine "myanimelist characters"  "https://myanimelist.net/character.php?q="
 
 ------------------------------------------------------------------------
     --gaps, etc
