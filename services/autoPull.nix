@@ -10,18 +10,14 @@
   systemd.user.services.autoPullNixCfg = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
-    description = "Synchronizes the local nixos_cfg with upstream";
-
-    path = with pkgs; [
-      git
-    ];
+    description = "Synchronizes the local nixos configuration with upstream";
 
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.git}/bin/git pull";
 
       # Can we detect this somehow?
-      # i.e. where is the currently used nixos_cfg directory located?
+      # i.e. where is the nixos configuration directory located?
       WorkingDirectory = "/etc/nixos";
     };
   };
