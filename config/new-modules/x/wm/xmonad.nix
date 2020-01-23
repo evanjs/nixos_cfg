@@ -57,10 +57,9 @@ with lib;
 
       xsession.windowManager.xmonad = {
         enable = true;
-        extraPackages = self: [
-          self.fuzzy
-          config.mine.taffybar.package
-          self.taffybar
+        extraPackages = self: with self; [
+          fuzzy
+          taffybar
         ];
         haskellPackages = pkgs.stable.haskell.packages.ghc865;
         enableContribAndExtras = true;
