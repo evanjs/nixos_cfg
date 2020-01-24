@@ -8,7 +8,6 @@
 
     ../../../modules/db/postgresql.nix
     ../../../modules/development.nix
-    ../../../modules/samba/client/home.nix
     ../../../modules/scrape.nix 
     #../../../modules/channels.nix
   ];
