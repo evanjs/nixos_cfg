@@ -160,11 +160,13 @@ searchEngineMap method = M.fromList
     , ((0, xK_z), method amazon)
     , ((0, xK_g), method Search.google)
     , ((0, xK_h), method hoogle)
+    , ((0, xK_l), method lhoogle)
     , ((0, xK_w), method Search.wikipedia)
     ]
         where
             -- use new hoogle site
             hoogle            = Search.searchEngine "hoogle"                  "https://hoogle.haskell.org/?q="
+            lhoogle           = Search.searchEngine "local hoogle"            "http://a28209498ca7.sn.mynetname.net:62471/?q="
             githubRust        = Search.searchEngine "github rust"             "https://github.com/search?l=Rust&p=2&type=Code&q="
             myanimelist       = Search.searchEngine "myanimelist"             "https://myanimelist.net/anime.php?q="
             amazon            = Search.searchEngine "amazon"                  "https://www.amazon.com/s?k="

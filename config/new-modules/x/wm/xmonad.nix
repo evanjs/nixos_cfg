@@ -34,23 +34,6 @@ with lib;
       zeal = "${pkgs.zeal}/bin/zeal";
     };
 
-    services.hoogle = {
-      enable = true;
-      packages = hp: with pkgs; [
-        (stable.haskellPackages.taffybar.overrideAttrs (drv: {
-          meta.broken = false;
-        }))
-        config.mine.taffybar.package
-        xmonad-with-packages
-        hp.xmonad
-        hp.xmonad-contrib
-      ];
-    };
-
-    environment.systemPackages = with pkgs; [
-      haskellPackages.hoogle
-    ];
-
     mine.userConfig = { home.packages = [ pkgs.maim ]; };
 
     mine.xUserConfig = {
