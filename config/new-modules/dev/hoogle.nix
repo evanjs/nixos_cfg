@@ -4,13 +4,13 @@ with lib;
 
 let
 
-  cfg = config.mine.dev.hoogle;
+  cfg = config.mine.dev.haskell.hoogle;
 in
   {
-    options.mine.dev.hoogle = {
+    options.mine.dev.haskell.hoogle = {
       enable = mkEnableOption "Hoogle documentation server";
     };
-    config = mkIf cfg.enable {
+    config = mkIf (cfg.enable && config.mine.dev.haskell.enable) {
 
       services.hoogle = {
         enable = true;

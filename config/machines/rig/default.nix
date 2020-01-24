@@ -30,7 +30,6 @@
   };
 
   mine.enableUser = true;
-  mine.dev.hoogle.enable = true;
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;
   mine.znc.enable = true;
