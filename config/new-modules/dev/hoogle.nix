@@ -14,7 +14,7 @@ in
 
       services.hoogle = {
         enable = true;
-        port = 62471;
+        port = 8471;
         packages = hp: with pkgs; [
           (stable.haskellPackages.taffybar.overrideAttrs (drv: {
             meta.broken = false;
