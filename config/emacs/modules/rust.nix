@@ -27,7 +27,7 @@ with lib;
       (use-package rustic)
 
       (setq rustic-lsp-client 'eglot)
-      (setq rustic-lsp-server 'rust-analyzer)
+;;    (setq rustic-lsp-server 'rust-analyzer) -- blocked on https://github.com/NixOS/nixpkgs/pull/77752
       (setq rustic-compile-backtrace 1)
     '';
 
