@@ -73,9 +73,7 @@ cpuCallback = do
   return [totalLoad, systemLoad]
 
 stripStr :: IO String -> IO String
-stripStr ioString = do
-  str <- ioString
-  return $ rstrip $ str
+stripStr ioString = rstrip <$> ioString
 
 rstrip = reverse . dropWhile isSpace . reverse
 
@@ -90,9 +88,6 @@ jpLocale = defaultTimeLocale
         , ("土曜日", "土")
         ]
     }
-
-
-
 
 main = do
   let myWorkspacesConfig =
