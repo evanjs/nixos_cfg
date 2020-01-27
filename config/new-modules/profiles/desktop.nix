@@ -196,6 +196,9 @@ in
 
       # cloud fs
       onedrive
+
+      # security
+      veracrypt
     ];
 
     #services.dbus.socketActivated = true;
