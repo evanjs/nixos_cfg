@@ -199,6 +199,9 @@ in
 
       # security
       veracrypt
+
+      # editors
+      atom
     ];
 
     #services.dbus.socketActivated = true;
