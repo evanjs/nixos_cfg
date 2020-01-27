@@ -98,17 +98,17 @@ myHalfLock = "xtrlock-pam"
 
 -- The command to take a selective screenshot, where you select
 -- what you'd like to capture on the screen.
-mySelectScreenshot = "maim -s ~/shots/$(date +%Y-%m-%d_%T).png"
+mySelectScreenshot = "@selectScreenshotCmd@"
 
 -- Take screenshot and copy to clipboard
-myClipboardScreenshot = "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+myClipboardScreenshot = "@clipboardScreenshotCmd@"
 
 -- The command to take a fullscreen screenshot.
-myScreenshot = "maim > ~/shots/$(date +%Y-%m-%d_%T).png"
+myScreenshot = "@screenshotCmd@"
 
-myDelayedScreenshot = "maim -d3 ~/shots/$(date +%Y-%m-%d_%T).png"
+myDelayedScreenshot = "@delayedScreenshotCmd@"
 
-myActiveWindowScreenshot = "maim -i $(xdotool getactivewindow) > ~/shots/$(date +%Y-%m-%d_%T).png"
+myActiveWindowScreenshot = "@activeWindowScreenshotCmd@"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
@@ -282,9 +282,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. controlMask .|. shiftMask, xK_c),
      spawn myClipboardScreenshot)
   -- Take a screenshot of the current window
-    , ((mod2Mask .|. controlMask, xK_p),
-
-
+    , ((mod4Mask .|. controlMask, xK_p),
     spawn myActiveWindowScreenshot)
   ---------------------------------------------------------------------------
   -- Media Key Shortcuts

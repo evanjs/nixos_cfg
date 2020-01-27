@@ -22,7 +22,15 @@ with lib;
     mine.taffybar.enable = true;
     mine.terminal.enable = true;
 
-    scripts = {
+    scripts = 
+    let
+      maim = "${pkgs.maim}/bin/maim";
+      xclip = "${pkgs.xclip}/bin/clip";
+      zeal = "${pkgs.zeal}/bin/zeal";
+      xdotool = "${pkgs.xdotool}/bin/xdotool";
+      screenshotDateFormat = "+%Y-%m-%d_%T";
+    in
+    {
       emacs = ''
         if ! [ $(systemctl --user is-active emacs) = active ]; then
         systemctl --user start emacs
@@ -31,7 +39,11 @@ with lib;
       '';
       terminal = "kitty";
       xmobar = config.mine.xmobar.command;
-      zeal = "${pkgs.zeal}/bin/zeal";
+      clipboardScreenshotCmd = "${maim} -i $(${xdotool} getactivewindow) | ${xclip} -selection clipboard -t image/png";
+      selectScreenshotCmd = "${maim} -s ~/shots/$(date ${screenshotDateFormat}).png";
+      screenshotCmd = "${maim} > ~/shots/$(date ${screenshotDateFormat}).png";
+      delayedScreenshotCmd = "${maim} -d3 ~/shots/$(date ${screenshotDateFormat}).png";
+      activeWindowScreenshotCmd = "${maim} -i $(${xdotool} getactivewindow) > ~/shots/$(date ${screenshotDateFormat}).png";
     };
 
     mine.userConfig = { home.packages = [ pkgs.maim ]; };
