@@ -187,7 +187,7 @@ in
       kitty
       cachix
       xorg.xdpyinfo
-      tigervnc
+      stable.tigervnc
       sshfs
 
       # iOS stuff
