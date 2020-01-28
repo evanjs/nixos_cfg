@@ -126,6 +126,7 @@ in
         plugins = [ "rust-std" "rust-src" ];
         channel = "stable";
         extraPackages = with pkgs; [
+          cargo-about
           cargo-edit
           cargo-license
           cargo-asm
