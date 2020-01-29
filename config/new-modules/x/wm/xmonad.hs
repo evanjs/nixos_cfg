@@ -321,7 +321,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((modMask .|. shiftMask, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
-    , ((modMask, xK_s), SM.submap $ searchEngineMap $ Search.promptSearchBrowser P.def myBrowser)
+    , ((modMask, xK_s), SM.submap $ searchEngineMap $ Search.promptSearchBrowser' P.def myBrowser)
     , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap (Search.selectSearchBrowser myBrowser))
 
 --------------------------------------------------------------------

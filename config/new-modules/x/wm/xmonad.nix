@@ -2,8 +2,23 @@
 
 with lib;
 
-{
-
+let
+  hpkgs = pkgs.stable.haskell.packages.ghc865.override {
+    overrides = new: old: rec {
+      xmonad-contrib = old.xmonad-contrib.overrideAttrs (oldAttrs: rec {
+        patches = [
+          (pkgs.fetchpatch {
+            # add promptSearchBrowser' from https://github.com/xmonad/xmonad-contrib/pull/330
+            name = "promptSearchBrowser.patch";
+            url =
+              "https://github.com/xmonad/xmonad-contrib/commit/5493ff190d0d5e207dde07139fd371f8057d9e93.diff";
+              sha256 = "1c2ay8f9bxc4fwccsga0mvpdlrv4l31ildwvirn6lvph5y5kpxfb";
+            })
+          ];
+        });
+      };
+    };
+in {
   options = { mine.wm.enable = mkEnableOption "My window manager"; };
 
   config = mkIf config.mine.wm.enable rec {
@@ -56,7 +71,8 @@ with lib;
           fuzzy
           taffybar
         ];
-        haskellPackages = pkgs.stable.haskell.packages.ghc865;
+        haskellPackages = hpkgs;
+
         enableContribAndExtras = true;
         config = pkgs.runCommand "xmonad.hs" (config.scripts // {
           spacing = if config.mine.hardware.battery then "False" else "True";
