@@ -44,7 +44,6 @@ in {
       zeal = "${pkgs.zeal}/bin/zeal";
       xdotool = "${pkgs.xdotool}/bin/xdotool";
       screenshotDateFormat = "+%Y-%m-%d_%T";
-      xftFont = "xft:${config.mine.font.name}";
     in
     {
       emacs = ''
@@ -60,6 +59,7 @@ in {
       screenshotCmd = "${maim} > ~/shots/$(date ${screenshotDateFormat}).png";
       delayedScreenshotCmd = "${maim} -d3 ~/shots/$(date ${screenshotDateFormat}).png";
       activeWindowScreenshotCmd = "${maim} -i $(${xdotool} getactivewindow) > ~/shots/$(date ${screenshotDateFormat}).png";
+      xftFont = "xft:${config.mine.font.name}";
     };
 
     mine.userConfig = { home.packages = [ pkgs.maim ]; };
