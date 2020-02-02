@@ -67,6 +67,7 @@ with lib;
       hashcat
       openssl
       neofetch
+      procs
     ];
 
     users.defaultUserShell = pkgs.zsh;
