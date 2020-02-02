@@ -44,6 +44,7 @@ in {
       zeal = "${pkgs.zeal}/bin/zeal";
       xdotool = "${pkgs.xdotool}/bin/xdotool";
       screenshotDateFormat = "+%Y-%m-%d_%T";
+      xftFont = "xft:${config.mine.font.name}";
     in
     {
       emacs = ''

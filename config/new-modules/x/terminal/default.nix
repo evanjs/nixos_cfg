@@ -31,9 +31,15 @@ in
       pkgs.screen
     ];
 
-    mine.xUserConfig = {
+    mine.xUserConfig =
+      let
+        scripts = {
+          fontName = config.mine.font.name;
+        };
+      in
+      {
 
-      xdg.configFile."kitty/kitty.conf".source = ./kitty.conf;
+      xdg.configFile."kitty/kitty.conf".source = pkgs.runCommand "kitty.conf" scripts "substituteAll ${./kitty.conf} $out";
 
       home.file.".tmux.conf".text = ''
         set -g default-terminal "xterm-256color"
@@ -41,7 +47,5 @@ in
       '';
 
     };
-
   };
-
 }

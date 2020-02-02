@@ -138,7 +138,7 @@ switchOtherWindow direction = do
 
 showTextConfig :: ShowTextConfig
 showTextConfig = def
-    { st_font = "xft:fira-code" }
+    { st_font = "@xft-font@" }
 ----------------
 -- workspaces --
 ----------------
@@ -189,7 +189,7 @@ tabbedLayout = tabbed shrinkText tabbedConf
 
 tabbedConf = def
     {
-    fontName = "xft:fira-code"
+    fontName = "@xft-font@"
     }
 
 genericLayouts =
