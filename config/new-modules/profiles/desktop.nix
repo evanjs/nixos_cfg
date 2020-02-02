@@ -26,7 +26,6 @@ in
       #../../../modules/qt.nix
       ../../../modules/remote.nix
       ../../../modules/social
-      ../../../modules/tex.nix
       #../../../modules/virtualization/virtualbox.nix
       ../../../modules/web.nix
       ../../../modules/wine.nix
@@ -63,6 +62,7 @@ in
       };
       mine.vim.enable = true;
       programs.vim.defaultEditor = true;
+      mine.tex.enable = true;
 
       /* mine.newsboat.enable = true; */
 
