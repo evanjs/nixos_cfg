@@ -36,6 +36,8 @@
   mine.nextcloud.enable = true;
   mine.deluged.enable = true;
 
+  mine.font.bar.size.small = 10;
+
   services.xserver.dpi = 80;
   networking.firewall.allowedTCPPorts = [ 3128 ];
   services.squid = {
