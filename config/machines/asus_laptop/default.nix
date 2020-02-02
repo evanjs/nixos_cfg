@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -40,6 +40,8 @@
   mine.profiles.desktop.enable = true;
 
   networking.hostName = "nixentoo";
+
+  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
   boot.initrd.checkJournalingFS = false;
   powerManagement.powertop.enable = true;
