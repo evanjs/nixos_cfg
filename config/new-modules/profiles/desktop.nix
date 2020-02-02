@@ -33,11 +33,40 @@ in
       ../../../modules/xrdp.nix
     ];
 
-    options.mine.profiles.desktop = {
-      enable = mkEnableOption "desktop config";
+  options.mine.profiles.desktop = { enable = mkEnableOption "desktop config"; };
+
+  config = mkMerge
+  [
+    /* If NIXOS_LITE=1, disable several heavier components to allow for rebuilds (for temporary profiles)
+    on systems with limited storage space
+
+    We can then run `nix-collect-garbage -d` and rebuild without this option
+    to (hopefully) successfully install the remaining components
+    */
+    (mkIf ((maybeEnv "NIXOS_LITE" "0") != "0") {
+      mine = {
+        jetbrains.enable = mkForce false;
+        x.enable = mkForce false;
+        wm.enable = mkForce false;
+        emacs.enable = mkForce false;
+        dev = {
+          haskell.enable = mkForce false;
+          rust.enable = mkForce false;
+        };
+        vim.enable = mkForce false;
+	tex.enable = mkForce false;
+      };
+
+      #fonts.fonts = mkForce (lib.lists.filter (a: isDerivation a && (lib.strings.getName a) != "nerdfonts")  super.fonts.fonts);
+      fonts.fonts = mkForce [ config.mine.font.package ];
+
+
+      virtualisation = {
+        virtualbox.host.enable = mkForce false;
     };
 
-    config = mkIf config.mine.profiles.desktop.enable {
+    })
+    (mkIf config.mine.profiles.desktop.enable {
       mine.emacs = {
         enable = true;
 
@@ -287,5 +316,6 @@ in
     };
 
     services.fstrim.enable = true;
-  };
+    })
+  ];
 }
