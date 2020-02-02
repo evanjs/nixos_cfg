@@ -10,7 +10,7 @@ let
   all-hies = import (import ../../sources).all-hies {};
 
   hie = all-hies.combined {
-    inherit (all-hies.versions) ghc844 ghc865;
+    inherit (all-hies.versions) ghc865;
   };
 
 in
@@ -40,8 +40,8 @@ in
         (require 'hasky-extensions)
         (local-set-key (kbd "C-c C-y") #'hasky-extensions))
 
-      (setq lsp-haskell-process-path-hie "${hie}/bin/hie-wrapper")
-      (setq lsp-haskell-process-args-hie (quote ("--vomit" "-d" "-l" "/tmp/hie.log")))
+      ;(setq lsp-haskell-process-path-hie "${hie}/bin/hie-wrapper")
+      ;(setq lsp-haskell-process-args-hie (quote ("--vomit" "-d" "-l" "/tmp/hie.log")))
       (setq haskell-stylish-on-save t)
 
       (add-hook 'haskell-mode-hook (lambda () (haskell-indentation-mode nil)))
