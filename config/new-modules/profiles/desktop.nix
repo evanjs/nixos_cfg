@@ -170,6 +170,7 @@ in {
           evcxr
           chit
           diesel-cli
+          nixpkgs-unstable.silicon
         ];
       };
       mine.jetbrains = {
