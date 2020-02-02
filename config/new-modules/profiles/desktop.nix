@@ -44,6 +44,12 @@ in {
        We can then run `nix-collect-garbage -d` and rebuild without this option
        to (hopefully) successfully install the remaining components
     */
+    (mkIf ((maybeEnv "NOBRAINZ" "0") != "0") {
+      mine.jetbrains.enable = mkForce false;
+    })
+    (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
+      fonts.fonts = mkForce [ config.mine.font.package ];
+    })
     (mkIf ((maybeEnv "NIXOS_LITE" "0") != "0") {
       mine = {
         jetbrains.enable = mkForce false;
