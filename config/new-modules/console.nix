@@ -19,14 +19,10 @@ with lib;
       autosuggestions.enable = true;
       enable = true;
       enableCompletion = true;
-      ohMyZsh = {
-        enable = true;
-      };
+      ohMyZsh = { enable = true; };
     };
 
-    programs.autojump = {
-      enable = true;
-    };
+    programs.autojump = { enable = true; };
 
     environment.systemPackages = with pkgs; [
       direnv
@@ -82,9 +78,7 @@ with lib;
           enableBashIntegration = true;
           enableZshIntegration = true;
         };
-        direnv = {
-          enable = true;
-        };
+        direnv = { enable = true; };
         htop.enable = true;
       };
     };
