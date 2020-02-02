@@ -5,7 +5,7 @@ with lib;
 let
   cfg = config.mine.xmobar;
   scripts = {
-    xftFont = "xft:${config.mine.font.name}:size=8:bold:antialias=true";
+    xftFont = "xft:${config.mine.font.name}:size=${builtins.toString config.mine.font.bar.size.small}:bold:antialias=true";
     power = ''
         ${pkgs.bc}/bin/bc <<< "scale=1; $(cat /sys/class/power_supply/BAT0/current_now)/1000000"
     '';
