@@ -314,6 +314,8 @@ in {
         ];
       };
 
+      mine.virtualization.libvirtd.enable = true;
+
       services.fstrim.enable = true;
     })
   ];
