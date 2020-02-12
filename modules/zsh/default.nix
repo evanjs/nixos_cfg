@@ -14,6 +14,10 @@
     autosuggestions = {
       enable = true;
     };
+    history = {
+      ignoreDups = false;
+      expireDuplicatesFirst = true;
+    };
     syntaxHighlighting = {
       enable = true;
     };
