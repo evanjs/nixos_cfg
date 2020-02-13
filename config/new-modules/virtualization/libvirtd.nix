@@ -13,7 +13,7 @@ in
 
     config = mkIf cfg.enable {
       security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
-      environment.systemPackages = with pkgs; [ spice-gtk ];
+      environment.systemPackages = with pkgs; [ spice-gtk virt-manager ];
       security.polkit.enable = true;
       users.users.evanjs.extraGroups = [ "libvirtd" "qemu-libvirtd" ];
       virtualisation.libvirtd = {
