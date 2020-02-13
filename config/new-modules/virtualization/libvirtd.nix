@@ -15,7 +15,12 @@ in
       security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
       environment.systemPackages = with pkgs; [ spice-gtk virt-manager ];
       security.polkit.enable = true;
-      users.users.evanjs.extraGroups = [ "libvirtd" "qemu-libvirtd" ];
+      users.users.evanjs.extraGroups = [ "libvirtd" "qemu-libvirtd" "usb" ];
+      users.groups.usb = {};
+      services.udev.extraRules = ''
+        KERNEL=="*", SUBSYSTEMS=="usb", MODE="0664", GROUP="usb"
+      '';
+
       virtualisation.libvirtd = {
         enable = true;
         qemuOvmf = true;
