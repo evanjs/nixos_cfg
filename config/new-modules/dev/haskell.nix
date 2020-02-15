@@ -7,7 +7,7 @@ with lib;
     environment.systemPackages = with pkgs; [
       stack
 
-      haskellPackages.stylish-haskell
+      stable.haskellPackages.stylish-haskell
       haskellPackages.hlint
     ];
 
