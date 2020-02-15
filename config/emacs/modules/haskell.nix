@@ -32,6 +32,8 @@ in
       hasky-extensions
     ];
 
+    #;(setq lsp-haskell-process-path-hie "${hie}/bin/hie-wrapper")
+    #;(setq lsp-haskell-process-args-hie (quote ("--vomit" "-d" "-l" "/tmp/hie.log")))
     init.hs = ''
       (require 'lsp-haskell)
 
@@ -40,8 +42,6 @@ in
         (require 'hasky-extensions)
         (local-set-key (kbd "C-c C-y") #'hasky-extensions))
 
-      ;(setq lsp-haskell-process-path-hie "${hie}/bin/hie-wrapper")
-      ;(setq lsp-haskell-process-args-hie (quote ("--vomit" "-d" "-l" "/tmp/hie.log")))
       (setq haskell-stylish-on-save t)
 
       (add-hook 'haskell-mode-hook (lambda () (haskell-indentation-mode nil)))
