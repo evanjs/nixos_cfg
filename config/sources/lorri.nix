@@ -1,6 +1,6 @@
 { pkgs }: pkgs.fetchFromGitHub {
   owner = "target";
   repo = "lorri";
-  rev = "93216e6a29298bc25bd05558e0fade2226038a7e";
-  sha256 = "0clj5w4a1haazp6jwd4lvfq4nszfk6mq3vhfnsmqzgnyjfmpj82w";
+  rev = "b2f1fe218ab95ce7c89c4b35644d01c4c1f1b21d";
+  sha256 = "0yliffg3kpmdi2nk1xjhizsnz03djnjj8pw5k3gryz7hh2cyvyx7";
 }

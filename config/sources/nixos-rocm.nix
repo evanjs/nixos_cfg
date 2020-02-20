@@ -1,6 +1,6 @@
 { pkgs }: pkgs.fetchFromGitHub {
   owner  = "nixos-rocm";
   repo   = "nixos-rocm";
-  rev = "466ee56209e7ea74cd3c1f5494bd933495aa42b7";
-  sha256 = "15fps8l5gsx1qjp5z36kyj38lrhd2gagkjgaqsy3zch2x9xhcrm3";
+  rev = "b17c13045c3fcb26bf4bb20daf0c72dc38dd1f49";
+  sha256 = "0nrlka60anmfwhrv09s2jv4fxkrqv5nl2r6n9xr9rn2ks99d5wa1";
 }
