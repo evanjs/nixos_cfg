@@ -4,11 +4,6 @@ let
   nodePkgs = with pkgs.nodePackages; [
     grunt-cli
     node2nix
-    (pkgs.nodePackages."@angular/cli".override {
-      prePatch = ''
-        export NG_CLI_ANALYTICS=false
-      '';
-    })
   ];
 in
   {
