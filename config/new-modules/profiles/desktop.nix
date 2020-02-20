@@ -17,7 +17,6 @@ in {
     ../../../modules/cloud-storage.nix
     ../../../modules/fs.nix
     ../../../modules/games
-    ../../../modules/home-manager
     ../../../modules/i18n/ibus.nix
     ../../../modules/iOS.nix
     ../../../modules/java.nix
