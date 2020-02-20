@@ -2,7 +2,6 @@
 
 let
   nodePkgs = with pkgs.nodePackages; [
-    grunt-cli
     node2nix
   ];
 in
