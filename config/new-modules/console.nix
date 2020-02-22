@@ -68,6 +68,7 @@ with lib;
       openssl
       neofetch
       procs
+      ytop
     ];
 
     users.defaultUserShell = pkgs.zsh;
