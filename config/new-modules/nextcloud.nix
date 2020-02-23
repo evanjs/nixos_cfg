@@ -34,7 +34,7 @@ in {
 
       home = "/data/web/nextcloud";
       hostName = "nextcloud";
-      maxUploadSize = "1024M";
+      maxUploadSize = "4096M";
 
       nginx.enable = true;
     };
