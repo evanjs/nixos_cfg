@@ -62,6 +62,7 @@ in
 
       programs.neovim = {
         enable = true;
+        package = pkgs.stable.neovim;
 
         viAlias = true;
         vimAlias = true;
