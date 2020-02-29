@@ -19,8 +19,9 @@ mkIf config.mine.console.enable {
       };
 
       initExtra = ''
-        POWERLEVEL9K_MODE="nerdfont-complete";
-        source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme
+        POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+        POWERLEVEL9K_MODE="nerdfont-complete"
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       '';
       history.size = 1000000;
     };
