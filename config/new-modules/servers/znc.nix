@@ -98,10 +98,6 @@ in
               Server = "irc.gitter.im +6697 ${cfg.gitterPassword}";
               LoadModule = cfg.defaultNetworkModules;
             };
-            mozilla = {
-              Server = "irc.mozilla.org +6697";
-              LoadModule = cfg.defaultNetworkModules;
-            };
             snoonet = {
               Server = "irc.snoonet.org 6667 ";
               LoadModule = cfg.defaultNetworkModules;

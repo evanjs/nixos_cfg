@@ -26,21 +26,18 @@
           Chan = {
             "#xmonad" = { };
             "#haskell" = { };
+            "#lorri" = { };
             "#nixos" = { };
             "##nixos-anime" = { };
             "#nixos-chat" = { };
+            "#nixos-emacs" = { };
             "#nix-lang" = { };
             "#nixos-borg" = { };
             "#nixos-dev" = { };
-            "#minecraft" = { };
             "#home-manager" = { };
             "#musnix" = { };
           };
           JoinDelay = 2;
-        };
-        Network.mozilla.Chan = {
-          "#rust" = { };
-          "#rust-beginners" = { };
         };
       };
     };
