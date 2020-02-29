@@ -213,7 +213,6 @@ in {
         pkgs.libreoffice
         gnome3.gucharmap
 
-        rrbg # background switcher
         speedtest-cli
         graphviz
 

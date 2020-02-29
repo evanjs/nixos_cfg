@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home-manager.users.evanjs = {
+    home.packages = [ pkgs.rrbg ];
     systemd.user.timers.random-background = {
       Unit = {
         PartOf = [ "random-bg.service" ];
