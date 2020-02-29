@@ -226,9 +226,6 @@ in {
         ideviceinstaller
         ifuse
 
-        # cloud fs
-        onedrive
-
         # security
         veracrypt
 
@@ -313,6 +310,8 @@ in {
       };
 
       mine.virtualization.libvirtd.enable = true;
+
+      mine.onedrive.enable = true;
 
       services.fstrim.enable = true;
     })
