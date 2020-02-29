@@ -72,6 +72,8 @@ with lib;
       neofetch
       procs
       ytop
+      termplay
+      nix-du
     ];
 
     users.defaultUserShell = pkgs.zsh;
