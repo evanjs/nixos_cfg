@@ -26,7 +26,11 @@ with lib;
 
     environment.systemPackages = with pkgs; [
       direnv
+
       gitFull
+      gitAndTools.hub
+      gitAndTools.gh
+
       tmux
       lsof
       pass
@@ -43,7 +47,6 @@ with lib;
       traceroute
       nix-top
       fd
-      gitAndTools.hub
       sqliteInteractive
       gnumake
       whois
