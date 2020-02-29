@@ -41,4 +41,5 @@ in
     #rust-qt-binding-generator = callQPackage ../rust-qt-binding-generator { rustChannel = stableRust; };
     
     ua-expert = callPackage ../tools/misc/ua-expert { };
+    bash-insulter = callPackage ../tools/misc/bash-insulter { };
   }

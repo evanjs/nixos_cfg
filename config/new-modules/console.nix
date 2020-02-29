@@ -78,6 +78,8 @@ with lib;
 
     users.defaultUserShell = pkgs.zsh;
 
+    mine.bash-insulter.enable = true;
+
     mine.userConfig = {
       programs = {
         broot = {
