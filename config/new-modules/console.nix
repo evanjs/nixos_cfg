@@ -11,6 +11,12 @@ with lib;
 
   config = mkIf config.mine.console.enable {
 
+    nixpkgs.config.packageOverrides = pkgs: {
+      sudo = pkgs.sudo.override {
+        withInsults = true;
+      };
+    };
+
     environment.pathsToLink = [ "/share/zsh" ];
 
     mine.vim.enable = true;
