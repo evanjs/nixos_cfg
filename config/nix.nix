@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     nix-index
     nix-prefetch-scripts
-    nixfmt
+    nixpkgs-fmt
     nix-review
   ];
 
