@@ -2,13 +2,13 @@
 
 rustPlatform.buildRustPackage rec {
   name = "power-warn";
-  version = "unstable-2019-06-26";
+  version = "unstable-2020-02-03";
 
   src = fetchFromGitHub {
     owner = "yoshuawuyts";
     repo = "power-warn";
-    rev = "784706544645aa75fd39251e40460a4d9579cdd5";
-    sha256 = "16lyjprwdfpwv0kyyi41lmxx5i0r8gnv1inhwmmnd05wf59l40nw";
+    rev = "052133d6707bde348b745b593279e4ebb2e8f0db";
+    sha256 = "1qcphw6d32s65aiqg60mpg8dzwwdxh2vfkpw8jy91a7xrk3hk65n";
   };
 
   nativeBuildInputs = [
@@ -16,5 +16,5 @@ rustPlatform.buildRustPackage rec {
     pkgconfig
   ];
 
-  cargoSha256 = "170y6py1dviph2l1xwqy7svm5gafr41h5jhjz6x4jqc9pkqba6v7";
+  cargoSha256 = "00636qqy7vacam1bfv2w0dyj1ayr88y3iy2662mriidb75sxdlhd";
 }
