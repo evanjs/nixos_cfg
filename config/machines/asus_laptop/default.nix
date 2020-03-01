@@ -41,8 +41,6 @@
 
   networking.hostName = "nixentoo";
 
-  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
-
   boot.initrd.checkJournalingFS = false;
   powerManagement.powertop.enable = true;
 
