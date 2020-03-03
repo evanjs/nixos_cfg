@@ -97,9 +97,9 @@ main = do
         , showWorkspaceFn = hideEmpty
         }
       workspaces = workspacesNew myWorkspacesConfig
-      cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
-      mem = pollingGraphNew memCfg 1 memCallback
-      net = networkGraphNew netCfg Nothing
+      --cpu = pollingGraphNew cpuCfg 0.5 cpuCallback
+      --mem = pollingGraphNew memCfg 1 memCallback
+      --net = networkGraphNew netCfg Nothing
       clock = textClockNew (Just jpLocale) "(%a)   %b %_d  %X" 60
       layout = layoutNew defaultLayoutConfig
       windows = windowsNew defaultWindowsConfig
@@ -117,9 +117,9 @@ main = do
           [
             clock
           , tray
-          , cpu
-          , mem
-          , net
+          --, cpu
+          --, mem
+          --, net
           , weather
           ]
         , barPosition = Top
