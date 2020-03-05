@@ -6,6 +6,7 @@
 
     ../../../config
 
+    ../../../modules/android.nix
     ../../../modules/development.nix
 
     # media
