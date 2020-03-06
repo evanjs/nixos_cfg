@@ -7,6 +7,7 @@
   programs.adb.enable = true;
 
   environment.systemPackages = with pkgs; [
+    androidStudioPackages.stable
     androidStudioPackages.beta
   ];
 }
