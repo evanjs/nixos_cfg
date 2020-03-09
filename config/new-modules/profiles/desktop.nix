@@ -309,7 +309,10 @@ in {
         ];
       };
 
-      mine.virtualization.libvirtd.enable = true;
+      mine.virtualization = {
+        docker.enable = true;
+        libvirtd.enable = true;
+      };
 
       mine.onedrive.enable = true;
 
