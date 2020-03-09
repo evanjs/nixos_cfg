@@ -21,10 +21,10 @@ in
         #default = with texlive; [ collection-langjapanese algorithms cm-super schemePackage ];
       #};
 
-      #extraPackages = mkOption {
-        #description = "Additional packages to include with the TeX environment";
-        #default = with pkgs; [ pandoc texstudio ];
-      #};
+      extraPackages = mkOption {
+        description = "Additional packages to include with the TeX environment";
+        default = with pkgs; [ pandoc texstudio ];
+      };
 
       #finalPackageSet = mkOption {
         #description = "The final set of TeX packages to include";
