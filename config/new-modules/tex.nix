@@ -24,6 +24,7 @@ in
       extraPackages = mkOption {
         description = "Additional packages to include with the TeX environment";
         default = with pkgs; [ pandoc texstudio ];
+        type = types.listOf types.package;
       };
 
       #finalPackageSet = mkOption {
@@ -38,6 +39,7 @@ in
         default = (pkgs.texlive.combine {
           inherit (pkgs.texlive) scheme-full collection-langjapanese algorithms cm-super;
         });
+        type = types.attrs;
       };
     };
 
