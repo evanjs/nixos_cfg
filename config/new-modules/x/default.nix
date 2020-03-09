@@ -117,7 +117,7 @@ with lib;
 
       services.compton = {
         enable = true;
-        activeOpacity = "0.85";
+        activeOpacity = "0.90";
         blur = true;
         blurExclude = [
           "class_g = 'slop'"
