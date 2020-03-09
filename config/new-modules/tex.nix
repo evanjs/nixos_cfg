@@ -39,8 +39,9 @@ in
           inherit (pkgs.texlive) scheme-full collection-langjapanese algorithms cm-super;
         });
       };
-      config = mkIf cfg.enable {
-        environment.systemPackages = [ texPackages ];
-      };
+    };
+
+    config = mkIf cfg.enable {
+      environment.systemPackages = [ cfg.texPackages ];
     };
   }
