@@ -9,6 +9,8 @@
     nix-prefetch-scripts
     nixpkgs-fmt
     nix-review
+    patchelf
+    niv
   ];
 
   # Workaround for missing gz functionality in auto-upgrade packages
