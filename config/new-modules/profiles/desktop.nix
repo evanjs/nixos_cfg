@@ -311,7 +311,7 @@ in {
 
       mine.virtualization = {
         docker.enable = true;
-        libvirtd.enable = true;
+        libvirtd.enable = false;
       };
 
       mine.onedrive.enable = true;
