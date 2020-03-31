@@ -44,6 +44,6 @@ in
     };
 
     config = mkIf cfg.enable {
-      environment.systemPackages = [ cfg.texPackages ];
+      environment.systemPackages = [ cfg.texPackages ] ++ cfg.extraPackages;
     };
   }
