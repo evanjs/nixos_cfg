@@ -1,11 +1,10 @@
 { lib, config, pkgs, services, ... }:
 
 with lib;
-
 let
-
   cfg = config.mine.nextcloud;
-in {
+in
+{
   options.mine.nextcloud = {
     enable = mkEnableOption "Nextcloud Configuration";
     openFirewall = mkOption {
@@ -37,6 +36,7 @@ in {
       maxUploadSize = "4096M";
 
       nginx.enable = true;
+      package = pkgs.nextcloud18;
     };
     services.phpfpm.pools.nextcloud.phpOptions = ''
       memcache.local = \OC\Memcache\APCu
