@@ -4,7 +4,7 @@
     home.packages = [ pkgs.rrbg ];
     systemd.user.timers.random-background = {
       Unit = {
-        PartOf = [ "random-bg.service" ];
+        PartOf = [ "random-background.service" ];
         Description = "Starts the random background switcher service";
       };
 
