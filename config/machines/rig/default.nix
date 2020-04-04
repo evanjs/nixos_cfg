@@ -39,6 +39,8 @@
 
   mine.font.bar.size.small = 10;
 
+  services.openssh.passwordAuthentication = false;
+
   services.xserver.dpi = 80;
   networking.firewall.allowedTCPPorts = [ 3128 ];
   services.squid = {
