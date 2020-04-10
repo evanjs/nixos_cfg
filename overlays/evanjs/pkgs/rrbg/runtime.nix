@@ -19,11 +19,14 @@ rustPlatform.buildRustPackage rec {
     sha256 = "1k8rvilky64mwkpa7jccama8bjd9g8gyndx3slhvwr3gryhm2f2r";
   };
 
+  buildInputs = [
+    SDL2
+  ];
+
   nativeBuildInputs = [
     xorg.libXrandr
     xorg.libXinerama
     xlibsWrapper
-    SDL2
   ];
 
   doCheck = false;
