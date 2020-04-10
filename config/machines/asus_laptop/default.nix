@@ -34,8 +34,6 @@
 
   mine.gaming.enable = true;
 
-  system.autoUpgrade.enable = lib.mkForce false;
-
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
 
