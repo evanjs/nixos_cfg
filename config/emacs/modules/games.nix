@@ -13,7 +13,6 @@ with lib;
   config = mkIf config.games {
 
     packages = with epkgs; [
-      _2048-game
     ];
   };
 }
