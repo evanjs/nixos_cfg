@@ -170,6 +170,7 @@ in {
           chit
           diesel-cli
           silicon
+          cargo-geiger
         ];
       };
       mine.jetbrains = {
