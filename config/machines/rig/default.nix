@@ -56,6 +56,7 @@
     '';
   };
 
+  #boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";
   system.stateVersion = "19.09";
