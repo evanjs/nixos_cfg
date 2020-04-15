@@ -11,6 +11,7 @@
     nix-review
     patchelf
     niv
+    nix-du
   ];
 
   # Workaround for missing gz functionality in auto-upgrade packages
