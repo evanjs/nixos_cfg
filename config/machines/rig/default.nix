@@ -16,7 +16,6 @@
     
     ../../../modules/scrape.nix
     ../../../modules/virtualization/docker.nix
-    ../../../modules/virtualization/virtualbox.nix
 
     ../../../modules/samba/server/home.nix
   ];
@@ -38,6 +37,8 @@
   mine.deluged.enable = true;
 
   mine.font.bar.size.small = 10;
+
+  mine.virtualization.virtualbox.enable = false;
 
   services.openssh.passwordAuthentication = false;
 
