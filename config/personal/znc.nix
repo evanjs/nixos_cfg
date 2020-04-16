@@ -30,6 +30,7 @@
             "#nixos" = { };
             "##nixos-anime" = { };
             "#nixos-chat" = { };
+            "#nixos-rust" = { };
             "#nixos-emacs" = { };
             "#nix-lang" = { };
             "#nixos-borg" = { };
