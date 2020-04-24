@@ -33,7 +33,10 @@
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;
   mine.znc.enable = true;
-  mine.nextcloud.enable = true;
+  mine.nextcloud = {
+    aria2.enable = true;
+    enable = true;
+  };
   mine.deluged.enable = true;
 
   mine.font.bar.size.small = 10;
