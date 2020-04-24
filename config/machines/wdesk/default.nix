@@ -33,7 +33,7 @@
   mine.rocm.enable = false;
 
   mine.virtualization.virtualbox.enable = true;
-  boot.kernelPackages = pkgs.stable.linuxPackages_latest;
+  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
   networking.hostName = "sekka";
 
