@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -41,7 +41,8 @@
 
   mine.font.bar.size.small = 10;
 
-  mine.virtualization.virtualbox.enable = false;
+  mine.virtualization.virtualbox.enable = true;
+  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
   services.openssh.passwordAuthentication = false;
 
