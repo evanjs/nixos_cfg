@@ -1,8 +1,8 @@
 { pkgs }: let src = pkgs.fetchFromGitHub {
   owner  = "tryone144";
   repo   = "compton";
-  rev = "e01494c0cb34dcb4e954a1d2542f5de922fcb01d";
-  sha256 = "0s153fqw3r79jk37qs1jwg72hkrcjrg51xpv0zf5yg77h2vxck2m";
+  rev = "c67d7d7b2c36f29846c6693a2f39a2e191a2fcc4";
+  sha256 = "1y1821islx0cg61z9kshs4mkvcp45bpkmzbll5zpzq84ycnqji2y";
 }; in src // {
   meta = src.meta // {
     branch = "feature/dual_kawase";
