@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.exfat-nofuse
-  ];
+  #boot.extraModulePackages = [
+    #config.boot.kernelPackages.exfat-nofuse
+  #];
 
   # Thunderbolt
   environment.systemPackages = with pkgs; [

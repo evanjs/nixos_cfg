@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -16,7 +16,6 @@
     
     ../../../modules/scrape.nix
     ../../../modules/virtualization/docker.nix
-    ../../../modules/virtualization/virtualbox.nix
 
     ../../../modules/samba/server/home.nix
   ];
@@ -34,10 +33,16 @@
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;
   mine.znc.enable = true;
-  mine.nextcloud.enable = true;
+  mine.nextcloud = {
+    aria2.enable = true;
+    enable = true;
+  };
   mine.deluged.enable = true;
 
   mine.font.bar.size.small = 10;
+
+  mine.virtualization.virtualbox.enable = true;
+  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
   services.openssh.passwordAuthentication = false;
 
@@ -56,6 +61,7 @@
     '';
   };
 
+  #boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";
   system.stateVersion = "19.09";

@@ -12,7 +12,6 @@
     ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
     ../../../modules/samba/client/work.nix
-    #../../../modules/virtualization/virtualbox.nix
   ];
   mine.hardware = {
     battery = true;
@@ -25,6 +24,7 @@
 
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
+  mine.virtualization.virtualbox.enable = false;
 
   networking.hostName = "nixjgtoo";
 

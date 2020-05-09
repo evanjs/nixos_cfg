@@ -9,7 +9,7 @@ with lib; {
     packageOverrides = pkgs: rec {
 
       stable = import (fetchTarball
-        "https://nixos.org/channels/nixos-19.09/nixexprs.tar.xz") {
+        "https://nixos.org/channels/nixos-20.03/nixexprs.tar.xz") {
           config = config.nixpkgs.config;
         };
       nixos-unstable = import (fetchTarball

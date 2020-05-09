@@ -27,7 +27,6 @@ in {
     #../../../modules/qt.nix
     ../../../modules/remote.nix
     ../../../modules/social
-    #../../../modules/virtualization/virtualbox.nix
     ../../../modules/web.nix
     ../../../modules/wine.nix
     ../../../modules/wireshark.nix
@@ -169,7 +168,8 @@ in {
           evcxr
           chit
           diesel-cli
-          nixpkgs-unstable.silicon
+          silicon
+          cargo-geiger
         ];
       };
       mine.jetbrains = {

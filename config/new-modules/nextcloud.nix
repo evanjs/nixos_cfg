@@ -14,9 +14,12 @@ in
       description =
         "Open ports in the firewall for NextCloud.  This is required for remote access.";
     };
+    aria2.enable = mkEnableOption "Aria2 background server";
   };
 
-  config = mkIf cfg.enable {
+  config = mkMerge [
+    (
+      {
     services.nextcloud = {
       enable = true;
       autoUpdateApps.enable = true;
@@ -42,6 +45,21 @@ in
       memcache.local = \OC\Memcache\APCu
       apc.enable_cli = 1
     '';
+
     environment.systemPackages = with pkgs; [ p7zip unrar ];
+      }
+    )
+
+    (
+      (mkIf (cfg.enable && cfg.aria2.enable)) {
+        services.aria2 = {
+          enable = true;
+          openPorts = true;
+          extraArguments = "--rpc-allow-origin-all -c -D --check-certificate=false --save-session-interval=2 --continue=true --rpc-save-upload-metadata=true --force-save=true --log-level=warn --rpc-listen-all=false";
   };
+
+        users.users.nextcloud.extraGroups = [ "aria2" ];
+      }
+    )
+  ];
 }

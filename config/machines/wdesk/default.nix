@@ -11,7 +11,6 @@
     ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
     ../../../modules/samba/client/work.nix
-    #../../../modules/virtualization/virtualbox.nix
   ];
   mine.hardware = {
     battery = false;
@@ -32,6 +31,9 @@
 
   # enable after rocm packages are locked to stable channel
   mine.rocm.enable = false;
+
+  mine.virtualization.virtualbox.enable = true;
+  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
   networking.hostName = "sekka";
 

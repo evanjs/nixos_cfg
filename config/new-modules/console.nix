@@ -79,7 +79,6 @@ with lib;
       procs
       ytop
       termplay
-      nix-du
     ];
 
     users.defaultUserShell = pkgs.zsh;
