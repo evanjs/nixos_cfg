@@ -16,10 +16,10 @@ in
         enable = true;
         port = 8471;
         packages = hp: with pkgs; [
-          (stable.haskellPackages.taffybar.overrideAttrs (drv: {
-            meta.broken = false;
-          }))
-          config.mine.taffybar.package
+          #(stable.haskellPackages.taffybar.overrideAttrs (drv: {
+          #  meta.broken = false;
+          #}))
+          #config.mine.taffybar.package
           xmonad-with-packages
           hp.xmonad
           hp.xmonad-contrib
