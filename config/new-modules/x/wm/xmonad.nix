@@ -34,7 +34,7 @@ in {
       };
 
     mine.xmobar.enable = true;
-    mine.taffybar.enable = true;
+    mine.taffybar.enable = false;
     mine.terminal.enable = true;
 
     scripts = 
@@ -70,7 +70,7 @@ in {
         enable = true;
         extraPackages = self: with self; [
           fuzzy
-          taffybar
+          #taffybar
         ];
         haskellPackages = hpkgs;
 

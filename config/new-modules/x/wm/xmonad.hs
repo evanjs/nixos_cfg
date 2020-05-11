@@ -18,7 +18,7 @@ import           Data.Monoid
 import           Graphics.X11.ExtraTypes.XF86
 import           System.Exit
 import           System.IO
-import           System.Taffybar.Support.PagerHints  (pagerHints)
+--import           System.Taffybar.Support.PagerHints  (pagerHints)
 
 import           XMonad
 import           XMonad.Actions.CycleWS
@@ -554,7 +554,7 @@ renameWorkspace w = withWindowSet $ \ws -> do
 ------------
 evanjsConfig =
     H.ewmh $
-    pagerHints $
+    -- pagerHints $
     def {
       terminal    = myTerminal
     , manageHook  = manageSpawn <+> namedScratchpadManageHook myScratchpads <+> placeHook placementPreferCenter <+> myManageHook <+> manageDocks
@@ -568,5 +568,5 @@ evanjsConfig =
     }
         where
             placementPreferCenter = withGaps (16,0,16,0) (smart (0.5,0.5))
-
-main = xmonad $ docks evanjsConfig
+main = xmonad $ evanjsConfig
+--main = xmonad $ docks evanjsConfig
