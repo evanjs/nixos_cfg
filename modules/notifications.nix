@@ -1,6 +1,7 @@
   { config, pkgs, ... }:
   {
     environment.systemPackages = with pkgs; [
-      stable.ntfy
+      # ntfy is broken in nixpkgs
+      #ntfy
     ];
   }
