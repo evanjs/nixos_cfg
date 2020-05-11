@@ -91,7 +91,6 @@ in {
       };
       mine.vim.enable = true;
       programs.vim.defaultEditor = true;
-      mine.tex.enable = true;
 
       # mine.newsboat.enable = true;
 
