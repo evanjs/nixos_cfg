@@ -11,7 +11,8 @@
     nix-review
     patchelf
     niv
-    nix-du
+    # nix-du fails to build due to some tests during checkPhase
+    #nix-du
   ];
 
   # Workaround for missing gz functionality in auto-upgrade packages
