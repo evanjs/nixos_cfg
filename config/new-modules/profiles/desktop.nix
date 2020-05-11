@@ -314,7 +314,8 @@ in {
         libvirtd.enable = false;
       };
 
-      mine.onedrive.enable = true;
+      # dmd is currently broken
+      mine.onedrive.enable = false;
 
       services.fstrim.enable = true;
     })
