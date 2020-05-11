@@ -568,5 +568,4 @@ evanjsConfig =
     }
         where
             placementPreferCenter = withGaps (16,0,16,0) (smart (0.5,0.5))
-main = xmonad $ evanjsConfig
---main = xmonad $ docks evanjsConfig
+main = xmonad $ docks evanjsConfig
