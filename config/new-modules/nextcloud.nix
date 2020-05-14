@@ -36,7 +36,7 @@ in
 
           home = "/data/web/nextcloud";
           hostName = "nextcloud";
-          maxUploadSize = "4096M";
+          maxUploadSize = "8192M";
 
           nginx.enable = true;
           package = pkgs.nextcloud18;
