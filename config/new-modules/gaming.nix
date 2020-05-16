@@ -7,10 +7,10 @@ with lib;
   options.mine.gaming.enable = mkEnableOption "games";
 
   config = mkIf config.mine.gaming.enable {
-  environment.systemPackages = with pkgs; [
-    ( pkgs.versions.latestVersion [ pkgs.steam pkgs.nixos-unstable.steam pkgs.nixos-unstable-small.steam ] )
-    ( pkgs.versions.latestVersion [ pkgs.steam-run pkgs.nixos-unstable.steam-run pkgs.nixos-unstable-small.steam-run ])
-  ];
+    environment.systemPackages = with pkgs; [
+      steam
+      steam-run
+    ];
   
   hardware = {
     opengl = {
