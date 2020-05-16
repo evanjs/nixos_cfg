@@ -227,6 +227,7 @@ myManageHook = composeOne [
   , className       =? "kitty"                -?> doShift "terminal"
   , className       =? "GitKraken"            -?> doShift "git"
   , className       =? "Slack"                -?> doShift "chat"
+  , className       =? "discord"              -?> doShift "chat"
   , className       =? "jetbrains"            -?> doShift "dev"
   , className       =? "Emacs"                -?> doShift "emacs"
   , isNotification                            -?> doIgnore
