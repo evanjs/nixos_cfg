@@ -12,7 +12,7 @@ in
     ./db/postgresql.nix
   ];
 
-  environment.systemPackages = with pkgs.stable.python37Packages; [
+  environment.systemPackages = with pkgs.python3Packages; [
     multiprocess
     pillow
     requests
