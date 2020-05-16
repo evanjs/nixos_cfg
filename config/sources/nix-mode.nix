@@ -1,6 +1,6 @@
 { pkgs }: pkgs.fetchFromGitHub {
   owner = "NixOS";
   repo = "nix-mode";
-  rev = "9043a8d6870367294bc37beb18debe438bfbc1d5";
-  sha256 = "0g119ddi826mqh53sjrhzmcy5b0lz4c6iai93q7bk90pxvlqxy02";
+  rev = "e20afb51a48b5d014292d123487f53a678c7c3f7";
+  sha256 = "1gbq9pmz1wv6kc128pyzi2hrsv9ax20myjmq02bwc4x5sqg6rdzq";
 }

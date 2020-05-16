@@ -91,7 +91,6 @@ in {
       };
       mine.vim.enable = true;
       programs.vim.defaultEditor = true;
-      mine.tex.enable = true;
 
       # mine.newsboat.enable = true;
 
@@ -197,6 +196,9 @@ in {
         feh
         geeqie
         mplayer
+
+        # TODO: cuda support (nvenc, nvdec, etc.)
+        ffmpeg-full
 
         # browsers
         firefox

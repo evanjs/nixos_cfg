@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  openglPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+  openglPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau nv-codec-headers ];
 in
 {
   services.xserver = {
