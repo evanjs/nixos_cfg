@@ -46,6 +46,11 @@ in
           apc.enable_cli = 1
         '';
 
+        # https://github.com/NixOS/nixpkgs/pull/86417
+        # What are the implications of this removal?
+        # Will the [Extract](https://github.com/PaulLereverend/NextcloudExtract) plugin do anything about this?
+        # TODO: can p7zip be made available exclusively from nextcloud's PATH, etc?
+        nixpkgs.config.permittedInsecurePackages = [ "p7zip-16.02" ];
         environment.systemPackages = with pkgs; [ p7zip unrar ];
       }
     )
