@@ -41,6 +41,10 @@ in
           nginx.enable = true;
           package = pkgs.nextcloud18;
         };
+        services.nginx = {
+          mapHashMaxSize = 4096;
+          mapHashBucketSize = 128;
+        };
         services.phpfpm.pools.nextcloud.phpOptions = ''
           memcache.local = \OC\Memcache\APCu
           apc.enable_cli = 1
