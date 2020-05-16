@@ -197,6 +197,9 @@ in {
         geeqie
         mplayer
 
+        # TODO: cuda support (nvenc, nvdec, etc.)
+        ffmpeg-full
+
         # browsers
         firefox
 
