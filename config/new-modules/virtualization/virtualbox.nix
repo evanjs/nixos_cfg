@@ -18,6 +18,6 @@ in
       };
       kvmgt.enable = true;
     };
-    users.extraUsers.myuser.extraGroups = [ "vboxusers" ];
+    users.extraUsers.evanjs.extraGroups = [ "vboxusers" ];
   };
 }
