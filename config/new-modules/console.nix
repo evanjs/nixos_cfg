@@ -62,7 +62,7 @@ with lib;
       nix-prefetch-scripts
       ranger
       zstd
-      tldr
+      tealdeer
       usbutils
       cht-sh
       cv
