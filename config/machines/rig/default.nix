@@ -1,4 +1,7 @@
 { config, pkgs, lib, ... }:
+let
+  keyFile = ./nix-binary-key;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,7 +16,7 @@
     ../../../modules/plex
 
     ../../../modules/jupyter
-    
+
     ../../../modules/scrape.nix
     ../../../modules/virtualization/docker.nix
 
@@ -29,6 +32,13 @@
     audio = true;
   };
 
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = "${keyFile}";
+    port = 8080;
+  };
+
+  nix.distributedBuilds = true;
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;
