@@ -3,12 +3,12 @@
 {
 
   imports = [
-    ../../../new-modules/vim/vim.nix
+    ../../../new-modules/vim/vim-home-manager.nix
     ../../../new-modules/zsh-home-manager.nix
+    ../../../new-modules/dev/moz-overlay.nix
   ];
 
   home.packages = with pkgs; [
-    myNeovim
     ripgrep
     bat
     fd
@@ -18,19 +18,30 @@
   ];
 
   programs = {
-    bash.enableAutojump = true;
+    lsd = {
+      enable = true;
+      enableAliases = true;
+    };
     neovim = {
       enable = true;
-      package = pkgs.myNeovim;
       viAlias = true;
+      vimAlias = true;
+    };
+    bash = {
+      enable = false;
+      enableAutojump = true;
     };
     zsh = {
       enable = true;
     };
   };
+  
+  targets.genericLinux.enable = true;
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
