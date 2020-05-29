@@ -6,19 +6,8 @@ mkIf config.mine.console.enable {
   programs.zsh.syntaxHighlighting.enable = true;
 
   mine.userConfig = {
-    home.packages = with pkgs; [
-      colormake
-      colordiff
+    imports = [
+      ./zsh-home-manager.nix
     ];
-
-    programs.zsh = {
-      enable = true;
-      history = {
-        extended = true;
-        share = false;
-      };
-
-      history.size = 1000000;
-    };
   };
 }

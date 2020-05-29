@@ -2,18 +2,9 @@
 {
   home-manager.users.evanjs = {
 
-    home.packages = with pkgs; [
-    zsh-you-should-use
+    imports = [
+      ./zsh.nix
+      ./powerlevel.nix
     ];
-
-    programs.zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      history = {
-        extended = true;
-        share = false;
-      };
-    };
   };
 }
