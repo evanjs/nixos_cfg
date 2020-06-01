@@ -227,6 +227,7 @@ in {
         # iOS stuff
         ideviceinstaller
         ifuse
+        libimobiledevice
 
         # security
         veracrypt
