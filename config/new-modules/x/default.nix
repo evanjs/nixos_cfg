@@ -114,7 +114,7 @@ with lib;
 
     mine.xUserConfig = {
 
-      services.compton = {
+      services.picom = {
         enable = true;
         activeOpacity = "0.90";
         blur = true;
@@ -123,7 +123,7 @@ with lib;
         ];
         fade = true;
         fadeDelta = 5;
-        vSync = "opengl-swc";
+        vSync = true;
         opacityRule = [
           "100:class_g   *?= 'Chromium-browser'"
           "100:class_g   *?= 'Firefox'"
