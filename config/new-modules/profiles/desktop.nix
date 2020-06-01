@@ -278,7 +278,7 @@ in {
       documentation = { dev.enable = true; };
 
       # Misc power
-      powerManagement.cpuFreqGovernor = "performance";
+      powerManagement.cpuFreqGovernor = lib.mkForce "performance";
       powerManagement.enable = true;
 
       programs.screen = {
