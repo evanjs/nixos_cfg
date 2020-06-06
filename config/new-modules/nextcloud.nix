@@ -19,7 +19,8 @@ in
 
   config = mkMerge [
     (
-      {
+      mkIf
+        cfg.enable {
         services.nextcloud = {
           enable = true;
           autoUpdateApps.enable = true;
