@@ -3,7 +3,8 @@ with lib;
 
 let
   rust-language-server = ((pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; }));
-  rust-nightly = pkgs.latest.rustChannels.nightly.rust;
+  rust-nightly = pkgs.latest.rustChannels.stable.rust;
+  rust-stable = pkgs.latest.rustChannels.nightly.rust;
   dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
   loadPlugin = plugin: ''
     set rtp^=${plugin.rtp}
@@ -156,7 +157,7 @@ in
 
             "" Rust Settings {{{
             let g:rustfmt_autosave = 1
-            let g:LanguageClient_serverCommands = { 'rust': ['${rust-nightly}/bin/rls'] }
+            let g:LanguageClient_serverCommands = { 'rust': ['${rust-stable}/bin/rls'] }
             "}}}
 
             "" Tagbar Settings {{{
