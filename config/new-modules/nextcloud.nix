@@ -60,16 +60,15 @@ in
       }
     )
 
-    (
-      (mkIf (cfg.enable && cfg.aria2.enable)) {
-        services.aria2 = {
-          enable = true;
-          openPorts = true;
-          extraArguments = "--rpc-allow-origin-all -c -D --check-certificate=false --save-session-interval=2 --continue=true --rpc-save-upload-metadata=true --force-save=true --log-level=warn --rpc-listen-all=false";
-        };
+    ( (mkIf (cfg.enable && cfg.aria2.enable)) {
+      services.aria2 = {
+        enable = true;
+        openPorts = true;
+        extraArguments = "--rpc-allow-origin-all -c -D --check-certificate=false --save-session-interval=2 --continue=true --rpc-save-upload-metadata=true --force-save=true --log-level=warn --rpc-listen-all=false";
+      };
 
-        users.users.nextcloud.extraGroups = [ "aria2" ];
-      }
+      users.users.nextcloud.extraGroups = [ "aria2" ];
+    }
     )
   ];
 }
