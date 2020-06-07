@@ -95,7 +95,7 @@ with lib;
       #pcmanfm
       arandr
       xorg.xmessage
-      lxappearance-gtk3
+      lxappearance
       #arc-theme
       gtk_engines
       gtk-engine-murrine
