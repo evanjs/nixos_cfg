@@ -9,7 +9,6 @@ in
 
     ../../../config
 
-    ../../../modules/android.nix
     ../../../modules/development.nix
 
     # media
@@ -39,6 +38,7 @@ in
   };
 
   nix.distributedBuilds = true;
+  mine.android.enable = true;
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
   mine.gaming.enable = true;

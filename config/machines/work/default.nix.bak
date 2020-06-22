@@ -5,7 +5,6 @@
     ../../new-modules/profiles/desktop.nix
     ./custom-hardware.nix
 
-    ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
     ../../../modules/development.nix
     ../../../modules/linux_latest.nix

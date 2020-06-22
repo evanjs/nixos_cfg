@@ -9,7 +9,6 @@
     
     ../../../modules/development.nix
 
-    ../../../modules/android.nix
     ../../../modules/db/postgresql.nix
     ../../../modules/samba/client/work.nix
   ];
