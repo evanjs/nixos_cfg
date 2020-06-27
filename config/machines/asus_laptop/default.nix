@@ -42,5 +42,7 @@
   boot.initrd.checkJournalingFS = false;
   powerManagement.powertop.enable = true;
 
+  system.autoUpgrade.enable = lib.mkForce false;
+
   system.stateVersion = "19.09";
 }
