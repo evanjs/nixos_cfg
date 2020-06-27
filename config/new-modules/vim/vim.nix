@@ -33,8 +33,12 @@ let
     vim-illuminate
     vim-latex-live-preview
     vimtex
+  ] ++ (with pkgs.stable.vimPlugins; [
+    # rustracer fails to build on nixos-unstable (as of at least https://github.com/NixOS/nixpkgs/commit/467ce5a9f45aaf96110b41eb863a56866e1c2c3c)
+    # rustracer seems to build fine with rustc 1.44 (see https://github.com/NixOS/nixpkgs/issues/89481#issuecomment-642853909)
+    # Use stable nixpkgs until https://github.com/NixOS/nixpkgs/issues/89481 is resolved
     YouCompleteMe
-  ];
+  ]);
 in
   {
     options.mine.vim = {
