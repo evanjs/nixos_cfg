@@ -3,7 +3,7 @@
 with lib;
 
 let
-  hpkgs = pkgs.stable.haskell.packages.ghc865.override {
+  hpkgs = pkgs.stable.haskell.packages.ghc883.override {
     overrides = new: old: rec {
       xmonad-contrib = old.xmonad-contrib.overrideAttrs (oldAttrs: rec {
         patches = [
@@ -34,7 +34,7 @@ in {
       };
 
     mine.xmobar.enable = true;
-    mine.taffybar.enable = false;
+    mine.taffybar.enable = true;
     mine.terminal.enable = true;
 
     scripts = 
