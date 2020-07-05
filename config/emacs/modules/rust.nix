@@ -18,6 +18,7 @@ with lib;
       cargo
       rust-mode
       rustic  #TODO: Try out with rust-analyzer
+      pkgs.rust-analyzer
       eglot
       rust-auto-use
     ];
@@ -25,9 +26,10 @@ with lib;
     init.rust = ''
       (use-package rust-mode)
       (use-package rustic)
+      ;;(use-package rust-analyzer)
 
       (setq rustic-lsp-client 'eglot)
-;;    (setq rustic-lsp-server 'rust-analyzer) -- blocked on https://github.com/NixOS/nixpkgs/pull/77752
+      (setq rustic-lsp-server 'rust-analyzer)
       (setq rustic-compile-backtrace 1)
     '';
 
