@@ -234,6 +234,8 @@ in {
 
         # editors
         atom
+
+        rclone
       ];
 
       #services.dbus.socketActivated = true;
