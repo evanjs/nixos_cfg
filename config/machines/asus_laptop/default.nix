@@ -9,7 +9,6 @@
     ../../../modules/db/postgresql.nix
     ../../../modules/development.nix
     ../../../modules/scrape.nix 
-    #../../../modules/channels.nix
   ];
 
   mine.hardware = {
