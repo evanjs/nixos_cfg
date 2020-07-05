@@ -51,7 +51,7 @@ in
 
   mine.font.bar.size.small = 10;
 
-  mine.virtualization.virtualbox.enable = true;
+  mine.virtualization.virtualbox.enable = false;
   boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
   services.openssh.passwordAuthentication = false;
