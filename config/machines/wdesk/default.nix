@@ -28,7 +28,7 @@
   mine.enableUser = true;
   mine.profiles.desktop.enable = true;
 
-  mind.android.enable = true;
+  mine.android.enable = true;
 
   # enable after rocm packages are locked to stable channel
   mine.rocm.enable = false;
