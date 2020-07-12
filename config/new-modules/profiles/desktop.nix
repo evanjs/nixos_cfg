@@ -236,6 +236,8 @@ in {
         atom
 
         rclone
+
+        ghidra-bin
       ];
 
       #services.dbus.socketActivated = true;
