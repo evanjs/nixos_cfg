@@ -3,7 +3,7 @@
 with lib;
 
 let
-
+  hpkgs = config.mine.xUserConfig.xsession.windowManager.xmonad.haskellPackages;
   cfg = config.mine.dev.haskell.hoogle;
 in
   {
@@ -26,8 +26,8 @@ in
         ];
       };
 
-      environment.systemPackages = with pkgs; [
-        haskellPackages.hoogle
+      environment.systemPackages = with hpkgs; [
+        hpkgs.hoogle
       ];
     };
   }
