@@ -6,18 +6,16 @@ let
   hpkgs = pkgs.stable.haskell.packages.ghc883.override {
     overrides = new: old: rec {
       xmonad-contrib = old.xmonad-contrib.overrideAttrs (oldAttrs: rec {
-        patches = [
-          (pkgs.fetchpatch {
-            # add promptSearchBrowser' from https://github.com/xmonad/xmonad-contrib/pull/330
-            name = "promptSearchBrowser.patch";
-            url =
-              "https://github.com/xmonad/xmonad-contrib/commit/5493ff190d0d5e207dde07139fd371f8057d9e93.diff";
-              sha256 = "1c2ay8f9bxc4fwccsga0mvpdlrv4l31ildwvirn6lvph5y5kpxfb";
-            })
-          ];
-        });
-      };
+        version = "unstable-2020-06-23";
+        src = pkgs.fetchFromGitHub {
+          repo = "xmonad-contrib";
+          owner = "xmonad";
+          rev ="3dc49721b69f5c69c5d5e1ca21083892de72715d";
+          sha256 = "0d89y59qbd1z77d1g6fgfj71qjr65bclhb0jkhmr5ynn88rqqfv8";
+        };
+      });
     };
+  };
 in {
   options = { mine.wm.enable = mkEnableOption "My window manager"; };
 
