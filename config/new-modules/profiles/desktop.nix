@@ -252,7 +252,7 @@ in {
 
       services.psd = { enable = true; };
 
-      boot.supportedFilesystems = [ "exfat" "ntfs" "f2fs" "btrfs" ];
+      boot.supportedFilesystems = [ "exfat" "ntfs" "f2fs" "btrfs" "nfs" ];
 
       #services.locate = {
       #enable = true;
