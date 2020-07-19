@@ -26,6 +26,10 @@ in
         ];
       };
 
+      networking.firewall.allowedTCPPorts = [
+        config.services.hoogle.port
+      ];
+
       environment.systemPackages = with hpkgs; [
         hpkgs.hoogle
       ];
