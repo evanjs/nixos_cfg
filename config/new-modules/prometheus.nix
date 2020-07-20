@@ -15,7 +15,7 @@ in
         services.prometheus.enable = true;
         networking.firewall.allowedTCPPorts = [ 9090 ];
       })
-      (mkIf (cfg.server.enable && cfg.export.enable) {
+      (mkIf (cfg.export.enable) {
         services.prometheus = {
           exporters = {
             node = {
