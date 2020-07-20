@@ -62,9 +62,23 @@ in
         };
       })
       (mkIf (cfg.export.enable && config.services.postgresql.enable) {
-        services.prometheus.exporters.postgres = {
-          enable = true;
-          openFirewall = true;
+        services.prometheus = {
+          exporters.postgres = {
+            enable = true;
+            openFirewall = true;
+            runAsLocalSuperUser = true;
+          };
+          scrapeConfigs = [
+            {
+              job_name = "postgres";
+              static_configs = [
+                {
+                  targets = [ "127.0.0.1:9187" ];
+                  labels = { instance = config.networking.hostName; };
+                }
+              ];
+            }
+          ];
         };
       })
     ];
