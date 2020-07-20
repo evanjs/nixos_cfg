@@ -41,11 +41,6 @@ in
               ];
               openFirewall = true;
             };
-
-            postgres = {
-              enable = true;
-              openFirewall = true;
-            };
           };
 
           scrapeConfigs = [
@@ -64,6 +59,12 @@ in
               }];
             }
           ];
+        };
+      })
+      (mkIf (cfg.export.enable && config.services.postgresql.enable) {
+        services.prometheus.exporters.postgres = {
+          enable = true;
+          openFirewall = true;
         };
       })
     ];
