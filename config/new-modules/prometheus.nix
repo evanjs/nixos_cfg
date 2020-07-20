@@ -46,17 +46,25 @@ in
           scrapeConfigs = [
             {
               job_name = "node";
-              static_configs = [{
-                targets = [ "127.0.0.1:9100" ];
-                labels = { instance = config.networking.hostName; };
-              }];
+              static_configs = [
+                {
+                  targets = [ "127.0.0.1:9100" ];
+                  labels = { instance = config.networking.hostName; };
+                }
+                {
+                  targets = [ "172.16.0.209:9100" ];
+                  labels = { instance = "sekka"; };
+                }
+              ];
             }
             {
               job_name = "prometheus";
-              static_configs = [{
-                targets = [ "127.0.0.1:9090" ];
-                labels = { instance = config.networking.hostName; };
-              }];
+              static_configs = [
+                {
+                  targets = [ "127.0.0.1:9090" ];
+                  labels = { instance = config.networking.hostName; };
+                }
+              ];
             }
           ];
         };
@@ -75,6 +83,10 @@ in
                 {
                   targets = [ "127.0.0.1:9187" ];
                   labels = { instance = config.networking.hostName; };
+                }
+                {
+                  targets = [ "172.16.0.209:9187" ];
+                  labels = { instance = "sekka"; };
                 }
               ];
             }
