@@ -2,3 +2,4 @@ configuration.nix
 smb-secrets
 pass
 passwords
+password

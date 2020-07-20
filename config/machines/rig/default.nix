@@ -49,6 +49,8 @@ in
   };
   mine.deluged.enable = true;
 
+  mine.prometheus.server.enable = true;
+
   mine.font.bar.size.small = 10;
 
   mine.virtualization.virtualbox.enable = false;

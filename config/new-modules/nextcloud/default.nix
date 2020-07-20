@@ -3,6 +3,7 @@
 with lib;
 let
   cfg = config.mine.nextcloud;
+  prometheus = config.services.prometheus.exporters.nextcloud;
 in
 {
   options.mine.nextcloud = {
@@ -60,7 +61,7 @@ in
       }
     )
 
-    ( (mkIf (cfg.enable && cfg.aria2.enable)) {
+    ((mkIf (cfg.enable && cfg.aria2.enable)) {
       services.aria2 = {
         enable = true;
         openPorts = true;
@@ -68,7 +69,28 @@ in
       };
 
       users.users.nextcloud.extraGroups = [ "aria2" ];
-    }
-    )
+    })
+    ((mkIf (cfg.enable && config.mine.prometheus.export.enable))
+    {
+
+      services.prometheus = {
+        scrapeConfigs = [
+          {
+            job_name = "nextcloud";
+            static_configs = [{
+              targets = [ "localhost:${toString prometheus.port}" ];
+              labels = { instance = config.networking.hostName; };
+            }];
+          }
+        ];
+        exporters.nextcloud = {
+          enable = true;
+          openFirewall = true;
+          passwordFile = ./password;
+          username = "prometheus";
+          url = "localhost";
+        };
+      };
+    })
   ];
 }

@@ -325,6 +325,8 @@ in {
       mine.onedrive.enable = false;
 
       services.fstrim.enable = true;
+
+      mine.prometheus.export.enable = true;
     })
   ];
 }
