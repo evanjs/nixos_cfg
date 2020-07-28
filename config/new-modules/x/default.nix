@@ -12,7 +12,7 @@ with lib;
 
     mine.dunst.enable = true;
 
-    mine.live-wallpaper.enable = true;
+    mine.live-wallpaper.enable = false;
 
     services.logind.extraConfig = ''
       HandlePowerKey=suspend
