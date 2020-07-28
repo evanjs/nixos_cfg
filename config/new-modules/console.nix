@@ -79,6 +79,7 @@ with lib;
       procs
       ytop
       termplay
+      diskonaut
     ];
 
     users.defaultUserShell = pkgs.zsh;
