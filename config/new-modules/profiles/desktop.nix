@@ -159,7 +159,7 @@ in {
           cargo-outdated
           stable.cargo-update
           cargo-bloat
-          cargo-fuzz
+          #cargo-fuzz
           cargo-watch
           cargo-sweep
           stdenv.cc

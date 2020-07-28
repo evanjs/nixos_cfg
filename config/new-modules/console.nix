@@ -69,7 +69,7 @@ with lib;
       _1password
       pwgen
       du-dust
-      multipath-tools
+      #multipath-tools
       nixpkgs-unstable.bingrep
       pciutils
       hwinfo

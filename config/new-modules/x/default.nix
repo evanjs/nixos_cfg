@@ -157,7 +157,7 @@ with lib;
         mpv
         mine.pics
         #thunderbird
-        helvetica-neue-lt-std
+        #helvetica-neue-lt-std
         mine.arcred
       ];
 
