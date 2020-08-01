@@ -36,6 +36,7 @@ with lib;
       gitFull
       gitAndTools.hub
       gitAndTools.gh
+      gitAndTools.delta
 
       tmux
       lsof
