@@ -6,6 +6,7 @@ with lib; {
     ../../../modules/home-manager
     ../../../modules/security/keybase.nix
     ../../../external/private
+    "${(import ../../nix/sources.nix).sops-nix}/modules/sops"
   ];
 
   mine.mainUsers = [ "root" ];
