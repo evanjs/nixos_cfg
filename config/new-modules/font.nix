@@ -24,12 +24,12 @@ in
     };
     name = mkOption {
       description = "The name of the font";
-      default = "JetBrains Mono";
+      default = "JetBrainsMono Nerd Font";
       type = types.str;
     };
     package = mkOption {
       description = "The package of the font to use";
-      default = pkgs.jetbrains-mono;
+      default = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; });
       type = types.package;
     };
   };
