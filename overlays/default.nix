@@ -2,8 +2,8 @@
 {
   imports = [
     ./evanjs
+    ./haskell
     ./libs
-    #./nix-helpers
     ./rjg
   ]
   ++ (if (builtins.pathExists(./default.local.nix)) then [ ./default.local.nix ] else [])

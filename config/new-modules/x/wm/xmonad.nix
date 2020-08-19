@@ -1,24 +1,8 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-
-let
-  hpkgs = pkgs.haskellPackages.override {
-    overrides = new: old: rec {
-      xmonad-contrib = old.xmonad-contrib.overrideAttrs (oldAttrs: rec {
-        version = "unstable-2020-06-23";
-        src = pkgs.fetchFromGitHub {
-          repo = "xmonad-contrib";
-          owner = "xmonad";
-          rev ="3dc49721b69f5c69c5d5e1ca21083892de72715d";
-          sha256 = "0d89y59qbd1z77d1g6fgfj71qjr65bclhb0jkhmr5ynn88rqqfv8";
-        };
-      });
-    };
-  };
-in {
+{
   options = { mine.wm.enable = mkEnableOption "My window manager"; };
-
   config = mkIf config.mine.wm.enable rec {
 
     services.xserver.windowManager.xmonad =
@@ -26,7 +10,6 @@ in {
       in {
         enable = userConfig.enable;
         extraPackages = userConfig.extraPackages;
-        haskellPackages = userConfig.haskellPackages;
         enableContribAndExtras = userConfig.enableContribAndExtras;
         config = userConfig.config;
       };
@@ -68,9 +51,8 @@ in {
         enable = true;
         extraPackages = self: with self; [
           fuzzy
-          #taffybar
+              config.mine.taffybar.package
         ];
-        haskellPackages = hpkgs;
 
         enableContribAndExtras = true;
         config = pkgs.runCommand "xmonad.hs" (config.scripts // {
