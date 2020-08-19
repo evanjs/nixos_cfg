@@ -68,9 +68,6 @@ with lib;
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;
-      fontconfig = {
-        penultimate.enable = true;
-      };
       fonts = with pkgs; [
         corefonts
         (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; })
