@@ -7,7 +7,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    riot-desktop
+    element-desktop
     gitter
   ];
 }
