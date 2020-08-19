@@ -7,9 +7,9 @@ in
 {
   options.mine.font = rec {
     bar = {
-      description = "Settings related to fonts for status bars";
+      #description = "Settings related to fonts for status bars";
       size = {
-        description = "The font sizes to use for status bars";
+        #description = "The font sizes to use for status bars";
         small = mkOption {
           description = "Font size to use for traditionally smaller bars, often text-based bars, such as xmobar";
           default = 8;
@@ -24,12 +24,12 @@ in
     };
     name = mkOption {
       description = "The name of the font";
-      default = "JetBrains Mono";
+      default = "JetBrainsMono Nerd Font";
       type = types.str;
     };
     package = mkOption {
       description = "The package of the font to use";
-      default = pkgs.jetbrains-mono;
+      default = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; });
       type = types.package;
     };
   };

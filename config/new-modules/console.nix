@@ -81,6 +81,8 @@ with lib;
       ytop
       termplay
       diskonaut
+
+      nodePackages.insect
     ];
 
     users.defaultUserShell = pkgs.zsh;

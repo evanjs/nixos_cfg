@@ -5,7 +5,7 @@ with lib;
 
   config = mkIf config.mine.dev.haskell.enable {
     environment.systemPackages = with pkgs; [
-      stable.haskellPackages.stylish-haskell
+      haskellPackages.stylish-haskell
       haskellPackages.hlint
     ];
 

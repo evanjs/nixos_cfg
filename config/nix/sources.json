@@ -1,0 +1,38 @@
+{
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "ab9cc41caf44d1f1d465d8028e4bc0096fd73238",
+        "sha256": "17k52n8zwp832cqifsc4458mhy4044wmk22f807171hf6p7l4xvr",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/ab9cc41caf44d1f1d465d8028e4bc0096fd73238.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixos-unstable",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "840c782d507d60aaa49aa9e3f6d0b0e780912742",
+        "sha256": "14q3kvnmgz19pgwyq52gxx0cs90ddf24pnplmq33pdddbb6c51zn",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/840c782d507d60aaa49aa9e3f6d0b0e780912742.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "sops-nix": {
+        "branch": "master",
+        "description": "Atomic secret provisioning for NixOS based on sops",
+        "homepage": "",
+        "owner": "mic92",
+        "repo": "sops-nix",
+        "rev": "bef5a493529c12f224dd2ef3ba01aec0c470f290",
+        "sha256": "1vni0g1qwhs5anqaf1ickr3q1rmdl6mgf2sl7ivmgyw215garnn5",
+        "type": "tarball",
+        "url": "https://github.com/mic92/sops-nix/archive/bef5a493529c12f224dd2ef3ba01aec0c470f290.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

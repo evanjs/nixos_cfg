@@ -112,6 +112,13 @@ with lib;
         (setq mouse-wheel-scroll-amount '(5 ((shift) . 1))) ;; one line at a time
         (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
         ;;(load (concat (getenv "HOME") "/.emacs.d/dinit.el"))
+
+	(defun ielm/clear ()
+	  "Clear IELM buffer."
+	  (interactive)
+	  (with-current-buffer "*ielm*"
+	    (let ((inhibit-read-only t))
+              (erase-buffer))))
       '';
     };
 

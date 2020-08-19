@@ -3,7 +3,7 @@
 with lib;
 
 let
-  hpkgs = pkgs.stable.haskell.packages.ghc883.override {
+  hpkgs = pkgs.haskellPackages.override {
     overrides = new: old: rec {
       xmonad-contrib = old.xmonad-contrib.overrideAttrs (oldAttrs: rec {
         version = "unstable-2020-06-23";

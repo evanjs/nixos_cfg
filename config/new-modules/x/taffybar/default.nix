@@ -3,7 +3,7 @@
 with pkgs.haskell.lib;
 
 let
-  hpkgs = pkgs.haskell.packages.ghc883;
+  hpkgs = pkgs.haskellPackages;
 in
 
 (hpkgs.extend (packageSourceOverrides {
