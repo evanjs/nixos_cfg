@@ -23,12 +23,12 @@ with lib;
       exportConfiguration = true;
 
       displayManager = {
+        autoLogin = {
+          enable = false;
+          user = "evanjs";
+        };
         gdm = {
           enable = true;
-          autoLogin = {
-            enable = false;
-            user = "evanjs";
-          };
           autoSuspend = false;
         };
 
