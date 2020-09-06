@@ -16,7 +16,6 @@ let
     ghc-mod-vim
     haskell-vim
     LanguageClient-neovim
-    latex-box
     neomake
     nerdcommenter
     nerdtree
@@ -31,13 +30,15 @@ let
     vim-airline-themes
     vim-autoformat
     vim-illuminate
-    vim-latex-live-preview
-    vimtex
   ] ++ (with pkgs.stable.vimPlugins; [
     # rustracer fails to build on nixos-unstable (as of at least https://github.com/NixOS/nixpkgs/commit/467ce5a9f45aaf96110b41eb863a56866e1c2c3c)
     # rustracer seems to build fine with rustc 1.44 (see https://github.com/NixOS/nixpkgs/issues/89481#issuecomment-642853909)
     # Use stable nixpkgs until https://github.com/NixOS/nixpkgs/issues/89481 is resolved
     YouCompleteMe
+  ]) ++ optionals config.mine.tex.enable (with pkgs.vimPlugins; [
+    latex-box
+    vim-latex-live-preview
+    vimtex
   ]);
 in
   {
@@ -179,15 +180,15 @@ in
             let g:ycm_server_keep_logfiles = 0
             "}}}
 
-            "" Tex Settings {{{
-            let g:vimtex_log_verbose = 1
-            let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
-            "}}}
-
             "" Misc Settings {{{
             let g:rainbow_active = 1
             "}}}
 
+        '' + optionalString config.mine.tex.enable ''
+            "" Tex Settings {{{
+            let g:tex_flavor = 'latex'
+            let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
+            "}}}
         '';
       };
     };
