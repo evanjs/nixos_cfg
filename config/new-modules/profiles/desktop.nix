@@ -115,7 +115,11 @@ in {
               };
             };
           };
-
+          starship = {
+            enable = true;
+            enableBashIntegration = true;
+            enableZshIntegration = true;
+          };
         };
 
         gtk = {

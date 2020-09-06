@@ -32,7 +32,6 @@ in
     nget = callPackage ../nget { };
     polychromatic = callPackage ../polychromatic { };
     #rust-with-extensions = callPackage ../rust-with-extensions { rustChannel = nightlyRust; };
-    zsh-powerlevel9k = callPackage ../shells/zsh/zsh-powerlevel9k { };
     power-warn = callPackage ../tools/misc/power-warn { };
 
     #qrbooru = callQPackage ../qrbooru { rustChannel = nightlyRust; };

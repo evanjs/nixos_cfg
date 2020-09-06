@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  imports = [
-  ./powerlevel.nix
-  ];
-
   home-manager.users.evanjs = {
 
     home.packages = with pkgs; [

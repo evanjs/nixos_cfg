@@ -3,7 +3,6 @@
 
   imports = [
     ./oh.nix
-    ./powerlevel.nix
   ];
 
   environment = {
