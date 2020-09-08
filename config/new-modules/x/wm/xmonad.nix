@@ -51,7 +51,8 @@ with lib;
         enable = true;
         extraPackages = self: with self; [
           fuzzy
-              config.mine.taffybar.package
+        ] ++ optionals config.mine.taffybar.enable [
+          config.mine.taffybar.package
         ];
 
         enableContribAndExtras = true;
