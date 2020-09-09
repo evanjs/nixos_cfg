@@ -119,6 +119,11 @@ in {
             enable = true;
             enableBashIntegration = true;
             enableZshIntegration = true;
+
+            settings = {
+              line_break.disabled = true;
+              git_branch.style = "bold green";
+            };
           };
         };
 
@@ -242,6 +247,8 @@ in {
         rclone
 
         ghidra-bin
+
+        _1password-gui
       ];
 
       #services.dbus.socketActivated = true;
