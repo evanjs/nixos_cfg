@@ -43,8 +43,8 @@ in
           package = pkgs.nextcloud18;
         };
         services.nginx = {
-          mapHashMaxSize = 4096;
-          mapHashBucketSize = 128;
+            recommendedOptimisation = true;
+            recommendedGzipSettings = true;
         };
         services.phpfpm.pools.nextcloud.phpOptions = ''
           memcache.local = \OC\Memcache\APCu
