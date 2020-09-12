@@ -20,8 +20,7 @@ in
 
   config = mkMerge [
     (
-      mkIf
-        cfg.enable {
+      mkIf cfg.enable {
         services.nextcloud = {
           enable = true;
           autoUpdateApps.enable = true;
@@ -43,8 +42,8 @@ in
           package = pkgs.nextcloud18;
         };
         services.nginx = {
-            recommendedOptimisation = true;
-            recommendedGzipSettings = true;
+          recommendedOptimisation = true;
+          recommendedGzipSettings = true;
         };
         services.phpfpm.pools.nextcloud.phpOptions = ''
           memcache.local = \OC\Memcache\APCu
@@ -70,26 +69,26 @@ in
       users.users.nextcloud.extraGroups = [ "aria2" ];
     })
     ((mkIf (cfg.enable && config.mine.prometheus.export.enable))
-    {
+      {
 
-      services.prometheus = {
-        scrapeConfigs = [
-          {
-            job_name = "nextcloud";
-            static_configs = [{
-              targets = [ "localhost:${toString prometheus.port}" ];
-              labels = { instance = config.networking.hostName; };
-            }];
-          }
-        ];
-        exporters.nextcloud = {
-          enable = true;
-          openFirewall = true;
-          passwordFile = ./password;
-          username = "prometheus";
-          url = "localhost";
+        services.prometheus = {
+          scrapeConfigs = [
+            {
+              job_name = "nextcloud";
+              static_configs = [{
+                targets = [ "localhost:${toString prometheus.port}" ];
+                labels = { instance = config.networking.hostName; };
+              }];
+            }
+          ];
+          exporters.nextcloud = {
+            enable = true;
+            openFirewall = true;
+            passwordFile = ./password;
+            username = "prometheus";
+            url = "localhost";
+          };
         };
-      };
-    })
+      })
   ];
 }
