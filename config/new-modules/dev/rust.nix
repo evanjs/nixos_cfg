@@ -87,12 +87,11 @@ in
       };
     };
 
-    config = mkIf cfg.enable {
-
     imports = [
       ./moz-overlay.nix
     ];
 
+    config = mkIf cfg.enable {
       mine.userConfig = {
         home.packages = [ cfg.package ] ++ cfg.extraPackages;
       };
