@@ -3,6 +3,7 @@
 {
 
   imports = [
+    ../../../../overlays
     ../../../new-modules/default-hm.nix
     ../../../new-modules/dev/moz-overlay.nix
   ];
@@ -14,6 +15,7 @@
     du-dust
     nixpkgs-fmt
     git
+    python3
   ];
 
   programs = {

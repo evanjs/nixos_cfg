@@ -26,5 +26,33 @@
     };
     direnv = { enable = true; };
     htop.enable = true;
-  };
+
+    starship = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+
+      settings = {
+        line_break.disabled = true;
+        git_branch.style = "bold green";
+      };
+    };
+
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+
+      history.size = 1000000;
+    };
+  } // (if (pkgs.helpers.isNixOS == true) then {
+    programs = {
+      autojump.enable = true;
+      zsh = {
+        autosuggestions.enable = true;
+        ohMyZsh = true;
+      };
+    };
+  } else {
+    bash.enableAutojump = true;
+  });
 }
