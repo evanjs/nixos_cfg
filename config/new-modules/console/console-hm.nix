@@ -44,15 +44,5 @@
 
       history.size = 1000000;
     };
-  } // (if (pkgs.helpers.isNixOS == true) then {
-    programs = {
-      autojump.enable = true;
-      zsh = {
-        autosuggestions.enable = true;
-        ohMyZsh = true;
-      };
-    };
-  } else {
-    bash.enableAutojump = true;
-  });
+  }; 
 }

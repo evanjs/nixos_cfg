@@ -1,88 +1,106 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-{
-  options.mine.console.enable = mkOption {
-    type = types.bool;
-    default = true;
-    description = "enable console config";
-  };
+let
+  packages = with pkgs; [
+    direnv
 
-  config = mkIf config.mine.console.enable {
+    gitFull
+    gitAndTools.hub
+    gitAndTools.gh
+    gitAndTools.delta
 
-    nixpkgs.config.packageOverrides = pkgs: {
-      sudo = pkgs.sudo.override {
-        withInsults = true;
+    _1password
+    aspellDicts.en
+    bat
+    bc
+    nixpkgs-unstable.bingrep
+    cht-sh
+    cv
+    diskonaut
+    du-dust
+    fd
+    file
+    gnumake
+    gnupg
+    hashcat
+    hwinfo
+    jq
+    lsof
+    neofetch
+    nix-index
+    nix-prefetch-scripts
+    nix-top
+    nmap
+    openssl
+    pass
+    pciutils
+    procs
+    pwgen
+    ranger
+    ripgrep
+    ripgrep-all
+    sd
+    sqliteInteractive
+    tealdeer
+    termplay
+    tmux
+    traceroute
+    unzip
+    usbutils
+    wget
+    whois
+    ytop
+    zstd
+
+    nodePackages.insect
+  ];
+  hm = (import ./console-hm.nix { inherit pkgs config lib; });
+  cfg = config.mine.console;
+in
+  {
+    options.mine.console = {
+      enable = mkOption {
+        type = types.bool;
+        default = true;
+        description = "enable console config";
       };
     };
 
-    environment.pathsToLink = [ "/share/zsh" ];
+    config = mkIf cfg.enable (mkMerge [
+      {
+        nixpkgs.config.packageOverrides = pkgs: {
+          sudo = pkgs.sudo.override {
+            withInsults = true;
+          };
+        };
 
-    mine.vim.enable = true;
+        environment.pathsToLink = [ "/share/zsh" ];
 
-    environment.systemPackages = with pkgs; [
-      direnv
+        mine.vim.enable = true;
 
-      gitFull
-      gitAndTools.hub
-      gitAndTools.gh
-      gitAndTools.delta
 
-      tmux
-      lsof
-      pass
-      gnupg
-      unzip
-      jq
-      bc
-      wget
-      ripgrep
-      ripgrep-all
-      sd
-      file
-      nmap
-      traceroute
-      nix-top
-      fd
-      sqliteInteractive
-      gnumake
-      whois
-      aspellDicts.en
-      bat
-      nix-index
-      nix-prefetch-scripts
-      ranger
-      zstd
-      tealdeer
-      usbutils
-      cht-sh
-      cv
-      _1password
-      pwgen
-      du-dust
-      #multipath-tools
-      nixpkgs-unstable.bingrep
-      pciutils
-      hwinfo
-      hashcat
-      openssl
-      neofetch
-      procs
-      ytop
-      termplay
-      diskonaut
+        users.defaultUserShell = pkgs.zsh;
 
-      nodePackages.insect
-    ];
-
-    users.defaultUserShell = pkgs.zsh;
-
-    mine.bash-insulter.enable = true;
-
-    #mine.userConfig = {
-    #imports = [
-    #./console-hm.nix { inherit (pkgs) helpers; }
-    #];
-    #};
-  };
-}
+        mine.bash-insulter.enable = true;
+        mine.userConfig = {
+          inherit (hm) programs;
+        };
+      }
+      (if builtins.readDir /etc ? NIXOS then {
+        environment.systemPackages = packages;
+        programs = {
+          autojump.enable = true;
+          zsh = {
+            enable = true;
+            autosuggestions.enable = true;
+            ohMyZsh.enable = true;
+          };
+        };
+      } else {
+        home.packages = packages;
+        mine.userConfig.programs.bash.enableAutojump = true;
+      })
+    ]);
+  }
+  
