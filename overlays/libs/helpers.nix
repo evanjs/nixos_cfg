@@ -9,4 +9,7 @@ with lib;
   
   # attrsListContainsDrv :: [attrs] -> string -> listOf Derivation
   attrsListContainsDrv = attrsList: query: concatStringsSep " " (map (drv: strings.getName drv) (lib.filter (x: lib.strings.hasInfix query (lib.strings.getName x)) attrsList));
+
+  # are we running on a NixOS system?
+  isNixOS = builtins.readDir /etc ? NIXOS;
 }
