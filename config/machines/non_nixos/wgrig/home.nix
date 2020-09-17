@@ -3,8 +3,7 @@
 {
 
   imports = [
-    ../../../new-modules/vim/vim-home-manager.nix
-    ../../../new-modules/zsh-home-manager.nix
+    ../../../new-modules/default-hm.nix
     ../../../new-modules/dev/moz-overlay.nix
   ];
 
@@ -30,9 +29,6 @@
     bash = {
       enable = false;
       enableAutojump = true;
-    };
-    zsh = {
-      enable = true;
     };
   };
   
