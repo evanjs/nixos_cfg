@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
 with lib;
+let
+  cfg = config.mine.vim;
+in
   {
     options.mine.vim = {
       colorscheme = mkOption {
@@ -20,11 +23,11 @@ with lib;
         description = "Additional plugins to add to the vim configuration";
       };
     };
-    config.mine.userConfig = mkIf config.mine.vim.enable {
+    config.mine.userConfig = mkIf cfg.enable {
 
       imports = [
-      	../dev/moz-overlay.nix { config; }
-        ./vim-home-manager.nix { colorscheme = config.mine.vim.colorscheme; }
+        ../dev/moz-overlay.nix
+        ./vim-hm.nix
       ];
 
     };

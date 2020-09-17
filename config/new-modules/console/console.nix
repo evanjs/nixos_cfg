@@ -1,69 +1,65 @@
 { lib, config, pkgs, ... }:
 
 with lib;
+{
+  options.mine.console.enable = mkOption {
+    type = types.bool;
+    default = true;
+    description = "enable console config";
+  };
 
-let
-  hm = import ./console-hm.nix;
-in
-  {
-    options.mine.console.enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "enable console config";
+  config = mkIf config.mine.console.enable {
+
+    nixpkgs.config.packageOverrides = pkgs: {
+      sudo = pkgs.sudo.override {
+        withInsults = true;
+      };
     };
 
-    config = mkIf config.mine.console.enable {
+    environment.pathsToLink = [ "/share/zsh" ];
 
-      nixpkgs.config.packageOverrides = pkgs: {
-        sudo = pkgs.sudo.override {
-          withInsults = true;
-        };
-      };
+    mine.vim.enable = true;
 
-      environment.pathsToLink = [ "/share/zsh" ];
+    environment.systemPackages = with pkgs; [
+      direnv
 
-      mine.vim.enable = true;
+      gitFull
+      gitAndTools.hub
+      gitAndTools.gh
+      gitAndTools.delta
 
-      environment.systemPackages = with pkgs; [
-        direnv
-
-        gitFull
-        gitAndTools.hub
-        gitAndTools.gh
-        gitAndTools.delta
-
-        tmux
-        lsof
-        pass
-        gnupg
-        unzip
-        jq
-        bc
-        wget
-        ripgrep
-        ripgrep-all
-        sd
-        file
-        nmap
-        traceroute
-        nix-top
-        fd
-        sqliteInteractive
-        gnumake
-        whois
-        aspellDicts.en
-        bat
-        nix-index
-        nix-prefetch-scripts
-        ranger
-        zstd
-        tealdeer
-        usbutils
-        cht-sh
-        cv
-        _1password
-        pwgen
-        du-dust
+      tmux
+      lsof
+      pass
+      gnupg
+      unzip
+      jq
+      bc
+      wget
+      ripgrep
+      ripgrep-all
+      sd
+      file
+      nmap
+      traceroute
+      nix-top
+      fd
+      sqliteInteractive
+      gnumake
+      whois
+      aspellDicts.en
+      bat
+      nix-index
+      nix-prefetch-scripts
+      ranger
+      zstd
+      tealdeer
+      usbutils
+      cht-sh
+      cv
+      _1password
+      pwgen
+      du-dust
       #multipath-tools
       nixpkgs-unstable.bingrep
       pciutils
@@ -83,8 +79,10 @@ in
 
     mine.bash-insulter.enable = true;
 
-    mine.userConfig = {
-      inherit (hm) programs;
-    };
+    #mine.userConfig = {
+    #imports = [
+    #./console-hm.nix { inherit (pkgs) helpers; }
+    #];
+    #};
   };
 }
