@@ -87,11 +87,11 @@ in
       };
     };
 
-    config = mkIf cfg.enable {
-      nixpkgs.overlays = [
-        (import "${(import ../../sources).nixpkgs-mozilla}/rust-overlay.nix")
-      ];
+    imports = [
+      ./moz-overlay.nix
+    ];
 
+    config = mkIf cfg.enable {
       mine.userConfig = {
         home.packages = [ cfg.package ] ++ cfg.extraPackages;
       };

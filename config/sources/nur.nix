@@ -1,6 +1,6 @@
 { fetchFromGitHub }: fetchFromGitHub {
   owner = "nix-community";
   repo = "NUR";
-  rev = "f67c50017fc5bb482b9960c15a5c5a718d6a96dc";
-  sha256 = "0hy0nhlqjdcfal7baxxpm7axl9jl9mcfmkwlrsfb908gx1kqqxbg";
+  rev = "0d05c232737e6a888bea6fabd592cb98d386183a";
+  sha256 = "1vnqv5q91v5zwv84jqp67bdl7i3wi10d2mpb7yk6zj25qflaywxl";
 }

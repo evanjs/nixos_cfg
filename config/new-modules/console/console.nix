@@ -1,7 +1,6 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-
 {
   options.mine.console.enable = mkOption {
     type = types.bool;
@@ -20,15 +19,6 @@ with lib;
     environment.pathsToLink = [ "/share/zsh" ];
 
     mine.vim.enable = true;
-
-    programs.zsh = {
-      autosuggestions.enable = true;
-      enable = true;
-      enableCompletion = true;
-      ohMyZsh = { enable = true; };
-    };
-
-    programs.autojump = { enable = true; };
 
     environment.systemPackages = with pkgs; [
       direnv
@@ -89,34 +79,10 @@ with lib;
 
     mine.bash-insulter.enable = true;
 
-    mine.userConfig = {
-      programs = {
-        git = {
-          userName = "Evan Stoll";
-          userEmail = "evanjsx@gmail.com";
-          enable = true;
-          delta = {
-            enable = true;
-            options = {
-              decorations = {
-                commit-decoration-style = "bold yellow box ul";
-                file-decoration-style = "none";
-                file-style = "bold yellow ul";
-              };
-              features = "decorations";
-              line-numbers = true;
-              whitespace-error-style = "22 reverse";
-            };
-          };
-        };
-        broot = {
-          enable = true;
-          enableBashIntegration = true;
-          enableZshIntegration = true;
-        };
-        direnv = { enable = true; };
-        htop.enable = true;
-      };
-    };
+    #mine.userConfig = {
+    #imports = [
+    #./console-hm.nix { inherit (pkgs) helpers; }
+    #];
+    #};
   };
 }
