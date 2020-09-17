@@ -115,16 +115,6 @@ in {
               };
             };
           };
-          starship = {
-            enable = true;
-            enableBashIntegration = true;
-            enableZshIntegration = true;
-
-            settings = {
-              line_break.disabled = true;
-              git_branch.style = "bold green";
-            };
-          };
         };
 
         gtk = {
