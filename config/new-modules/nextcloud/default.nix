@@ -39,11 +39,13 @@ in
           hostName = "nextcloud";
           maxUploadSize = "8192M";
 
-          package = pkgs.nextcloud18;
+          package = pkgs.nextcloud19;
         };
         services.nginx = {
           recommendedOptimisation = true;
           recommendedGzipSettings = true;
+          recommendedTlsSettings = true;
+          recommendedProxySettings = true;
         };
         services.phpfpm.pools.nextcloud.phpOptions = ''
           memcache.local = \OC\Memcache\APCu
