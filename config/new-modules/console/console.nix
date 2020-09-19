@@ -86,8 +86,6 @@ in
         mine.userConfig = {
           inherit (hm) programs;
         };
-      }
-      (if builtins.readDir /etc ? NIXOS then {
         environment.systemPackages = packages;
         programs = {
           autojump.enable = true;
@@ -97,10 +95,7 @@ in
             ohMyZsh.enable = true;
           };
         };
-      } else {
-        home.packages = packages;
-        mine.userConfig.programs.bash.enableAutojump = true;
-      })
+      }
     ]);
   }
-  
+
