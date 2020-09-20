@@ -27,7 +27,7 @@ in
 
       imports = [
         ../dev/moz-overlay.nix
-        ./vim-hm.nix
+        (import ./vim-hm.nix { inherit config pkgs lib; })
       ];
 
     };

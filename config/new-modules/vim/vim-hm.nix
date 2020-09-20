@@ -1,9 +1,11 @@
 { config, pkgs, lib, ... }:
 with lib;
 let
+  isTexEnabled = if (lib.hasAttr "mine" config) then config.mine.tex.enable else false;
   rust-language-server = (pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; });
   rust-nightly = pkgs.latest.rustChannels.nightly.rust;
     dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
+
     loadPlugin = plugin: ''
        set rtp^=${plugin.rtp}
        set rtp+=${plugin.rtp}/after
@@ -14,7 +16,6 @@ let
     ghc-mod-vim
     haskell-vim
     LanguageClient-neovim
-    latex-box
     neomake
     nerdcommenter
     nerdtree
@@ -29,10 +30,14 @@ let
     vim-airline-themes
     vim-autoformat
     vim-illuminate
+    YouCompleteMe
+  ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
+  #] ++ (optional (lib.hasAttr "mine") config config.mine.tex.enable (optionals config.mine.tex.enable (with pkgs.vimPlugins; [
+    latex-box
     vim-latex-live-preview
     vimtex
-    YouCompleteMe
-  ];
+  ]);
+  #])));
 in
 {
   programs.neovim = {
@@ -48,7 +53,7 @@ in
     	" Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
 	filetype off | syn off
 	${builtins.concatStringsSep "\n"
-	(map loadPlugin (plugins ++ (if lib.hasAttr "mine" config then config.mine.vim.extraplugins else [])))}
+	(map loadPlugin (plugins ++ (if (lib.hasAttr "mine" config) then config.mine.vim.extraPlugins else [])))}
 	filetype indent plugin on | syn on
 
       "" General Settings {{{
@@ -159,6 +164,11 @@ in
       let g:rainbow_active = 1
       "}}}
 
+    '' + optionalString isTexEnabled ''
+      "" Tex Settings {{{
+      let g:tex_flavor = 'latex'
+      let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
+      "}}}
     '';
   };
 }
