@@ -10,12 +10,16 @@ let
        set rtp^=${plugin.rtp}
        set rtp+=${plugin.rtp}/after
      '';
+
+  lsp_ext_nvim_pr = import (fetchTarball
+    "https://github.com/evanjs/nixpkgs/archive/4eff214a577370c08847e2a3fef9cb63d5e47c98.tar.gz") {
+    config = config.nixpkgs.config;
+  };
   plugins = with pkgs.vimPlugins; [
     colorizer
     fugitive
     ghc-mod-vim
     haskell-vim
-    LanguageClient-neovim
     neomake
     nerdcommenter
     nerdtree
@@ -31,17 +35,36 @@ let
     vim-autoformat
     vim-illuminate
     YouCompleteMe
+
+    nvim-lspconfig
+    completion-nvim
+    diagnostic-nvim
+
   ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
   #] ++ (optional (lib.hasAttr "mine") config config.mine.tex.enable (optionals config.mine.tex.enable (with pkgs.vimPlugins; [
     latex-box
     vim-latex-live-preview
     vimtex
+  ]) ++ (with lsp_ext_nvim_pr.vimPlugins; [
+    lsp_extensions-nvim
   ]);
+
+  environment.systemPackages = with pkgs; [
+    rust-analyzer
+  ];
   #])));
 in
 {
   programs.neovim = {
     enable = true;
+    package = pkgs.neovim-unwrapped.overrideAttrs(o: {
+      src = pkgs.fetchFromGitHub {
+        owner = "neovim";
+        repo = "neovim";
+        rev = "b9ceac4650a7d7b731828a4fb82b92d01e88752b";
+        sha256 = "0h97693mjl5xbgzbpnvy817rlwcb8zhrh4xgg555qhgx9n4k6vz8";
+      };
+    });
 
     viAlias = true;
     vimAlias = true;
@@ -98,23 +121,6 @@ in
       let g:syntastic_check_on_wq = 0
       "}}}
 
-      "" Language Client Settings {{{
-      let g:LanguageClient_autoStart = 1
-
-      nnoremap <F5>  :call LanguageClient_contextMenu()<CR>
-      nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-      nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-      nnoremap <silent> <F6> :call LanguageClient#textDocument_rename()<CR>
-
-      "map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
-      "map <Leader>lg :call LanguageClient#textDocument_definition(<CR>
-      "map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
-      "map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-      "map <Leader>lb :call LanguageClient#textDocument_references()<CR>
-      "map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
-      "map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
-      " }}}
-
       "" Indentation {{{
       au FileType haskell         setl sw=4 sts=2 et
       au FileType json            setl sw=2 sts=2 et
@@ -135,8 +141,92 @@ in
       "}}}
 
       "" Rust Settings {{{
-      let g:rustfmt_autosave = 1
-      let g:LanguageClient_serverCommands = { 'rust': ['${rust-nightly}/bin/rls'] }
+      " Let's try using Rust-analyzer
+      set completeopt=menuone,noinsert,noselect
+
+      " Avoid showing extra messages when using completion
+      " set shortmess+=c
+
+      let g:ycm_language_server =
+      \ [
+      \   {
+      \     'name': 'rust',
+      \     'cmdline': ['rust-analyzer'],
+      \     'filetypes': ['rust'],
+      \     'project_root_files': ['Cargo.toml']
+      \   }
+      \ ]
+
+      "}}}
+
+      "" LSP Client Settings {{{
+
+      " Configure LSP
+      " https://github.com/neovim/nvim-lspconfig#rust_analyzer
+lua << EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'nvim_lsp'
+
+-- function to attach completion and diagnostics
+-- when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+    require'diagnostic'.on_attach(client)
+end
+
+-- Enable rust_analyzer
+nvim_lsp.rust_analyzer.setup({
+    on_attach = on_attach
+})
+EOF
+      " Trigger completion with <Tab>
+      inoremap <silent><expr> <TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ completion#trigger_completion()
+        
+      function! s:check_back_space() abort
+	  let col = col('.') - 1
+	  return !col || getline('.')[col - 1]  =~ '\s'
+      endfunction
+
+
+      " Code navigation shortcuts
+      nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+      nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+      nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+      nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+      nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+      nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+      nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+      nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+      nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+      " Visualize diagnostics
+      let g:diagnostic_enable_virtual_text = 1
+      let g:diagnostic_trimmed_virtual_text = '40'
+      " Don't show diagnostics while in insert mode
+      let g:diagnostic_insert_delay = 1
+
+      " Set updatetime for CursorHold
+      " 300ms of no cursor movement to trigger CursorHold
+      set updatetime=300
+      " Show diagnostic popup on cursor hold
+      autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+
+      " Goto previous/next diagnostic warning/error
+      nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+      nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+
+      " Enable type inlay hints
+      autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+      \ lua require'lsp_extensions'.inlay_hints{ prefix = "", highlight = "Comment" }
+
+      " have a fixed column for the diagnostics to appear in
+      " this removes the jitter when warnings/errors flow in
+      set signcolumn=yes
+	
       "}}}
 
       "" Tagbar Settings {{{
