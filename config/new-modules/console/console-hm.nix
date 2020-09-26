@@ -38,6 +38,8 @@
       };
     };
 
+    readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
+
     zsh = {
       enable = true;
       enableCompletion = true;
