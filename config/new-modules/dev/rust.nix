@@ -47,9 +47,9 @@ in
         - Determine the importance of plugins being downloaded
         - Provide an option, e.g. requiredPlugins option, which tries to find the newest version on the configured channel if a plugin is not available on the newest release
         - Provide an option that determines the maxmium versions we should check if any requiredPlugins are not found in the latest configured channel
-        - Another option, e.g. desiredPlugins, could define the plugins that are desired, but can be ignored if they are not available on the latest release of the configured channel
-        - Given requiredPlugins and desiredPlugins are defined, we will attempt to download the latest version of the toolchain.
-          We will attempt to downlaod any desired plugins, and ignore them if they cannot be downloaded.
+        - Another option, e.g. optionalPlugins, could define the plugins that are desired, but can be ignored if they are not available on the latest release of the configured channel
+        - Given requiredPlugins and optionalPlugins are defined, we will attempt to download the latest version of the toolchain.
+          We will attempt to download any optional plugins, and ignore them if they cannot be downloaded.
           We will attempt to download the required plugins, and if they cannot be found, go backwards and check if any previous versions contain the entire list
           Stop checking previous versions for required plugins once a (potentially configured) maximum is reached
       */
