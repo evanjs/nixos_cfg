@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 with lib;
 let
-  isTexEnabled = if (lib.hasAttr "mine" config) then config.mine.tex.enable else false;
+  isTexEnabled = config.mine.tex.enable or false;
   rust-language-server = (pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; });
   rust-nightly = pkgs.latest.rustChannels.nightly.rust;
     dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
@@ -41,7 +41,6 @@ let
     diagnostic-nvim
 
   ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
-  #] ++ (optional (lib.hasAttr "mine") config config.mine.tex.enable (optionals config.mine.tex.enable (with pkgs.vimPlugins; [
     latex-box
     vim-latex-live-preview
     vimtex
@@ -76,7 +75,7 @@ in
     	" Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
 	filetype off | syn off
 	${builtins.concatStringsSep "\n"
-	(map loadPlugin (plugins ++ (if (lib.hasAttr "mine" config) then config.mine.vim.extraPlugins else [])))}
+	(map loadPlugin (plugins ++ (config.mine.vim.extraPlugins or [])))}
 	filetype indent plugin on | syn on
 
       "" General Settings {{{
@@ -107,7 +106,7 @@ in
       set laststatus=2
       au VimEnter * exec 'AirlineTheme wombat'
       " TODO: How can this be abstracted/configured from expressions that import this?
-      colorscheme ${if (lib.hasAttr "mine" config) then config.mine.vim.colorscheme else "spacecamp" }
+      colorscheme ${config.mine.vim.colorscheme or "spacecamp"}
       " colorscheme "spacecamp"
       "}}}
 
