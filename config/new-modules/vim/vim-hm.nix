@@ -11,9 +11,10 @@ let
        set rtp+=${plugin.rtp}/after
      '';
 
+  # This was merged with https://github.com/NixOS/nixpkgs/pull/98667 and is currently in nixos-unstable-small
+  # Remove this "channel" once the commit makes it into nixos-unstable
   lsp_ext_nvim_pr = import (fetchTarball
     "https://github.com/evanjs/nixpkgs/archive/4eff214a577370c08847e2a3fef9cb63d5e47c98.tar.gz") {
-    config = config.nixpkgs.config;
   };
   plugins = with pkgs.vimPlugins; [
     colorizer
