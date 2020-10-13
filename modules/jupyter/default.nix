@@ -1,36 +1,51 @@
 { config, pkgs, lib, ... }:
 with lib;
-{
-  networking.firewall.allowedTCPPorts = [ 8888 ];
-  users.extraUsers.evanjs.extraGroups = [ "jupyter" ];
-  services.jupyter = {
-    enable = true;
-    password = "'${config.private.passwords.jupyter}'";
-    ip = "0.0.0.0";
-    kernels = {
-      python3 = let
-        env = (pkgs.stable.python3.withPackages (pythonPackages: with pythonPackages; [
-          ipykernel
-          pandas
-          scikitlearn
-          numpy
-          networkx
-          altair
-          arelle
-          graphviz
-          loguru
-        ]));
-      in {
-        displayName = "Python 3";
-        argv = [
-          "${env.interpreter}"
-          "-m"
-          "ipykernel_launcher"
-          "-f"
-          "{connection_file}"
-          ];
-          language = "python";
-        };
-      };
+let
+  sources = import ../../config/nix/sources.nix;
+  #iRust = jupyterWith.kernels.rustWith {
+    #packages = with pkgs; [ openssl pkgconfig ];
+  #};
+  jupyterWith = import sources.jupyterWith {};
+  iHaskell = jupyterWith.kernels.iHaskellWith {
+    extraIHaskellFlags = "--codemirror Haskell";  # for jupyterlab syntax highlighting
+    packages = p: with p; [
+      formatting Frames vector aeson hvega pandoc
+      (pkgs.haskell.lib.markUnbroken ihaskell-hvega)
+    ];
+  };
+  iPython = jupyterWith.kernels.iPythonWith {
+    packages = p: with p; [
+      ipykernel
+      pandas
+      scikitlearn
+      numpy
+      networkx
+      altair
+      arelle
+      graphviz
+      loguru
+    ];
+  };
+  lab = jupyterWith.jupyterlabWith {
+    kernels = [
+      iPython
+      #iRust
+      iHaskell
+    ];
+  };
+
+in
+  {
+    networking.firewall.allowedTCPPorts = [ 8888 ];
+    users.extraUsers.evanjs.extraGroups = [ "jupyter" ];
+    services.jupyter = {
+      notebookConfig = ''
+        c.Application.log_level = 'DEBUG'
+      '';
+      enable = true;
+      password = "'${config.private.passwords.jupyter}'";
+      package = lab;
+      command = "jupyter-lab";
+      ip = "0.0.0.0";
     };
   }
