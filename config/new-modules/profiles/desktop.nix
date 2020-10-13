@@ -161,6 +161,7 @@ in {
           #cargo-fuzz
           cargo-watch
           cargo-sweep
+          cargo-udeps
           stdenv.cc
           sccache
           evcxr
