@@ -108,7 +108,6 @@ in
       au VimEnter * exec 'AirlineTheme wombat'
       " TODO: How can this be abstracted/configured from expressions that import this?
       colorscheme ${config.mine.vim.colorscheme or "spacecamp"}
-      " colorscheme "spacecamp"
       "}}}
 
       "" Syntastic settings {{{

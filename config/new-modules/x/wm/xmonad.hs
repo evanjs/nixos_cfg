@@ -193,7 +193,8 @@ tabbedConf = def
     }
 
 genericLayouts =
-    avoidStruts $ smartBorders $
+    avoidStruts $ noBorders $
+        spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
         tall
         ||| Mirror tall
         ||| tabbedLayout
