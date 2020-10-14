@@ -7,7 +7,7 @@ with lib;
 
 let
 
-  all-hies = import (import ../../sources).all-hies {};
+  all-hies = import (import ../../nix/sources.nix {}).all-hies {};
 
   hie = all-hies.combined {
     inherit (all-hies.versions) ghc883;

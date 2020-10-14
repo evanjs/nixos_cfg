@@ -7,7 +7,7 @@ in stdenv.mkDerivation rec {
   name = "${pname}-${version}";
   version = "2017-05-12";
 
-  src = (import ../../sources).arc-theme-red;
+  src = (import ../../nix/sources.nix {}).arc-theme-red;
 
   nativeBuildInputs = [ autoreconfHook pkgconfig ];
 

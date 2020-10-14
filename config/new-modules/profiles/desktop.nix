@@ -248,7 +248,7 @@ in {
 
       services.lorri =
         let
-          lorri = (import ../../sources).lorri;
+          lorri = (import ../../nix/sources.nix {}).lorri;
         in
         {
           enable = true;

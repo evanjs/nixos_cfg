@@ -32,7 +32,7 @@ let
     pname = "picom";
     version = "7.3";
 
-    src = (import ../../sources).compton-kawase;
+    src = (import ../../nix/sources.nix {}).compton-kawase;
 
     nativeBuildInputs = [
       pkgconfig
