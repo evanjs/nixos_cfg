@@ -1,4 +1,28 @@
 {
+    "all-hies": {
+        "branch": "master",
+        "description": "Cached Haskell IDE Engine Nix builds for all GHC versions",
+        "homepage": "",
+        "owner": "infinisil",
+        "repo": "all-hies",
+        "rev": "534ac517b386821b787d1edbd855b9966d0c0775",
+        "sha256": "0bw1llpwxbh1dnrnbxkj2l0j58s523hjivszf827c3az5i4py1i2",
+        "type": "tarball",
+        "url": "https://github.com/infinisil/all-hies/archive/534ac517b386821b787d1edbd855b9966d0c0775.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "arc-theme-red": {
+        "branch": "master",
+        "description": "A red themed derivation of https://github.com/horst3180/arc-theme",
+        "homepage": null,
+        "owner": "mclmza",
+        "repo": "arc-theme-red",
+        "rev": "7eeb65df749801665233e15555621f1b969011e6",
+        "sha256": "0d1qhhi8ldzvsb5ar6sjh0x7ppp0zh9yq4ip06bn705q2yzssb8n",
+        "type": "tarball",
+        "url": "https://github.com/mclmza/arc-theme-red/archive/7eeb65df749801665233e15555621f1b969011e6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "jupyterWith": {
         "branch": "master",
         "description": "declarative and reproducible Jupyter environments - powered by Nix",
@@ -9,6 +33,54 @@
         "sha256": "15zpprs0blvlvbqapkyn92x6dpfa6va2xz25v24z67lqs96ii4jm",
         "type": "tarball",
         "url": "https://github.com/tweag/jupyterWith/archive/35eb565c6d00f3c61ef5e74e7e41870cfa3926f7.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "lorri": {
+        "branch": "master",
+        "description": "Your project's nix-env",
+        "homepage": "",
+        "owner": "target",
+        "repo": "lorri",
+        "rev": "8a681369da348bc2ea3cabf3f34b8addbffdb377",
+        "sha256": "1idrffrvdvi5a9rv20j4l3ln0n72wlkkhg2nb49kns219vgzcvk0",
+        "type": "tarball",
+        "url": "https://github.com/target/lorri/archive/8a681369da348bc2ea3cabf3f34b8addbffdb377.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "lsp-haskell": {
+        "branch": "master",
+        "description": "lsp-mode :heart: haskell",
+        "homepage": "https://emacs-lsp.github.io/lsp-haskell",
+        "owner": "emacs-lsp",
+        "repo": "lsp-haskell",
+        "rev": "4d85cb3693d893ec34d8a0be9794d468a0a28b7b",
+        "sha256": "1pz07l4iywvcfmgfymh8avz5lp0yirqxbrv14ncl8p6dv9yrfwyb",
+        "type": "tarball",
+        "url": "https://github.com/emacs-lsp/lsp-haskell/archive/4d85cb3693d893ec34d8a0be9794d468a0a28b7b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "lsp-mode": {
+        "branch": "master",
+        "description": "Emacs client/library for the Language Server Protocol",
+        "homepage": "https://emacs-lsp.github.io/lsp-mode",
+        "owner": "emacs-lsp",
+        "repo": "lsp-mode",
+        "rev": "fb4c35c6978415c4cf52f85230b527d311989063",
+        "sha256": "140r08y334bddvm5f7w81r2mif1v2cdspylrwyj41fww1jkbanbw",
+        "type": "tarball",
+        "url": "https://github.com/emacs-lsp/lsp-mode/archive/fb4c35c6978415c4cf52f85230b527d311989063.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "lsp-ui": {
+        "branch": "master",
+        "description": "UI integrations for lsp-mode",
+        "homepage": "https://emacs-lsp.github.io/lsp-ui",
+        "owner": "emacs-lsp",
+        "repo": "lsp-ui",
+        "rev": "25552041f5af110c282fe8a2c714dec0f7a2320e",
+        "sha256": "0ydlwdxwf751acdwm8s1xhvjhymzyvl39fyr04x8lnldd19w2n4q",
+        "type": "tarball",
+        "url": "https://github.com/emacs-lsp/lsp-ui/archive/25552041f5af110c282fe8a2c714dec0f7a2320e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -23,6 +95,42 @@
         "url": "https://github.com/nmattia/niv/archive/ab9cc41caf44d1f1d465d8028e4bc0096fd73238.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nix-mode": {
+        "branch": "master",
+        "description": "An Emacs major mode for editing Nix expressions.",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nix-mode",
+        "rev": "bb0b49e3ac1579d3d811529ed274272c54a9fe3c",
+        "sha256": "1qcr1b0nappk1cw8xc3wj7jq1f10x1ywkdjwc371vwimrcy68phd",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nix-mode/archive/bb0b49e3ac1579d3d811529ed274272c54a9fe3c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixos-hardware": {
+        "branch": "master",
+        "description": "A collection of NixOS modules covering hardware quirks.",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "55acbf7497e3be06d25816ed3191fe78ac69628f",
+        "sha256": "0idiqb3bqfwz5pkz62nqqpkgy6xqsssgaw75jd5rjqpgc7dvmhyb",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixos-hardware/archive/55acbf7497e3be06d25816ed3191fe78ac69628f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixos-rocm": {
+        "branch": "master",
+        "description": "NixOS support for the ROCm graphics stack (rocm.github.io)",
+        "homepage": null,
+        "owner": "nixos-rocm",
+        "repo": "nixos-rocm",
+        "rev": "6d96507e2a9ec297d8a8d68d0af47756cd0b1c0b",
+        "sha256": "0hkf5m419vzjv6hsl6z1pcskggfl0gr5rzbi1vy6sisvzzlhly1a",
+        "type": "tarball",
+        "url": "https://github.com/nixos-rocm/nixos-rocm/archive/6d96507e2a9ec297d8a8d68d0af47756cd0b1c0b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "nixos-unstable",
         "description": "Nix Packages collection",
@@ -33,6 +141,42 @@
         "sha256": "14q3kvnmgz19pgwyq52gxx0cs90ddf24pnplmq33pdddbb6c51zn",
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs/archive/840c782d507d60aaa49aa9e3f6d0b0e780912742.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-mozilla": {
+        "branch": "master",
+        "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",
+        "homepage": null,
+        "owner": "mozilla",
+        "repo": "nixpkgs-mozilla",
+        "rev": "57c8084c7ef41366993909c20491e359bbb90f54",
+        "sha256": "0lchhjys1jj8fdiisd2718sqd63ys7jrj6hq6iq9l1gxj3mz2w81",
+        "type": "tarball",
+        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/57c8084c7ef41366993909c20491e359bbb90f54.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nur": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "5d78faf95a670d5721de923921e7737c11865296",
+        "sha256": "1llyrc8ycsf4pwjx0c5hwnhx9zswysw6hl2gqh3c8sv8b8f632nb",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/nur/archive/5d78faf95a670d5721de923921e7737c11865296.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nur-combined": {
+        "branch": "master",
+        "description": "A repository of NUR that combines all repositories [maintainer=@Mic92] ",
+        "homepage": "https://github.com/nix-community/NUR",
+        "owner": "nix-community",
+        "repo": "nur-combined",
+        "rev": "479c6d951bdc6b0b378444de19744aa56e8040fa",
+        "sha256": "0yapl3k4chh25f87a815g2bkgx3ibfbjjkz19x8s83vcb06d30qb",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/nur-combined/archive/479c6d951bdc6b0b378444de19744aa56e8040fa.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sops-nix": {

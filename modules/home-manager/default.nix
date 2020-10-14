@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
-  nurNoPkgs = import (import ../../config/sources).nur {};
+  sources = import ../../config/nix/sources.nix {};
+  nurNoPkgs = import sources.nur {};
 in
   {
   # Import home-manager for use as a NixOS submodule

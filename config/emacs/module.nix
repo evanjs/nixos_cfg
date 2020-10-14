@@ -26,7 +26,7 @@ let
     };
   };
 
-  dag = (import (import ../sources).nur { inherit pkgs; }).repos.rycee.lib.dag;
+  dag = (import (import ../nix/sources.nix {}).nur { inherit pkgs; }).repos.rycee.lib.dag;
 
   # TODO: Handle dag cycle error gracefully
   initFile = pkgs.writeText "init.el" (concatMapStringsSep "\n\n" ({ name, data }:
@@ -40,16 +40,16 @@ let
 
   overrides = self: super: {
     nix-mode = super.nix-mode.overrideAttrs (old: {
-      src = (import ../sources).nix-mode;
+      src = (import ../nix/sources.nix {}).nix-mode;
     });
     lsp-ui = super.lsp-ui.overrideAttrs (old: {
-      src = (import ../sources).lsp-ui;
+      src = (import ../nix/sources.nix {}).lsp-ui;
     });
     lsp-mode = super.lsp-mode.overrideAttrs (old: {
-      src = (import ../sources).lsp-mode;
+      src = (import ../nix/sources.nix {}).lsp-mode;
     });
     lsp-haskell = super.lsp-haskell.overrideAttrs (old: {
-      src = (import ../sources).lsp-haskell;
+      src = (import ../nix/sources.nix {}).lsp-haskell;
     });
   };
 

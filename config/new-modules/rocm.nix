@@ -17,7 +17,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [ (import "${(import ../sources).nixos-rocm}") ];
+    nixpkgs.overlays = [ (import "${(import ../nix/sources.nix {}).nixos-rocm}") ];
 
     hardware.opengl.enable = true;
     hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];

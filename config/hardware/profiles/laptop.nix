@@ -1,8 +1,12 @@
 { config, pkgs, ... }:
+let
+  sources = import ../../nix/sources.nix {};
+  nixos-hardware = sources.nixos-hardware;
+in
 {
   imports = [
     ../nocam.nix
     ./wireless.nix
-    (import "${(import ../../sources).nixos-hardware}/common/pc/laptop")
+    (import "${nixos-hardware}/common/pc/laptop")
   ];
 }
