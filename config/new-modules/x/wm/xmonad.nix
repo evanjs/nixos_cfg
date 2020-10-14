@@ -21,7 +21,7 @@ with lib;
     scripts = 
     let
       maim = "${pkgs.maim}/bin/maim";
-      xclip = "${pkgs.xclip}/bin/clip";
+      xclip = "${pkgs.xclip}/bin/xclip";
       zeal = "${pkgs.zeal}/bin/zeal";
       xdotool = "${pkgs.xdotool}/bin/xdotool";
       screenshotDateFormat = "+%Y-%m-%d_%T";
