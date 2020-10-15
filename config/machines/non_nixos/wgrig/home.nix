@@ -30,7 +30,6 @@
     };
     bash = {
       enable = false;
-      enableAutojump = true;
     };
   };
   
