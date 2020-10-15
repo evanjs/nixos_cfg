@@ -37,6 +37,8 @@
         git_branch.style = "bold green";
       };
     };
+    
+    autojump.enable = true;
 
     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
 
