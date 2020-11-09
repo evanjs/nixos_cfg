@@ -50,7 +50,7 @@ let
     usbutils
     wget
     whois
-    ytop
+    bottom
     zstd
 
     nodePackages.insect
