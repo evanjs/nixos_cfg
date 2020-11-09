@@ -39,7 +39,7 @@ in
           hostName = "nextcloud";
           maxUploadSize = "8192M";
 
-          package = pkgs.nextcloud19;
+          package = pkgs.nextcloud20;
         };
         services.nginx = {
           recommendedOptimisation = true;
