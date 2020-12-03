@@ -4,18 +4,14 @@ let
   isTexEnabled = config.mine.tex.enable or false;
   rust-language-server = (pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; });
   rust-nightly = pkgs.latest.rustChannels.nightly.rust;
-    dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
+  dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
 
-    loadPlugin = plugin: ''
-       set rtp^=${plugin.rtp}
-       set rtp+=${plugin.rtp}/after
-     '';
+  loadPlugin = plugin: ''
+    set rtp^=${plugin.rtp}
+    set rtp+=${plugin.rtp}/after
+  '';
 
-  # This was merged with https://github.com/NixOS/nixpkgs/pull/98667 and is currently in nixos-unstable-small
-  # Remove this "channel" once the commit makes it into nixos-unstable
-  lsp_ext_nvim_pr = import (fetchTarball
-    "https://github.com/evanjs/nixpkgs/archive/4eff214a577370c08847e2a3fef9cb63d5e47c98.tar.gz") {
-  };
+  neovim-nightly = (import (fetchTarball https://github.com/mjlbach/neovim-nightly-overlay/archive/master.tar.gz) {} {}).neovim-nightly;
   plugins = with pkgs.vimPlugins; [
     colorizer
     fugitive
@@ -39,32 +35,18 @@ let
 
     nvim-lspconfig
     completion-nvim
-    diagnostic-nvim
 
+    lsp_extensions-nvim
   ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
     latex-box
     vim-latex-live-preview
     vimtex
-  ]) ++ (with lsp_ext_nvim_pr.vimPlugins; [
-    lsp_extensions-nvim
   ]);
-
-  environment.systemPackages = with pkgs; [
-    rust-analyzer
-  ];
-  #])));
 in
 {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-unwrapped.overrideAttrs(o: {
-      src = pkgs.fetchFromGitHub {
-        owner = "neovim";
-        repo = "neovim";
-        rev = "b9ceac4650a7d7b731828a4fb82b92d01e88752b";
-        sha256 = "0h97693mjl5xbgzbpnvy817rlwcb8zhrh4xgg555qhgx9n4k6vz8";
-      };
-    });
+    package = neovim-nightly;
 
     viAlias = true;
     vimAlias = true;
@@ -162,32 +144,34 @@ in
 
       " Configure LSP
       " https://github.com/neovim/nvim-lspconfig#rust_analyzer
+
 lua << EOF
-
--- nvim_lsp object
-local nvim_lsp = require'nvim_lsp'
-
--- function to attach completion and diagnostics
--- when setting up lsp
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-    require'diagnostic'.on_attach(client)
-end
-
--- Enable rust_analyzer
-nvim_lsp.rust_analyzer.setup({
-    on_attach = on_attach
+  local nvim_lsp = require'lspconfig'
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  nvim_lsp.rust_analyzer.setup({
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+      serverPath = "${pkgs.rust-analyzer}/bin/rust_analyzer",
+      procMacro = { enable = true },
+    }
+  }
 })
 EOF
+      
       " Trigger completion with <Tab>
       inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ completion#trigger_completion()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ completion#trigger_completion()
         
       function! s:check_back_space() abort
-	  let col = col('.') - 1
-	  return !col || getline('.')[col - 1]  =~ '\s'
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
       endfunction
 
 
@@ -212,11 +196,11 @@ EOF
       " 300ms of no cursor movement to trigger CursorHold
       set updatetime=300
       " Show diagnostic popup on cursor hold
-      autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+      autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
       " Goto previous/next diagnostic warning/error
-      nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-      nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+      nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+      nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 
       " Enable type inlay hints
       autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
