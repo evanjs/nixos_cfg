@@ -330,6 +330,11 @@ in {
       services.fstrim.enable = true;
 
       mine.prometheus.export.enable = true;
+
+      # what requires cryptography for python 2.7?
+      nixpkgs.config.permittedInsecurePackages = [
+        "python2.7-cryptography-2.9.2"
+      ];
     })
   ];
 }
