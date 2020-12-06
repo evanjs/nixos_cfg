@@ -1,9 +1,16 @@
 { config, pkgs, lib, ... }:
+let
+  permittedInsecurePackages = [
+    # what requires cryptography for python 2.7?
+    "python2.7-cryptography-2.9.2"
+  ];
+in
 with lib; {
 
   config.nixpkgs.config = {
     # Allow proprietary packages
     allowUnfree = true;
+    inherit permittedInsecurePackages;
 
     # Create an alias for the unstable channel
     packageOverrides = pkgs: rec {
