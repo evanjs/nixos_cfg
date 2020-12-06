@@ -33,10 +33,10 @@ let
       iHaskell
     ];
   };
-
+  jupyterPort = 8888;
 in
   {
-    networking.firewall.allowedTCPPorts = [ 8888 ];
+    networking.firewall.allowedTCPPorts = [ jupyterPort ];
     users.extraUsers.evanjs.extraGroups = [ "jupyter" ];
     services.jupyter = {
       notebookConfig = ''
@@ -47,5 +47,6 @@ in
       package = lab;
       command = "jupyter-lab";
       ip = "0.0.0.0";
+      port = jupyterPort;
     };
   }
