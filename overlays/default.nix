@@ -4,7 +4,7 @@
     ./evanjs
     ./haskell
     ./libs
-    ./rjg
+    ./rjg/nix/rjg-overlay.nix
   ]
   ++ (if (builtins.pathExists(./default.local.nix)) then [ ./default.local.nix ] else [])
   ;
