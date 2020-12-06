@@ -35,6 +35,7 @@
       settings = {
         line_break.disabled = true;
         git_branch.style = "bold green";
+        git_status.disabled = if pkgs.helpers.isNixOS then false else true;
       };
     };
     
