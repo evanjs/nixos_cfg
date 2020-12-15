@@ -11,7 +11,6 @@ let
     set rtp+=${plugin.rtp}/after
   '';
 
-  neovim-nightly = (import (fetchTarball https://github.com/mjlbach/neovim-nightly-overlay/archive/master.tar.gz) {} {}).neovim-nightly;
   plugins = with pkgs.vimPlugins; [
     colorizer
     fugitive
@@ -46,7 +45,7 @@ in
 {
   programs.neovim = {
     enable = true;
-    package = neovim-nightly;
+    package = pkgs.neovim-nightly;
 
     viAlias = true;
     vimAlias = true;
