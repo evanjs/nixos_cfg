@@ -164,7 +164,7 @@ with lib;
         pointerCursor = {
           name = "breeze_cursors";
           size = 16;
-          package = pkgs.plasma5.breeze-qt5;
+          package = pkgs.plasma5Packages.breeze-qt5;
         };
         
        preferStatusNotifierItems = true;
