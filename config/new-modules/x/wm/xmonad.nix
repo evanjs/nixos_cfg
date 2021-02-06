@@ -36,7 +36,7 @@ with lib;
       terminal = "kitty";
       xmobar = config.mine.xmobar.command;
       clipboardScreenshotCmd = "${maim} -i $(${xdotool} getactivewindow) | ${xclip} -selection clipboard -t image/png";
-      selectScreenshotCmd = "${maim} -s ~/shots/$(date ${screenshotDateFormat}).png";
+      selectScreenshotCmd = "${maim} --hidecursor -s ~/shots/$(date ${screenshotDateFormat}).png";
       screenshotCmd = "${maim} > ~/shots/$(date ${screenshotDateFormat}).png";
       delayedScreenshotCmd = "${maim} -d3 ~/shots/$(date ${screenshotDateFormat}).png";
       activeWindowScreenshotCmd = "${maim} -i $(${xdotool} getactivewindow) > ~/shots/$(date ${screenshotDateFormat}).png";
