@@ -152,6 +152,7 @@ in {
         channel = "stable";
         extraPackages = with pkgs; [
           cargo-about
+          cargo-cache
           cargo-edit
           cargo-license
           cargo-asm
