@@ -8,12 +8,13 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    kdeApplications.kdenetwork-filesharing
-    kdeApplications.dolphin-plugins
-    kdeFrameworks.kio
-    kdeApplications.kio-extras
     dolphin
-  ];
+  ] ++ (with plasma5Packages; [
+    kdenetwork-filesharing
+    dolphin-plugins
+    kio
+    kio-extras
+  ]);
 
   services.samba = {
     extraConfig = ''
