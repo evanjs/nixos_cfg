@@ -54,11 +54,6 @@ self: super: {
         #})
         #{ };
 
-        taffybar = markUnbroken (appendPatch hsuper.taffybar (self.fetchpatch {
-          url = "https://github.com/taffybar/taffybar/pull/494/commits/a7443324a549617f04d49c6dfeaf53f945dc2b98.patch";
-          sha256 = "0prskimfpapgncwc8si51lf0zxkkdghn33y3ysjky9a82dsbhcqi";
-        }));
-
         xmonad-contrib = overrideSrc hsuper.xmonad-contrib {
           version = "unstable-2020-06-23";
           src = self.fetchFromGitHub {
