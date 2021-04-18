@@ -38,6 +38,7 @@ in
   {
     networking.firewall.allowedTCPPorts = [ jupyterPort ];
     users.extraUsers.evanjs.extraGroups = [ "jupyter" ];
+    users.extraUsers.jupyter.isNormalUser = true;
     services.jupyter = {
       notebookConfig = ''
         c.Application.log_level = 'DEBUG'
