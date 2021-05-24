@@ -70,5 +70,9 @@
 
       history.size = 1000000;
     };
-  }; 
+  };
+
+  home.sessionVariables = {
+    MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat --paging=always -l man -p'";
+  };
 }
