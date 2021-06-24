@@ -26,7 +26,7 @@ in
     config.mine.userConfig = mkIf cfg.enable {
 
       imports = [
-        ../dev/moz-overlay.nix
+        ../dev/rust-overlay.nix
         (import ./vim-hm.nix { inherit config pkgs lib; })
       ];
 

@@ -72,9 +72,11 @@ in
 
       package = mkOption {
         type = types.nullOr types.package;
-        default = (getAttr cfg.channel pkgs.latest.rustChannels).rust.override { extensions = cfg.plugins; };
+        default = (getAttr cfg.channel pkgs.latest.rustChannels).default.override { extensions = cfg.plugins; };
         example = ''
-          pkgs.latest.rustChannels.nightly.rust.override { extensions = [ "rust-std" "clippy-preview" ]; }
+          pkgs.rust-bin.nightly.selectLatestNightlyWith (toolchain: toolchain.default.override {
+            extensions = [ "rust-std" "clippy-preview" ];
+          })
         '';
         description = "The rust package to use.  Cannot be used when defining the channel or plugins.";
       };
@@ -88,7 +90,7 @@ in
     };
 
     imports = [
-      ./moz-overlay.nix
+      ./rust-overlay.nix
     ];
 
     config = mkIf cfg.enable {
