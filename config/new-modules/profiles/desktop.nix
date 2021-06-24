@@ -247,13 +247,8 @@ in {
 
       services.gpm.enable = true;
 
-      services.lorri =
-        let
-          lorri = (import ../../nix/sources.nix {}).lorri;
-        in
-        {
+      services.lorri = {
           enable = true;
-          #package = lorri;
       };
 
       services.psd = { enable = true; };
