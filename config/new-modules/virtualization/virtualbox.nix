@@ -13,7 +13,7 @@ in
       virtualbox = {
         host = {
           enable = true;
-          enableExtensionPack = false;
+          enableExtensionPack = true;
         };
       };
       kvmgt.enable = true;
