@@ -45,16 +45,16 @@ in
       description = "Password used for twitch";
     };
 
-    freenodePassword = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Password used for freenode";
-    };
-
     gitterPassword = mkOption {
       type = types.nullOr types.str;
       default = null;
       description = "Password used for gitter";
+    };
+
+    liberaPassword = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      description = "Password for libera";
     };
   };
 
@@ -90,12 +90,12 @@ in
           AutoClearQueryBuffer = false;
 
           Network = {
-            freenode = mkIf (cfg.freenodePassword != null) {
-              Server = "chat.freenode.net +6697 ${cfg.freenodePassword}";
-              LoadModule = cfg.defaultNetworkModules;
-            };
             gitter = mkIf (cfg.gitterPassword != null) {
               Server = "irc.gitter.im +6697 ${cfg.gitterPassword}";
+              LoadModule = cfg.defaultNetworkModules;
+            };
+            libera = mkIf (cfg.liberaPassword != null) {
+              Server = "irc.libera.chat +6697 ${cfg.liberaPassword}";
               LoadModule = cfg.defaultNetworkModules;
             };
             snoonet = {

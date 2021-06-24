@@ -7,7 +7,7 @@
     savebuffPassword = config.private.passwords.znc-savebuff;
     twitchPassword = config.private.passwords.twitchChatOauth;
     gitterPassword = config.private.passwords.gitterIrc;
-    freenodePassword = config.private.passwords.freenode;
+    liberaPassword = config.private.passwords.libera;
   };
 
   services.znc = {
@@ -22,21 +22,19 @@
         };
         Network.rizon = lib.mkForce null;
         Network.twitch = lib.mkForce null;
-        Network.freenode = {
+        Network.libera = {
           Chan = {
-            "#xmonad" = { };
-            "#haskell" = { };
-            "#lorri" = { };
             "#nixos" = { };
-            "##nixos-anime" = { };
-            "#nixos-chat" = { };
-            "#nixos-rust" = { };
-            "#nixos-emacs" = { };
-            "#nix-lang" = { };
-            "#nixos-borg" = { };
-            "#nixos-dev" = { };
             "#home-manager" = { };
-            "#musnix" = { };
+            "#nix-lang" = { };
+            "#lorri" = { };
+            "#nixos-rust" = { };
+            "#nixos-chat" = { };
+            "#nixos-emacs" = { };
+            "##nixos-anime" = { };
+          };
+          JoinDelay = 2;
+        };
           };
           JoinDelay = 2;
         };
