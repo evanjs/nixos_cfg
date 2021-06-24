@@ -3,9 +3,16 @@
 with lib;
 
 let
+  size="size=${builtins.toString config.mine.fonts.bar.size.small}";
+  largeSize="size=${builtins.toString config.mine.fonts.bar.size.large}";
+  style="${size}:bold:antialias=true";
+  largeStyle="${largeSize}:bold:antialias=true";
   cfg = config.mine.xmobar;
+	namesMapWithSep = sep: mapf: lib.concatMapStringsSep "${sep}" mapf config.mine.fonts.fallbackFonts.names;
+	altStyleMappedString = namesMapWithSep "," (p: "${p}:${largeStyle}");
+	styleMappedString = namesMapWithSep "," (p: "${p}:${style}");
   scripts = {
-    xftFont = "xft:${config.mine.font.name}:size=${builtins.toString config.mine.font.bar.size.small}:bold:antialias=true";
+    xftFont = "xft:${style}:${config.mine.fonts.mainFont.mono.name},${altStyleMappedString}";
     power = ''
         ${pkgs.bc}/bin/bc <<< "scale=1; $(cat /sys/class/power_supply/BAT0/current_now)/1000000"
     '';
@@ -81,7 +88,7 @@ let
     Config {
 
     -- appearance
-      font =         "@xftFont@"
+      font    = "@xftFont@"
     , bgColor = "#2b2b29"
     , fgColor = "#c3ae93"
     , alpha = 210
@@ -92,7 +99,7 @@ let
     -- layout
     , sepChar =  "%"   -- delineator between plugin names and straight text
     , alignSep = "}{"  -- separator between left-right alignment
-    , template = "%StdinReader%}{%battery%|%multicpu%|%coretemp%|%memory%|%default:Master%|%dynnetwork%|%KTVC%|%date%||%kbd% "
+    , template = "%StdinReader%}{%battery%|%multicpu%|%coretemp%|%memory%|%default:Master%|%dynnetwork%|%KTVC%|%datetimeHere%||%kbd% "
 
    -- Southwest Michigan Regional Airport (KBEH)
    -- , template = "%StdinReader% }{ %battery% | %multicpu% | %coretemp% | %memory% | %default:Master% | %dynnetwork% | %KBEH% | %date% || %kbd% "
@@ -180,7 +187,7 @@ let
 
       -- time and date indicator
       --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-      , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+      , Run DateZone           "<fc=#ECBE13>(%a)</fc> %b %e %X" "ja_JP.utf8" "" "datetimeHere" 10
 
       -- keyboard layout indicator
       , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")

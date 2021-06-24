@@ -37,8 +37,8 @@ in
       mine.xUserConfig = {
         programs.kitty = {
           enable = true;
-          font.name = "${config.mine.font.name}";
-          font.package = config.mine.font.package;
+          font.name = "${config.mine.fonts.mainFont.name}";
+          font.package = config.mine.fonts.mainFont.package;
           settings = {
             window_padding_width = "4 8";
           };

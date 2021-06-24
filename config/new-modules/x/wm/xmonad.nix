@@ -40,7 +40,7 @@ with lib;
       screenshotCmd = "${maim} > ~/shots/$(date ${screenshotDateFormat}).png";
       delayedScreenshotCmd = "${maim} -d3 ~/shots/$(date ${screenshotDateFormat}).png";
       activeWindowScreenshotCmd = "${maim} -i $(${xdotool} getactivewindow) > ~/shots/$(date ${screenshotDateFormat}).png";
-      xftFont = "xft:${config.mine.font.name}";
+      xftFont = "xft:${config.mine.fonts.mainFont.name}";
     };
 
     mine.userConfig = { home.packages = [ pkgs.maim ]; };
