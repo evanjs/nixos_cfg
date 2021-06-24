@@ -1,7 +1,8 @@
 { stdenv
+, lib
 , fetchFromGitHub }:
 
-with stdenv.lib;
+with lib;
 
 stdenv.mkDerivation rec {
   version = "2019-12-02";
@@ -19,7 +20,7 @@ stdenv.mkDerivation rec {
     install -m644 src/bash.command-not-found $out/share/bash-insulter
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Insults the user when typing wrong command";
     license = licenses.mit;
     maintainers = with maintainers; [ evanjs ];
