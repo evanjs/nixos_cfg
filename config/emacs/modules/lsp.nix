@@ -15,7 +15,6 @@ with lib;
     packages = with epkgs; [
       lsp-mode
       lsp-ui
-      company-lsp
       flycheck
       yasnippet
       markdown-mode
