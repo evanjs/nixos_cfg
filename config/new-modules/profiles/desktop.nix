@@ -317,7 +317,7 @@ in {
 
       mine.virtualization = {
         docker.enable = true;
-        libvirtd.enable = false;
+        libvirtd.enable = true;
       };
 
       # dmd is currently broken
