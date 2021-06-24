@@ -43,7 +43,6 @@ let
     sd
     sqliteInteractive
     tealdeer
-    termplay
     tmux
     traceroute
     unzip
