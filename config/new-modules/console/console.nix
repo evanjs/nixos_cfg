@@ -51,6 +51,7 @@ let
     whois
     bottom
     zstd
+    mdbook
 
     nodePackages.insect
   ];
