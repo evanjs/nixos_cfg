@@ -79,6 +79,11 @@ in
       :syntax on
       " }}}
 
+      if has('persistent_undo')
+        set undofile
+        set undodir=$HOME/.local/share/nvim/undo
+      endif
+
       "" Theme settings {{{
       " airline :
       " for terminology you will need either to export TERM='xterm-256color'
