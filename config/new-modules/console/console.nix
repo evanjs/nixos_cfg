@@ -16,7 +16,6 @@ let
     bc
     nixpkgs-unstable.bingrep
     cht-sh
-    cv
     diskonaut
     du-dust
     fd
@@ -36,12 +35,13 @@ let
     pass
     pciutils
     procs
+    progress
     pwgen
     ranger
     ripgrep
     ripgrep-all
     sd
-    sqliteInteractive
+    sqlite-interactive
     tealdeer
     tmux
     traceroute

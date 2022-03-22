@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, autoreconfHook, pkgconfig, gnome3, gtk-engine-murrine, gnome_themes_standard }:
+{ stdenv, lib, fetchFromGitHub, autoreconfHook, pkgconfig, gnome3, gtk3, gtk-engine-murrine, gnome-themes-extra }:
 
 let
   pname = "arc-theme-red";
@@ -11,7 +11,7 @@ in stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoreconfHook pkgconfig ];
 
-  buildInputs = [ gtk-engine-murrine gnome3.gtk gnome_themes_standard ];
+  buildInputs = [ gtk-engine-murrine gtk3 gnome-themes-extra ];
 
   preferLocalBuild = true;
 

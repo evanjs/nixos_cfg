@@ -84,7 +84,7 @@ with lib;
       feh
       libnotify
       gnome3.gnome-font-viewer
-      gnome3.gnome_terminal
+      gnome.gnome-terminal
       guake
       xclip
       #evince
@@ -101,7 +101,7 @@ with lib;
       xwinwrap
       xbindkeys-config
       dmenu
-      xlibs.xev
+      xorg.xev
       haskellPackages.xmobar
       xtrlock-pam
       xdg-user-dirs

@@ -12,6 +12,7 @@
 , lessc
 , libcanberra-gtk3
 , pkgconfig
+, dconf
 }:
 
 stdenv.mkDerivation rec {
@@ -38,7 +39,7 @@ stdenv.mkDerivation rec {
     cairo
     glib
     gobject-introspection
-    gnome3.dconf
+    dconf
     gstreamer
     gtk3
     libcanberra-gtk3
@@ -55,7 +56,7 @@ stdenv.mkDerivation rec {
   ];
 
   propogatedUserEnvPkgs = [
-    gnome3.dconf
+    dconf
   ];
 
 }

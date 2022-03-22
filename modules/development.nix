@@ -37,7 +37,7 @@ in
       # testing
       websocat
 
-      gnome3.glade
+      glade
     ]
     ++ nodePkgs;
   }
