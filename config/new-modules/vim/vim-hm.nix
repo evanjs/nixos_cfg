@@ -2,9 +2,25 @@
 with lib;
 let
   isTexEnabled = config.mine.tex.enable or false;
-  rust-language-server = (pkgs.latest.rustChannels.stable.rust.override { extensions = [ "rls-preview" ]; });
-  rust-nightly = pkgs.latest.rustChannels.nightly.rust;
+  rust-nightly = pkgs.rust-bin.nightly.latest.default;
+  rust-language-server = (rust-nightly.override { extensions = [ "rls-preview" ]; });
   dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
+  coc-settings = {
+    rust-analyzer= {
+      enable = true;
+      server.path = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+      cargo = {
+        runBuildScripts = true;
+      };
+      procMacro.enable = true;
+    };
+  };
+
+  coc-config-home = pkgs.writeTextFile {
+    name = "coc-config-home";
+    destination = "/coc-settings.json";
+    text = builtins.toJSON coc-settings;
+  };
 
   loadPlugin = plugin: ''
     set rtp^=${plugin.rtp}
@@ -30,12 +46,16 @@ let
     vim-airline-themes
     vim-autoformat
     vim-illuminate
-    YouCompleteMe
 
     nvim-lspconfig
     completion-nvim
+    coc-rust-analyzer
+    coc-nvim
 
     lsp_extensions-nvim
+
+    nvim-treesitter
+    coc-java
   ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
     latex-box
     vim-latex-live-preview
@@ -77,12 +97,19 @@ in
       :set backspace=2 " make backspace work like most other programs
 
       :syntax on
-      " }}}
 
       if has('persistent_undo')
         set undofile
         set undodir=$HOME/.local/share/nvim/undo
       endif
+      " }}}
+
+      "" COC settings {{{
+        let g:coc_config_home='${coc-config-home}'
+        inoremap <silent><expr> <c-@> coc#refresh()
+        inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      " }}}
+
 
       "" Theme settings {{{
       " airline :
@@ -126,45 +153,24 @@ in
 
       "" Rust Settings {{{
       " Let's try using Rust-analyzer
+      " https://github.com/neovim/nvim-lspconfig#rust_analyzer
+      " https://github.com/simrat39/rust-tools.nvim#setup
+
+      " TODO: load lua config
+lua << EOF
+${builtins.readFile ./lua/config.lua}
+EOF
+
       set completeopt=menuone,noinsert,noselect
 
       " Avoid showing extra messages when using completion
       " set shortmess+=c
-
-      let g:ycm_language_server =
-      \ [
-      \   {
-      \     'name': 'rust',
-      \     'cmdline': ['rust-analyzer'],
-      \     'filetypes': ['rust'],
-      \     'project_root_files': ['Cargo.toml']
-      \   }
-      \ ]
 
       "}}}
 
       "" LSP Client Settings {{{
 
       " Configure LSP
-      " https://github.com/neovim/nvim-lspconfig#rust_analyzer
-
-lua << EOF
-  local nvim_lsp = require'lspconfig'
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  nvim_lsp.rust_analyzer.setup({
-  capabilities = capabilities,
-  settings = {
-    ["rust-analyzer"] = {
-      cargo = {
-        loadOutDirsFromCheck = true,
-      },
-      serverPath = "${pkgs.rust-analyzer}/bin/rust_analyzer",
-      procMacro = { enable = true },
-    }
-  }
-})
-EOF
       
       " Trigger completion with <Tab>
       inoremap <silent><expr> <TAB>
@@ -199,7 +205,7 @@ EOF
       " 300ms of no cursor movement to trigger CursorHold
       set updatetime=300
       " Show diagnostic popup on cursor hold
-      autocmd CursorHold * lua vim.diagnostic.show()
+      autocmd CursorHold * lua vim.diagnostic.open_float()
 
       " Goto previous/next diagnostic warning/error
       nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
@@ -228,7 +234,7 @@ EOF
 
 
       "" YouCompleteMe Settings {{{
-      let g:ycm_server_keep_logfiles = 0
+        " let g:ycm_server_keep_logfiles = 0
       "}}}
 
       "" Tex Settings {{{
@@ -238,6 +244,20 @@ EOF
 
       "" Misc Settings {{{
       let g:rainbow_active = 1
+      "}}}
+
+      "" Java Settings {{{
+      "let g:far:#source='rgnvim'
+
+      "set lazyredraw
+
+      "let g:far#window_width=60
+      "" Use %:p with buffer option only
+      "let g:far#file_mask_favorites=['%:p', '**/*.*', '**/*.js',
+      "'**/*.py', '**/*.java', '**/*.css', '**/*.html', '**/*.vim',
+      "'**/*.cpp', '**/*.c', '**/*.h', ]
+      "let g:far#window_min_content_width=30
+      "let g:far#enable_undo=1
       "}}}
 
     '' + optionalString isTexEnabled ''
