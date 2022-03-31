@@ -70,28 +70,6 @@ in {
 
     })
     (mkIf config.mine.profiles.desktop.enable {
-      mine.emacs = {
-        enable = lib.mkDefault true;
-
-        config = {
-          haskell = true;
-          doom = { modeline = true; };
-          theme = {
-            package = pkgs.emacsPackages.doom-themes;
-            name = "doom-one";
-          };
-          helm = true;
-          jenkins = true;
-          lsp = true;
-          news = true;
-          nix = true;
-          rust = true;
-          typescript = true;
-          games = true;
-        };
-      };
-      mine.vim.enable = lib.mkDefault true;
-      programs.vim.defaultEditor = true;
 
       # mine.newsboat.enable = true;
 
@@ -131,48 +109,11 @@ in {
         };
       };
 
-      mine.vim = {
-        colorscheme = "spacecamp";
-        extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
-      };
 
       boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.tmpOnTmpfs = true;
 
       hardware.openrazer.enable = true;
-
-      mine.x.enable = true;
-      mine.wm.enable = true;
-      mine.dev.haskell = {
-        enable = lib.mkDefault true;
-        hoogle.enable = lib.mkDefault true;
-      };
-      mine.dev.rust = {
-        enable = lib.mkDefault true;
-        plugins = [ "rust-std" "rust-src" ];
-        channel = "stable";
-        extraPackages = with pkgs; [
-          cargo-about
-          cargo-cache
-          cargo-edit
-          cargo-license
-          cargo-asm
-          cargo-outdated
-          stable.cargo-update
-          cargo-bloat
-          #cargo-fuzz
-          cargo-watch
-          cargo-sweep
-          cargo-udeps
-          stdenv.cc
-          sccache
-          evcxr
-          chit
-          diesel-cli
-          silicon
-          #cargo-geiger
-        ];
-      };
 
       mine.x.enable = lib.mkDefault true;
       mine.wm.enable = lib.mkDefault true;
@@ -181,7 +122,6 @@ in {
         useLatest = lib.mkDefault true;
       };
 
-      environment.homeBinInPath = true;
       environment.systemPackages = with pkgs; [
         # graphical admin tools
         filelight
@@ -249,12 +189,6 @@ in {
 
       #services.dbus.socketActivated = true;
 
-      services.gpm.enable = true;
-
-      services.lorri = {
-          enable = true;
-      };
-
       services.psd = { enable = true; };
 
       boot.supportedFilesystems = [ "exfat" "ntfs" "f2fs" "btrfs" "nfs" ];
@@ -282,29 +216,11 @@ in {
 
       #services.printing.enable = true;
 
-      documentation = { dev.enable = true; };
 
       # Misc power
       powerManagement.cpuFreqGovernor = lib.mkForce "performance";
       powerManagement.enable = true;
 
-      programs.screen = {
-        screenrc = ''
-          # for weechat service support, etc
-          multiuser on
-          acladd normal_user
-
-          # Enable mouse scrolling and scroll bar history scrolling
-          termcapinfo xterm* ti@:te@
-        '';
-      };
-
-      programs.thefuck.enable = true;
-
-      services.weechat = {
-        enable = false;
-        binary = "${weechat}/bin/weechat-headless";
-      };
 
       # Firewall rules
       #
@@ -331,5 +247,104 @@ in {
 
       mine.prometheus.export.enable = true;
     })
+		(mkIf (config.mine.profiles.desktop.enable == false) {
+        mine = {
+          emacs = {
+            enable = false;
+            config = {};
+          };
+          userConfig = {
+            programs = {
+              notmuch.enable = false;
+              firefox = {
+                package = null;
+                enable = false;
+              };
+              chromium = {
+                package = null;
+                enable = false;
+              };
+            };
+          };
+        };
+      })
+      # Always include these options
+      {
+        environment.homeBinInPath = true;
+        documentation = { dev.enable = true; };
+        mine.emacs = {
+          enable = lib.mkDefault true;
+
+          config = {
+            haskell = true;
+            doom = { modeline = true; };
+            theme = {
+              package = pkgs.emacsPackages.doom-themes;
+              name = "doom-one";
+            };
+            helm = true;
+            jenkins = true;
+            lsp = true;
+            news = true;
+            nix = true;
+            rust = true;
+            typescript = true;
+            games = true;
+          };
+        };
+        mine.dev.haskell = {
+          enable = lib.mkDefault true;
+          hoogle.enable = lib.mkDefault true;
+        };
+        mine.dev.rust = {
+          enable = lib.mkDefault true;
+          plugins = [ "rust-std" "rust-src" ];
+          channel = "stable";
+          extraPackages = with pkgs; [
+            cargo-about
+            cargo-cache
+            cargo-edit
+            cargo-license
+            cargo-asm
+            cargo-outdated
+            stable.cargo-update
+            cargo-bloat
+            #cargo-fuzz
+            cargo-watch
+            cargo-sweep
+            cargo-udeps
+            stdenv.cc
+            sccache
+            evcxr
+            chit
+            diesel-cli
+            silicon
+            #cargo-geiger
+          ];
+        };
+        programs.vim.defaultEditor = true;
+        mine.vim = {
+          enable = lib.mkDefault true;
+          colorscheme = "spacecamp";
+          extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
+        };
+        programs.thefuck.enable = true;
+        services.gpm.enable = true;
+
+        services.lorri = {
+          enable = true;
+        };
+        programs.screen = {
+          screenrc = ''
+            # for weechat service support, etc
+            multiuser on
+            acladd normal_user
+
+            # Enable mouse scrolling and scroll bar history scrolling
+            termcapinfo xterm* ti@:te@
+          '';
+        };
+
+      }
   ];
 }
