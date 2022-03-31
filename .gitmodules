@@ -19,3 +19,6 @@
 [submodule "config/external/private"]
 	path = external/private
 	url = https://github.com/evanjs/secrets
+[submodule "config/wsl/nixos-wsl"]
+	path = config/wsl/nixos-wsl
+	url = https://github.com/nix-community/NixOS-WSL/
