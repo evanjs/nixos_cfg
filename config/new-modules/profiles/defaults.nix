@@ -13,7 +13,7 @@ with lib; {
 
   nix.trustedUsers = [ "root" "@wheel" ];
   nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkDefault true;
   users.users.evanjs.extraGroups = [ "plugdev" "nginx" ];
 
   home-manager.useUserPackages = true;

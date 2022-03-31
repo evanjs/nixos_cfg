@@ -14,9 +14,9 @@ with lib;
         config = userConfig.config;
       };
 
-    mine.xmobar.enable = true;
-    mine.taffybar.enable = true;
-    mine.terminal.enable = true;
+    mine.xmobar.enable = lib.mkDefault true;
+    mine.taffybar.enable = lib.mkDefault true;
+    mine.terminal.enable = lib.mkDefault true;
 
     scripts = 
     let

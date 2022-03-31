@@ -19,7 +19,7 @@ with lib;
     '';
 
     services.xserver = {
-      enable = true;
+      enable = lib.mkDefault true;
       exportConfiguration = true;
 
       displayManager = {
@@ -28,7 +28,7 @@ with lib;
           user = "evanjs";
         };
         gdm = {
-          enable = true;
+          enable = lib.mkDefault true;
           autoSuspend = false;
         };
 

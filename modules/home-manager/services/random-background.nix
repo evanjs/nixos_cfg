@@ -1,5 +1,14 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
+with lib;
+let
+  cfg = config.mine.random-background;
+in
 {
+  options.mine.random-background = {
+    enable = mkEnableOption "Random background switcher";
+  };
+
+  config = mkIf cfg.enable {
   home-manager.users.evanjs = {
     home.packages = [ pkgs.rrbg ];
     systemd.user.timers.random-background = {
@@ -35,4 +44,5 @@
 
     };
   };
+};
 }

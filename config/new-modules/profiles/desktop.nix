@@ -43,23 +43,24 @@ in {
        to (hopefully) successfully install the remaining components
     */
     (mkIf ((maybeEnv "NOBRAINZ" "0") != "0") {
-      mine.jetbrains.enable = mkForce false;
+      mine.jetbrains.enable = false;
     })
     (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
       fonts.fonts = mkForce [ config.mine.font.package ];
     })
     (mkIf ((maybeEnv "NIXOS_LITE" "0") != "0") {
       mine = {
-        jetbrains.enable = mkForce false;
-        x.enable = mkForce false;
-        wm.enable = mkForce false;
-        emacs.enable = mkForce false;
+        jetbrains.enable = false;
+        x.enable = false;
+        wm.enable = false;
+        emacs.enable = false;
         dev = {
-          haskell.enable = mkForce false;
-          rust.enable = mkForce false;
+          haskell.enable = false;
+          rust.enable = false;
         };
-        vim.enable = mkForce false;
-        tex.enable = mkForce false;
+        vim.enable = false;
+        tex.enable = false;
+	      firefox.enable = false;
       };
 
       #fonts.fonts = mkForce (lib.lists.filter (a: isDerivation a && (lib.strings.getName a) != "nerdfonts")  super.fonts.fonts);
@@ -70,7 +71,7 @@ in {
     })
     (mkIf config.mine.profiles.desktop.enable {
       mine.emacs = {
-        enable = true;
+        enable = lib.mkDefault true;
 
         config = {
           haskell = true;
@@ -89,7 +90,7 @@ in {
           games = true;
         };
       };
-      mine.vim.enable = true;
+      mine.vim.enable = lib.mkDefault true;
       programs.vim.defaultEditor = true;
 
       # mine.newsboat.enable = true;
@@ -118,14 +119,14 @@ in {
         };
 
         gtk = {
-          enable = true;
+          enable = lib.mkDefault true;
           theme = {
             name = "Breeze-Dark";
             package = pkgs.breeze-gtk;
           };
         };
         qt = {
-          enable = true;
+          enable = lib.mkDefault true;
           platformTheme = "gtk";
         };
       };
@@ -143,11 +144,11 @@ in {
       mine.x.enable = true;
       mine.wm.enable = true;
       mine.dev.haskell = {
-        enable = true;
-        hoogle.enable = true;
+        enable = lib.mkDefault true;
+        hoogle.enable = lib.mkDefault true;
       };
       mine.dev.rust = {
-        enable = true;
+        enable = lib.mkDefault true;
         plugins = [ "rust-std" "rust-src" ];
         channel = "stable";
         extraPackages = with pkgs; [
@@ -169,12 +170,15 @@ in {
           chit
           diesel-cli
           silicon
-          cargo-geiger
+          #cargo-geiger
         ];
       };
+
+      mine.x.enable = lib.mkDefault true;
+      mine.wm.enable = lib.mkDefault true;
       mine.jetbrains = {
-        enable = true;
-        useLatest = true;
+        enable = lib.mkDefault true;
+        useLatest = lib.mkDefault true;
       };
 
       environment.homeBinInPath = true;

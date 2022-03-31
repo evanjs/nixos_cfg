@@ -36,9 +36,9 @@ let
       host = "outlook.office365.com";
       tls.useStartTls = false;
     };
-    msmtp.enable = true;
+    msmtp.enable = lib.mkDefault true;
     mbsync = {
-      enable = true;
+      enable = lib.mkDefault true;
       create = "both";
       expunge = "both";
       #patterns = ["![Outlook]*"];
@@ -65,9 +65,9 @@ in
     home-manager.users.evanjs = {
       lib.email = { inherit concatAccounts; };
 
-      programs.msmtp.enable = true;
-      programs.mbsync.enable = true;
-      programs.notmuch.enable = true;
+      programs.msmtp.enable = lib.mkDefault true;
+      programs.mbsync.enable = lib.mkDefault true;
+      programs.notmuch.enable = lib.mkDefault true;
 
       accounts.email = {
         inherit accounts;

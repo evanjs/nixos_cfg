@@ -77,7 +77,7 @@ in
 
         environment.pathsToLink = [ "/share/zsh" ];
 
-        mine.vim.enable = true;
+        mine.vim.enable = lib.mkDefault true;
 
 
         users.defaultUserShell = pkgs.zsh;
