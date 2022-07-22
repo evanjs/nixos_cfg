@@ -44,7 +44,7 @@ in {
       mine.jetbrains.enable = true;
     })
     (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
-      fonts.fonts = mkForce [ ];
+      fonts.fonts = mkForce [ config.mine.fonts.mainFont.package ];
     })
     (mkIf ((maybeEnv "NIXOS_LITE" "0") != "0") {
       mine = {
@@ -113,9 +113,7 @@ in {
 
       hardware.openrazer = {
         enable = true;
-        users = [
-          "evanjs"
-        ];
+        users = [ "evanjs" ];
       };
 
       mine.x.enable = lib.mkDefault true;
@@ -160,7 +158,8 @@ in {
         okular
 
         # word processors, etc
-        gucharmap
+        #pkgs.libreoffice
+        gnome3.gucharmap
 
         speedtest-cli
         graphviz
