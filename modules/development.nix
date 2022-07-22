@@ -9,7 +9,7 @@ in
     imports = [
       ./documentation
       ./languages
-      ./perf
+      #./perf
     ];
 
     environment.systemPackages = with pkgs; [
