@@ -8,7 +8,7 @@
     nix-index
     nix-prefetch-scripts
     nixpkgs-fmt
-    nix-review
+    nixpkgs-review
     patchelf
     niv
     # nix-du fails to build due to some tests during checkPhase
