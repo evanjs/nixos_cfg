@@ -27,12 +27,33 @@ let
   fetch_git = name: spec:
     let
       ref =
-        if spec ? ref then spec.ref else
+        spec.ref or (
           if spec ? branch then "refs/heads/${spec.branch}" else
             if spec ? tag then "refs/tags/${spec.tag}" else
-              abort "In git source '${name}': Please specify `ref`, `tag` or `branch`!";
+          abort "In git source '${name}': Please specify `ref`, `tag` or `branch`!"
+        );
+      submodules = spec.submodules or false;
+      submoduleArg =
+        let
+          nixSupportsSubmodules = builtins.compareVersions builtins.nixVersion "2.4" >= 0;
+          emptyArgWithWarning =
+            if submodules
+            then
+              builtins.trace
+                (
+                  "The niv input \"${name}\" uses submodules "
+                  + "but your nix's (${builtins.nixVersion}) builtins.fetchGit "
+                  + "does not support them"
+                )
+                { }
+            else { };
     in
-      builtins.fetchGit { url = spec.repo; inherit (spec) rev; inherit ref; };
+        if nixSupportsSubmodules
+        then { inherit submodules; }
+        else emptyArgWithWarning;
+    in
+    builtins.fetchGit
+      ({ url = spec.repo; inherit (spec) rev; inherit ref; } // submoduleArg);
 
   fetch_local = spec: spec.path;
 
@@ -95,7 +116,7 @@ let
   # the path directly as opposed to the fetched source.
   replace = name: drv:
     let
-      saneName = stringAsChars (c: if isNull (builtins.match "[a-zA-Z0-9]" c) then "_" else c) name;
+      saneName = stringAsChars (c: if (builtins.match "[a-zA-Z0-9]" c) == null then "_" else c) name;
       ersatz = builtins.getEnv "NIV_OVERRIDE_${saneName}";
     in
       if ersatz == "" then drv else
@@ -131,7 +152,7 @@ let
       inherit (builtins) lessThan nixVersion fetchTarball;
     in
       if lessThan nixVersion "1.12" then
-        fetchTarball ({ inherit url; } // (optionalAttrs (!isNull name) { inherit name; }))
+      fetchTarball ({ inherit url; } // (optionalAttrs (name != null) { inherit name; }))
       else
         fetchTarball attrs;
 
@@ -141,25 +162,28 @@ let
       inherit (builtins) lessThan nixVersion fetchurl;
     in
       if lessThan nixVersion "1.12" then
-        fetchurl ({ inherit url; } // (optionalAttrs (!isNull name) { inherit name; }))
+      fetchurl ({ inherit url; } // (optionalAttrs (name != null) { inherit name; }))
       else
         fetchurl attrs;
 
   # Create the final "sources" from the config
   mkSources = config:
-    mapAttrs (
+    mapAttrs
+      (
       name: spec:
         if builtins.hasAttr "outPath" spec
-        then abort
+          then
+            abort
           "The values in sources.json should not have an 'outPath' attribute"
         else
           spec // { outPath = replace name (fetch config.pkgs name spec); }
-    ) config.sources;
+      )
+      config.sources;
 
   # The "config" used by the fetchers
   mkConfig =
     { sourcesFile ? if builtins.pathExists ./sources.json then ./sources.json else null
-    , sources ? if isNull sourcesFile then {} else builtins.fromJSON (builtins.readFile sourcesFile)
+    , sources ? if sourcesFile == null then { } else builtins.fromJSON (builtins.readFile sourcesFile)
     , system ? builtins.currentSystem
     , pkgs ? mkPkgs sources system
     }: rec {
