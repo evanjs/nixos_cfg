@@ -39,7 +39,11 @@
       };
     };
     
-    autojump.enable = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+    };
 
     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
 

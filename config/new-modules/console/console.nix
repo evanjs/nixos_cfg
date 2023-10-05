@@ -88,7 +88,6 @@ in
         };
         environment.systemPackages = packages;
         programs = {
-          autojump.enable = true;
           zsh = {
             enable = true;
             autosuggestions.enable = true;
