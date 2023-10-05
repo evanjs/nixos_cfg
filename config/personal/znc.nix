@@ -6,7 +6,6 @@
     defaultNick = "evanjs";
     savebuffPassword = config.private.passwords.znc-savebuff;
     twitchPassword = config.private.passwords.twitchChatOauth;
-    gitterPassword = config.private.passwords.gitterIrc;
     liberaPassword = config.private.passwords.libera;
   };
 
