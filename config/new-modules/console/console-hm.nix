@@ -24,12 +24,19 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
-    direnv = { enable = true; };
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+    };
+
     htop.enable = true;
 
     starship = {
       enable = true;
       enableBashIntegration = true;
+      enableNushellIntegration = true;
       enableZshIntegration = true;
 
       settings = {
@@ -43,7 +50,10 @@
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
+      enableNushellIntegration = true;
     };
+
+    nushell.enable = true;
 
     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
 
