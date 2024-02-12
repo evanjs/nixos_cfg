@@ -23,8 +23,8 @@ let
   };
 
   loadPlugin = plugin: ''
-    set rtp^=${plugin.rtp}
-    set rtp+=${plugin.rtp}/after
+    set rtp^=${plugin.outPath}
+    set rtp+=${plugin.outPath}/after
   '';
 
   plugins = with pkgs.vimPlugins; [
@@ -70,7 +70,7 @@ in
     viAlias = true;
     vimAlias = true;
     withPython3 = true;
-
+    withNodeJs = true;
 
     extraConfig = ''
     	" Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
