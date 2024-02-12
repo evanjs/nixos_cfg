@@ -83,8 +83,8 @@ in
 
       extraPackages = mkOption {
         type = types.nullOr (types.listOf types.package);
-        default = [ pkgs.cargo-edit pkgs.cargo-update ];
-        example = [ pkgs.cargo-edit pkgs.cargo-license pkgs.cargo-generate ];
+        default = [ pkgs.cargo-update ];
+        example = [ pkgs.cargo-license pkgs.cargo-generate ];
         description = "Packages to install in addition to the Rust toolchain and any configured plugins";
       };
     };
