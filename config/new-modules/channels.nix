@@ -1,22 +1,15 @@
 { config, pkgs, lib, ... }:
-let
-  permittedInsecurePackages = [
-    # what requires cryptography for python 2.7?
-    "python2.7-cryptography-2.9.2"
-  ];
-in
 with lib; {
 
   config.nixpkgs.config = {
     # Allow proprietary packages
     allowUnfree = true;
-    inherit permittedInsecurePackages;
 
     # Create an alias for the unstable channel
     packageOverrides = pkgs: rec {
 
       stable = import (fetchTarball
-        "https://nixos.org/channels/nixos-21.11/nixexprs.tar.xz") {
+        "https://nixos.org/channels/nixos-23.11/nixexprs.tar.xz") {
           config = config.nixpkgs.config;
         };
       nixos-unstable = import (fetchTarball
