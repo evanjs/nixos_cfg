@@ -15,7 +15,6 @@ in
     environment.systemPackages = with pkgs; [
       nodePackages."@angular/cli"
       # js
-      nodejs-12_x
       sass
 
       exercism
@@ -29,8 +28,6 @@ in
 
       cmake
       gnumake
-
-      postman
 
       maven3
 
