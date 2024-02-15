@@ -94,7 +94,6 @@ myTerminal = "kitty"
 
 -- The command to lock the screen or show the screensaver.
 myLock = "slimlock"
-myHalfLock = "xtrlock-pam"
 
 -- The command to take a selective screenshot, where you select
 -- what you'd like to capture on the screen.
@@ -257,10 +256,6 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   -- Lock the screen using command specified by myLock.
     , ((modMask .|. controlMask, xK_l),
      spawn myLock)
-
-  -- Lock the screen using command specified by myHalfLock
-    , ((modMask .|. controlMask, xK_x),
-     spawn myHalfLock)
 
   -- Spawn the launcher using command specified by myLauncher.
   -- Use this to launch programs without a key binding.
