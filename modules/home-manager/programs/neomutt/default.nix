@@ -50,8 +50,8 @@ in
   {
     home-manager.users.evanjs = {
       home = {
-        packages = with pkgs; [ neomutt urlview ];
-        file.".urlview".text = "COMMAND xdg-open %s";
+        packages = with pkgs; [ neomutt urlscan ];
+        file.".urlscan".text = "COMMAND xdg-open %s";
       };
 
       xdg.configFile."mutt/muttrc".text = ''
