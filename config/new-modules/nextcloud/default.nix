@@ -26,7 +26,6 @@ in
           autoUpdateApps.enable = true;
           caching.apcu = true;
           config = {
-            adminpass = config.private.passwords.nextcloud;
             dbtype = "pgsql";
             extraTrustedDomains = [
               "10.10.0.*"
