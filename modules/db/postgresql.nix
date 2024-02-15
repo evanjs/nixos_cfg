@@ -5,7 +5,7 @@
   services = {
 
     pgmanage = {
-      enable = true;
+      enable = false;
       port = 8099;
     };
 
@@ -27,7 +27,7 @@
 
       enable = true;
       enableTCPIP = true;
-      package = pkgs.postgresql_11;
+      package = pkgs.postgresql_16;
     };
   };
 }
