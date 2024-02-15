@@ -21,10 +21,8 @@ in {
     ../../../modules/iOS.nix
     ../../../modules/java.nix
     ../../../modules/media.nix
-    ../../../modules/nixops.nix
     ../../../modules/notifications.nix
     ../../../modules/plymouth.nix
-    #../../../modules/qt.nix
     ../../../modules/remote.nix
     ../../../modules/social
     ../../../modules/web.nix
@@ -46,7 +44,7 @@ in {
       mine.jetbrains.enable = false;
     })
     (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
-      fonts.fonts = mkForce [ config.mine.font.package ];
+      fonts.fonts = mkForce [ ];
     })
     (mkIf ((maybeEnv "NIXOS_LITE" "0") != "0") {
       mine = {
@@ -64,7 +62,7 @@ in {
       };
 
       #fonts.fonts = mkForce (lib.lists.filter (a: isDerivation a && (lib.strings.getName a) != "nerdfonts")  super.fonts.fonts);
-      fonts.fonts = mkForce [ config.mine.font.package ];
+      fonts.fonts = mkForce [ config.mine.fonts.mainFont.package ];
 
       virtualisation = { virtualbox.host.enable = mkForce false; };
 
@@ -110,10 +108,15 @@ in {
       };
 
 
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.kernelPackages = pkgs.stable.linuxPackages_latest;
       boot.tmpOnTmpfs = true;
 
-      hardware.openrazer.enable = true;
+      hardware.openrazer = {
+        enable = true;
+        users = [
+          "evanjs"
+        ];
+      };
 
       mine.x.enable = lib.mkDefault true;
       mine.wm.enable = lib.mkDefault true;
@@ -157,7 +160,6 @@ in {
         okular
 
         # word processors, etc
-        pkgs.libreoffice
         gnome3.gucharmap
 
         speedtest-cli
@@ -170,15 +172,9 @@ in {
         sshfs
 
         # iOS stuff
-        ideviceinstaller
-        ifuse
-        libimobiledevice
-
-        # security
-        veracrypt
-
-        # editors
-        atom
+        #ideviceinstaller
+        #ifuse
+        #libimobiledevice
 
         rclone
 
