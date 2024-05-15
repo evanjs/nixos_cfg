@@ -1,4 +1,5 @@
-with import <nixpkgs> {};
+{ pkgs, ... }:
+with pkgs;
 
 vim_configurable.customize {
   name = "vim";

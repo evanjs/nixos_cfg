@@ -4,7 +4,7 @@ let
   isTexEnabled = config.mine.tex.enable or false;
   rust-nightly = pkgs.rust-bin.nightly.latest.default;
   rust-language-server = (rust-nightly.override { extensions = [ "rls-preview" ]; });
-  dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
+  #dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
   coc-settings = {
     rust-analyzer= {
       enable = true;
