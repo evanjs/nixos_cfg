@@ -1,17 +1,17 @@
 { config, pkgs, lib, programs, ... }:
 with lib;
 {
-  programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-airline-themes
-    ];
-    options = {
-      laststatus = 2;
-    };
+  options = {
+    laststatus = 2;
+  };
+  config.programs.nixvim = {
+    #extraPlugins = with pkgs.vimPlugins; [
+      #vim-airline-themes
+    #];
     plugins.airline = {
       enable = true;
       theme = "wombat";
-      powerlineFonts = true;
+      #powerlineFonts = true;
     };
   };
 }

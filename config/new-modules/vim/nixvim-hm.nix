@@ -1,7 +1,7 @@
 { config, pkgs, lib, programs, nixvim, ... }:
 with lib;
 let
-  helpers = nixvim.helpers;
+  helpers = lib.nixvim;
 in
 {
 
@@ -11,12 +11,13 @@ in
     ./plugins/lsp.nix
     ./plugins/rust.nix
     ./plugins/tagbar.nix
-    ./plugins/tex.nix
+    #./plugins/tex.nix
   ];
 
   programs.nixvim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    vimAlias = true;
+    #package = pkgs.neovim-nightly;
     #colorscheme = config.mine.vim.colorscheme;
     colorschemes.ayu.enable = true;
     extraPlugins = with pkgs.vimPlugins; [
@@ -35,21 +36,22 @@ in
 
     plugins = {
 
-      comment-nvim.enable = true;
+      #comment-nvim.enable = true;
       fugitive.enable = true;
       illuminate.enable = true;
-      image.enable = true;
+      #image.enable = true;
       rainbow-delimiters.enable = true;
+      treesitter.enable = true;
       lastplace.enable = true;
       nix.enable = true;
       neogit = {
         enable = true;
-        integrations = {
-          diffview = true;
-        };
+        ##plugins = [
+        ##  "diffview"
+        ##];
       };
 
-      # TODO: nvim-cmp
+      ## TODO: nvim-cmp
 
       nvim-colorizer.enable = true;
     };

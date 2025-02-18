@@ -3,10 +3,11 @@ with lib;
 let
   cfg = config.mine.vim;
   nixvim = import (builtins.fetchGit {
-    #url = "https://github.com/nix-community/nixvim";
+    url = "https://github.com/nix-community/nixvim";
     #rev = "ffc5e7dc91ea5f47fae50c726c53a3dcb62d3e73";
-    url = "https://github.com/traxys/nixvim";
-    ref = "update_flake_compat";
+    # url = "https://github.com/traxys/nixvim";
+    # ref = "update_flake_compat";
+    ref = "main";
   });
 in
   {

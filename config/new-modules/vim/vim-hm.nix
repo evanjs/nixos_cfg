@@ -27,45 +27,45 @@ let
     set rtp+=${plugin.outPath}/after
   '';
 
-  plugins = with pkgs.vimPlugins; [
-    colorizer
-    fugitive
-    ghc-mod-vim
-    haskell-vim
-    neomake
-    nerdcommenter
-    nerdtree
-    polyglot
-    rainbow
-    ranger-vim
-    rust-vim
-    SpaceCamp
-    syntastic
-    tagbar
-    vim-airline
-    vim-airline-themes
-    vim-autoformat
-    vim-illuminate
+  #plugins = with pkgs.vimPlugins; [
+    #colorizer
+    #fugitive
+    #ghc-mod-vim
+    #haskell-vim
+    #neomake
+    #nerdcommenter
+    #nerdtree
+    #polyglot
+    #rainbow
+    #ranger-vim
+    #rust-vim
+    #SpaceCamp
+    #syntastic
+    #tagbar
+    #vim-airline
+    #vim-airline-themes
+    #vim-autoformat
+    #vim-illuminate
 
-    nvim-lspconfig
-    completion-nvim
-    coc-rust-analyzer
-    coc-nvim
+    #nvim-lspconfig
+    #completion-nvim
+    #coc-rust-analyzer
+    #coc-nvim
 
-    lsp_extensions-nvim
+    #lsp_extensions-nvim
 
-    nvim-treesitter
-    coc-java
-  ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
-    latex-box
-    vim-latex-live-preview
-    vimtex
-  ]);
+    #nvim-treesitter
+    #coc-java
+  #] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
+    #latex-box
+    #vim-latex-live-preview
+    #vimtex
+  #]);
 in
 {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    #package = pkgs.neovim-nightly;
 
     viAlias = true;
     vimAlias = true;
@@ -76,7 +76,7 @@ in
     	" Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
 	filetype off | syn off
 	${builtins.concatStringsSep "\n"
-	(map loadPlugin (plugins ++ (config.mine.vim.extraPlugins or [])))}
+	(map loadPlugin (plugins)))}
 	filetype indent plugin on | syn on
 
       "" General Settings {{{

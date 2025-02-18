@@ -2,13 +2,13 @@
 {
   programs.nixvim = {
 
-    clipboard = {
-      # Use system clipboard
-      register = "unnamedplus";
+    #clipboard = {
+      ## Use system clipboard
+      #register = "unnamedplus";
 
-      # ??? - what does this do?
-      # providers.wl-copy.enable = true;
-    };
+      ## ??? - what does this do?
+      ## providers.wl-copy.enable = true;
+    #};
 
     options = {
       number = true; # Display the absolute line number of the current line
