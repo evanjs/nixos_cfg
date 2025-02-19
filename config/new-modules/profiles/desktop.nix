@@ -332,6 +332,7 @@ in {
           enable = true;
         };
         programs.screen = {
+          enable = true;
           screenrc = ''
             # for weechat service support, etc
             multiuser on
