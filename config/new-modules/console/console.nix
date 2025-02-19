@@ -16,9 +16,10 @@ let
     bc
     nixpkgs-unstable.bingrep
     cht-sh
-    diskonaut
+    # diskonaut
     du-dust
     fd
+    lsd
     file
     gnumake
     gnupg
@@ -52,8 +53,7 @@ let
     bottom
     zstd
     mdbook
-
-    nodePackages.insect
+    numbat
   ];
   hm = (import ./console-hm.nix { inherit pkgs config lib; });
   cfg = config.mine.console;
