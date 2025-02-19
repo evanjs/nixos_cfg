@@ -160,7 +160,7 @@ in {
         okular
 
         # word processors, etc
-        gnome3.gucharmap
+        gucharmap
 
         speedtest-cli
         graphviz
