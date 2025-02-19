@@ -40,9 +40,8 @@
 
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 256)}
-    '' + (lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes"
-    );
+      experimental-features = nix-command flakes
+    '';
 
   };
 }
