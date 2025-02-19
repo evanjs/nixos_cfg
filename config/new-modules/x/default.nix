@@ -69,7 +69,9 @@ with lib;
       fonts = with pkgs; [
         #corefonts
         #vistafonts
-        (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; })
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.fira-mono
+        nerd-fonts.noto
         ipaexfont
         noto-fonts-cjk
         noto-fonts-emoji
