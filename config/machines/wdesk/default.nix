@@ -37,6 +37,8 @@
   # enable after rocm packages are locked to stable channel
   mine.rocm.enable = true;
 
+  # mine.jetbrains.enable = false;
+
   mine.virtualization.virtualbox.enable = false;
   boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
