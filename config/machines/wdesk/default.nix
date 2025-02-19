@@ -56,8 +56,9 @@
 
   boot.initrd.checkJournalingFS = false;
 
-  home-manager.users.evanjs.home.stateVersion = "22.05";
-  home-manager.users.root.home.stateVersion = "22.05";
-  mine.xUserConfig.home.stateVersion = "22.05";
+  home-manager.users.evanjs.home.stateVersion = "24.05";
+  home-manager.users.root.home.stateVersion = "24.05";
+  mine.userConfig.home.stateVersion = "24.05";
+  mine.xUserConfig.home.stateVersion = "24.05";
   system.stateVersion = "19.09";
 }
