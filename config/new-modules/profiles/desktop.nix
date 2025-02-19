@@ -203,6 +203,7 @@ in {
         grub = {
           enable = true;
 
+          configurationLimit = 30;
           efiSupport = true;
           # allow grub to work with no explicit boot device
           device = "nodev";
