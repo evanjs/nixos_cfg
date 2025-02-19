@@ -302,7 +302,7 @@ in {
             cargo-cache
             cargo-edit
             cargo-license
-            cargo-asm
+            cargo-show-asm
             cargo-outdated
             stable.cargo-update
             cargo-bloat
