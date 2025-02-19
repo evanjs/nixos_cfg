@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }:
 {
+  services = {
+    notify-osd = {
+      enable = true;
+    };
+  };
   programs = {
     git = {
       userName = "Evan Stoll";
