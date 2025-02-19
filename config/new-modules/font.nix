@@ -50,7 +50,7 @@ in
       packages = mkOption {
         type = types.listOf types.package;
         description = "Fallback font packages to use";
-        default = with pkgs; [ noto-fonts-cjk ];
+        default = with pkgs; [ noto-fonts-cjk-sans ];
         example = with pkgs; [ noto-fonts-emoji ];
       };
       names = mkOption {
