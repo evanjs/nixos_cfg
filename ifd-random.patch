@@ -1,0 +1,222 @@
+diff --git a/config/default.nix b/config/default.nix
+index cb74608..526abf6 100644
+--- a/config/default.nix
++++ b/config/default.nix
+@@ -1,13 +1,21 @@
+-{
+-
+-  imports = [
+-    /* ./assets */
+-    ./new-modules
+-    /* ./machines/connectivity.nix */
+-    ./nix.nix
+-    ./personal
+-    ./pkgs/module.nix
+-    ./cachix.nix
+-  ];
+-
+-}
++{ config, pkgs, ... }:
++let
++    imports = [
++      /* ./assets */
++      /* ./machines/connectivity.nix */
++      ./new-modules
++      #(import pkgs.helpers.mkPins ./new-modules)
++      ./nix.nix
++      ./personal
++      ./pkgs/module.nix
++      ./cachix.nix
++      #./sources/call.nix
++      #(import (import ./sources).lorri {})
++      #(import (import ./sources).all-hies {})
++    ];
++    allImports = map (v: pkgs.helpers.mkPin { imports = v; }) imports;
++in
++  {
++    inherit imports;
++    environment.systemPackages = allImports;
++  }
+diff --git a/config/new-modules/default.nix b/config/new-modules/default.nix
+index 24d39b0..c59ee1a 100644
+--- a/config/new-modules/default.nix
++++ b/config/new-modules/default.nix
+@@ -19,11 +19,12 @@ let
+       (file: hasSuffix ".nix" file && file != "default.nix" &&
+         ! lib.hasPrefix "x/taffybar/" file &&
+         ! lib.hasSuffix "-hm.nix" file)
+-      (files dir));
++        (files dir));
+ 
+-in
+-{
+-
+-  imports = validFiles ./.;
+ 
+-}
++  finalFiles = validFiles ./.;
++  #pinnedImports = pkgs.helpers.mkPins { imports = ./.; };  
++in
++  {
++    imports = finalFiles;
++  }
+diff --git a/config/new-modules/dev/rust.nix b/config/new-modules/dev/rust.nix
+index 08123ff..b2816b4 100644
+--- a/config/new-modules/dev/rust.nix
++++ b/config/new-modules/dev/rust.nix
+@@ -3,6 +3,10 @@ with lib;
+ 
+ let
+   cfg = config.mine.dev.rust;
++  imports = [
++    ./moz-overlay.nix
++  ];
++  allImports = map (v: pkgs.helpers.mkPin { imports = v; }) imports;
+ 
+   # TODO: Is there a clean way to provide options for "packs" of plugins? e.g. debug = [ "llvm-tools-preview" "lldb-preview" ];
+   /* Some more examples:
+@@ -87,11 +91,10 @@ in
+       };
+     };
+ 
+-    imports = [
+-      ./moz-overlay.nix
+-    ];
++    inherit imports;
+ 
+     config = mkIf cfg.enable {
++      environment.systemPackages = allImports;
+       mine.userConfig = {
+         home.packages = [ cfg.package ] ++ cfg.extraPackages;
+       };
+diff --git a/config/new-modules/games/minecraft.nix b/config/new-modules/games/minecraft.nix
+index e7a7446..96b371e 100644
+--- a/config/new-modules/games/minecraft.nix
++++ b/config/new-modules/games/minecraft.nix
+@@ -1,4 +1,4 @@
+-{ config, pkgs, libs, ... }:
++{ config, pkgs, lib, ... }:
+ {
+   services.minecraft-server = {
+     enable = false;
+diff --git a/config/new-modules/nextcloud/default.nix b/config/new-modules/nextcloud/default.nix
+index 48854f1..10eceb6 100644
+--- a/config/new-modules/nextcloud/default.nix
++++ b/config/new-modules/nextcloud/default.nix
+@@ -1,4 +1,4 @@
+-{ lib, config, pkgs, services, ... }:
++{ lib, config, pkgs, ... }:
+ 
+ with lib;
+ let
+diff --git a/config/new-modules/profiles/defaults.nix b/config/new-modules/profiles/defaults.nix
+index 5b9b051..c9dfc8e 100644
+--- a/config/new-modules/profiles/defaults.nix
++++ b/config/new-modules/profiles/defaults.nix
+@@ -1,6 +1,6 @@
+-{ options, config, lib, ... }:
+-with lib; {
+-
++{ options, config, lib, pkgs, ... }:
++with lib; 
++let
+   imports = [
+     ../../../overlays
+     ../../../modules/home-manager
+@@ -8,6 +8,11 @@ with lib; {
+     ../../../external/private
+     "${(import ../../nix/sources.nix).sops-nix}/modules/sops"
+   ];
++   #allImports = map (v: pkgs.helpers.mkPin { imports = v; }) imports;
++in
++  {
++    inherit imports;
++    #environment.systemPackages = allImports;
+ 
+   mine.mainUsers = [ "root" ];
+ 
+diff --git a/config/sources/default.nix b/config/sources/default.nix
+index fd33aee..2171008 100644
+--- a/config/sources/default.nix
++++ b/config/sources/default.nix
+@@ -1,14 +1,22 @@
+ let
++  pkgs = import <nixpkgs> {
++    overlays = [
++      (import ../../overlays/libs/overlay.nix)
++    ];
++  };
++  config = import <nixpkgs/nixos> {};
+   lib = import <nixpkgs/lib>;
++  allImports = imp: map (v: pkgs.helpers.mkPin { imports = v; }) imp;
+   files = lib.filterAttrs (name: value:
+-    lib.hasSuffix ".nix" name
+-    && name != "default.nix"
+-    && name != "call.nix"
++  lib.hasSuffix ".nix" name
++  && name != "default.nix"
++  && name != "call.nix"
+   ) (builtins.readDir ./.);
+ in
+   lib.mapAttrs' (name: value: let
+     file = toString ./. + "/${name}";
+     _ = lib.traceVal file;
++    environment.systemPackages = allImports file;
+   in {
+     name = lib.removeSuffix ".nix" name;
+     value = import ./call.nix {
+diff --git a/overlays/libs/helpers.nix b/overlays/libs/helpers.nix
+index 63c3390..60c5950 100644
+--- a/overlays/libs/helpers.nix
++++ b/overlays/libs/helpers.nix
+@@ -1,6 +1,6 @@
+-{ lib, ... }:
++{ lib, runCommand, ... }:
+ with lib;
+-{
++rec {
+ 
+   # TODO: Improve error-handling/provide error messages that specify the expected inputs for each function, etc
+ 
+@@ -12,4 +12,15 @@ with lib;
+ 
+   # are we running on a NixOS system?
+   isNixOS = builtins.readDir /etc ? NIXOS;
++
++  mkPin = inputs:
++    runCommand "ifd-pins" { } ''
++      mkdir $out
++      cd $out
++      ${lib.concatMapStringsSep "\n" (i: "ln -sv ${i.value} ${i.key}")
++      (lib.attrValues
++        (lib.mapAttrs (key: value: { inherit key value; }) inputs))}
++    '';
++
++  mkPins = deps: map (v: mkPins { imports = v; }) deps;
+ }
+diff --git a/overlays/libs/overlay.nix b/overlays/libs/overlay.nix
+index ab1f121..dba1ef3 100644
+--- a/overlays/libs/overlay.nix
++++ b/overlays/libs/overlay.nix
+@@ -2,9 +2,10 @@ self: super:
+ let
+   pkgs = import <nixpkgs> { };
+   callPackage = pkgs.lib.callPackageWith ( pkgs // self);
+-  self = {
++  #callUtil = file: import file { inherit pkgs; };
++in
++  {
++    #inherit (callUtil ./addAsRuntimeDeps.nix);
+     versions = pkgs.callPackage ./versions.nix { version = super.version; };
+     helpers = pkgs.callPackage ./helpers.nix { };
+-  };
+-in
+-  self
++  }
+diff --git a/overlays/rjg b/overlays/rjg
+index 45f8e54..ada12c7 160000
+--- a/overlays/rjg
++++ b/overlays/rjg
+@@ -1 +1 @@
+-Subproject commit 45f8e54c7e2de7f02a8ed7b30c3e47b7956972a9
++Subproject commit ada12c7f9b36bba879a11669e3eeba197f420828

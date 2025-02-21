@@ -1,0 +1,37 @@
+diff --git a/config/new-modules/console/console-hm.nix b/config/new-modules/console/console-hm.nix
+index da2511b5..8135c2f8 100644
+--- a/config/new-modules/console/console-hm.nix
++++ b/config/new-modules/console/console-hm.nix
+@@ -24,12 +24,19 @@
+       enableBashIntegration = true;
+       enableZshIntegration = true;
+     };
+-    direnv = { enable = true; };
++    direnv = {
++      enable = true;
++      enableBashIntegration = true;
++      enableNushellIntegration = true;
++      enableZshIntegration = true;
++    };
++
+     htop.enable = true;
+ 
+     starship = {
+       enable = true;
+       enableBashIntegration = true;
++      enableNushellIntegration = true;
+       enableZshIntegration = true;
+ 
+       settings = {
+@@ -43,8 +50,11 @@
+       enable = true;
+       enableZshIntegration = true;
+       enableBashIntegration = true;
++      enableNushellIntegration = true;
+     };
+ 
++    nushell.enable = true;
++
+     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
+ 
+     zsh = {

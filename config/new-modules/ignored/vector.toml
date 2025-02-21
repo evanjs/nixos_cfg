@@ -1,0 +1,82 @@
+#data_dir = "/var/lib/vector"
+[api]
+enabled = true
+
+[sinks.clickhouse]
+database = "logs"
+endpoint = "http://localhost:8123"
+inputs = ["journald"]
+skip_unknown_fields = true
+table = "journald"
+type = "clickhouse"
+
+[sinks.kafka_opcua]
+bootstrap_servers = "localhost:9092"
+inputs = ["opc_tcp_edhub", "opc_tcp_enhub"]
+topic = "opcua"
+type = "kafka"
+
+[sinks.kafka_opcua.encoding]
+codec = "json"
+
+[sinks.opc_file_log_ed]
+inputs = ["opc_tcp_edhub"]
+path = "/var/log/vector/opc_debian-%Y-%m-%d.json"
+type = "file"
+[sinks.opc_file_log_ed.encoding]
+codec = "json"
+
+[sinks.opc_file_log_en]
+inputs = ["opc_tcp_enhub"]
+path = "/var/log/vector/opc_nixos-%Y-%m-%d.json"
+type = "file"
+[sinks.opc_file_log_en.encoding]
+codec = "json"
+
+[sinks.prometheus]
+inputs = ["host_metrics"]
+type = "prometheus_exporter"
+
+[sources.host_metrics]
+scrape_interval_secs = 10
+type = "host_metrics"
+[sources.host_metrics.filesystem]
+excludes = ["/mnt/rjg/*", "/run/docker/*"]
+[sources.host_metrics.filesystem.devices]
+excludes = ["nsfs", "overlay"]
+
+[sources.host_metrics.filesystem.mountpoints]
+excludes = ["/mnt/rjg/*", "/run/docker/*"]
+
+[sources.journald]
+journal_directory = "/var/log/journal"
+type = "journald"
+
+[sources.opc_tcp_edhub]
+command = ["/nix/store/vgq386yam82hz8y10ciwcsv7xhwpsxx1-libressl-4.0.0-nc/bin/nc", "172.16.0.108", "9374"]
+include_stderr = true
+mode = "streaming"
+type = "exec"
+
+[sources.opc_tcp_edhub.decoding]
+codec = "json"
+
+[sources.opc_tcp_edhub.framing]
+method = "length_delimited"
+[sources.opc_tcp_edhub.framing.length_delimited]
+length_field_is_big_endian = false
+
+[sources.opc_tcp_enhub]
+command = ["/nix/store/vgq386yam82hz8y10ciwcsv7xhwpsxx1-libressl-4.0.0-nc/bin/nc", "172.16.0.110", "9374"]
+include_stderr = true
+maximum_buffer_size_bytes = 65536000
+mode = "streaming"
+type = "exec"
+
+[sources.opc_tcp_enhub.decoding]
+codec = "json"
+
+[sources.opc_tcp_enhub.framing]
+method = "length_delimited"
+[sources.opc_tcp_enhub.framing.length_delimited]
+length_field_is_big_endian = false

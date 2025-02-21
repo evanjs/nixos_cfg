@@ -17,7 +17,7 @@ in
       # js
       sass
 
-      exercism
+      # exercism
 
       # debugging
       gdb

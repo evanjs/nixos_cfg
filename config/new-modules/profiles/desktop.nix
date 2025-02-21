@@ -233,7 +233,7 @@ in {
       };
 
       mine.virtualization = {
-        docker.enable = true;
+        docker.enable = lib.mkDefault false;
         libvirtd.enable = true;
       };
 
@@ -323,7 +323,7 @@ in {
         mine.vim = {
           enable = lib.mkDefault true;
           colorscheme = "spacecamp";
-          extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
+          #extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
         };
         programs.thefuck.enable = true;
         services.gpm.enable = true;

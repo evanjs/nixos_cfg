@@ -4,8 +4,10 @@
     pavucontrol
   ];
 
+  services.pipewire.enable = false;
+
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
-  sound.mediaKeys.enable = true;
+  #sound.mediaKeys.enable = true;
 }
