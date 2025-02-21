@@ -2,8 +2,8 @@
 {
   services = {
     samba = {
-      enable = true;
-      nsswins = true;
+      enable = false;
+      nsswins = false;
       #syncPasswordsByPam = true;
     };
   };

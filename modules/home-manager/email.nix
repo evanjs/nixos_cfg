@@ -7,6 +7,7 @@ let
     realName = "Evan Stoll";
     flavor = "gmail.com";
     passwordCommand = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | ${pkgs.coreutils}/bin/head -n1";
+    #passwordCommand = "echo ${config.private.passwords.email.gmail}"
     maildir.path = name;
     smtp.tls.useStartTls = true;
     imap.tls.useStartTls = false;
@@ -27,6 +28,7 @@ let
     userName = address;
     realName = "Evan Stoll";
     passwordCommand = "PASSWORD_STORE_DIR=${config.home-manager.users.evanjs.lib.sessionVariables.PASSWORD_STORE_DIR} ${pkgs.pass}/bin/pass email/${name} | ${pkgs.coreutils}/bin/head -n1";
+    #passwordCommand = "echo ${config.private.passwords.email.rjg}"
     maildir.path = name;
     smtp = {
       host = "smtp.outlook365.com";
@@ -50,8 +52,8 @@ let
   };
 
   accounts = {
-    gmail = (mkGmailAccount ({ name = "gmail"; primary = true; address = "evanjsx@gmail.com"; }));
-    rjg = (mkOffice365Account ({ name = "rjg"; primary = false; address = "evan.stoll@rjginc.com"; }));
+    #gmail = (mkGmailAccount ({ name = "gmail"; primary = false; address = "evanjsx@gmail.com"; }));
+    rjg = (mkOffice365Account ({ name = "rjg"; primary = true; address = "evan.stoll@rjginc.com"; }));
   };
 
   concatAccounts = separator: fn:

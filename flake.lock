@@ -1,0 +1,63 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1707786466,
+        "narHash": "sha256-yLPfrmW87M2qt+8bAmwopJawa+MJLh3M9rUbXtpUc1o=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "01885a071465e223f8f68971f864b15829988504",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nur": {
+      "locked": {
+        "lastModified": 1708021528,
+        "narHash": "sha256-YolLafT8AF4aGum5FRBahcFCPKU2x61MjA6AEt+6Bmo=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "1497e2d00a3dfef017c5ceff1da886b7032e1e6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "1497e2d00a3dfef017c5ceff1da886b7032e1e6a",
+        "type": "github"
+      }
+    },
+    "rjg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697817808,
+        "narHash": "sha256-Dl+sIy27to7C6BLf6G9F0TYz+gxqQCT3bCiTalUcDwo=",
+        "ref": "refs/heads/master",
+        "rev": "abc73cc6f962d40b118aa557272b682b649c84b3",
+        "revCount": 395,
+        "submodules": true,
+        "type": "git",
+        "url": "ssh://git@github.com/rjginc/overlay"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "ssh://git@github.com/rjginc/overlay"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "nur": "nur",
+        "rjg": "rjg"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

@@ -16,6 +16,7 @@ in
 
   programs.nixvim = {
     enable = true;
+    viAlias = true;
     vimAlias = true;
     #package = pkgs.neovim-nightly;
     #colorscheme = config.mine.vim.colorscheme;

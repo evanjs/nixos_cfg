@@ -9,7 +9,7 @@
     ../../../modules/development.nix
 
     ../../../modules/db/postgresql.nix
-    ../../../modules/samba/client/work.nix
+    #../../../modules/samba/client/work.nix
   ];
   mine.hardware = {
     battery = false;

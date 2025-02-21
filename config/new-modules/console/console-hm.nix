@@ -24,6 +24,15 @@
         };
       };
     };
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          email = "evanjsx@gmail.com";
+          name = "Evan Stoll";
+        };
+      };
+    };
     broot = {
       enable = true;
       enableBashIntegration = true;
