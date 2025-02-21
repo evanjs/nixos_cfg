@@ -22,7 +22,7 @@
           };
           opc_file_log_ed = {
             type = "file";
-            path = "/var/log/vector/opc_debian-%Y-%m-%d.json";
+            path = "/tmp/log/vector/opc_debian-%Y-%m-%d.json";
             encoding.codec = "json";
             #compression = "zstd";
             inputs = [
@@ -31,7 +31,7 @@
           };
           opc_file_log_en = {
             type = "file";
-            path = "/var/log/vector/opc_nixos-%Y-%m-%d.json";
+            path = "/tmp/log/vector/opc_nixos-%Y-%m-%d.json";
             encoding.codec = "json";
             #compression = "zstd";
             inputs = [
@@ -54,6 +54,7 @@
               method = "length_delimited";
               length_delimited = {
                 length_field_is_big_endian = false;
+                # length_field_length = 1;
               };
             };
             decoding.codec = "json";
@@ -61,7 +62,7 @@
           opc_tcp_enhub = {
             type = "exec";
             include_stderr = true;
-            maximum_buffer_size_bytes = 65536000;
+            #maximum_buffer_size_bytes = 65536000;
             command = [
               "${pkgs.netcat}/bin/nc"
               "172.16.0.110"
@@ -72,6 +73,7 @@
               method = "length_delimited";
               length_delimited = {
                 length_field_is_big_endian = false;
+                # length_field_length = 1;
               };
             };
             decoding.codec = "json";

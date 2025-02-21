@@ -18,6 +18,7 @@ let
     (filter
       (file: hasSuffix ".nix" file && file != "default.nix" &&
         ! lib.hasPrefix "disabled/" file &&
+        ! lib.hasPrefix "ignored/" file &&
         ! lib.hasPrefix "x/taffybar/" file &&
         ! lib.hasSuffix "-hm.nix" file)
       (files dir));

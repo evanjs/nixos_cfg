@@ -21,6 +21,53 @@
 #};
 #};
 #in
+let
+  clickhouseExperimentalFeaturesConfigXMLNix = {
+    profiles = {
+      default = {
+        allow_experimental_json_type = true;
+      };
+    };
+  };
+  #clickhouseExperimentalFeaturesConfigXML = pkgs.runCommand "clickhouse-experimental-features.xml" {} ''
+    #${pkgs.libnixxml}/bin/nixexpr2xml \
+    #${__toJSON clickhouseExperimentalFeaturesConfigXMLNix} \
+    #--attr-style=simple \
+    #--root-element clickhouse > $out
+  #'';
+  clickhouseExperimentalFeaturesConfigXML = ''
+    <clickhouse>
+      <profiles>
+        <default>
+          <allow_experimental_json_type>true</allow_experimental_json_type>
+        </default>
+      </profiles>
+    </clickhouse>
+  '';
+
+  clickhouseDateTimeInputFormatConfigXMLNix = {
+    profiles = {
+      default = {
+        date_time_input_format = "best_effort";
+      };
+    };
+  };
+  #clickhouseDateTimeInputFormatConfigXML = pkgs.runCommand "clickhouse-datetime-input-format.xml" {} ''
+    #${pkgs.libnixxml}/bin/nixexpr2xml \
+    #${__toJSON clickhouseDateTimeInputFormatConfigXMLNix} \
+    #--attr-style=simple \
+    #--root-element clickhouse > $out
+  #'';
+  clickhouseDateTimeInputFormatConfigXML = ''
+    <clickhouse>
+      <profiles>
+        <default>
+          <date_time_input_format>best_effort</date_time_input_format>
+        </default>
+      </profiles>
+    </clickhouse>
+  '';
+in
 {
 
   systemd.services.vector.serviceConfig = {
@@ -34,7 +81,15 @@
     enable = true;
   };
 
-  #environment.etc."clickhouse-server/config.xml".text = lib.mkForce (defaultClickhouseConfigXML // clickhouseConfigXML);
+  environment.etc.clickhouse_date_time_input = {
+    text = clickhouseDateTimeInputFormatConfigXML;
+    target = "clickhouse-server/users.d/datetime.xml";
+  };
+
+  environment.etc.clickhouse_experimental_features = {
+    text = clickhouseExperimentalFeaturesConfigXML;
+    target = "clickhouse-server/users.d/experimental.xml";
+  };
 
   services.grafana = {
     provision = {
