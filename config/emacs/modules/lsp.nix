@@ -24,7 +24,7 @@ with lib;
     init.lsp = ''
       (require 'lsp-mode)
 
-      (setq markdown-command "${pkgs.pandoc}/bin/pandoc")
+      (setq markdown-command "${pkgs.pandoc_3_6}/bin/pandoc")
 
       (setq lsp-prefer-flymake nil)
       (setq lsp-auto-guess-root t)
