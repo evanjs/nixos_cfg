@@ -96,7 +96,10 @@
         }
       '';
 
-      history.size = 1000000;
+      history = {
+        extended = true;
+        size = 1000000;
+      };
     };
   };
 
