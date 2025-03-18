@@ -45,5 +45,8 @@ in
 
     config = mkIf cfg.enable {
       environment.systemPackages = [ cfg.texPackages ] ++ cfg.extraPackages;
+      #fonts.packages = with pkgs; [
+        #noto-fonts-color-emoji
+      #];
     };
   }
