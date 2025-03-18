@@ -29,6 +29,7 @@
   mine.profiles.desktop.enable = true;
   mine.emacs.enable = lib.mkForce false;
   mine.taffybar.enable = false;
+  mine.tex.enable = true;
 
   mine.android.enable = false;
   home-manager.users.evanjs.programs.mbsync.enable = false;
