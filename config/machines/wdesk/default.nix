@@ -55,7 +55,14 @@
   };
   networking.hostName = "sekka";
 
-  #services.tailscale.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+    extraSetFlags = [
+      "--accept-routes"
+    ];
+  };
 
   boot.initrd.checkJournalingFS = false;
 
