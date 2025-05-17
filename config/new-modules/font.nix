@@ -68,7 +68,7 @@ in
   };
 
   config = {
-    fonts.fonts = [
+    fonts.packages = [
       cfg.package
     ] ++ cfg.fallbackFonts.packages;
   };

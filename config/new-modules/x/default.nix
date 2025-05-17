@@ -66,7 +66,7 @@ with lib;
     fonts = {
       enableFontDir = true;
       enableGhostscriptFonts = true;
-      fonts = with pkgs; [
+      packages = with pkgs; [
         #corefonts
         #vistafonts
         nerd-fonts.jetbrains-mono
