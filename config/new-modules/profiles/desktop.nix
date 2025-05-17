@@ -109,7 +109,7 @@ in {
 
 
       boot.kernelPackages = pkgs.stable.linuxPackages_latest;
-      boot.tmpOnTmpfs = true;
+      boot.tmp.useTmpfs = true;
 
       hardware.openrazer = {
         enable = true;
