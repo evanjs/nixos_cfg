@@ -18,7 +18,7 @@ with lib; {
 
   home-manager.useUserPackages = true;
 
-  boot = { cleanTmpDir = true; };
+  boot.tmp = { cleanOnBoot = true; };
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.cpu.intel.updateMicrocode = true;
