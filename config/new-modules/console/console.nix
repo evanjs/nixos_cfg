@@ -10,7 +10,7 @@ let
     gitAndTools.gh
     gitAndTools.delta
 
-    _1password
+    _1password-cli
     aspellDicts.en
     bat
     bc
