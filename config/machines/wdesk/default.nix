@@ -55,6 +55,7 @@
   };
   networking.hostName = "sekka";
 
+  system.rebuild.enableNg = true;
 
   services.tailscale = {
     enable = true;
