@@ -155,7 +155,6 @@ with lib;
         mine.pics
         #thunderbird
         #helvetica-neue-lt-std
-        mine.arcred
       ];
 
       programs.chromium = {
