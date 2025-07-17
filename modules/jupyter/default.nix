@@ -9,7 +9,7 @@ let
   iHaskell = jupyterWith.kernels.iHaskellWith {
     extraIHaskellFlags = "--codemirror Haskell";  # for jupyterlab syntax highlighting
     packages = p: with p; [
-      formatting Frames vector aeson hvega pandoc_3_6
+      formatting Frames vector aeson hvega pandoc
       (pkgs.haskell.lib.markUnbroken ihaskell-hvega)
     ];
   };
