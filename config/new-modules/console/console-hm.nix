@@ -33,7 +33,14 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
-    direnv = { enable = true; };
+    direnv = {
+      enable = true;
+
+      nix-direnv = {
+        enable = true;
+      };
+    };
+
     htop.enable = true;
 
     starship = {
