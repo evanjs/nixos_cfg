@@ -40,5 +40,12 @@
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 256)}
     '';
+
+    settings = {
+      extra-experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
+    };
   };
 }
