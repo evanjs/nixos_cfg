@@ -330,7 +330,6 @@ in {
           colorscheme = "spacecamp";
           #extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
         };
-        #programs.thefuck.enable = true;
         programs.pay-respects.enable = true;
         services.gpm.enable = true;
 
