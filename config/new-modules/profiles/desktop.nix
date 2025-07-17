@@ -179,9 +179,6 @@ in {
         # security
         veracrypt
 
-        # editors
-        atom
-
         rclone
 
         #ghidra-bin
