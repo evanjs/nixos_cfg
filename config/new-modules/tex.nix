@@ -23,7 +23,7 @@ in
 
       extraPackages = mkOption {
         description = "Additional packages to include with the TeX environment";
-        default = with pkgs; [ pandoc_3_6 texstudio ];
+        default = with pkgs; [ pandoc texstudio ];
         type = types.listOf types.package;
       };
 
