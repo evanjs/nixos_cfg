@@ -10,8 +10,6 @@ with lib;
 
     programs.dconf.enable = true;
 
-    mine.dunst.enable = true;
-
     mine.live-wallpaper.enable = false;
 
     services.logind.extraConfig = ''
