@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, pkgconfig, uthash, asciidoc, docbook_xml_dtd_45
+{ stdenv, lib, fetchFromGitHub, pkg-config, uthash, asciidoc, docbook_xml_dtd_45
 , docbook_xsl, libxslt, libxml2, makeWrapper, mesa_drivers
 , xorg, pixman, libev
 , dbus, libconfig, libdrm, libGL, pcre
@@ -35,7 +35,7 @@ let
     src = (import ../../nix/sources.nix {}).compton-kawase;
 
     nativeBuildInputs = [
-      pkgconfig
+      pkg-config
       uthash
       asciidoc
       docbook_xml_dtd_45
