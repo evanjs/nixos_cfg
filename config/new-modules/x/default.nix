@@ -105,7 +105,6 @@ with lib;
       dmenu
       xorg.xev
       haskellPackages.xmobar
-      xtrlock-pam
       xdg-user-dirs
       dfeet
     ];
