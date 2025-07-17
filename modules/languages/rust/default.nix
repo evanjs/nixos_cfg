@@ -8,7 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     openssl.dev
-    pkgconfig
+    pkg-config
     rust-with-extensions.base
   ];
 }
