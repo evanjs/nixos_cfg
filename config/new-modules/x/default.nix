@@ -106,7 +106,7 @@ with lib;
       xorg.xev
       haskellPackages.xmobar
       xdg-user-dirs
-      dfeet
+      d-spy
     ];
 
 
