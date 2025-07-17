@@ -8,7 +8,7 @@
     nix-index
     nix-prefetch-scripts
     nixpkgs-fmt
-    nixpkgs-review
+    nix-review
     patchelf
     niv
     # nix-du fails to build due to some tests during checkPhase
@@ -40,8 +40,6 @@
 
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 256)}
-      experimental-features = nix-command flakes
     '';
-
   };
 }

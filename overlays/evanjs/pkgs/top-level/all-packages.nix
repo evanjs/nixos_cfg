@@ -14,6 +14,9 @@ in
     ### applications 
     ### networking
     ### instant-messengers
+    slack = callPackage ../applications/networking/instant-messengers/slack { };
+    slack-theme-black = callPackage ../applications/networking/instant-messengers/slack/dark-theme.nix { };
+    slack-dark = pkgs.slack.override { theme = slack-theme-black; };
 
     ### rust utilities
     bingrep = callPackage ../development/tools/bingrep { };

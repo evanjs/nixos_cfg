@@ -4,16 +4,10 @@ let
   cfg = config.mine.vim;
   nixvim = import (builtins.fetchGit {
     url = "https://github.com/nix-community/nixvim";
-    #rev = "ffc5e7dc91ea5f47fae50c726c53a3dcb62d3e73";
-    # url = "https://github.com/traxys/nixvim";
-    # ref = "update_flake_compat";
     ref = "main";
   });
 in
   {
-    imports = [
-      nixvim.nixosModules.nixvim
-    ];
     options.mine.vim = {
       colorscheme = mkOption {
         type = types.str;
@@ -33,16 +27,18 @@ in
         description = "Additional plugins to add to the vim configuration";
       };
     };
-    config.mine.userConfig = mkIf cfg.enable rec {
-        imports = [
-          nixvim.homeManagerModules.nixvim
+    config.mine.userConfig = mkIf cfg.enable {
 
-          (import ./nixvim-hm.nix {
-            inherit config pkgs lib nixvim;
-            inherit (config.mine.userConfig) programs;
-          })
-        ];
+      imports = [
+        nixvim.homeManagerModules.nixvim
+        ../dev/rust-overlay.nix
 
-      };
-    }
+        (import ./nixvim-hm.nix {
+          inherit config pkgs lib;
+          inherit (config.mine.userConfig) programs;
+        })
+      ];
+
+    };
+  }
 

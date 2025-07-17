@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, autoreconfHook, pkgconfig, gnome, gtk3, gtk-engine-murrine, gnome-themes-extra }:
+{ stdenv, lib, fetchFromGitHub, autoreconfHook, pkgconfig, gnome3, gtk3, gtk-engine-murrine, gnome-themes-extra }:
 
 let
   pname = "arc-theme-red";

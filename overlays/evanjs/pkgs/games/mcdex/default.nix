@@ -12,7 +12,7 @@ buildGoModule rec {
     sha256 = "0d5mqvzk9b47kn19cxqbmn8j4792h2yfyj0qpbrksdrwy6a2gg3b";
   };
 
-  vendorSha256 = "sha256-Z1kJOwrUKHk2XQL7MY5STuvHSsIRTdloJWg6bNQQ7UE=";
+  vendorHash = "sha256-Z1kJOwrUKHk2XQL7MY5STuvHSsIRTdloJWg6bNQQ7UE=";
 
   # TODO: add metadata https://nixos.org/nixpkgs/manual/#sec-standard-meta-attributes
   meta = {

@@ -8,9 +8,9 @@
   users.users.evanjs.extraGroups = [ "media" ];
 
   services.plex = {
-    enable = true;
+    enable = false;
     openFirewall = true;
-    managePlugins = false;
+    #managePlugins = false;
     group = "media";
   };
 }

@@ -38,10 +38,7 @@ in
       };
       package = mkOption {
         description = "The main font package to use";
-        # TODO: since nerdfont has been split into distinct packages,
-        #   - can we rework this to use a package consisting of multiple
-        #   - nerdfont packages, similar to how it was being used before?
-        default = pkgs.nerd-fonts.jetbrains-mono;
+        default = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; });
         example = pkgs.jetbrains-mono;
         type = types.package;
       };
@@ -50,7 +47,7 @@ in
       packages = mkOption {
         type = types.listOf types.package;
         description = "Fallback font packages to use";
-        default = with pkgs; [ noto-fonts-cjk-sans ];
+        default = with pkgs; [ noto-fonts-cjk ];
         example = with pkgs; [ noto-fonts-emoji ];
       };
       names = mkOption {
@@ -63,7 +60,7 @@ in
     package = mkOption {
       type = types.package;
       description = "The package of the font to use";
-      default = pkgs.nerd-fonts.jetbrains-mono;
+      default = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; });
     };
   };
 

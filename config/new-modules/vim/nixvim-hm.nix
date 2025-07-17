@@ -1,4 +1,4 @@
-{ config, pkgs, lib, programs, nixvim, ... }:
+{ config, pkgs, lib, programs, ... }:
 with lib;
 let
   helpers = lib.nixvim;

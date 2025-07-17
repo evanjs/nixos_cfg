@@ -17,9 +17,19 @@
     ./bash
   ];
 
-  home-manager.users.evanjs = {
-    home = {
-      sessionVariables = config.home-manager.users.evanjs.lib.sessionVariables;
+  home-manager = {
+    users = {
+      evanjs = {
+        home = {
+          sessionVariables = config.home-manager.users.evanjs.lib.sessionVariables;
+          stateVersion = "22.05";
+        };
+      };
+      root = {
+        home = {
+          stateVersion = "22.05";
+        };
+      };
     };
   };
 }

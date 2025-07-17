@@ -14,7 +14,7 @@ in
     extraPackages = openglPackages;
   };
   services.xserver = {
-    useGlamor = true;
+    #useGlamor = true;
     deviceSection = ''
       Option "DRI" "2"
       Option "TearFree" "True"
