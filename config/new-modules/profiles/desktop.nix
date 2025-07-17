@@ -42,8 +42,8 @@ in {
        We can then run `nix-collect-garbage -d` and rebuild without this option
        to (hopefully) successfully install the remaining components
     */
-    (mkIf ((maybeEnv "NOBRAINZ" "0") != "0") {
-      mine.jetbrains.enable = false;
+    (mkIf ((maybeEnv "BRAINZ" "0") != "0") {
+      mine.jetbrains.enable = true;
     })
     (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
       fonts.fonts = mkForce [ config.mine.fonts.mainFont.package ];
@@ -121,7 +121,7 @@ in {
       mine.x.enable = lib.mkDefault true;
       mine.wm.enable = lib.mkDefault true;
       mine.jetbrains = {
-        enable = lib.mkDefault true;
+        enable = lib.mkDefault false;
         useLatest = lib.mkDefault true;
       };
 
