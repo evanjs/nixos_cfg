@@ -57,7 +57,10 @@
       };
     };
     
-    autojump.enable = true;
+    zoxide = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
 
     nushell = {
       enable = true;
