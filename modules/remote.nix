@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    gnome-connections
+    gnome3.vinagre
   ];
 }

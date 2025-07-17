@@ -10,10 +10,10 @@ in
 
     config = lib.mkIf cfg.enable {
       services.xserver.displayManager.extraSessionFilePackages =
-        let gnome-flashback-xmonad = {wmName, wmLabel, wmCommand}: pkgs.callPackage ({ stdenv, gnome, bash, haskellPackages, glib, wrapGAppsHook }: stdenv.mkDerivation {
+        let gnome-flashback-xmonad = {wmName, wmLabel, wmCommand}: pkgs.callPackage ({ stdenv, gnome3, bash, haskellPackages, glib, wrapGAppsHook }: stdenv.mkDerivation {
           name = "gnome-flashback-${wmName}";
 
-          buildInputs = [ gnome-flashback gnome-panel bash haskellPackages.xmonad glib ];
+          buildInputs = [ gnome3.gnome-flashback gnome3.gnome-panel bash haskellPackages.xmonad glib ];
           nativeBuildInputs = [ wrapGAppsHook ];
 
           unpackPhase = "true";
@@ -27,7 +27,7 @@ in
             export XDG_CURRENT_DESKTOP="GNOME-Flashback:GNOME"
             fi
 
-            exec ${gnome-session}/bin/gnome-session --session=gnome-flashback-${wmName} --disable-acceleration-check "\$@"
+            exec ${gnome3.gnome-session}/bin/gnome-session --session=gnome-flashback-${wmName} --disable-acceleration-check "\$@"
             EOF
             chmod +x $out/libexec/gnome-flashback-${wmName}
 
@@ -35,7 +35,7 @@ in
             cat << 'EOF' > $out/share/gnome-session/sessions/gnome-flashback-${wmName}.session
             [GNOME Session]
             Name=GNOME Flashback (${wmLabel})
-            RequiredComponents=${wmName};gnome-flashback-init;gnome-flashback;gnome-panel;org.SettingsDaemon.A11ySettings;org.SettingsDaemon.Clipboard;org.SettingsDaemon.Color;org.SettingsDaemon.Datetime;org.SettingsDaemon.Housekeeping;org.SettingsDaemon.Keyboard;org.SettingsDaemon.MediaKeys;org.SettingsDaemon.Mouse;org.SettingsDaemon.Power;org.SettingsDaemon.PrintNotifications;org.SettingsDaemon.Rfkill;org.SettingsDaemon.ScreensaverProxy;org.SettingsDaemon.Sharing;org.SettingsDaemon.Smartcard;org.SettingsDaemon.Sound;org.SettingsDaemon.Wacom;org.SettingsDaemon.XSettings;
+            RequiredComponents=${wmName};gnome-flashback-init;gnome-flashback;gnome-panel;org.gnome.SettingsDaemon.A11ySettings;org.gnome.SettingsDaemon.Clipboard;org.gnome.SettingsDaemon.Color;org.gnome.SettingsDaemon.Datetime;org.gnome.SettingsDaemon.Housekeeping;org.gnome.SettingsDaemon.Keyboard;org.gnome.SettingsDaemon.MediaKeys;org.gnome.SettingsDaemon.Mouse;org.gnome.SettingsDaemon.Power;org.gnome.SettingsDaemon.PrintNotifications;org.gnome.SettingsDaemon.Rfkill;org.gnome.SettingsDaemon.ScreensaverProxy;org.gnome.SettingsDaemon.Sharing;org.gnome.SettingsDaemon.Smartcard;org.gnome.SettingsDaemon.Sound;org.gnome.SettingsDaemon.Wacom;org.gnome.SettingsDaemon.XSettings;
             EOF
 
             mkdir -p $out/share/applications

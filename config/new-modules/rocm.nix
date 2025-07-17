@@ -20,13 +20,7 @@ in {
     nixpkgs.overlays = [ (import "${(import ../nix/sources.nix {}).nixos-rocm}") ];
 
     hardware.opengl.enable = true;
-    hardware.opengl.extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
-
-    systemd.tmpfiles.rules = [
-      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-    ];
+    hardware.opengl.extraPackages = [ pkgs.rocm-opencl-icd ];
 
     nixpkgs.config.rocmTargets = lib.optional cfg.targets;
 

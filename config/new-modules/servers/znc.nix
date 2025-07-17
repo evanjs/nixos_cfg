@@ -45,6 +45,12 @@ in
       description = "Password used for twitch";
     };
 
+    gitterPassword = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      description = "Password used for gitter";
+    };
+
     liberaPassword = mkOption {
       type = types.nullOr types.str;
       default = null;
@@ -84,6 +90,10 @@ in
           AutoClearQueryBuffer = false;
 
           Network = {
+            gitter = mkIf (cfg.gitterPassword != null) {
+              Server = "irc.gitter.im +6697 ${cfg.gitterPassword}";
+              LoadModule = cfg.defaultNetworkModules;
+            };
             libera = mkIf (cfg.liberaPassword != null) {
               Server = "irc.libera.chat +6697 ${cfg.liberaPassword}";
               LoadModule = cfg.defaultNetworkModules;

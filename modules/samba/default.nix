@@ -3,7 +3,7 @@
   services = {
     samba = {
       enable = false;
-      nsswins = false;
+      #nsswins = false;
       #syncPasswordsByPam = true;
     };
   };

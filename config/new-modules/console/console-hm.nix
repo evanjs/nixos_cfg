@@ -1,10 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  services = {
-    notify-osd = {
-      enable = true;
-    };
-  };
   programs = {
     git = {
       userName = "Evan Stoll";
@@ -38,19 +33,12 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
-    direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
-    };
-
+    direnv = { enable = true; };
     htop.enable = true;
 
     starship = {
       enable = true;
       enableBashIntegration = true;
-      enableNushellIntegration = true;
       enableZshIntegration = true;
 
       settings = {
@@ -60,14 +48,7 @@
       };
     };
     
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
-      enableNushellIntegration = true;
-    };
-
-    nushell.enable = true;
+    autojump.enable = true;
 
     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
 

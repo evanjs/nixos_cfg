@@ -10,6 +10,8 @@ with lib;
 
     programs.dconf.enable = true;
 
+    mine.dunst.enable = true;
+
     mine.live-wallpaper.enable = false;
 
     services.logind.extraConfig = ''
@@ -22,8 +24,8 @@ with lib;
 
       displayManager = {
         autoLogin = {
-          enable = mkDefault false;
-          user = mkDefault "evanjs";
+          enable = false;
+          user = "evanjs";
         };
         gdm = {
           enable = lib.mkDefault true;
@@ -69,11 +71,9 @@ with lib;
       packages = with pkgs; [
         #corefonts
         #vistafonts
-        nerd-fonts.jetbrains-mono
-        nerd-fonts.fira-mono
-        nerd-fonts.noto
+        (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; })
         ipaexfont
-        noto-fonts-cjk-sans
+        noto-fonts-cjk
         noto-fonts-emoji
         # TODO: try and integrate this with emacs config so it isn't explicitly defined in the main X config
         emacs-all-the-icons-fonts
@@ -83,8 +83,8 @@ with lib;
     environment.systemPackages = with pkgs; [
       feh
       libnotify
-      gnome-font-viewer
-      gnome-terminal
+      gnome3.gnome-font-viewer
+      gnome.gnome-terminal
       guake
       xclip
       #evince
@@ -103,8 +103,9 @@ with lib;
       dmenu
       xorg.xev
       haskellPackages.xmobar
+      xtrlock-pam
       xdg-user-dirs
-      d-spy
+      dfeet
     ];
 
 
@@ -142,6 +143,14 @@ with lib;
           "100:class_g   ~=  'jetbrains'"
           "100:class_g   *?= 'slack'"
         ];
+        package = pkgs.picom.overrideAttrs(o: {
+          src = pkgs.fetchFromGitHub {
+            repo = "picom";
+            owner = "ibhagwan";
+            rev = "44b4970f70d6b23759a61a2b94d9bfb4351b41b1";
+            sha256 = "0iff4bwpc00xbjad0m000midslgx12aihs33mdvfckr75r114ylh";
+          };
+        });
       };
 
       services.unclutter = {
@@ -168,6 +177,7 @@ with lib;
         mine.pics
         #thunderbird
         #helvetica-neue-lt-std
+        mine.arcred
       ];
 
       programs.chromium = {

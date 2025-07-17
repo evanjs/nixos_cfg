@@ -26,27 +26,27 @@ let
       loguru
     ];
   };
-  lab = jupyterWith.jupyterlabWith {
-    kernels = [
-      iPython
-      #iRust
-      iHaskell
-    ];
-  };
+  #lab = jupyterWith.jupyterlabWith {
+    #kernels = [
+      #iPython
+      ##iRust
+      #iHaskell
+    #];
+  #};
   jupyterPort = 8888;
 in
   {
     networking.firewall.allowedTCPPorts = [ jupyterPort ];
     users.extraUsers.evanjs.extraGroups = [ "jupyter" ];
-    users.extraUsers.jupyter.isNormalUser = true;
+    #users.extraUsers.jupyter.isNormalUser = true;
     services.jupyter = {
       notebookConfig = ''
         c.Application.log_level = 'DEBUG'
       '';
       enable = true;
       password = "'${config.private.passwords.jupyter}'";
-      package = lab;
-      command = "jupyter-lab";
+      #package = lab;
+      #command = "jupyter-lab";
       ip = "0.0.0.0";
       port = jupyterPort;
     };

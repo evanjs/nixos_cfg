@@ -3,7 +3,7 @@
 	url = git@github.com:taffybar/taffybar.git
 [submodule "overlays/rjg"]
 	path = overlays/rjg
-	url = git@github.com:rjginc/overlay
+	url = git@github.com:RJG-Engineering/overlay
 [submodule "config/new-modules/x/wm/XMonadMasterOverlay"]
 	path = config/new-modules/x/wm/XMonadMasterOverlay
 	url = git@github.com:evanjs/XMonadMasterOverlay.git

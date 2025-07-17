@@ -16,7 +16,6 @@ let
     bc
     nixpkgs-unstable.bingrep
     cht-sh
-    # diskonaut
     du-dust
     fd
     lsd

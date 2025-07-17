@@ -4,7 +4,7 @@ let
   isTexEnabled = config.mine.tex.enable or false;
   rust-nightly = pkgs.rust-bin.nightly.latest.default;
   rust-language-server = (rust-nightly.override { extensions = [ "rls-preview" ]; });
-  #dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
+  dag = import ../../external/home-manager/modules/lib/dag.nix { inherit lib; };
   coc-settings = {
     rust-analyzer= {
       enable = true;
@@ -23,60 +23,60 @@ let
   };
 
   loadPlugin = plugin: ''
-    set rtp^=${plugin.outPath}
-    set rtp+=${plugin.outPath}/after
+    set rtp^=${plugin.rtp}
+    set rtp+=${plugin.rtp}/after
   '';
 
-  #plugins = with pkgs.vimPlugins; [
-    #colorizer
-    #fugitive
-    #ghc-mod-vim
-    #haskell-vim
-    #neomake
-    #nerdcommenter
-    #nerdtree
-    #polyglot
-    #rainbow
-    #ranger-vim
-    #rust-vim
-    #SpaceCamp
-    #syntastic
-    #tagbar
-    #vim-airline
-    #vim-airline-themes
-    #vim-autoformat
-    #vim-illuminate
+  plugins = with pkgs.vimPlugins; [
+    colorizer
+    fugitive
+    ghc-mod-vim
+    haskell-vim
+    neomake
+    nerdcommenter
+    nerdtree
+    polyglot
+    rainbow
+    ranger-vim
+    rust-vim
+    SpaceCamp
+    syntastic
+    tagbar
+    vim-airline
+    vim-airline-themes
+    vim-autoformat
+    vim-illuminate
 
-    #nvim-lspconfig
-    #completion-nvim
-    #coc-rust-analyzer
-    #coc-nvim
+    nvim-lspconfig
+    completion-nvim
+    coc-rust-analyzer
+    coc-nvim
 
-    #lsp_extensions-nvim
+    lsp_extensions-nvim
 
-    #nvim-treesitter
-    #coc-java
-  #] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
-    #latex-box
-    #vim-latex-live-preview
-    #vimtex
-  #]);
+    nvim-treesitter
+    coc-java
+  ] ++ optionals isTexEnabled (with pkgs.vimPlugins; [
+    latex-box
+    vim-latex-live-preview
+    vimtex
+  ]);
 in
 {
   programs.neovim = {
     enable = true;
-    #package = pkgs.neovim-nightly;
+    package = pkgs.neovim-nightly;
 
     viAlias = true;
     vimAlias = true;
     withPython3 = true;
-    withNodeJs = true;
+
 
     extraConfig = ''
     	" Workaround for broken handling of packpath by vim8/neovim for ftplugins -- see https://github.com/NixOS/nixpkgs/issues/39364#issuecomment-425536054 for more info
 	filetype off | syn off
 	${builtins.concatStringsSep "\n"
-	(map loadPlugin (plugins)))}
+	(map loadPlugin (plugins ++ (config.mine.vim.extraPlugins or [])))}
 	filetype indent plugin on | syn on
 
       "" General Settings {{{
@@ -239,7 +239,7 @@ EOF
 
       "" Tex Settings {{{
       let g:vimtex_log_verbose = 1
-      let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
+      let g:livepreview_previewer = '${pkgs.kdePackages.okular}/bin/okular'
       "}}}
 
       "" Misc Settings {{{
@@ -263,7 +263,7 @@ EOF
     '' + optionalString isTexEnabled ''
       "" Tex Settings {{{
       let g:tex_flavor = 'latex'
-      let g:livepreview_previewer = '${pkgs.okular}/bin/okular'
+      let g:livepreview_previewer = '${pkgs.kdePackages.okular}/bin/okular'
       "}}}
     '';
   };

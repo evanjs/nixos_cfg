@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    nixopsUnstable
+    nixops
   ];
 
   services.nixops-dns = {
-    enable = false;
+    enable = true;
     user = "evanjs";
   };
 }

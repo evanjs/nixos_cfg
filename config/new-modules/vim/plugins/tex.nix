@@ -11,7 +11,7 @@ in
       ];
 
       globalOptions = {
-        livepreview_previewer = "${pkgs.okular}/bin/okular";
+        livepreview_previewer = "${pkgs.kdePackages.okular}/bin/okular";
       };
 
       plugins.vimtex = {

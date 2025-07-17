@@ -22,6 +22,7 @@ in
           #}))
           #config.mine.taffybar.package
           hp.xmobar
+          xmonad-with-packages
           hp.xmonad
           hp.xmonad-contrib
         ];

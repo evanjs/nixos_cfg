@@ -54,6 +54,18 @@ self: super: {
         #})
         #{ };
 
+        xmonad-contrib = overrideSrc hsuper.xmonad-contrib {
+          #version = "unstable-2020-06-23";
+          version = "v0.18.1";
+          src = self.fetchFromGitHub {
+            repo = "xmonad-contrib";
+            owner = "xmonad";
+            #rev = "3dc49721b69f5c69c5d5e1ca21083892de72715d";
+            rev = "f5f99c8abf225b6a6f705add858578bad2384912";
+            #sha256 = "0d89y59qbd1z77d1g6fgfj71qjr65bclhb0jkhmr5ynn88rqqfv8";
+            sha256 = "sha256-CggQ5ykKltTZLZEy02bv8dkGynZb4c5IUmq9GE4dKUQ=";
+          };
+        };
       });
     });
   }

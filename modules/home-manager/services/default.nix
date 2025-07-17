@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    #./power-warn.nix
+    ./power-warn.nix
     ./random-background.nix
   ];
 }

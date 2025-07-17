@@ -21,8 +21,10 @@ in {
     ../../../modules/iOS.nix
     ../../../modules/java.nix
     ../../../modules/media.nix
+    ../../../modules/nixops.nix
     ../../../modules/notifications.nix
     ../../../modules/plymouth.nix
+    #../../../modules/qt.nix
     ../../../modules/remote.nix
     ../../../modules/social
     ../../../modules/web.nix
@@ -40,8 +42,8 @@ in {
        We can then run `nix-collect-garbage -d` and rebuild without this option
        to (hopefully) successfully install the remaining components
     */
-    (mkIf ((maybeEnv "BRAINZ" "0") != "0") {
-      mine.jetbrains.enable = true;
+    (mkIf ((maybeEnv "NOBRAINZ" "0") != "0") {
+      mine.jetbrains.enable = false;
     })
     (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
       fonts.fonts = mkForce [ config.mine.fonts.mainFont.package ];
@@ -98,7 +100,7 @@ in {
           enable = lib.mkDefault true;
           theme = {
             name = "Breeze-Dark";
-            package = pkgs.breeze-gtk;
+            package = pkgs.kdePackages.breeze-gtk;
           };
         };
         qt = {
@@ -119,13 +121,13 @@ in {
       mine.x.enable = lib.mkDefault true;
       mine.wm.enable = lib.mkDefault true;
       mine.jetbrains = {
-        enable = lib.mkDefault false;
+        enable = lib.mkDefault true;
         useLatest = lib.mkDefault true;
       };
 
       environment.systemPackages = with pkgs; [
         # graphical admin tools
-        filelight
+        kdePackages.filelight
         qdirstat
         wtf
         ncurses.dev # infocmp, etc
@@ -155,7 +157,7 @@ in {
         # https://github.com/NixOS/nixpkgs/pull/68616
         # these issues will be fixed with the release of 5.0
 
-        okular
+        kdePackages.okular
 
         # word processors, etc
         #pkgs.libreoffice
@@ -171,13 +173,19 @@ in {
         sshfs
 
         # iOS stuff
-        #ideviceinstaller
-        #ifuse
-        #libimobiledevice
+        ideviceinstaller
+        ifuse
+        libimobiledevice
+
+        # security
+        veracrypt
+
+        # editors
+        atom
 
         rclone
 
-        ghidra-bin
+        #ghidra-bin
 
         _1password-gui
       ];
@@ -202,7 +210,6 @@ in {
         grub = {
           enable = true;
 
-          configurationLimit = 30;
           efiSupport = true;
           # allow grub to work with no explicit boot device
           device = "nodev";
@@ -301,7 +308,7 @@ in {
             cargo-cache
             cargo-edit
             cargo-license
-            cargo-show-asm
+            cargo-asm
             cargo-outdated
             stable.cargo-update
             cargo-bloat
@@ -324,14 +331,14 @@ in {
           colorscheme = "spacecamp";
           #extraPlugins = with pkgs.vimPlugins; [ SpaceCamp ];
         };
-        programs.thefuck.enable = true;
+        #programs.thefuck.enable = true;
+        programs.pay-respects.enable = true;
         services.gpm.enable = true;
 
         services.lorri = {
           enable = true;
         };
         programs.screen = {
-          enable = true;
           screenrc = ''
             # for weechat service support, etc
             multiuser on

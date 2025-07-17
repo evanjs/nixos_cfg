@@ -16,7 +16,6 @@ in
 
     ../../../modules/jupyter
 
-    ../../../modules/scrape.nix
     ../../../modules/virtualization/docker.nix
 
     ../../../modules/samba/server/home.nix
@@ -37,31 +36,50 @@ in
     port = 8080;
   };
 
-  nix.distributedBuilds = true;
-  mine.android.enable = true;
-  mine.enableUser = true;
-  mine.profiles.desktop.enable = true;
-  mine.gaming.enable = true;
-  mine.znc.enable = true;
-  mine.nextcloud = {
-    aria2.enable = true;
+  programs.ssh.forwardX11 = true;
+  programs.nh = {
     enable = true;
   };
+  services.openssh.forwardX11 = true;
+
+  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
+
+  nix.distributedBuilds = true;
+  mine.android.enable = false;
+  mine.enableUser = true;
+  mine.profiles.desktop.enable = true;
+  mine.gaming.enable = false;
+  mine.znc.enable = false;
+  mine.nextcloud = {
+    aria2.enable = true;
+    enable = false;
+  };
+  mine.emacs.enable = false;
+  mine.taffybar.enable = false;
   mine.deluged.enable = true;
+  mine.jetbrains.enable = false;
 
   mine.prometheus.server.enable = true;
 
-  mine.font.bar.size.small = 10;
-
+  mine.fonts.bar.size.small = 10;
   mine.virtualization.virtualbox.enable = false;
-  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
-
+  boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages;
   services.openssh.passwordAuthentication = false;
+  #programs.hydrus.enable = true;
+
+  services.caddy = {
+    enable = true;
+    config = ''
+      https://evanjs.ddnsfree.com/
+      reverse_proxy 10.10.0.184:45869
+    '';
+  };
 
   services.xserver.dpi = 80;
-  networking.firewall.allowedTCPPorts = [ 3128 ];
+  networking.firewall.allowedTCPPorts = [ 3128 3000 ];
   services.squid = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       acl pkgfile url_regex gs2.ww.prod.dl.playstation.net/gs2/appkgo/prod/CUSA01127_00/1/f_1818ed1e5995c6e5950f34b9c57faac61a2a63693828d6b9290e8c74e4b9d5cc/f/UP4511-CUSA01127_00-PPPPPPPPTTTTTTTT.json
       deny_info http://archive.org/download/studios/studios.json pkgfile
@@ -73,7 +91,12 @@ in
     '';
   };
 
-  #boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  users.users.evanjs.extraGroups = [ "cdrom" ];
+
+  boot.extraModulePackages = [
+    # insecure
+    # config.boot.kernelPackages.broadcom_sta
+  ];
   boot.initrd.checkJournalingFS = false;
   networking.hostName = "nixtoo";
   system.stateVersion = "19.09";

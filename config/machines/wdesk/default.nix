@@ -31,28 +31,14 @@
   mine.taffybar.enable = false;
   mine.tex.enable = true;
 
-  mine.android.enable = false;
-  home-manager.users.evanjs.programs.mbsync.enable = false;
-  home-manager.users.evanjs.services.mbsync.enable = false;
+  mine.android.enable = true;
 
   # enable after rocm packages are locked to stable channel
-  mine.rocm.enable = true;
-
-  # mine.jetbrains.enable = false;
+  mine.rocm.enable = false;
 
   mine.virtualization.virtualbox.enable = false;
   boot.kernelPackages = lib.mkForce pkgs.stable.linuxPackages_latest;
 
-
-  services.xserver.displayManager.gdm = {
-    wayland = false;
-  };
-  
-  systemd.targets."multi-user".conflicts = [ "getty@tty7.service" ];
-  systemd.services = {
-    "getty@tty1".enable = false;
-    "autovt@tty1".enable = false;
-  };
   networking.hostName = "sekka";
 
   system.rebuild.enableNg = true;
@@ -67,9 +53,5 @@
 
   boot.initrd.checkJournalingFS = false;
 
-  home-manager.users.evanjs.home.stateVersion = "24.05";
-  home-manager.users.root.home.stateVersion = "24.05";
-  mine.userConfig.home.stateVersion = "24.05";
-  mine.xUserConfig.home.stateVersion = "24.05";
   system.stateVersion = "19.09";
 }
