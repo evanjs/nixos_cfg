@@ -21,6 +21,7 @@ in
     #package = pkgs.neovim-nightly;
     #colorscheme = config.mine.vim.colorscheme;
     colorschemes.ayu.enable = true;
+    defaultEditor = true;
     extraPlugins = with pkgs.vimPlugins; [
       vim-autoformat
       nerdcommenter
