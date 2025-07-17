@@ -71,9 +71,11 @@ with lib;
       packages = with pkgs; [
         #corefonts
         #vistafonts
-        (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraMono" "Noto" ]; })
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.fira-mono
+        nerd-fonts.noto
         ipaexfont
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         noto-fonts-emoji
         # TODO: try and integrate this with emacs config so it isn't explicitly defined in the main X config
         emacs-all-the-icons-fonts

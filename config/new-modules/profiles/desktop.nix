@@ -46,7 +46,7 @@ in {
       mine.jetbrains.enable = true;
     })
     (mkIf ((maybeEnv "NOFONTZ" "0") != "0") {
-      fonts.fonts = mkForce [ config.mine.fonts.mainFont.package ];
+      fonts.fonts = mkForce [ ];
     })
     (mkIf ((maybeEnv "NIXOS_LITE" "0") != "0") {
       mine = {
