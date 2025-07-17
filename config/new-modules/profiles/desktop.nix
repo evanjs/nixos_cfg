@@ -160,8 +160,7 @@ in {
         kdePackages.okular
 
         # word processors, etc
-        #pkgs.libreoffice
-        gnome3.gucharmap
+        gucharmap
 
         speedtest-cli
         graphviz
