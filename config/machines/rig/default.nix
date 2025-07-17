@@ -37,9 +37,6 @@ in
   };
 
   programs.ssh.forwardX11 = true;
-  programs.nh = {
-    enable = true;
-  };
   services.openssh.forwardX11 = true;
 
   hardware.enableRedistributableFirmware = true;
