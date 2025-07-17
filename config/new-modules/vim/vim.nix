@@ -8,6 +8,9 @@ let
   });
 in
   {
+    imports = [
+      nixvim.nixosModules.nixvim
+    ];
     options.mine.vim = {
       colorscheme = mkOption {
         type = types.str;
@@ -27,14 +30,12 @@ in
         description = "Additional plugins to add to the vim configuration";
       };
     };
-    config.mine.userConfig = mkIf cfg.enable {
-
+    config.mine.userConfig = mkIf cfg.enable rec {
       imports = [
         nixvim.homeManagerModules.nixvim
-        ../dev/rust-overlay.nix
 
         (import ./nixvim-hm.nix {
-          inherit config pkgs lib;
+          inherit config pkgs lib nixvim;
           inherit (config.mine.userConfig) programs;
         })
       ];
