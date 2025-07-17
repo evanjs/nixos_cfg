@@ -67,6 +67,10 @@
       enableNushellIntegration = true;
     };
 
+    nh = {
+      enable = true;
+    };
+
     nushell = {
       enable = true;
     };
