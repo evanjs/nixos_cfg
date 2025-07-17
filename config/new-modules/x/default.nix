@@ -115,20 +115,7 @@ with lib;
 
       services.picom = {
         enable = true;
-        settings = {
-          blur = true;
-          blurExclude = [
-            "class_g = 'slop'"
-          ];
-        };
-
-        activeOpacity = "0.90";
-        #extraOptions = ''
-          #corner-radius = 10;
-          #blur-method = "dual_kawase";
-          #blur-strength = "10";
-          #xinerama-shadow-crop = true;
-        #'';
+        activeOpacity = 0.90;
 
         shadowExclude = [
           "bounding_shaped && !rounded_corners"
