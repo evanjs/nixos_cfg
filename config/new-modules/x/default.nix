@@ -24,8 +24,8 @@ with lib;
 
       displayManager = {
         autoLogin = {
-          enable = false;
-          user = "evanjs";
+          enable = mkDefault false;
+          user = mkDefault "evanjs";
         };
         gdm = {
           enable = lib.mkDefault true;
