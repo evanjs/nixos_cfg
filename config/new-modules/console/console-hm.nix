@@ -57,6 +57,10 @@
     
     autojump.enable = true;
 
+    nushell = {
+      enable = true;
+    };
+
     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
 
     zsh = {
@@ -89,6 +93,10 @@
         size = 1000000;
       };
     };
+  };
+
+  home.shell = {
+    enableNushellIntegration = true;
   };
 
   home.sessionVariables = {

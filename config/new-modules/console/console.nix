@@ -79,7 +79,7 @@ in
         mine.vim.enable = lib.mkDefault true;
 
 
-        users.defaultUserShell = pkgs.zsh;
+        users.defaultUserShell = pkgs.nushell;
 
         mine.bash-insulter.enable = true;
         mine.userConfig = {
