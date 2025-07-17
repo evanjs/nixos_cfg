@@ -9,13 +9,6 @@
 
   mine.xUserConfig = {
     home.stateVersion = "22.05";
-    services.redshift = {
-      provider = "geoclue2";
-      temperature = {
-        day = 6000;
-        night = 4100;
-      };
-    };
   };
 
   mine.newsboat = {

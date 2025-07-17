@@ -138,8 +138,6 @@ with lib;
         enable = true;
       };
 
-      services.redshift.enable = true;
-
       xsession = {
         enable = true;
         numlock.enable = true;
