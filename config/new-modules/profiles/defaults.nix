@@ -17,6 +17,7 @@ with lib; {
   users.users.evanjs.extraGroups = [ "plugdev" "nginx" ];
 
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "bak";
 
   boot.tmp = { cleanOnBoot = true; };
 
