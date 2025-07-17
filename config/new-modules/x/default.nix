@@ -85,8 +85,8 @@ with lib;
     environment.systemPackages = with pkgs; [
       feh
       libnotify
-      gnome3.gnome-font-viewer
-      gnome.gnome-terminal
+      gnome-font-viewer
+      gnome-terminal
       guake
       xclip
       #evince
