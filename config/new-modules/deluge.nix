@@ -11,6 +11,7 @@ with lib;
     services.deluge = {
       enable = true;
       openFilesLimit = 8192;
+      package = pkgs.deluge-2_x;
 
       web = {
         enable = true;
