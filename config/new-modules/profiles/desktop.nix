@@ -59,7 +59,7 @@ in {
           rust.enable = false;
         };
         vim.enable = false;
-        tex.enable = false;
+        tex.enable = lib.mkDefault false;
 	      firefox.enable = false;
       };
 
