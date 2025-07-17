@@ -39,7 +39,7 @@ let
     pwgen
     ranger
     ripgrep
-    #ripgrep-all
+    ripgrep-all
     sd
     sqlite-interactive
     tealdeer
