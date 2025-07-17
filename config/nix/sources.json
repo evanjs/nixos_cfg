@@ -41,17 +41,10 @@
         "homepage": "",
         "owner": "tweag",
         "repo": "jupyterWith",
-<<<<<<< HEAD
-        "rev": "55e42c3dea87d3c1e3e9dfde28df637e88d6bd39",
-        "sha256": "09gfinqp1jgdxvp0pimhsdc7x4m0nbbs9ldvyzhkbcc5x9j0amaf",
-        "type": "tarball",
-        "url": "https://github.com/tweag/jupyterWith/archive/55e42c3dea87d3c1e3e9dfde28df637e88d6bd39.tar.gz",
-=======
         "rev": "79dd05b3d703cd0034296dd367422f7298fe99d6",
         "sha256": "1hmywq43lizcas6c7ck5i8xi5bdy8a6p35h330z2zl0flhnnr7rg",
         "type": "tarball",
         "url": "https://github.com/tweag/jupyterWith/archive/79dd05b3d703cd0034296dd367422f7298fe99d6.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "lorri": {
@@ -72,17 +65,10 @@
         "homepage": "https://emacs-lsp.github.io/lsp-haskell",
         "owner": "emacs-lsp",
         "repo": "lsp-haskell",
-<<<<<<< HEAD
-        "rev": "b2edf1a9f8ae97d6fdc566de7706e8c9c0a26606",
-        "sha256": "1s7c9jvinf831wp0ld6c5g4aqi31729pnrpwr83dn7nl9mlqlzfb",
-        "type": "tarball",
-        "url": "https://github.com/emacs-lsp/lsp-haskell/archive/b2edf1a9f8ae97d6fdc566de7706e8c9c0a26606.tar.gz",
-=======
         "rev": "daa51072e1718ca075987901fccbbc2357bca1fc",
         "sha256": "0d2myk2906j0ngivca1yf4vdi8bfk5pz706nx279bf0pil7irdy0",
         "type": "tarball",
         "url": "https://github.com/emacs-lsp/lsp-haskell/archive/daa51072e1718ca075987901fccbbc2357bca1fc.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "lsp-mode": {
@@ -91,17 +77,10 @@
         "homepage": "https://emacs-lsp.github.io/lsp-mode",
         "owner": "emacs-lsp",
         "repo": "lsp-mode",
-<<<<<<< HEAD
-        "rev": "b383e637dcbd11da99848d7555318ac393c7cf43",
-        "sha256": "119mhgwqc5g9rj3vdmvhzx8qkq65nvkyg5d3mkza79cix514qp5f",
-        "type": "tarball",
-        "url": "https://github.com/emacs-lsp/lsp-mode/archive/b383e637dcbd11da99848d7555318ac393c7cf43.tar.gz",
-=======
         "rev": "9a5750b53ed90dbde3fb86c8f566e47e4500e46d",
         "sha256": "1a86bn0ghxq0gqgjibj7pz0vzkij1h1kkqj8kzfw5z5yghn1ppzw",
         "type": "tarball",
         "url": "https://github.com/emacs-lsp/lsp-mode/archive/9a5750b53ed90dbde3fb86c8f566e47e4500e46d.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "lsp-ui": {
@@ -110,17 +89,10 @@
         "homepage": "https://emacs-lsp.github.io/lsp-ui",
         "owner": "emacs-lsp",
         "repo": "lsp-ui",
-<<<<<<< HEAD
-        "rev": "00e69463b4f27fb54332a0cae5d4f0dc7e39ac7f",
-        "sha256": "16c490jmmk75wa38h51yv9vpkkdmqildsds5njrldh5lva99dwbq",
-        "type": "tarball",
-        "url": "https://github.com/emacs-lsp/lsp-ui/archive/00e69463b4f27fb54332a0cae5d4f0dc7e39ac7f.tar.gz",
-=======
         "rev": "9a8983d95d823ae62e5f842a4bd433c860131398",
         "sha256": "1pd5lvjlmd6zq64py21yi5zxhcza9g5q48ngfivv7fi7pf3vsv00",
         "type": "tarball",
         "url": "https://github.com/emacs-lsp/lsp-ui/archive/9a8983d95d823ae62e5f842a4bd433c860131398.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -129,17 +101,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-<<<<<<< HEAD
-        "rev": "e2f66fe558481d6b569358d27db06f7e972ed71b",
-        "sha256": "1xn822jajags6bigdr1ssxvfiyd7d3adhnmmrr9x3maphchkr0x0",
-        "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/e2f66fe558481d6b569358d27db06f7e972ed71b.tar.gz",
-=======
         "rev": "82e5cd1ad3c387863f0545d7591512e76ab0fc41",
         "sha256": "090l219mzc0gi33i3psgph6s2pwsc8qy4lyrqjdj4qzkvmaj65a7",
         "type": "tarball",
         "url": "https://github.com/nmattia/niv/archive/82e5cd1ad3c387863f0545d7591512e76ab0fc41.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-mode": {
@@ -148,17 +113,10 @@
         "homepage": "",
         "owner": "nixos",
         "repo": "nix-mode",
-<<<<<<< HEAD
-        "rev": "719feb7868fb567ecfe5578f6119892c771ac5e5",
-        "sha256": "1i2yh8wgn97q9hwaihznb5d7jql9acdjyj5q375gqwpq144g3xjv",
-        "type": "tarball",
-        "url": "https://github.com/nixos/nix-mode/archive/719feb7868fb567ecfe5578f6119892c771ac5e5.tar.gz",
-=======
         "rev": "b3f71c75f7d43a32e7cbc632e9be80f2a03788d4",
         "sha256": "14vcjjyvjdxpzrcd6arq6lrjqgmbbsibx73h0v34fdzfpi4wfx08",
         "type": "tarball",
         "url": "https://github.com/nixos/nix-mode/archive/b3f71c75f7d43a32e7cbc632e9be80f2a03788d4.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
@@ -167,17 +125,10 @@
         "homepage": "",
         "owner": "nixos",
         "repo": "nixos-hardware",
-<<<<<<< HEAD
-        "rev": "3e2ea8a49d4d76276b0f4e2041df8ca5c0771371",
-        "sha256": "1zkwzz3gycadad5yvzglpcll4a66nl5gnzz9n6l4ch6v6sdaja0v",
-        "type": "tarball",
-        "url": "https://github.com/nixos/nixos-hardware/archive/3e2ea8a49d4d76276b0f4e2041df8ca5c0771371.tar.gz",
-=======
         "rev": "83009edccc2e24afe3d0165ed98b60ff7471a5f8",
         "sha256": "0w8ddazwx81l0k1r4mfjgflwgn088gy1knfr7f6qafh57dzh7yyg",
         "type": "tarball",
         "url": "https://github.com/nixos/nixos-hardware/archive/83009edccc2e24afe3d0165ed98b60ff7471a5f8.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-rocm": {
@@ -186,17 +137,10 @@
         "homepage": null,
         "owner": "nixos-rocm",
         "repo": "nixos-rocm",
-<<<<<<< HEAD
-        "rev": "242305cac651e136928ddae922a4edec723ddf59",
-        "sha256": "03mj5iy6aj51d4vdy59bmdgm588lqfr6n0nfbbzpbkk9rfy3k8rn",
-        "type": "tarball",
-        "url": "https://github.com/nixos-rocm/nixos-rocm/archive/242305cac651e136928ddae922a4edec723ddf59.tar.gz",
-=======
         "rev": "baa7e3b14f10dc4fc057cb83847e1a727f080b2d",
         "sha256": "08grnha7xljfqhwlqfv0sdm351s5fv9h2v5bkvw57i12i8z104fj",
         "type": "tarball",
         "url": "https://github.com/nixos-rocm/nixos-rocm/archive/baa7e3b14f10dc4fc057cb83847e1a727f080b2d.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -205,12 +149,6 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-<<<<<<< HEAD
-        "rev": "d74a2335ac9c133d6bbec9fc98d91a77f1604c1f",
-        "sha256": "1k16pj24gzp3dw76dw1pihij7hh5hic0hkmr00rc5kk4s0c7dqyc",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/d74a2335ac9c133d6bbec9fc98d91a77f1604c1f.tar.gz",
-=======
         "rev": "a65b5b3f5504b8b89c196aba733bdf2b0bd13c16",
         "sha256": "0y54qgwcnd38rf4d34d6fvvn109ls9zw7713cr7mqnhax28sf6qc",
         "type": "tarball",
@@ -227,7 +165,6 @@
         "sha256": "1nswjmya72g0qriidc2pkl54zn5sg0xp36vdq0ylspca56izivxc",
         "type": "tarball",
         "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/0508a66e28a5792fdfb126bbf4dec1029c2509e0.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nur": {
@@ -236,17 +173,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "nur",
-<<<<<<< HEAD
-        "rev": "d4026234d502e623b211aeebc3f2a6ab5d20d9ed",
-        "sha256": "1xa3636180zl0si15bb2m0j5awisgj5m8mh61dy51ck5hp3nwiqb",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/nur/archive/d4026234d502e623b211aeebc3f2a6ab5d20d9ed.tar.gz",
-=======
         "rev": "219640a3a9d0da398e81df29d497079f32307a6f",
         "sha256": "1g436gjd1lip91vswpdgacjrcz5ci1ap631xkbibhk1n552cq762",
         "type": "tarball",
         "url": "https://github.com/nix-community/nur/archive/219640a3a9d0da398e81df29d497079f32307a6f.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nur-combined": {
@@ -255,17 +185,10 @@
         "homepage": "https://github.com/nix-community/NUR",
         "owner": "nix-community",
         "repo": "nur-combined",
-<<<<<<< HEAD
-        "rev": "d39269506683f7964f964cbcb26af765095f8629",
-        "sha256": "117cyvln007adgrskn3knf8ipinx5f3xb514ggq6vg2fdnxa339a",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/nur-combined/archive/d39269506683f7964f964cbcb26af765095f8629.tar.gz",
-=======
         "rev": "b59025328d7ddd7ad106a2f7b98453435d6c7851",
         "sha256": "1nq59kp6jwdl4lg515xdvp8zpk2kj031dmj21dy6kd6cqifi3hgn",
         "type": "tarball",
         "url": "https://github.com/nix-community/nur-combined/archive/b59025328d7ddd7ad106a2f7b98453435d6c7851.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sops-nix": {
@@ -274,17 +197,10 @@
         "homepage": "",
         "owner": "mic92",
         "repo": "sops-nix",
-<<<<<<< HEAD
-        "rev": "07af005bb7d60c7f118d9d9f5530485da5d1e975",
-        "sha256": "1r9ism27mhjwx9hhj2p10s051z5p0czgjdi04dm7w3kl69xhd47c",
-        "type": "tarball",
-        "url": "https://github.com/mic92/sops-nix/archive/07af005bb7d60c7f118d9d9f5530485da5d1e975.tar.gz",
-=======
         "rev": "6efa719f8d02139ce41398b9e59e06888dc1305a",
         "sha256": "1v9drw824iyxhhf1cdvh59vmir339204wxzi8r35vj8phkfwjcqf",
         "type": "tarball",
         "url": "https://github.com/mic92/sops-nix/archive/6efa719f8d02139ce41398b9e59e06888dc1305a.tar.gz",
->>>>>>> 7b1101d8 (Fix merge connfflicts, disable some broken things)
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
