@@ -21,6 +21,7 @@
   programs = {
     lsd = {
       enableBashIntegration = true;
+      enableNushellIntegration = true;
       enableZshIntegration = true;
       enableAliases = true;
     };
