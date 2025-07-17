@@ -43,9 +43,6 @@ allow-newer-deps: [
     broadcast-chan,
     container,
     deepseq,
-    #gi-gtk-hs
-    #networ,
-    #rate-limi,
     scott,
     time-locale-compat and unliftio-core,
     broadcast-chan,
@@ -152,59 +149,6 @@ extra-deps: [
     colour-2.3.6,
     prettyprinter-1.7.1,
     prettyprinter-ansi-terminal-1.1.3,
-    #xmonad-wallpaper-0.0.1.4,
-    #Cabal-3.14.2.0@sha256:f98aa86a37b9920dc6dfc8d79119a10df69542734f158a1c66ff144592f1d004,
-    #HStringTemplate-0.8.8@sha256:772983c4730d3cf28bbbfc483e4fc13e0614ed315251e1c76dcf43f6cd03d6dd,
-    #MissingH-1.6.0.2@sha256:d1379d74fa6052b13f46262cf9000d7231cfd1cfaf2daa84c2646841192aafd1,
-    #ansi-terminal-1.1.2@sha256:8e669f090aa3b9a62ef78f687dda12a19231ee163d2084522464036980a322ea,
-    #attoparsec-0.13.2.5@sha256:1b64fc08464d9dc73d80e13aea362410f3c8bca5abfa6831df8821281c3cdfeb,
-    #base-compat-0.10.5@sha256:f1eb4ae543d698e7f1b11c5a95f6b286f492d08c34b359879274e60fcfd96c17,
-    #c2hs-0.28.8@sha256:7afc88133bd244e4a8fc483363a849bdb91e1b8587508e3524baae84e4ec32b8,
-    #cereal-0.5.8.3@sha256:87a227c7b510217ea059db3dd59d9665edd8f0d1d3d8de39458e371a1d9402fb,
-    #conduit-1.3.6.1@sha256:4e5be34eeff16646eb7e13471c7ae7e8db59a3f7cc3125ecb1fc0ae3632baac9,
-    #data-default-0.8.0.1@sha256:536ff91641a39b8ad302eebceff767d86ec6b543b44b1db9104650a2b1bc63bd,
-    #dyre-0.8.12@sha256:7e8b6abbcf5182f291e5e88e419ce05bb65d39ecf03b5a351c6c6d9f7608bd74,
-    #either-5.0.3@sha256:de3daf61db662a48c10420dee21e70966c8ce590263c563c70d57ef5e7cc03e1,
-    #enclosed-exceptions-1.0.3@sha256:6d4e9b5156721ccfa62d3cdcbf13d8571773031050ec714cb55b841f0c183f6a,
-    #extensible-exceptions-0.1.1.4@sha256:eb5fe684a7ffe8d1ed2ed6cdaec7dfb29efc780811ea7158a64edc2abc516f47,
-    #gi-atk-2.0.28@sha256:5fd0636c2ba3a266ef85de560daefdc6476cb1bf84bde0b2e52c0ca762cb7fe7,
-    #gi-cairo-1.0.30@sha256:8ff56d5a9f9cfa07fee6197944776f2cd29eb92ae07115c851fc77bcb3d853d3,
-    #gi-glib-2.0.30@sha256:ac73c972e0c814e74a0b135e8567e1364dbcf60f77e6f020eac9f054eaaebe54,
-    #gi-gobject-2.0.31@sha256:899a331689f1238fdce3829f1148e51bfd13a39ba5cab70710a6bab59e663d90,
-    #haskell-gi-overloading-1.0@sha256:a59a812f4490b317fe2850c5442004f230130204af6cb4e0a6604acebb9f2f63,
-    #hslogger-1.3.1.2@sha256:285c230fdea10961b0777ad4c08b6bf29527033c0ea8ca7426ac6357423ae045,
-    #http-client-0.7.19@sha256:1f0950bab7fe751370ce4ec736c7836dd8a68a757a083ee7f690a9c976d7205e,
-    #http-client-tls-0.3.6.4@sha256:efe0a32d59c3a38ea35eb9c1b6e7beffa3592e39b2065a727cb84ccd654d16f3,
-    #http-types-0.12.4@sha256:c8bdda528c9d74dea90effb30958fdacdb09b116c61a63b6f1b233ffea72b776,
-    #lens-5.3.5@sha256:3bce9b67767ff9feccba39e41f9ad21a0fbf395b75069ecefe400a791a9acd69,
-    #multimap-1.2.1@sha256:9d70d1c278f53c39c142c04643df3a4c58b683c359beca5addf5d7545aaf7931,
-    #network-2.8.0.1@sha256:a79f3cf88b2623d5f2e7a8fc7962055f6858d6beb6d13c2aef43c20a5060cf28,
-    #network-uri-2.6.4.2@sha256:6fffb57373962b5651a2db8b0af732098b3bf029a7ced76a9855615de2026588,
-    #old-locale-1.0.0.7@sha256:fa998be2c7e00cd26a6e9075bea790caaf3932caa3e9497ad69bc20380dd6911,
-    #optparse-applicative-0.19.0.0@sha256:0b47b3ff7eb4a855b5f7d401690365fc62a32057374927ce0d478b620996222d,
-    #parsec-3.1.18.0@sha256:dfbb9835b8abc966b6bbd34340ef5122227b4cf4480062b85ca4c4704f054f98,
-    #pretty-show-1.10@sha256:bfef8da0ac4db4fc7f41edfec9e9a701ac206418d70702bff1e40f20d6a2b1f1,
-    #random-1.3.1@sha256:0b4f649c3e78713b2ccad1535251ee34b148237fb2229d7058c2b1d9ccc324b8,
-    #regex-compat-0.95.2.2@sha256:c62ba16b171933e251fb6950170272b4a26bf7a3ee2043768f94bd833f6f830f,
-    #regex-tdfa-1.3.2.4@sha256:6488844387f001527ebcb797ec5b1b9acf1858b2b30338bcbb6c0bc7c5502acf,
-    #safe-0.3.21@sha256:b928ea1645876788155b38ce85c7e46d157a1bb41d2b05f5770b13d60bc6a3f7,
-    #scotty-0.12@sha256:32a4702316f4a90ca2be65a1191b889efcb0415002fb8c7e15c8606efa6bc134,
-    #setlocale-1.0.0.10@sha256:cb1d03856a09622e5372e58c09a507308b013e50a67e84cf7faeb363300a28a2,
-    #split-0.2.5@sha256:5bc1ae848bfded3087ea3e568908f1b75f56ecde6f02df3fad1a138dd5c783d5,
-    #text-2.1.2@sha256:2898d240693a61911efc6e9f9dd3f05a1561684b0c42da964b76ae6463dba754,
-    #th-lift-0.8.6@sha256:0d1298f0604415e801ee1bc9095d8c26246d911d8d78e86d61b10a2588fab727,
-    #time-locale-compat-0.1.1.5@sha256:24b10ab3de20f5fc00f0e4f7832ac66dd5597033b78cff3bd6b4505d8a652e5b,
-    #transformers-base-0.4.6@sha256:6f18f320e371c8954c4b6b211e2fdd5d15a6d6310bd605b9d640f47ede408961,
-    #tuple-0.3.0.2@sha256:5dd26b90befac62a4acb887b70bc81c87e576f2f97b7701ca7b1544dc468725d,
-    #unliftio-core-0.1.2.0@sha256:b0a7652ffce2284a6cebe05c99eb60573a8fb6631163f34b0b30a80b4a78cb23,
-    #utf8-string-1.0.2@sha256:79416292186feeaf1f60e49ac5a1ffae9bf1b120e040a74bf0e81ca7f1d31d3f,
-    #vector-0.13.2.0@sha256:b736a57b73520d2acf4865e3e2b40030d69782f35f870e376dc717ee2508d81f,
-    #xdg-basedir-0.2.2@sha256:9d72d45e3be3aea5ae9fa9b47db31dbf9dbf0888e5f94a3972be3f1540791e8c,
-    #xml-1.3.14@sha256:c7a33d37c968c769723931a33e4e795f0aadda6cb62e7073ded8a2db52509d95,
-    #xml-conduit-1.10.0.1@sha256:7839ac78845f6d19e85aa5ab4d9899eb69867762e56db30f777d2992302fee9b,
-    #xml-types-0.3.8@sha256:0d1420f967a5f6439dc03f554b4d77cf15f9ff0aa58fa408efc52ca16459119b,
-    #xmonad-contrib-0.18.1@sha256:aae0f10f3f12492c9a3f0824c59b1d23982810a3f9fb096b2c3e2a0e417d0b05,
-
   ]
 
 # Override default flag values for local packages and extra-deps
@@ -250,12 +194,10 @@ nix:
                 - haskellPackages.X11
                 #- haskellPackages.X11-xft
                 #- haskellPackages.xmonad-wallpaper
-                # - libdbusmenu-glib
                 - libdbusmenu-gtk3
                 - libxml2
                 - pkg-config
                 - upower
-                #- x11
                 - xorg.libX11
                 - xorg.libXext
                 #- xorg.libXft
