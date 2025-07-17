@@ -62,6 +62,11 @@
       enableNushellIntegration = true;
     };
 
+    yazi = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
     nushell = {
       enable = true;
     };
