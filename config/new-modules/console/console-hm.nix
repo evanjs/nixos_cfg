@@ -73,6 +73,11 @@
 
     nushell = {
       enable = true;
+
+      settings = {
+        buffer_editor = "nvim";
+        show_banner = "short";
+      };
     };
 
     readline.enable = (if (config ? "mine") then (config.mine.console.enable != true) else true);
