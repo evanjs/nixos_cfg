@@ -74,6 +74,13 @@
     nushell = {
       enable = true;
 
+      plugins = with pkgs.nushellPlugins; [
+        polars
+        query
+        semver
+        skim
+      ];
+
       settings = {
         buffer_editor = "nvim";
         show_banner = "short";
