@@ -66,7 +66,7 @@ in
   #programs.hydrus.enable = true;
 
   services.caddy = {
-    enable = true;
+    enable = false;
     config = ''
       https://evanjs.ddnsfree.com/
       reverse_proxy 10.10.0.184:45869
