@@ -7,6 +7,9 @@
 
   time.timeZone = "America/Detroit";
 
+  mine.userConfig = {
+    home.stateVersion = "22.05";
+  };
   mine.xUserConfig = {
     home.stateVersion = "22.05";
   };
