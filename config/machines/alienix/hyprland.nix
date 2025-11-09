@@ -100,6 +100,9 @@
           # Screen screenshot (full screen), freeze, clipboard only
           # The command is: hyprshot --clipboard-only -m screen --freeze
           "$mod SHIFT, s, exec, hyprshot --clipboard-only -m screen --freeze"          
+
+          # Mute audio (non-repeatable)
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ];
 
         bindd = [
@@ -111,6 +114,12 @@
           "$mod, E, Open browser, exec, firefox"
           
           "$mod CTRL, W, Restart waybar, exec, systemctl --user restart waybar"
+        ];
+
+        bindel = [
+          # Raise or lower volume (repeatable)
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ];
 
         windowrulev2 = [
