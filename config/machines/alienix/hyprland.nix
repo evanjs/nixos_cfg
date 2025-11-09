@@ -1,9 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
-
+#let
+  #hyprlandPackages = inputs.hyprland.packages;
+#in
 {
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
+    #package = hyprlandPackages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     withUWSM = true;
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -28,7 +31,6 @@
       #enable = true;
       #hyprcursor.enable = true;
     #};
-    #home.stateVersion = "24.11";
     wayland.windowManager.hyprland = {
       enable = true;
       systemd = {
@@ -124,9 +126,6 @@
 
         windowrulev2 = [
 
-          # Ensure 1Password windows are displayed properly
-          "size 50% 60%, title:(1Password)"
-          "center, title:(1Password)"
         ];
       };
     };
@@ -143,22 +142,11 @@
       };
     };
   };
-  #home-manager.users.root.home.stateVersion = "24.11";
   services.xserver.displayManager.defaultSession = "hyprland-uwsm";
-  #services.displayManager.sddm = {
-    #enable = true;
-    #wayland.enable = true;
-  #};
 
   environment.systemPackages = with pkgs; [
     pyprland
     hyprpicker
     brightnessctl
-    #hyprcursor
-    #hyprlock
-    #hypridle
-    #hyprpaper
-    #hyprsunset
-    #hyprpolkitagent
   ];
 }
